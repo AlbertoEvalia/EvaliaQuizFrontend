@@ -1,0 +1,190 @@
+/* ResultsScreen.css - Clean Version */
+
+/* Main Container */
+.results-screen {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.results-container {
+  background: linear-gradient(135deg, #0075BE 0%, #005B97 100%);
+  padding: 30px;
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  border-radius: 0;
+}
+
+/* Score Section */
+.evalia-result {
+  text-align: center;
+  margin: 20px 0;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+}
+
+.evalia-average {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #ffffff;
+  letter-spacing: 2px; /* Letter-spacing für bessere Lesbarkeit */
+}
+
+/* Session Stats für Registered Users */
+.session-stats {
+  text-align: center;
+
+  margin-bottom: 20px; /* ← NEU: 20px Abstand zum Chart */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0; /* Keine runden Ecken */
+  color: #ffffff;
+}
+
+/* Chart Container */
+.chart-container {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.chart-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  letter-spacing: 1px; /* Letter-spacing für bessere Lesbarkeit */
+}
+
+/* Restart Button */
+.restart-button {
+  width: 100% !important;
+  height: 50px;
+  background-color: #0075BE !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 0 !important;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+}
+
+.restart-button:hover:not(:disabled) {
+  background-color: #005B97 !important;
+}
+
+.restart-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.restart-button:disabled {
+  background-color: #7a9bb8 !important;
+  cursor: not-allowed;
+}
+
+.restart-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .results-container {
+    padding: 20px;
+  }
+  
+  .chart-container {
+    height: 350px;
+    padding: 15px;
+    margin-top: 20px;
+  }
+  
+  .evalia-average {
+    font-size: 28px;
+  }
+  
+  .session-stats {
+    text-align: center;
+   
+    margin-bottom: 20px; /* ← NEU: 20px Abstand zum Chart */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+    color: #ffffff;
+  }
+  
+  .restart-button {
+    font-size: 16px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .results-container {
+    padding: 15px;
+  }
+  
+  .chart-container {
+    height: 300px;
+    padding: 10px;
+    margin-top: 15px;
+  }
+  
+  .evalia-result {
+    margin: 15px 0;
+    padding: 15px;
+  }
+  
+  .evalia-average {
+    font-size: 24px;
+  }
+  
+  .session-stats {
+    text-align: center;
+    margin-top: 10px; /* ← Ändern von 20px zu 10px */
+    margin-bottom: 20px; /* ← NEU: 20px Abstand zum Chart */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+    color: #ffffff;
+  }
+  
+  .restart-button {
+    font-size: 14px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 360px) {
+  .chart-container {
+    height: 280px;
+    padding: 8px;
+  }
+  
+  .evalia-average {
+    font-size: 20px;
+  }
+  
+  .session-stats {
+    text-align: center;
+    margin-top: 5px; /* ← Ändern von 20px zu 10px */
+    margin-bottom: 20px; /* ← NEU: 20px Abstand zum Chart */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+    color: #ffffff;
+  }
+}

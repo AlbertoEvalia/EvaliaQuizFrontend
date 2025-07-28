@@ -1,0 +1,213 @@
+/* ===== FIXED QUIZQUESTION.CSS ===== */
+/* Grid System */
+:root {
+  --grid-unit: 20px;
+  }
+  
+  /* Container */
+  .quiz-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 var(--grid-unit);
+  box-sizing: border-box;
+  position: relative;
+  }
+  
+  /* Divider (2px dick) */
+  .divider {
+  border: none;
+  height: 2px;
+  background-color: white;
+  margin: calc(0.5 * var(--grid-unit)) auto;
+  width: 100%;
+  max-width: 560px;
+  }
+  
+  /* FIXED: Große Hintergrundschrift - Mobile positioning and letter spacing */
+  .large-progress-bg {
+  position: fixed;
+  font-size: calc(25 * var(--grid-unit));
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.1);
+  top: 57%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+  line-height: 0.8;
+  letter-spacing: calc(1.1 * var(--grid-unit)); /* ✅ INCREASED: More spacing for large numbers */
+  }
+  
+  /* FIXED: Frage-Karte mit besseren Abständen */
+  .question-card {
+  position: relative;
+  z-index: 1;
+  margin-bottom: calc(1.5 * var(--grid-unit)); /* ✅ ADDED: Space before input form */
+  }
+  
+  /* FIXED: Topic tag - weniger Abstand nach oben + letter spacing */
+  .topic-tag {
+  color: #fff;
+  font-size: calc(0.9 * var(--grid-unit));
+  margin: calc(0.25 * var(--grid-unit)) 0 calc(0.5 * var(--grid-unit)) 0; /* ✅ REDUCED: from 0.75 to 0.25 */
+  font-weight: bold;
+  letter-spacing: 0.8px; /* ✅ ADDED: More tracking for topic names */
+  text-transform: uppercase; /* ✅ ADDED: Makes topics more distinct */
+  }
+  
+  /* FIXED: Question text - Abstand nach unten + letter spacing */
+  .question-text {
+  color: #fff;
+  font-size: calc(1.1 * var(--grid-unit));
+  line-height: 1.4;
+  margin: 0 0 calc(1 * var(--grid-unit)) 0; /* ✅ ADDED: margin-bottom for spacing */
+  letter-spacing: 0.2px; /* ✅ ADDED: Subtle improvement for question readability */
+  }
+  
+  /* Formular */
+  .answer-form {
+  position: relative;
+  z-index: 1;
+  }
+  
+  /* Input-Design */
+  .answer-input {
+  width: 100%;
+  padding: calc(0.75 * var(--grid-unit)); /* 15px */
+  border: none;
+  border-radius: 0;
+  box-sizing: border-box;
+  font-size: calc(0.9 * var(--grid-unit)); /* 18px */
+  background: #fff;
+  color: #333;
+  outline: none;
+  margin-bottom: 20px; /* Space before button */
+  }
+  
+  .answer-input:disabled {
+  background: #f5f5f5;
+  color: #666;
+  cursor: not-allowed;
+  }
+  
+  .answer-input::placeholder {
+  color: #999;
+  font-style: normal;
+  }
+  
+  /* Submit Button */
+  .submit-button {
+  width: 100%;
+  padding: calc(0.75 * var(--grid-unit)); /* 15px */
+  border: none;
+  border-radius: 0;
+  box-sizing: border-box;
+  font-size: calc(0.8 * var(--grid-unit)); /* 16px */
+  background: #146596;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin: 0;
+  }
+  
+  .submit-button:hover:not(:disabled) {
+  background: #0d4b75;
+  }
+  
+  .submit-button:disabled {
+  background: #7a9bb8;
+  cursor: not-allowed;
+  }
+  
+  /* Responsive Anpassungen */
+  @media (max-width: 800px) {
+  /* FIXED: Large progress on tablet - better positioning */
+  .large-progress-bg {
+  font-size: calc(18 * var(--grid-unit)); /* ✅ REDUCED: from calc(20 * var(--grid-unit)) */
+  letter-spacing: calc(1.5 * var(--grid-unit)); /* ✅ ADJUSTED: Better spacing */
+  left: 55%; /* ✅ MOVED: Slightly to the right */
+   }
+  
+  /* FIXED: Responsive spacing adjustments */
+  .question-card {
+  margin-bottom: calc(1.25 * var(--grid-unit)); /* ✅ Slightly less space on tablet */
+  }
+  
+  .topic-tag {
+  font-size: calc(0.8 * var(--grid-unit));
+  margin: calc(0.25 * var(--grid-unit)) 0 calc(0.4 * var(--grid-unit)) 0; /* ✅ Adjust for tablet */
+  letter-spacing: 0.6px; /* ✅ ADDED: Adjust for smaller screens */
+   }
+  
+  .question-text {
+  font-size: var(--grid-unit);
+  margin: 0 0 calc(0.8 * var(--grid-unit)) 0; /* ✅ Adjust spacing for tablet */
+   }
+  
+  .answer-input {
+  font-size: calc(0.85 * var(--grid-unit)); /* 17px auf tablet */
+   }
+  
+  .submit-button {
+  font-size: calc(0.75 * var(--grid-unit)); /* 15px auf tablet */
+   }
+  }
+  
+  @media (max-width: 480px) {
+  /* FIXED: Large progress on mobile - much better positioning */
+  .large-progress-bg {
+  font-size: calc(12 * var(--grid-unit)); /* ✅ MUCH SMALLER: Fits better on mobile */
+  letter-spacing: calc(0.8 * var(--grid-unit)); /* ✅ TIGHTER: Less spacing */
+  left: 55%; /* ✅ MOVED RIGHT: Ensures full visibility */
+  top: 55%; /* ✅ SLIGHTLY HIGHER: Better vertical position */
+   }
+  
+  .quiz-container {
+  padding: 0 calc(0.75 * var(--grid-unit));
+   }
+  
+  /* FIXED: Mobile spacing */
+  .question-card {
+  margin-bottom: var(--grid-unit); /* ✅ Even less space on mobile */
+  }
+  
+  .topic-tag {
+  margin: calc(0.2 * var(--grid-unit)) 0 calc(0.3 * var(--grid-unit)) 0; /* ✅ Tight spacing on mobile */
+  letter-spacing: 0.7px; /* ✅ ADDED: Compact but readable */
+  }
+  
+  .question-text {
+  margin: 0 0 calc(0.6 * var(--grid-unit)) 0; /* ✅ Compact spacing on mobile */
+  }
+  
+  .answer-input {
+  font-size: calc(0.8 * var(--grid-unit)); /* 16px auf mobile */
+  padding: calc(0.65 * var(--grid-unit)); /* 13px auf mobile */
+   }
+  
+  .submit-button {
+  font-size: calc(0.7 * var(--grid-unit)); /* 14px auf mobile */
+  padding: calc(0.65 * var(--grid-unit)); /* 13px auf mobile */
+   }
+  }
+  
+  /* PORTRAIT MOBILE - Special handling for very narrow screens */
+  @media (max-width: 360px) {
+  .large-progress-bg {
+  font-size: calc(10 * var(--grid-unit)); /* ✅ EVEN SMALLER: For very narrow phones */
+  left: 55%; /* ✅ MORE TO THE RIGHT: Ensure visibility */
+  letter-spacing: calc(0.6 * var(--grid-unit)); /* ✅ VERY TIGHT: Minimal spacing */
+  top: 40%; /* ✅ HIGHER: Better positioning */
+  }
+  }
+  
+  /* ULTRA NARROW - For the smallest phones */
+  @media (max-width: 320px) {
+  .large-progress-bg {
+  font-size: calc(8 * var(--grid-unit)); /* ✅ ULTRA SMALL: For smallest screens */
+  left: 55%; /* ✅ FAR RIGHT: Ensure both digits are visible */
+  letter-spacing: calc(0.4 * var(--grid-unit)); /* ✅ MINIMAL: Ultra tight */
+  }
+  }

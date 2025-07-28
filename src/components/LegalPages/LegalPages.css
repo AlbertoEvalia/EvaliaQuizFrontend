@@ -1,0 +1,329 @@
+/* src/components/LegalPages/LegalPages.css - EVALIA Design - CLEAN VERSION */
+
+:root {
+  --grid-unit: 20px;
+}
+
+.legal-page {
+  min-height: 100vh;
+  background: transparent;
+  color: white;
+  font-family: 'Helvetica', Arial, sans-serif;
+  padding: 40px 20px;
+  text-align: left;
+  overflow-x: hidden;
+}
+
+.legal-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  color: #005B97;
+  border-radius: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* ✅ FORCE STICKY BUTTON - Überschreibt app.css komplett */
+#impressum-back-btn,
+.legal-back-button {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+  background-color: #0075BE !important;
+  background: #0075BE !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 0 !important;
+  width: 100% !important;
+  height: 50px !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  margin-bottom: 20px !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  transition: background-color 0.3s ease !important;
+  font-family: 'Helvetica', Arial, sans-serif !important;
+  letter-spacing: 0.3px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  outline: none !important;
+  opacity: 1 !important;
+}
+
+#impressum-back-btn:hover,
+.legal-back-button:hover {
+  background-color: #005B97 !important;
+  background: #005B97 !important;
+}
+
+#impressum-back-btn:focus,
+.legal-back-button:focus {
+  outline: 2px solid #0075BE !important;
+  outline-offset: 2px !important;
+}
+
+/* ✅ CONTENT AREA */
+.legal-content {
+  padding: 40px;
+}
+
+.legal-content h1 {
+  color: #005B97;
+  text-align: left;
+  margin-bottom: 40px;
+  font-size: 44px;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+.legal-section {
+  margin-bottom: 40px;
+  padding: 30px;
+  background: rgba(204, 224, 244, 0.1);
+  border-radius: 0;
+  border-left: 4px solid #0075BE;
+  text-align: left;
+}
+
+.legal-section h2 {
+  color: #005B97;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 0;
+}
+
+.legal-section h3 {
+  color: #0075BE;
+  margin-bottom: 16px;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 0;
+}
+
+.legal-section p {
+  color: #005B97;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-size: 18px;
+  text-align: left;
+  margin-top: 0;
+}
+
+.legal-section ul {
+  color: #005B97;
+  line-height: 1.6;
+  margin-left: 30px;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.legal-section li {
+  margin-bottom: 10px;
+}
+
+.legal-section strong {
+  color: #005B97;
+  font-weight: bold;
+}
+
+.legal-section em {
+  color: #0075BE;
+  font-style: italic;
+}
+
+.legal-section a {
+  color: #0075BE;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.legal-section a:hover {
+  color: #005B97;
+}
+
+/* Contact Grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.contact-info {
+  padding: 30px;
+  background: rgba(204, 224, 244, 0.1);
+  border-radius: 0;
+  border-left: 4px solid #0075BE;
+}
+
+.contact-item {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: rgba(204, 224, 244, 0.2);
+  border-radius: 0;
+}
+
+.contact-item h3 {
+  color: #005B97;
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.contact-item p {
+  color: #0075BE;
+  margin: 0;
+  font-size: 18px;
+}
+
+.contact-form {
+  padding: 30px;
+  background: rgba(204, 224, 244, 0.1);
+  border-radius: 0;
+  border-left: 4px solid #0075BE;
+}
+
+.contact-form h2 {
+  color: #005B97;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.contact-info h2 {
+  color: #005B97;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 30px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  color: #005B97;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  height: 50px;
+  padding: 0 15px;
+  font-size: 18px;
+  background: white;
+  border: none;
+  border-radius: 0;
+  color: #005B97;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease;
+}
+
+.form-group textarea {
+  height: 120px;
+  padding: 15px;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #0075BE;
+}
+
+.submit-btn {
+  width: 100%;
+  height: 50px;
+  background: #0075BE !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 0 !important;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #005B97 !important;
+  transform: translateY(-1px);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Mobile Responsive */
+@media (max-width: 800px) {
+  .legal-page {
+    padding: 30px 15px;
+  }
+  
+  .legal-content {
+    padding: 30px;
+  }
+  
+  .legal-content h1 {
+    font-size: 36px;
+  }
+  
+  .legal-section {
+    padding: 20px;
+  }
+  
+  .legal-section h2 {
+    font-size: 24px;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  #impressum-back-btn,
+  .legal-back-button {
+    font-size: 17px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .legal-page {
+    padding: 20px 10px;
+  }
+  
+  .legal-content {
+    padding: 20px;
+  }
+  
+  .legal-content h1 {
+    font-size: 32px;
+  }
+
+  .legal-section {
+    padding: 15px;
+  }
+
+  #impressum-back-btn,
+  .legal-back-button {
+    font-size: 16px !important;
+    height: 44px !important;
+  }
+}

@@ -1,0 +1,256 @@
+/* src/components/LegalLink/LegalLink.css */
+
+.legal-link-container {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-top: calc(2 * var(--grid-unit)); /* 40px Abstand */
+    z-index: 1000;
+  }
+  
+  /* Hamburger Button wie Start-Button */
+  .legal-hamburger {
+    width: 100%; /* Gleiche Breite wie Start-Button */
+    height: calc(2.5 * var(--grid-unit)); /* Gleiche Höhe wie Start-Button */
+    background-color: #0075BE !important; /* Gleiche Farbe wie Start-Button */
+    background: #0075BE !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 0 !important;
+    cursor: pointer;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background-color 0.3s;
+    opacity: 1 !important;
+    padding: 0 calc(0.75 * var(--grid-unit));
+    box-sizing: border-box;
+    /* Hamburger-spezifisch */
+    flex-direction: column;
+    gap: calc(0.25 * var(--grid-unit));
+    font-size: calc(0.9 * var(--grid-unit));
+    font-weight: bold;
+  }
+  
+  .legal-hamburger:hover {
+    background-color: #005B97 !important;
+    background: #005B97 !important;
+    opacity: 1 !important;
+  }
+  
+  /* Hamburger Lines - WEIß */
+  .legal-hamburger span {
+    display: block;
+    width: calc(1.5 * var(--grid-unit)); /* 30px */
+    height: 3px;
+    background: white; /* Weiß auf blauem Hintergrund */
+    transition: all 0.3s ease;
+  }
+  
+  /* Dropdown - VON UNTEN NACH OBEN wie vom Button kommend */
+  .legal-dropdown {
+    position: absolute;
+    bottom: 100%; /* Direkt über dem Button */
+    left: 0; /* Links ausgerichtet wie der Button */
+    right: 0; /* Rechts ausgerichtet wie der Button */
+    width: 100%; /* Gleiche Breite wie der Button */
+    background: white;
+    border-radius: 0;
+    margin-bottom: 0; /* Kein Abstand zum Button */
+    animation: slideUpFromButton 0.3s ease;
+    overflow: hidden;
+  }
+  
+  /* Animation: Direkt von unten nach oben */
+  @keyframes slideUpFromButton {
+    from { 
+      opacity: 0; 
+      transform: translateY(100%); /* Startet unter dem Button */
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); /* Endet direkt über dem Button */
+    }
+  }
+  
+  /* Dropdown Buttons - ALLE BLAU wie dein Design */
+  .legal-dropdown button {
+    display: block;
+    width: 100%;
+    height: calc(2.5 * var(--grid-unit)); /* Gleiche Höhe wie andere Buttons */
+    background-color: #0075BE !important; /* BLAU wie andere Buttons */
+    background: #0075BE !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 0 !important;
+    font-size: calc(0.9 * var(--grid-unit));
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    opacity: 1 !important;
+    padding: 0 calc(0.75 * var(--grid-unit));
+    box-sizing: border-box;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important; /* Trennung zwischen Buttons */
+  }
+  
+  .legal-dropdown button:last-child {
+    border-bottom: none !important;
+  }
+  
+  .legal-dropdown button:hover {
+    background-color: #005B97 !important;
+    background: #005B97 !important;
+    opacity: 1 !important;
+  }
+  
+  /* Mobile anpassen */
+  @media (max-width: 480px) {
+    .legal-hamburger {
+      height: calc(2.25 * var(--grid-unit)); /* Etwas kleiner auf Mobile */
+    }
+    
+    .legal-hamburger span {
+      width: calc(1.2 * var(--grid-unit));
+      height: 2px;
+    }
+    
+    .legal-dropdown button {
+      height: calc(2.25 * var(--grid-unit)); /* Mobile Höhe */
+      font-size: calc(0.8 * var(--grid-unit));
+    }
+  }
+
+  /* PRIORITY FIX for Legal Back Button - Add to LegalPages.css */
+
+/* CRITICAL: Back button with maximum specificity to override conflicts */
+.legal-container .legal-back-button,
+.legal-page .legal-container .legal-back-button,
+div.legal-container button.legal-back-button {
+    background-color: #0075BE !important;
+    background: #0075BE !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+    height: calc(2.5 * var(--grid-unit)) !important;
+    font-size: calc(0.9 * var(--grid-unit)) !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    margin-bottom: calc(2 * var(--grid-unit)) !important;
+    transition: all 0.3s ease !important;
+    
+    /* FORCE VISIBILITY */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 9999 !important; /* ✅ HIGHEST PRIORITY */
+    
+    /* ENSURE TEXT IS VISIBLE */
+    letter-spacing: 0.3px !important;
+    text-decoration: none !important;
+    
+    /* PREVENT ANY CONFLICTS */
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    
+    /* FORCE BOX MODEL */
+    padding: 0 calc(0.75 * var(--grid-unit)) !important;
+    box-sizing: border-box !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+    
+    /* FORCE TYPOGRAPHY */
+    font-family: 'Helvetica', Arial, sans-serif !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    
+    /* FORCE INTERACTION */
+    pointer-events: auto !important;
+    user-select: none !important;
+    
+    /* DEBUG - Remove this line after testing */
+    outline: 2px solid red !important; /* ✅ TEMP: Visual debug border */
+}
+
+.legal-container .legal-back-button:hover,
+.legal-page .legal-container .legal-back-button:hover,
+div.legal-container button.legal-back-button:hover {
+    background-color: #005B97 !important;
+    background: #005B97 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 8px rgba(0, 117, 190, 0.3) !important;
+    color: white !important;
+}
+
+.legal-container .legal-back-button:active,
+.legal-page .legal-container .legal-back-button:active,
+div.legal-container button.legal-back-button:active {
+    transform: translateY(0) !important;
+    background-color: #005B97 !important;
+}
+
+.legal-container .legal-back-button:focus,
+.legal-page .legal-container .legal-back-button:focus,
+div.legal-container button.legal-back-button:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(0, 117, 190, 0.3) !important;
+}
+
+/* ADDITIONAL: Ensure the button text/content is visible */
+.legal-container .legal-back-button *,
+.legal-page .legal-container .legal-back-button *,
+div.legal-container button.legal-back-button * {
+    color: white !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* MOBILE SPECIFICITY */
+@media (max-width: 800px) {
+    .legal-container .legal-back-button,
+    .legal-page .legal-container .legal-back-button,
+    div.legal-container button.legal-back-button {
+        font-size: calc(0.85 * var(--grid-unit)) !important;
+        height: calc(2.5 * var(--grid-unit)) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .legal-container .legal-back-button,
+    .legal-page .legal-container .legal-back-button,
+    div.legal-container button.legal-back-button {
+        font-size: calc(0.8 * var(--grid-unit)) !important;
+        height: calc(2.2 * var(--grid-unit)) !important;
+        padding: 0 calc(0.5 * var(--grid-unit)) !important;
+    }
+}
+
+/* ALTERNATIVE: If above doesn't work, try this nuclear option */
+/*
+.legal-back-button[class*="legal-back-button"] {
+    all: unset !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 50px !important;
+    background: #0075BE !important;
+    color: white !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    margin-bottom: 40px !important;
+    box-sizing: border-box !important;
+}
+*/

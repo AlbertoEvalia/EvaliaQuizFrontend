@@ -1,0 +1,261 @@
+/* src/components/AdComponent/AdComponent.css */
+/* ORANGE DESIGN - ECKIG - 20PX RASTER - ARIAL/HELVETICA ENFORCED */
+
+/* FONT ENFORCEMENT - Apply to all elements within ad-component */
+.ad-component,
+.ad-component *,
+.ad-component *:before,
+.ad-component *:after {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.ad-component {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%); /* Orange-Gradient */
+  display: grid;
+  place-items: center;
+  padding: 20px; /* 20px Raster */
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.ad-container {
+  /* Kein weißer transparenter Hintergrund + kein Blur mehr */
+  padding: 40px; /* 20px Raster */
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  display: grid;
+  gap: 20px; /* 20px Raster */
+  grid-template-rows: auto 1fr auto;
+  border-radius: 0; /* Eckig */
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.ad-header {
+  display: grid;
+  gap: 20px; /* 20px Raster */
+}
+
+.ad-header h2 {
+  color: white;
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.progress-info {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.ad-content {
+  display: grid;
+  gap: 20px; /* 20px Raster */
+}
+
+.ad-placeholder {
+  background: white;
+  padding: 20px; /* 20px Raster */
+  min-height: 200px;
+  display: grid;
+  place-items: center;
+  border-radius: 0; /* Eckig */
+}
+
+.ad-banner {
+  text-align: center;
+  width: 100%;
+  display: grid;
+  gap: 20px; /* 20px Raster */
+}
+
+.ad-banner p {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.mock-ad {
+  background: #f8f9fa;
+  padding: 20px; /* 20px Raster */
+  display: grid;
+  gap: 20px; /* 20px Raster */
+  border-radius: 0; /* Eckig */
+}
+
+.mock-ad h3 {
+  color: #333;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.mock-ad p {
+  color: #666;
+  margin: 0;
+  font-size: 0.9rem;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.mock-ad-btn {
+  background: #E55B2B; /* Dunkleres Orange - konsistent mit UpgradePrompt */
+  color: white;
+  border: none;
+  padding: 10px 20px; /* 40px Höhe (10+10+20) */
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background-color 0.2s ease;
+  justify-self: center;
+  min-width: 120px;
+  border-radius: 0; /* Eckig */
+  height: 40px; /* Konsistente 40px Höhe */
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.mock-ad-btn:hover {
+  background: #D44A21; /* Dunkler beim Hover - konsistent */
+}
+
+.ad-footer {
+  display: grid;
+  gap: 20px; /* 20px Raster */
+}
+
+.countdown {
+  display: grid;
+  place-items: center;
+}
+
+.countdown span {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.continue-btn {
+  background: #E55B2B !important; /* Dunkleres Orange - konsistent */
+  color: white !important;
+  border: none !important;
+  padding: 10px 20px !important; /* 40px Höhe (10+10+20) */
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  min-width: 200px !important;
+  justify-self: center !important;
+  border-radius: 0 !important; /* Eckig */
+  height: 40px !important; /* Konsistente 40px Höhe */
+  box-sizing: border-box !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.continue-btn:hover {
+  background: #D44A21 !important; /* Dunkler beim Hover - konsistent */
+}
+
+.upgrade-hint {
+  padding: 20px; /* 20px Raster */
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  border-radius: 0; /* Eckig */
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.upgrade-hint p {
+  margin: 0;
+  font-size: 0.95rem;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+/* RESPONSIVE - 20PX RASTER */
+@media (max-width: 768px) {
+  .ad-component {
+    padding: 20px; /* 20px Raster */
+  }
+  
+  .ad-container {
+    padding: 20px; /* 20px Raster */
+    gap: 20px; /* 20px Raster */
+  }
+  
+  .ad-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .ad-placeholder {
+    min-height: 150px;
+    padding: 20px; /* 20px Raster */
+  }
+  
+  .continue-btn {
+    min-width: 160px !important;
+    height: 40px !important; /* Konsistente Höhe */
+  }
+}
+
+@media (max-width: 480px) {
+  .ad-container {
+    padding: 20px; /* 20px Raster */
+    gap: 20px; /* 20px Raster */
+  }
+  
+  .ad-header h2 {
+    font-size: 1.3rem;
+  }
+  
+  .progress-info {
+    font-size: 1rem;
+  }
+  
+  .mock-ad {
+    padding: 20px; /* 20px Raster */
+  }
+  
+  .continue-btn {
+    min-width: 140px !important;
+    height: 40px !important; /* Konsistente Höhe */
+    font-size: 1rem !important;
+  }
+}
+.upgrade-hint-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 20px;
+  border-radius: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  font-family: inherit;
+  text-align: center;
+}
+
+.upgrade-hint-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: white;
+  transform: translateY(-1px);
+}

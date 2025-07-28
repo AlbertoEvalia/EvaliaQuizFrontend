@@ -1,0 +1,185 @@
+/* src/components/HamburgerMenu/HamburgerMenu.css */
+
+/* Hamburger Button - EINFACH WEIL AUSSERHALB */
+.hamburger-button {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0;
+    cursor: pointer;
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.3s ease;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .hamburger-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Mobile kleiner aber sichtbar */
+  @media (max-width: 480px) {
+    .hamburger-button {
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+    }
+  }
+  
+  /* Hamburger Lines - EINFACH */
+  .hamburger-button span {
+    display: block;
+    width: 20px; /* Absolute Pixel */
+    height: 2px;
+    background: white;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+  
+  /* Active Animation */
+  .hamburger-button.active span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  
+  .hamburger-button.active span:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+  }
+  
+  .hamburger-button.active span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+  
+  /* Overlay */
+  .hamburger-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Slide-out Menu - ZENTRIERT */
+  .hamburger-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 320px;
+    max-width: 80vw;
+    max-height: 80vh;
+    background: white;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    border-radius: 0;
+    text-align: center !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  .hamburger-menu.open {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  /* Menu Header - KEIN DOPPELTES X */
+  .menu-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: calc(2 * var(--grid-unit));
+    background: #005B97;
+    color: white;
+  }
+  
+  .menu-header h3 {
+    margin: 0;
+    font-size: calc(1.4 * var(--grid-unit));
+    font-weight: bold;
+    color: white;
+  }
+  
+  /* CLOSE BUTTON ENTFERNT */
+  
+  /* Menu Content */
+  .menu-content {
+    padding: calc(2 * var(--grid-unit));
+    text-align: center !important;
+  }
+  
+  .menu-section {
+    margin-bottom: calc(2 * var(--grid-unit));
+    padding-bottom: calc(1.5 * var(--grid-unit));
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center !important;
+  }
+  
+  .menu-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  
+  .menu-section h4 {
+    margin: 0 0 var(--grid-unit) 0;
+    font-size: calc(1.1 * var(--grid-unit));
+    font-weight: bold;
+    color: #005B97;
+    text-align: center !important;
+  }
+  
+  .menu-section button {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: center !important;
+    padding: calc(0.5 * var(--grid-unit)) 0;
+    font-size: calc(0.9 * var(--grid-unit));
+    color: #0075BE;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .menu-section button:hover {
+    color: #005B97;
+    text-decoration: underline;
+  }
+  
+  .menu-description {
+    font-size: calc(0.85 * var(--grid-unit));
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+    text-align: center !important;
+  }
+  
+  .menu-footer {
+    text-align: center;
+    color: #999;
+  }
+  
+  .menu-footer p {
+    margin: calc(0.25 * var(--grid-unit)) 0;
+    font-size: calc(0.8 * var(--grid-unit));
+  }
+  
+  /* ALLE BREAKPOINTS ENTFERNT - NUR EINE REGEL */
+  /* Mobile Responsive nicht mehr nötig */
