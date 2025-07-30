@@ -650,7 +650,7 @@ export const QUESTIONS_EN = [
       answer: "Beethoven"
     },
     { 
-      question: "Who composed 'Eine kleine Nachtmusik'?", 
+      question: "Who composed 'A Little Night Music'?", 
       topic: "Music", 
       answer: "Mozart"
     },

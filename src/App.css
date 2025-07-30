@@ -147,20 +147,7 @@ display: block;
   font-weight: bold;
 }
 
-/* FIXED: Große Hintergrundzahl - Better mobile positioning */
-.large-progress {
-  position: fixed;
-  font-size: calc(25 * var(--grid-unit));
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.1);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) translateY(calc(2.25 * var(--grid-unit)));
-  z-index: 0;
-  pointer-events: none;
-  line-height: 0.8;
-  letter-spacing: calc(2 * var(--grid-unit)); /* ✅ INCREASED: More spacing for large numbers */
-}
+
 
 /* Frage */
 .question {
@@ -352,13 +339,7 @@ form button:disabled {
   .evalia-subtitle {
     font-size: 20px;
   }
-  
-  /* FIXED: Large progress on tablet - better positioning */
-  .large-progress {
-    font-size: calc(18 * var(--grid-unit)); /* ✅ REDUCED: from 300px to smaller */
-    letter-spacing: calc(1.5 * var(--grid-unit)); /* ✅ ADJUSTED: Better spacing */
-    left: 55%; /* ✅ MOVED: Slightly to the right */
-  }
+
   
   .question {
     font-size: 20px;
@@ -382,13 +363,13 @@ form button:disabled {
   .header {
     flex-direction: column;
     gap: 10px;
-    align-items: flex-start; /* ✅ Only stack vertically on very small screens */
+    align-items: flex-start;
   }
   .progress {
     text-align: left;
     margin-top: 10px;
-    align-self: flex-start; /* ✅ Reset alignment when stacked */
-    letter-spacing: 0.7px; /* ✅ ADDED: Minimal on mobile */
+    align-self: flex-start;
+    letter-spacing: 0.7px;
   }
   .evalia-container {
     padding: 20px;
@@ -396,43 +377,18 @@ form button:disabled {
   .chart-container {
     height: 250px;
   }
-  
-  /* FIXED: Large progress on mobile - much better positioning */
-  .large-progress {
-    font-size: calc(12 * var(--grid-unit)); /* ✅ MUCH SMALLER: Fits better on mobile */
-    letter-spacing: calc(0.8 * var(--grid-unit)); /* ✅ TIGHTER: Less spacing */
-    left: 60%; /* ✅ MOVED RIGHT: Ensures full visibility */
-    top: 45%; /* ✅ SLIGHTLY HIGHER: Better vertical position */
-  }
-}
+} /* ✅ DIESE KLAMMER FEHLTE! */
 
 /* ADDITIONAL FIX: For screens between 481px and 800px */
 @media (min-width: 481px) and (max-width: 800px) {
   .header {
-    align-items: baseline !important; /* ✅ Force baseline alignment on tablets */
+    align-items: baseline !important;
   }
   
   .progress {
-    line-height: 1.2 !important; /* ✅ Force same line-height as title */
-    vertical-align: baseline !important; /* ✅ Extra insurance */
-    letter-spacing: 0.7px; /* ✅ ADDED: Tablet letter spacing */
-  }
-}
-
-/* PORTRAIT MOBILE - Special handling for very narrow screens */
-@media (max-width: 360px) {
-  .large-progress {
-    font-size: calc(10 * var(--grid-unit)); /* ✅ EVEN SMALLER: For very narrow phones */
-    left: 65%; /* ✅ MORE TO THE RIGHT: Ensure visibility */
-    letter-spacing: calc(0.6 * var(--grid-unit)); /* ✅ VERY TIGHT: Minimal spacing */
-  }
-}
-
-@media (max-width: calc(40 * var(--grid-unit))) {
-  .large-progress {
-    font-size: calc(10 * var(--grid-unit)); /* ✅ CONSISTENT: Same as 360px breakpoint */
-    letter-spacing: calc(0.5 * var(--grid-unit)); /* ✅ TIGHT: Minimal spacing */
-    left: 65%; /* ✅ RIGHT POSITION: Ensure full number visibility */
+    line-height: 1.2 !important;
+    vertical-align: baseline !important;
+    letter-spacing: 0.7px;
   }
 }
 
@@ -440,14 +396,9 @@ form button:disabled {
   .evalia-container {
     padding: var(--grid-unit);
   }
-  
-  /* EXTRA SMALL: Ultra-compact progress */
-  .large-progress {
-    font-size: calc(8 * var(--grid-unit)); /* ✅ ULTRA SMALL: For smallest screens */
-    left: 10%; /* ✅ FAR RIGHT: Ensure both digits are visible */
-  }
-}
+} /* ✅ DIESE KLAMMER FEHLTE! */
 
+/* Results screen title styling */
 .results-screen .evalia-header .evalia-title {
   font-size: calc(2.2 * var(--grid-unit)) !important;
   font-weight: bold !important;

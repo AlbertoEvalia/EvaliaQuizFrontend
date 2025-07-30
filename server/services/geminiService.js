@@ -139,7 +139,7 @@ export const generateQuestions = async (language = 'en', count = 20, usePoolOnly
 };
 
 // ========================================
-// 🔍 VERBESSERTE POOL-EVALUATION
+// 🔍 VERBESSERTE POOL-EVALUATION MIT RETRY-LOGIC
 // ========================================
 
 export const evaluateAnswer = async (question, answer, language = 'en') => {
@@ -155,7 +155,7 @@ export const evaluateAnswer = async (question, answer, language = 'en') => {
   
   const model = genAI.getGenerativeModel({
     model: "gemini-1.5-flash",
-    generationConfig: { temperature: 0.1, maxOutputTokens: 400 } // Weniger kreativ!
+    generationConfig: { temperature: 0.1, maxOutputTokens: 400 }
   });
 
   // PRÄZISER EVALUATION-PROMPT
@@ -204,62 +204,101 @@ EXAMPLES:
 "In welchem Jahrhundert endete Zarenherrschaft?" + "20" = 95 (incomplete but correct)
 "In welchem Jahrhundert endete Zarenherrschaft?" + "20. Jahrhundert" = 100 (perfect)
 
-
 BE STRICT BUT FAIR - Reward correct facts, penalize wrong facts!
 
 Return JSON:
 {"score": 0-100, "feedback": "Brief encouraging ${langConfig.geminiName} response", "isCorrect": true/false}`;
 
-  try {
-    const result = await model.generateContent(prompt);
-    const evaluation = extractJSON(result.response.text());
-    
-    const { score, feedback, isCorrect } = evaluation;
-    
-    if (typeof score !== 'number' || !feedback || typeof isCorrect !== 'boolean') {
-      throw new Error('Invalid evaluation response structure');
+  // ========================================
+  // 🔄 RETRY LOGIC FÜR GEMINI API
+  // ========================================
+  
+  const maxRetries = 3;
+  const baseDelay = 1000; // 1 Sekunde
+  
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      console.log(`🤖 Gemini attempt ${attempt}/${maxRetries}`);
+      
+      const result = await model.generateContent(prompt);
+      const evaluation = extractJSON(result.response.text());
+      
+      const { score, feedback, isCorrect } = evaluation;
+      
+      if (typeof score !== 'number' || !feedback || typeof isCorrect !== 'boolean') {
+        throw new Error('Invalid evaluation response structure');
+      }
+      
+      console.log(`✅ Pool-Evaluation (attempt ${attempt}): Score ${score}, Korrekt: ${isCorrect}`);
+      return { score, feedback, isCorrect };
+      
+    } catch (error) {
+      const isOverloaded = error.message.includes('overloaded') || 
+                          error.message.includes('503') ||
+                          error.message.includes('Service Unavailable');
+      
+      const isRateLimit = error.message.includes('quota') ||
+                         error.message.includes('rate limit') ||
+                         error.message.includes('429');
+      
+      const shouldRetry = (isOverloaded || isRateLimit) && attempt < maxRetries;
+      
+      if (shouldRetry) {
+        const delay = baseDelay * Math.pow(2, attempt - 1); // Exponential backoff: 1s, 2s, 4s
+        console.log(`🔄 Gemini Fehler (attempt ${attempt}): ${error.message}`);
+        console.log(`⏳ Warte ${delay}ms vor nächstem Versuch...`);
+        
+        await new Promise(resolve => setTimeout(resolve, delay));
+        continue; // Nächster Versuch
+      } else {
+        // Kein Retry mehr oder anderer Fehler
+        console.error(`❌ Gemini-Evaluation endgültig fehlgeschlagen (attempt ${attempt}):`, error.message);
+        console.log('🔄 Fallback auf String-Matching');
+        return simpleEvaluation(question, answer, language);
+      }
     }
-    
-    console.log(`✅ Pool-Evaluation: Score ${score}, Korrekt: ${isCorrect}`);
-    return { score, feedback, isCorrect };
-    
-  } catch (error) {
-    console.error('❌ Gemini-Evaluation fehlgeschlagen:', error.message);
-    console.log('🔄 Fallback auf String-Matching');
-    return simpleEvaluation(question, answer, language);
   }
+  
+  // Sollte nie erreicht werden, aber sicherheitshalber
+  console.error('❌ Alle Gemini-Versuche fehlgeschlagen');
+  return simpleEvaluation(question, answer, language);
 };
 
 // ========================================
-// 🔧 FALLBACK EVALUATION OHNE GEMINI
+// 🔧 VERBESSERTES FALLBACK EVALUATION
 // ========================================
 
 const simpleEvaluation = (question, answer, language) => {
   const langConfig = getLanguageConfig(language);
-  
-  // Einfache String-basierte Evaluation
   const normalizedAnswer = answer.toLowerCase().trim();
   
-  // Sehr grundlegende Bewertung
-  let score = 0;
-  let feedback = '';
-  let isCorrect = false;
-  
+  // Leere Antworten
   if (normalizedAnswer.length === 0) {
-    score = 0;
-    feedback = langConfig.name === 'German' ? 'Bitte gib eine Antwort ein.' : 'Please provide an answer.';
-  } else if (normalizedAnswer.length < 2) {
-    score = 20;
-    feedback = langConfig.name === 'German' ? 'Die Antwort ist sehr kurz.' : 'The answer is very short.';
-  } else if (normalizedAnswer.length > 2) {
-    score = 60; // Moderate Bewertung wenn nicht leer
-    feedback = langConfig.name === 'German' ? 'Antwort erhalten - für genauere Bewertung ist eine KI-Evaluation empfohlen.' : 'Answer received - AI evaluation recommended for accurate scoring.';
+    return {
+      score: 0,
+      feedback: langConfig.name === 'German' ? 'Bitte gib eine Antwort ein.' : 'Please provide an answer.',
+      isCorrect: false
+    };
   }
   
-  isCorrect = score >= 70;
+  // Sehr kurze Antworten (weniger als 2 Zeichen)
+  if (normalizedAnswer.length < 2) {
+    return {
+      score: 20,
+      feedback: langConfig.name === 'German' ? 'Die Antwort ist sehr kurz.' : 'The answer is very short.',
+      isCorrect: false
+    };
+  }
   
-  console.log(`🔧 Einfache Evaluation: Score ${score}`);
-  return { score, feedback, isCorrect };
+  // Standard-Fallback: Bessere Bewertung für alle anderen Antworten
+  // (Da wir nicht wissen ob es richtig ist, geben wir benefit of doubt)
+  return {
+    score: 75, // ✅ ERHÖHT: Von 60 auf 75 (benefit of doubt)
+    feedback: langConfig.name === 'German' ? 
+      'Antwort erhalten. Genaue Bewertung war nicht möglich - versuche es bei der nächsten Frage erneut.' : 
+      'Answer received. Precise evaluation was not possible - try again on the next question.',
+    isCorrect: true // ✅ GEÄNDERT: Benefit of doubt - User bekommt Punkt
+  };
 };
 
 // ========================================
