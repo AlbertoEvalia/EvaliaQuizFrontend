@@ -1,0 +1,61 @@
+// src/data/questionPool/de/biologie.js
+// Deutsche Biologie-Fragen
+
+export const BIOLOGIE_DE = [
+    // Aus Ihrem ursprünglichen Pool
+    { question: "Welches Organ pumpt das Blut durch den Körper?", topic: "Biologie", answer: "Herz" },
+    { question: "Wie viele Beine hat eine Spinne?", topic: "Biologie", answer: "8" },
+    { question: "Welches Gas atmen Menschen ein?", topic: "Biologie", answer: "Sauerstoff" },
+    { question: "Wie viele Beine hat ein Insekt?", topic: "Biologie", answer: "6" },
+    { question: "Welches ist das größte Säugetier?", topic: "Biologie", answer: "Blauwal" },
+    { question: "Können Frösche unter Wasser atmen?", topic: "Tiere", answer: "Ja" },
+    { question: "Wie nennt man Tiere, die sowohl Pflanzen als auch Fleisch fressen?", topic: "Biologie", answer: "Allesfresser"},
+    { question: "Welcher Knochen ist der längste im menschlichen Körper?", topic: "Biologie", answer: "Oberschenkelknochen" },
+    { question: "Wie viele Chromosomen hat ein Mensch normalerweise?", topic: "Biologie", answer: "46" },
+    { question: "Welches Tier kann sein eigenes Gewicht am meisten tragen?", topic: "Biologie", answer: "Ameise" },
+    { question: "Wie nennt man den Prozess, bei dem Pflanzen Licht in Energie umwandeln?", topic: "Biologie", answer: "Photosynthese" },
+    { question: "Welches ist das schnellste Landtier der Welt?", topic: "Biologie", answer: "Gepard" },
+    { question: "Wie viele Zähne hat ein erwachsener Mensch normalerweise?", topic: "Biologie", answer: "32" },
+
+    { question: "Wie nennt man Tiere, die nachts aktiv sind?", topic: "Biologie", answer: "Nachtaktiv" },
+    { question: "Haben Haie Knochen?", topic: "Biologie", answer: "Nein" },
+
+    { question: "Wie nennt man die kleinsten Blutgefäße?", topic: "Biologie", answer: "Kapillaren" },
+
+    { question: "Sind Dinosaurier nach heutigem Konsens Warm- oder Kaltblüter?", topic: "Biologie", answer: "Warmblüter" },
+    { question: "Stammt der Mensch vom Affen ab oder haben beide gemeinsame Vorfahren?", topic: "Biologie", answer: "Gemeinsame Vorfahren" },
+    { question: "Können Pflanzen ohne Erde wachsen?", topic: "Biologie", answer: "Ja" },
+    { question: "Zählen die Vögel nach heutigem Konsens zu den Dinosauriern?", topic: "Biologie", answer: "Ja" },
+    { question: "Was ist der größte Organismus der Erde?", topic: "Biologie", answer: "Ein Pilz" },
+    { question: "Sind Artischocken Blumen?", topic: "Biologie", answer: "Ja" },
+    { question: "Können Katzen die Farbe Rot sehen?", topic: "Biologie", answer: "Nein" },
+    { question: "Können Schimpansen schwimmen?", topic: "Biologie", answer: "Nein" },
+    { question: "Wo erzeugt der Körper das Blut?", topic: "Biologie", answer: "Knochenmark" },
+    { question: "Sind die Chromosomen XX bei Menschen weiblich oder männlich?", topic: "Biologie", answer: "Weiblich" },
+    { question: "Galt der Blinddarm früher als nutzlos?", topic: "Biologie", answer: "Ja" },
+    { question: "Wo haben Erdbeeren ihre Samen?", topic: "Biologie", answer: "Außen" },
+    { question: "Welche ist die am schnellsten wachsende Pflanze?", topic: "Biologie", answer: "Bambus" },
+    { question: "Können Bienen und Hummeln vorwärts und rückwärts fliegen?", topic: "Biologie", answer: "Ja" },
+    { question: "Können Hühner fliegen?", topic: "Biologie", answer: "Nein" },
+    { question: "Können manche Vogelarten im Flug schlafen?", topic: "Biologie", answer: "Ja" },
+    { question: "Wo haben Erdbeeren ihre Samen?", topic: "Biologie", answer: "Außen" },
+    { question: "Ist Bambus die am schnellsten wachsende Pflanze?", topic: "Biologie", answer: "Ja" },
+    { question: "Können Bienen und Hummeln vorwärts und rückwärts fliegen?", topic: "Biologie", answer: "Ja" },
+    { question: "Sind dreifarbige Katzen meistens männlich oder weiblich?", topic: "Biologie", answer: "Weiblich" },
+    { question: "Können manche Vogelarten im Flug schlafen?", topic: "Biologie", answer: "Ja" },
+    { question: "Sind rothaarige Katzen meistens männlich oder weiblich?", topic: "Biologie", answer: "Männlich" },
+    { question: "Welche Farbe hat das Blut von Tintenfischen?", topic: "Biologie", answer: "Blau" },
+    { question: "Wie viele Herzen haben Tintenfische?", topic: "Biologie", answer: "3" },
+    { question: "Sind Korallen Pflanzen oder Tiere?", topic: "Biologie", answer: "Tiere" },
+    { question: "Gibt es ein Tier, das im Weltraum leben kann?", topic: "Biologie", answer: "Ja" },
+    { question: "Haben Seesterne Blut?", topic: "Biologie", answer: "Nein" },
+    { question: "Warum sind manche Paprika grün und andere rot?", topic: "Biologie", answer: "Unterschiedlicher Reifegrad" },
+    { question: "Was ist der Unterschied zwischen weißen und braunen Eiern?", topic: "Biologie", answer: "Hühnerrasse" },
+    { question: "Sind Tiere in kälteren Gebieten größer oder kleiner?", topic: "Biologie", answer: "Größer" },
+    { question: "Welche Bärenart ist die größte der Welt?", topic: "Biologie", answer: "Eisbär" },
+    { question: "Welche Katzenart ist die größte der Welt?", topic: "Biologie", answer: "Tiger" },
+    { question: "Wer entwickelte die Evolutionstheorie?", topic: "Biologie", answer: "Darwin" },
+
+];
+
+export default BIOLOGIE_DE;

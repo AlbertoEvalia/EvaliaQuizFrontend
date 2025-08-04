@@ -1,0 +1,50 @@
+// src/data/questionPool/de/astronomie.js
+// Deutsche Astronomie-Fragen
+
+export const ASTRONOMIE_DE = [
+    // Aus Ihrem ursprünglichen Pool
+    { question: "Welcher Planet ist der Sonne am nächsten?", topic: "Astronomie", answer: "Merkur" },
+    { question: "Welcher ist der größte Planet im Sonnensystem?", topic: "Astronomie", answer: "Jupiter" },
+    { question: "Welcher Planet ist als roter Planet bekannt?", topic: "Astronomie", answer: "Mars" },
+    { question: "Welcher Planet hat die meisten Ringe?", topic: "Astronomie", answer: "Saturn" },
+    { question: "Wie viele Monde hat der Mars?", topic: "Astronomie", answer: "2" },
+    { question: "Welcher Himmelskörper verursacht Flut und Ebbe?", topic: "Astronomie", answer: "Mond" },
+    { question: "Wie nennt man den Pfad, den ein Planet um die Sonne nimmt?", topic: "Astronomie", answer: "Umlaufbahn" },
+    { question: "Wie viele Planeten in unserem Sonnensystem sind Gasplaneten?", topic: "Astronomie", answer: "4" },
+    { question: "Wie viele Minuten braucht Sonnenlicht bis zur Erde?", topic: "Physik", answer: "8 Minuten" },
+    { question: "Welcher Planet wurde 2006 zu einem Zwergplaneten herabgestuft?", topic: "Astronomie", answer: "Pluto" },
+    { question: "Wie nennt man eine Gruppe von Milliarden von Sternen?", topic: "Astronomie", answer: "Galaxie" },
+    { question: "Welcher Planet hat den größten Sturm im Sonnensystem?", topic: "Astronomie", answer: "Jupiter" },
+    { question: "Welcher Planet ist der Erde am nächsten?", topic: "Astronomie", answer: "Venus" },
+    { question: "Hat die Venus eine Atmosphäre?", topic: "Astronomie", answer: "Ja" },
+    { question: "Welcher Planet ist am weitesten von der Sonne entfernt?", topic: "Astronomie", answer: "Neptun" },
+    { question: "Hat die Venus einen Mond?", topic: "Astronomie", answer: "Nein" },
+    { question: "Wie heißt unsere Galaxie?", topic: "Astronomie", answer: "Milchstraße" },
+    { question: "Welcher Stern leuchtet am Tag?", topic: "Astronomie", answer: "Sonne" },
+    { question: "Wie nennt man Sternschnuppen wissenschaftlich?", topic: "Astronomie", answer: "Meteore" },
+    { question: "Welcher Stern ist der Erde am nächsten?", topic: "Astronomie", answer: "Sonne" },
+    { question: "Wie nennt man Gesteinsbrocken im Weltall?", topic: "Astronomie", answer: "Asteroiden" },
+    { question: "Bei welcher Finsternis steht die Erde zwischen Sonne und Mond?", topic: "Astronomie", answer: "Mondfinsternis" },
+    { question: "Welcher Planet hat einen kleineren Durchmesser: Mars oder Venus?", topic: "Astronomie", answer: "Mars" },
+    { question: "Gibt es Wasser auf dem Mond?", topic: "Astronomie", answer: "Ja" },
+    { question: "Ist der Jupiter ein Gasplanet oder ein Gesteinsplanet?", topic: "Astronomie", answer: "Gasplanet" },
+    { question: "Welcher Planet braucht am längsten für eine Umrundung der Sonne?", topic: "Astronomie", answer: "Neptun" },
+    { question: "Wie heißt der hellste Stern am Nachthimmel?", topic: "Astronomie", answer: "Sirius" },
+    { question: "Hat die Sonne eine feste Oberfläche?", topic: "Astronomie", answer: "Nein" },
+    { question: "Welcher Planet hat einen großen roten Fleck?", topic: "Astronomie", answer: "Jupiter" },
+    { question: "Welcher Planet rotiert seitlich (auf der Seite liegend)?", topic: "Astronomie", answer: "Uranus" },
+    { question: "Welcher Himmelskörper ist größer: unser Mond oder Pluto?", topic: "Astronomie", answer: "Mond" },
+    { question: "Regnet es auf anderen Planeten in unserem Sonnensystem?", topic: "Astronomie", answer: "Ja" },
+    { question: "Wie lange dauert ein Tag auf dem Mond?", topic: "Astronomie", answer: "28 Erdtage" },
+    { question: "Ist die Milchstraße eine Spiral- oder eine elliptische Galaxie?", topic: "Astronomie", answer: "Spiralgalaxie" },
+    { question: "Leuchten Planeten mit eigenem Licht oder reflektieren sie Sonnenlicht?", topic: "Astronomie", answer: "Reflektieren Sonnenlicht" },
+    { question: "Welcher ist der nächste Stern zur Sonne?", topic: "Astronomie", answer: "Proxima Centauri" },
+    { question: "Was ist größer: Australien oder der Mond?", topic: "Astronomie", answer: "Australien" },
+    { question: "In welche Richtung wächst der Mond auf der Nordhalbkugel?", topic: "Astronomie", answer: "Von rechts nach links" },
+    { question: "Sieht man den Nordstern südlich des Äquators?", topic: "Astronomie", answer: "Nein" },
+    { question: "Gibt es Polarlichter auf der Südhalbkugel?", topic: "Astronomie", answer: "Ja" },
+    { question: "Wer entwickelte die Heliozentrische Theorie?", topic: "Astronomie", answer: "Kopernikus" },
+
+  ];
+  
+  export default ASTRONOMIE_DE;

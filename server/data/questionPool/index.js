@@ -1,24 +1,26 @@
 // src/data/questionPool/index.js
-// Haupt-Export für alle Sprachen
+// Haupt-Export für alle Sprachen - NEUE STRUKTUR
 
-import { QUESTIONS_DE } from './questions_de.js';
+// Neue deutsche Struktur importieren
+import { QUESTIONS_DE } from './de/index.js';
+
+// Alte Struktur für andere Sprachen (vorerst beibehalten)
 import { QUESTIONS_EN } from './questions_en.js';
 import { QUESTIONS_FR } from './questions_fr.js';
 import { QUESTIONS_ES } from './questions_es.js';
 import { QUESTIONS_IT } from './questions_it.js';
 
-
 // Haupt-Pool mit allen Sprachen
 export const QUESTION_POOL = {
-  de: QUESTIONS_DE,
-  en: QUESTIONS_EN,
-  fr: QUESTIONS_FR,
-  es: QUESTIONS_ES,
-  it: QUESTIONS_IT
+  de: QUESTIONS_DE,  // ← Neue modulare Struktur
+  en: QUESTIONS_EN,  // ← Alte Struktur (TODO: später umstellen)
+  fr: QUESTIONS_FR,  // ← Alte Struktur (TODO: später umstellen)
+  es: QUESTIONS_ES,  // ← Alte Struktur (TODO: später umstellen)
+  it: QUESTIONS_IT   // ← Alte Struktur (TODO: später umstellen)
 };
 
-
 // TOPIC-GRUPPEN für intelligente Verteilung (alle Sprachen)
+// ✅ ERWEITERT: Neue Topics integriert!
 const TOPIC_GROUPS = {
   "Mathematik & Astronomie": {
     en: ["Mathematics", "Astronomy"],
@@ -28,11 +30,11 @@ const TOPIC_GROUPS = {
     it: ["Matematica", "Astronomia"]
   },
   "Geschichte": {
-    en: ["History"],
-    de: ["Geschichte"],
-    fr: ["Histoire"],
-    es: ["Historia"],
-    it: ["Storia"]
+    en: ["History", "Inventions"],
+    de: ["Geschichte", "Erfindungen"],
+    fr: ["Histoire", "Inventions"],
+    es: ["Historia", "Inventos"],
+    it: ["Storia", "Invenzioni"]
   },
   "Geographie": {
     en: ["Geography"],
@@ -42,21 +44,20 @@ const TOPIC_GROUPS = {
     it: ["Geografia"]
   },
   "Kunst & Kultur": {
-    en: ["Art", "Literature", "Music"],
-    de: ["Kunst", "Literatur", "Musik"],
-    fr: ["Art", "Littérature", "Musique"],
-    es: ["Arte", "Literatura", "Música"],
-    it: ["Arte", "Letteratura", "Musica"]
+    en: ["Art", "Literature", "Music", "Philosophy"],
+    de: ["Kunst", "Literatur", "Musik", "Philosophie"],
+    fr: ["Art", "Littérature", "Musique", "Philosophie"],
+    es: ["Arte", "Literatura", "Música", "Filosofía"],
+    it: ["Arte", "Letteratura", "Musica", "Filosofia"]
   },
   "Naturwissenschaften": {
-    en: ["Biology", "Chemistry"],
-    de: ["Biologie", "Chemie"],
-    fr: ["Biologie", "Chimie"],
-    es: ["Biología", "Química"],
-    it: ["Biologia", "Chimica"]
+    en: ["Biology", "Chemistry", "Physics", "Medicine"],
+    de: ["Biologie", "Chemie", "Physik", "Medizin"],
+    fr: ["Biologie", "Chimie", "Physique", "Médecine"],
+    es: ["Biología", "Química", "Física", "Medicina"],
+    it: ["Biologia", "Chimica", "Fisica", "Medicina"]
   }
 };
-
 
 // INTELLIGENTE QUESTION SELECTION mit 5-Gruppen-Verteilung
 export const getRandomQuestionsFromPool = (language, count = 20) => {
@@ -121,6 +122,7 @@ export const getRandomQuestionsFromPool = (language, count = 20) => {
   // Final shuffle für gute Mischung
   return shuffleArray(selectedQuestions);
 };
+
 // Pool-Statistiken
 export const getPoolStats = () => {
   const stats = {};
@@ -156,3 +158,10 @@ export const getAvailableTopics = (language) => {
 export const getTopicGroups = () => {
   return TOPIC_GROUPS;
 };
+
+// 🎯 MIGRATION STATUS:
+// ✅ DE: Neue modulare Struktur (10 Topics → 5 Balken)
+// ⏳ EN: TODO - später auf modulare Struktur umstellen
+// ⏳ FR: TODO - später auf modulare Struktur umstellen  
+// ⏳ ES: TODO - später auf modulare Struktur umstellen
+// ⏳ IT: TODO - später auf modulare Struktur umstellen
