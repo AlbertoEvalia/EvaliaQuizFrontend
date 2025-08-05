@@ -46,4 +46,4 @@ export const ASTRONOMY_QUESTIONS = [
     { question: "Who developed the heliocentric theory?", topic: "Astronomy", answer: "Copernicus" },
 ];
 
-export default ASTRONOMY_QUESTIONS;
+export default ASTRONOMY_EN;
