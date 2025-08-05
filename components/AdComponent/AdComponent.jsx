@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './AdComponent.css';
+//import './AdComponent.css';
 
 const AdComponent = ({
   onAdComplete,
