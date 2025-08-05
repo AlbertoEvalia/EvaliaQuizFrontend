@@ -1,7 +1,7 @@
 // client/src/services/apiService.js - KORRIGIERTE VERSION
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3001/api'; // Backend-URL
+const API_URL = 'https://evaliaquizbackend.onrender.com/api';
 
 export const generateQuestions = async (language, count) => {
   try {
