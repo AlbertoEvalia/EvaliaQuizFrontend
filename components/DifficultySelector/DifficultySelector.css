@@ -1,0 +1,132 @@
+.difficulty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+}
+
+/* FIXED: Mejor espaciado entre logo y contenido */
+.evalia-header {
+  text-align: center;
+  margin-bottom: 32px; /* Aumentado de ~16px a 32px para mejor separación */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.evalia-subtitle {
+  font-size: 18px;
+  color: white;
+  margin-top: 8px; /* Más espacio después del logo */
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+
+/* IMPROVED: Mejor styling para texto introductorio */
+.intro-text {
+  margin-bottom: 32px; /* Reducido de 40px para mejor balance */
+  line-height: 1.5;
+  color: white;
+  text-align: justify;
+  max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* NEW: Botón para mostrar más/menos texto */
+.text-toggle-button {
+  background: none;
+  border: none;
+  color: #87CEEB; /* Azul claro que destaca pero no molesta */
+  cursor: pointer;
+  font-size: inherit;
+  text-decoration: underline;
+  padding: 0;
+  margin: 0;
+  margin-top: 8px;
+  transition: color 0.3s;
+}
+
+.text-toggle-button:hover {
+  color: #B0E0E6; /* Azul más claro en hover */
+}
+
+.text-toggle-button:focus {
+  outline: none;
+  color: #B0E0E6;
+}
+
+/* FIXED: Botones con colores correctos */
+.difficulty-button {
+  width: 100%;
+  max-width: 60ch;
+  height: 50px;
+  margin-bottom: 20px;
+  background-color: #0075BE !important; /* Colores correctos */
+  background: #0075BE !important;
+  color: white !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  border: none !important;
+  border-radius: 0 !important;
+  transition: background-color 0.3s;
+  opacity: 1 !important;
+}
+
+.difficulty-button:hover {
+  background-color: #005B97 !important;
+  background: #005B97 !important;
+  opacity: 1 !important;
+}
+
+.difficulty-button:disabled {
+  background-color: #7a9bb8 !important;
+  background: #7a9bb8 !important;
+  cursor: not-allowed;
+  opacity: 1 !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .difficulty-container {
+    padding: 15px;
+  }
+  
+  .evalia-header {
+    margin-bottom: 24px;
+  }
+  
+  .intro-text {
+    margin-bottom: 24px;
+    max-width: 90%;
+  }
+  
+  .difficulty-button {
+    height: 45px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .evalia-header {
+    margin-bottom: 20px;
+  }
+  
+  .intro-text {
+    margin-bottom: 20px;
+    text-align: left; /* En móvil, texto alineado a la izquierda es más fácil de leer */
+  }
+  
+  .difficulty-button {
+    height: 40px;
+    font-size: 14px;
+  }
+}

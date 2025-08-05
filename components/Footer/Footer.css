@@ -1,0 +1,126 @@
+/* src/components/Footer/Footer.css */
+
+.evalia-footer {
+    background: #005B97;
+    color: white;
+    padding: calc(2 * var(--grid-unit)) 0 var(--grid-unit) 0;
+    margin-top: calc(2 * var(--grid-unit));
+    border-radius: 0;
+  }
+  
+  .footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 calc(2 * var(--grid-unit));
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: calc(2 * var(--grid-unit));
+  }
+  
+  .footer-section {
+    text-align: left;
+  }
+  
+  .footer-title {
+    font-size: calc(1.1 * var(--grid-unit));
+    font-weight: bold;
+    color: white;
+    margin: 0 0 var(--grid-unit) 0;
+  }
+  
+  .footer-description {
+    font-size: calc(0.9 * var(--grid-unit));
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    margin: 0;
+    max-width: 300px;
+  }
+  
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.5 * var(--grid-unit));
+  }
+  
+  .footer-link {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: calc(0.9 * var(--grid-unit));
+    text-align: left;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.3s;
+  }
+  
+  .footer-link:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.5 * var(--grid-unit));
+  }
+  
+  .footer-contact p {
+    font-size: calc(0.9 * var(--grid-unit));
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: var(--grid-unit);
+    padding-top: var(--grid-unit);
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: calc(2 * var(--grid-unit));
+    padding-right: calc(2 * var(--grid-unit));
+  }
+  
+  .footer-bottom p {
+    font-size: calc(0.8 * var(--grid-unit));
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 800px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: var(--grid-unit);
+      padding: 0 calc(1.5 * var(--grid-unit));
+    }
+    
+    .footer-section {
+      text-align: center;
+    }
+    
+    .footer-description {
+      max-width: none;
+    }
+    
+    .footer-bottom {
+      padding-left: calc(1.5 * var(--grid-unit));
+      padding-right: calc(1.5 * var(--grid-unit));
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .evalia-footer {
+      padding: var(--grid-unit) 0;
+    }
+    
+    .footer-content {
+      padding: 0 var(--grid-unit);
+    }
+    
+    .footer-bottom {
+      padding-left: var(--grid-unit);
+      padding-right: var(--grid-unit);
+    }
+  }
