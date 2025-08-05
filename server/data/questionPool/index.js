@@ -4,8 +4,10 @@
 // Neue deutsche Struktur importieren
 import { QUESTIONS_DE } from './de/index.js';
 
+// Neue englische modulare Struktur importieren (analog DE)
+import { QUESTIONS_EN } from './en/index.js';
+
 // Alte Struktur für andere Sprachen (vorerst beibehalten)
-import { QUESTIONS_EN } from './questions_en.js';
 import { QUESTIONS_FR } from './questions_fr.js';
 import { QUESTIONS_ES } from './questions_es.js';
 import { QUESTIONS_IT } from './questions_it.js';
@@ -13,7 +15,7 @@ import { QUESTIONS_IT } from './questions_it.js';
 // Haupt-Pool mit allen Sprachen
 export const QUESTION_POOL = {
   de: QUESTIONS_DE,  // ← Neue modulare Struktur
-  en: QUESTIONS_EN,  // ← Alte Struktur (TODO: später umstellen)
+  en: QUESTIONS_EN,  // ← Jetzt auch modulare Struktur für EN
   fr: QUESTIONS_FR,  // ← Alte Struktur (TODO: später umstellen)
   es: QUESTIONS_ES,  // ← Alte Struktur (TODO: später umstellen)
   it: QUESTIONS_IT   // ← Alte Struktur (TODO: später umstellen)
@@ -161,7 +163,7 @@ export const getTopicGroups = () => {
 
 // 🎯 MIGRATION STATUS:
 // ✅ DE: Neue modulare Struktur (10 Topics → 5 Balken)
-// ⏳ EN: TODO - später auf modulare Struktur umstellen
+// ✅ EN: Neue modulare Struktur (jetzt komplett modular)
 // ⏳ FR: TODO - später auf modulare Struktur umstellen  
 // ⏳ ES: TODO - später auf modulare Struktur umstellen
-// ⏳ IT: TODO - später auf modulare Struktur umstellen
+// ⏳ IT: TODO - später auf modulare Struktur umstellen  

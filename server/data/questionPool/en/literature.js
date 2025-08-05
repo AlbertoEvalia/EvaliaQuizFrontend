@@ -1,0 +1,41 @@
+// src/data/questionPool/en/literature.js
+// English Literature Questions
+
+export const LITERATURE_EN = [
+    { question: "Who wrote 'Romeo and Juliet'?", topic: "Literature", answer: "Shakespeare" },
+    { question: "Who wrote 'The Little Prince'?", topic: "Literature", answer: "Antoine de Saint-Exupéry" },
+    { question: "Who wrote 'Faust'?", topic: "Literature", answer: "Goethe" },
+    { question: "Who wrote 'Hamlet'?", topic: "Literature", answer: "Shakespeare" },
+    { question: "Which country is the author of 'Don Quixote' from?", topic: "Literature", answer: "Spain" },
+    { question: "Who wrote '1984'?", topic: "Literature", answer: "George Orwell" },
+    { question: "Which detective was created by Arthur Conan Doyle?", topic: "Literature", answer: "Sherlock Holmes" },
+    { question: "Who wrote 'The Odyssey'?", topic: "Literature", answer: "Homer" },
+    { question: "In which city is 'Romeo and Juliet' set?", topic: "Literature", answer: "Verona" },
+    { question: "Who wrote 'Moby Dick'?", topic: "Literature", answer: "Herman Melville" },
+    { question: "Who wrote 'The Count of Monte Cristo'?", topic: "Literature", answer: "Alexandre Dumas" },
+    { question: "Who wrote 'War and Peace'?", topic: "Literature", answer: "Tolstoy" },
+    { question: "Who wrote 'The Three Musketeers'?", topic: "Literature", answer: "Alexandre Dumas" },
+    { question: "Which author wrote 'The Old Man and the Sea'?", topic: "Literature", answer: "Hemingway" },
+    { question: "Who wrote 'Pride and Prejudice'?", topic: "Literature", answer: "Jane Austen" },
+    { question: "Who wrote 'The Name of the Rose'?", topic: "Literature", answer: "Umberto Eco" },
+    { question: "Which author wrote 'One Hundred Years of Solitude'?", topic: "Literature", answer: "García Márquez" },
+    { question: "Which country was the author James Joyce from?", topic: "Literature", answer: "Ireland" },
+    { question: "Which French author wrote 'In Search of Lost Time'?", topic: "Literature", answer: "Proust" },
+    { question: "Who wrote the novel 'Mrs. Dalloway'?", topic: "Literature", answer: "Virginia Woolf" },
+    { question: "How many days around the world in Jules Verne's novel?", topic: "Literature", answer: "Eighty" },
+    { question: "How many years of solitude did the family in García Márquez's novel experience?", topic: "Literature", answer: "One Hundred" },
+    { question: "How many leagues did Captain Nemo travel under the sea?", topic: "Literature", answer: "Twenty Thousand" },
+    { question: "Which animal leads Alice into Wonderland?", topic: "Literature", answer: "White Rabbit" },
+    { question: "In which land did Lewis Carroll's Alice travel?", topic: "Literature", answer: "Wonderland" },
+    { question: "How many days around the world in Jules Verne's novel?", topic: "Literature", answer: "Eighty" },
+    { question: "How many years of solitude did the family in García Márquez's novel experience?", topic: "Literature", answer: "One Hundred" },
+    { question: "How many leagues did Captain Nemo travel under the sea?", topic: "Literature", answer: "Twenty Thousand" },
+    { question: "Which character in Herman Melville's novel is a whale?", topic: "Literature", answer: "Moby Dick" },
+    { question: "What is the name of Sherlock Holmes' companion?", topic: "Literature", answer: "Dr. Watson" },
+    { question: "Who wrote the fantasy trilogy 'The Lord of the Rings'?", topic: "Literature", answer: "Tolkien" },
+    { question: "Who is the author of 'The Neverending Story'?", topic: "Literature", answer: "Michael Ende" },
+    { question: "Who said the famous quote 'To be or not to be'?", topic: "Literature", answer: "Shakespeare" }
+  ];
+  
+  export default LITERATURE_EN;
+  

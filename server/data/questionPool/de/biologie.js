@@ -16,12 +16,9 @@ export const BIOLOGIE_DE = [
     { question: "Wie nennt man den Prozess, bei dem Pflanzen Licht in Energie umwandeln?", topic: "Biologie", answer: "Photosynthese" },
     { question: "Welches ist das schnellste Landtier der Welt?", topic: "Biologie", answer: "Gepard" },
     { question: "Wie viele Zähne hat ein erwachsener Mensch normalerweise?", topic: "Biologie", answer: "32" },
-
     { question: "Wie nennt man Tiere, die nachts aktiv sind?", topic: "Biologie", answer: "Nachtaktiv" },
     { question: "Haben Haie Knochen?", topic: "Biologie", answer: "Nein" },
-
     { question: "Wie nennt man die kleinsten Blutgefäße?", topic: "Biologie", answer: "Kapillaren" },
-
     { question: "Sind Dinosaurier nach heutigem Konsens Warm- oder Kaltblüter?", topic: "Biologie", answer: "Warmblüter" },
     { question: "Stammt der Mensch vom Affen ab oder haben beide gemeinsame Vorfahren?", topic: "Biologie", answer: "Gemeinsame Vorfahren" },
     { question: "Können Pflanzen ohne Erde wachsen?", topic: "Biologie", answer: "Ja" },
@@ -55,7 +52,6 @@ export const BIOLOGIE_DE = [
     { question: "Welche Bärenart ist die größte der Welt?", topic: "Biologie", answer: "Eisbär" },
     { question: "Welche Katzenart ist die größte der Welt?", topic: "Biologie", answer: "Tiger" },
     { question: "Wer entwickelte die Evolutionstheorie?", topic: "Biologie", answer: "Darwin" },
-
 ];
 
 export default BIOLOGIE_DE;

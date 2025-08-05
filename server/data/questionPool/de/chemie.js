@@ -32,6 +32,12 @@ export const CHEMIE_DE = [
   { question: "Was ist der Hauptbestandteil von Diamanten?", topic: "Chemie", answer: "Kohlenstoff" },
   { question: "Eiweiß besteht aus Eiweiß - woraus besteht Eigelb?", topic: "Chemie", answer: "Fett" },
   { question: "Warum wird Apfel braun?", topic: "Chemie", answer: "Oxidation" },
+  { question: "Welches Element verleiht Blut seine rote Farbe?", topic: "Chemie", answer: "Eisen" },
+  { question: "Woraus wird Papier gemacht?", topic: "Chemie", answer: "Holz" },
+  { question: "Woraus besteht Lippenstift hauptsächlich?", topic: "Chemie", answer: "Wachs" },
+  { question: "Woraus wird Kaugummi gemacht?", topic: "Chemie", answer: "Kunststoff" },
+  { question: "Woraus besteht ein Bleistift?", topic: "Chemie", answer: "Graphit" },
+  { question: "Enthält ein Bleistift Blei?", topic: "Chemie", answer: "Nein" },
 ];
 
 export default CHEMIE_DE;

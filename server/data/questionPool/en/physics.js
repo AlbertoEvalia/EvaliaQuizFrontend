@@ -1,0 +1,53 @@
+// src/data/questionPool/en/physics.js
+// English Physics Questions
+
+export const PHYSICS_EN = [
+    { question: "Does water change its volume when it freezes?", topic: "Physics", answer: "Yes" },
+    { question: "Where do bubbles form when water boils?", topic: "Physics", answer: "At the bottom" },
+    { question: "Which force always acts downwards?", topic: "Physics", answer: "Gravity" },
+    { question: "What happens to water at 100 degrees Celsius?", topic: "Physics", answer: "It evaporates" },
+    { question: "What is the unit for energy called?", topic: "Physics", answer: "Joule" },
+    { question: "Do ice cubes float on cooking oil?", topic: "Physics", answer: "Yes" },
+    { question: "Can a pencil lead conduct electricity?", topic: "Physics", answer: "Yes" },
+    { question: "Is sound transmitted faster through air or water?", topic: "Physics", answer: "Water" },
+    { question: "Does aluminum oxidize?", topic: "Physics", answer: "Yes" },
+    { question: "What color does copper turn when it oxidizes?", topic: "Physics", answer: "Green" },
+    { question: "Which gas makes balloons float?", topic: "Physics", answer: "Helium" },
+    { question: "Does light slow down when it passes through glass?", topic: "Physics", answer: "Yes" },
+    { question: "Is the North Pole magnetic or geographical further north?", topic: "Physics", answer: "Geographical" },
+    { question: "Can mercury become solid?", topic: "Physics", answer: "Yes" },
+    { question: "Do opposite magnetic poles attract or repel each other?", topic: "Physics", answer: "Attract" },
+    { question: "Does a swing swing faster if started higher?", topic: "Physics", answer: "No" },
+    { question: "Do divers breathe pure oxygen?", topic: "Physics", answer: "No" },
+    { question: "Is diamond harder than steel?", topic: "Physics", answer: "Yes" },
+    { question: "Where can more colors be displayed: on a screen or on paper?", topic: "Physics", answer: "Screen" },
+    { question: "Who formulated the theory of relativity?", topic: "Physics", answer: "Einstein" },
+    { question: "Can gold be attracted by magnets?", topic: "Physics", answer: "No" },
+    { question: "What is glass mainly made of?", topic: "Physics", answer: "Sand" },
+    { question: "What color is the hottest fire?", topic: "Physics", answer: "Blue" },
+    { question: "Are there colors humans cannot see?", topic: "Physics", answer: "Yes" },
+    { question: "Can plants breathe oxygen?", topic: "Physics", answer: "Yes" },
+    { question: "What is faster: sound or light?", topic: "Physics", answer: "Light" },
+    { question: "Which metal conducts electricity best?", topic: "Physics", answer: "Silver" },
+    { question: "At what temperature do Celsius and Fahrenheit have the same value?", topic: "Physics", answer: "-40 degrees" },
+    { question: "Can cola remove rust?", topic: "Physics", answer: "Yes" },
+    { question: "Do cornflakes contain metals?", topic: "Physics", answer: "Yes" },
+    { question: "Does ice float on alcohol?", topic: "Physics", answer: "No" },
+    { question: "Can magnets lose their power through heat?", topic: "Physics", answer: "Yes" },
+    { question: "Does water get heavier or lighter when freezing?", topic: "Physics", answer: "Lighter" },
+    { question: "Do candles work in space?", topic: "Physics", answer: "No" },
+    { question: "Does a compass work in space?", topic: "Physics", answer: "No" },
+    { question: "What shape do flames have in space?", topic: "Physics", answer: "Round" },
+    { question: "Does water boil at a lower temperature on a mountain?", topic: "Physics", answer: "Yes" },
+    { question: "What is heavier: warm or cold air?", topic: "Physics", answer: "Cold air" },
+    { question: "Which flammable gas was used in zeppelins?", topic: "Physics", answer: "Hydrogen" },
+    { question: "Which gas makes the voice sound cartoonish?", topic: "Physics", answer: "Helium" },
+    { question: "What is faster: a bullet or sound?", topic: "Physics", answer: "Bullet" },
+    { question: "How many mirrors does a simple periscope have?", topic: "Physics", answer: "Two" },
+    { question: "Is the image upside down in a camera?", topic: "Physics", answer: "Yes" },
+    { question: "Which woman was the first to win a Nobel Prize?", topic: "Physics", answer: "Curie" },
+    { question: "Where does a penguin weigh less: at the South Pole or at the Equator?", topic: "Physics", answer: "At the Equator" }
+  ];
+  
+  export default PHYSICS_EN;
+  
