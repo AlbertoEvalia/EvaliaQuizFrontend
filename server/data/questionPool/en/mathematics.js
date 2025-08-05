@@ -1,7 +1,7 @@
 // src/data/questionPool/en/mathematics.js
 // English Mathematics Questions
 
-export const MATHEMATICS_QUESTIONS = [
+export const MATHEMATICS_EN = [
     // Translated from German pool
     { question: "What is 25% of 200?", topic: "Mathematics", answer: "50" },
     { question: "How many sides does a hexagon have?", topic: "Mathematics", answer: "6" },
@@ -53,4 +53,4 @@ export const MATHEMATICS_QUESTIONS = [
     { question: "What is the smallest positive integer?", topic: "Mathematics", answer: "1" }
   ];
   
-  export default MATHEMATICS_QUESTIONS;
+  export default MATHEMATICS_EN;

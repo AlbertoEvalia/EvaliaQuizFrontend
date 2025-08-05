@@ -1,7 +1,7 @@
 // src/data/questionPool/en/astronomy.js
 // English Astronomy Questions
 
-export const ASTRONOMY_QUESTIONS = [
+export const ASTRONOMY_EN = [
     // Translated from German pool
     { question: "Which planet is closest to the Sun?", topic: "Astronomy", answer: "Mercury" },
     { question: "Which is the largest planet in the solar system?", topic: "Astronomy", answer: "Jupiter" },
