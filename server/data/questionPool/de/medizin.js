@@ -23,9 +23,7 @@ export const MEDIZIN_DE = [
   { question: "Welches Organ filtert Giftstoffe aus dem Blut?", topic: "Medizin", answer: "Leber" },
   { question: "Welches ist der stärkste Muskel im menschlichen Körper?", topic: "Medizin", answer: "Kaumuskel" },
   { question: "Wie viele Rippen hat ein Mensch?", topic: "Medizin", answer: "24" },
-  { question: "Welches Organ produziert Galle?", topic: "Medizin", answer: "Leber" },
-  { question: "Welches Organ filtert das Blut von Giftstoffen?", topic: "Medizin", answer: "Leber" }
-
+  { question: "Welches Organ produziert Galle?", topic: "Medizin", answer: "Leber" }
 ];
 
 export default MEDIZIN_DE;
