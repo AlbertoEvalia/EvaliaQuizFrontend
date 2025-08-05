@@ -1,7 +1,7 @@
 // src/data/questionPool/en/biology.js
 // English Biology Questions
 
-export const BIOLOGY_QUESTIONS = [
+export const BIOLOGY_EN = [
     // Translated from German pool
     { question: "Which organ pumps blood through the body?", topic: "Biology", answer: "Heart" },
     { question: "How many legs does a spider have?", topic: "Biology", answer: "8" },
@@ -54,4 +54,4 @@ export const BIOLOGY_QUESTIONS = [
     { question: "Who developed the theory of evolution?", topic: "Biology", answer: "Darwin" },
 ];
 
-export default BIOLOGY_QUESTIONS;
+export default BIOLOGY_EN;
