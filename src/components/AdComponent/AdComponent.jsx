@@ -70,7 +70,7 @@ const AdComponent = ({
 
   return (
     <div className="ad-component">
-        <h3>🔥 NEUE VERSION AKTIV! 🔥</h3>  {/* HIER EINFÜGEN */}
+        <h3>🔥 NEUE VERSION AKTIV! 🔥</h3>  
       <div className="ad-container">
         <div className="ad-header">
           <h2>{getAdTitle()}</h2>
