@@ -7,7 +7,7 @@ export const KUNST_DE = [
   { question: "Wer malte das Bild 'Die Sternennacht'?", topic: "Kunst", answer: "Van Gogh" },
   { question: "Wer malte die Sixtinische Kapelle?", topic: "Kunst", answer: "Michelangelo" },
   { question: "Wer malte das Bild 'Guernica'?", topic: "Kunst", answer: "Picasso" },
-  { question: "Wer schnitt sich das Ohr ab?", topic: "Kunst", answer: "Van Gogh" },
+  { question: "Welcher berühmte Maler schnitt sich das Ohr ab?", topic: "Kunst", answer: "Van Gogh" },
   { question: "In welchem Museum hängt die Mona Lisa?", topic: "Kunst", answer: "Louvre" },
   { question: "Welcher Künstler malte 'Der Schrei'?", topic: "Kunst", answer: "Munch" },
   { question: "Aus welchem Land stammt Pablo Picasso?", topic: "Kunst", answer: "Spanien" },
