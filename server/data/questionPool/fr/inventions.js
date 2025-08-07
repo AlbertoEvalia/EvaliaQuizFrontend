@@ -25,7 +25,10 @@ export const INVENTIONS_FR = [
     { question: "Qu'existait-il en premier : le café ou le thé ?", topic: "Inventions", answer: "Thé" },
     { question: "Dans quel pays le stylo à bille a-t-il été inventé ?", topic: "Inventions", answer: "Argentine" },
     { question: "Dans quel pays les toilettes modernes ont-elles été inventées ?", topic: "Inventions", answer: "Angleterre" },
-    { question: "Les 'boîtes noires' des avions sont-elles vraiment noires ?", topic: "Inventions", answer: "Non" }
+    { question: "Les 'boîtes noires' des avions sont-elles vraiment noires ?", topic: "Inventions", answer: "Non" },
+
+
+    { question: "Dans quel pays l'analgésique Aspirine a-t-il été inventé?", topic: "Inventions", answer: "Allemagne" }
 ];
 
 export default INVENTIONS_FR;

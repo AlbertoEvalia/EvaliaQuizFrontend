@@ -1,53 +1,53 @@
-// src/data/questionPool/de/index.js
-// Deutscher Question Pool - Alle Topics zusammengefasst - ERWEITERT
+// src/data/questionPool/fr/index.js
+// Question Pool en Français - Tous les sujets résumés - ÉLARGI
 
-import { MATHEMATIK_DE } from './mathematik.js';
-import { ASTRONOMIE_DE } from './astronomie.js';
-import { PHYSIK_DE } from './physik.js';
-import { CHEMIE_DE } from './chemie.js';
-import { BIOLOGIE_DE } from './biologie.js';
-import { GESCHICHTE_DE } from './geschichte.js';
-import { GEOGRAPHIE_DE } from './geographie.js';
-import { KUNST_DE } from './kunst.js';
-import { LITERATUR_DE } from './literatur.js';
-import { MUSIK_DE } from './musik.js';
-import { ERFINDUNGEN_DE } from './erfindungen.js';
-import { PHILOSOPHIE_DE } from './philosophie.js';
-import { MEDIZIN_DE } from './medizin.js';
+import { MATHEMATIQUES_FR } from './mathematiques.js';
+import { ASTRONOMIE_FR } from './astronomie.js';
+import { PHYSIQUE_FR } from './physique.js';
+import { CHIMIE_FR } from './chimie.js';
+import { BIOLOGIE_FR } from './biologie.js';
+import { HISTOIRE_FR } from './histoire.js';
+import { GEOGRAPHIE_FR } from './geographie.js';
+import { ART_FR } from './art.js';
+import { LITTERATURE_FR } from './litterature.js';
+import { MUSIQUE_FR } from './musique.js';
+import { INVENTIONS_FR } from './inventions.js';
+import { PHILOSOPHIE_FR } from './philosophie.js';
+import { MEDECINE_FR } from './medecine.js';
 
-// Alle deutschen Fragen zusammengefasst
-export const QUESTIONS_DE = [
-  ...MATHEMATIK_DE,
-  ...ASTRONOMIE_DE,
-  ...PHYSIK_DE,
-  ...CHEMIE_DE,
-  ...BIOLOGIE_DE,
-  ...GESCHICHTE_DE,
-  ...GEOGRAPHIE_DE,
-  ...KUNST_DE,
-  ...LITERATUR_DE,
-  ...MUSIK_DE,
-  ...ERFINDUNGEN_DE,
-  ...PHILOSOPHIE_DE,
-  ...MEDIZIN_DE
+// Toutes les questions en français résumées
+export const QUESTIONS_FR = [
+  ...MATHEMATIQUES_FR,
+  ...ASTRONOMIE_FR,
+  ...PHYSIQUE_FR,
+  ...CHIMIE_FR,
+  ...BIOLOGIE_FR,
+  ...HISTOIRE_FR,
+  ...GEOGRAPHIE_FR,
+  ...ART_FR,
+  ...LITTERATURE_FR,
+  ...MUSIQUE_FR,
+  ...INVENTIONS_FR,
+  ...PHILOSOPHIE_FR,
+  ...MEDECINE_FR
 ];
 
-// Statistiken
+// Statistiques
 export const getQuestionStats = () => {
   const stats = {
-    mathematik: MATHEMATIK_DE.length,
-    astronomie: ASTRONOMIE_DE.length,
-    physik: PHYSIK_DE.length,
-    chemie: CHEMIE_DE.length,
-    biologie: BIOLOGIE_DE.length,
-    geschichte: GESCHICHTE_DE.length,
-    geographie: GEOGRAPHIE_DE.length,
-    kunst: KUNST_DE.length,
-    literatur: LITERATUR_DE.length,
-    musik: MUSIK_DE.length,
-    erfindungen: ERFINDUNGEN_DE.length,
-    philosophie: PHILOSOPHIE_DE.length,
-    medizin: MEDIZIN_DE.length
+    mathematiques: MATHEMATIQUES_FR.length,
+    astronomie: ASTRONOMIE_FR.length,
+    physique: PHYSIQUE_FR.length,
+    chimie: CHIMIE_FR.length,
+    biologie: BIOLOGIE_FR.length,
+    histoire: HISTOIRE_FR.length,
+    geographie: GEOGRAPHIE_FR.length,
+    art: ART_FR.length,
+    litterature: LITTERATURE_FR.length,
+    musique: MUSIQUE_FR.length,
+    inventions: INVENTIONS_FR.length,
+    philosophie: PHILOSOPHIE_FR.length,
+    medecine: MEDECINE_FR.length
   };
   
   const total = Object.values(stats).reduce((sum, count) => sum + count, 0);
@@ -58,7 +58,7 @@ export const getQuestionStats = () => {
   };
 };
 
-// Export für Kompatibilität mit bestehendem System
-export default QUESTIONS_DE;
+// Export pour la compatibilité avec le système existant
+export default QUESTIONS_FR;
 
-console.log('📊 Deutsche Fragen geladen:', getQuestionStats());
+console.log('📊 Questions en français chargées:', getQuestionStats());

@@ -25,5 +25,5 @@ export const MEDICINA_IT = [
     { question: "Quante costole ha un essere umano?", topic: "Medicina", answer: "24" },
     { question: "Quale organo produce la bile?", topic: "Medicina", answer: "Fegato" }
   ];
-  
+
   export default MEDICINA_IT;

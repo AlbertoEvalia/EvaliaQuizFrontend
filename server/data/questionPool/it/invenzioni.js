@@ -25,8 +25,11 @@ export const INVENZIONI_IT = [
     { question: "Cosa è venuto prima: il caffè o il tè?", topic: "Invenzioni", answer: "Tè" },
     { question: "In quale paese è stata inventata la penna a sfera?", topic: "Invenzioni", answer: "Argentina" },
     { question: "In quale paese è stato inventato il WC?", topic: "Invenzioni", answer: "Inghilterra" },
-    { question: "Le scatole nere degli aerei sono davvero nere?", topic: "Invenzioni", answer: "No" }
+    { question: "Le scatole nere degli aerei sono davvero nere?", topic: "Invenzioni", answer: "No" },
+    { question: "In quale paese è stato inventato l'analgesico Aspirina?", topic: "Invenzioni", answer: "Germania" }
   ];
+  
+  
   
   export default INVENZIONI_IT;
   
