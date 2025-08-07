@@ -1,7 +1,7 @@
 // src/data/questionPool/es/astronomia.js
 // Preguntas de Astronomía en Español
 
-export const ASTRONOMIA_QUESTIONS = [
+export const ASTRONOMIA_ES = [
     // Traducido del pool alemán
     { question: "¿Qué planeta está más cerca del Sol?", topic: "Astronomía", answer: "Mercurio" },
     { question: "¿Cuál es el planeta más grande del sistema solar?", topic: "Astronomía", answer: "Júpiter" },
@@ -46,4 +46,4 @@ export const ASTRONOMIA_QUESTIONS = [
     { question: "¿Quién desarrolló la teoría heliocéntrica?", topic: "Astronomía", answer: "Copérnico" },
 ];
 
-export default ASTRONOMIA_QUESTIONS;
+export default ASTRONOMIA_ES;
