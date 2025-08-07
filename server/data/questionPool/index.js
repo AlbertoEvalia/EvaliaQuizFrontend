@@ -1,18 +1,13 @@
 // src/data/questionPool/index.js
 // Haupt-Export für alle Sprachen - NEUE STRUKTUR
 
-// Neue deutsche Struktur importieren
+
 import { QUESTIONS_DE } from './de/index.js';
-
-// Neue englische modulare Struktur importieren (analog DE)
 import { QUESTIONS_EN } from './en/index.js';
-
-// Neue spanische modulare Struktur importieren (analog DE)
 import { QUESTIONS_ES } from './es/index.js';
+import { QUESTIONS_FR } from './fr/index.js';
+import { QUESTIONS_IT } from './it/index.js';
 
-// Alte Struktur für andere Sprachen (vorerst beibehalten)
-import { QUESTIONS_FR } from './questions_fr.js';
-import { QUESTIONS_IT } from './questions_it.js';
 
 // Haupt-Pool mit allen Sprachen
 export const QUESTION_POOL = {
@@ -67,62 +62,62 @@ const TOPIC_GROUPS = {
 export const getRandomQuestionsFromPool = (language, count = 20) => {
   const pool = QUESTION_POOL[language.toLowerCase()] || QUESTION_POOL.de || [];
   const langCode = language.toLowerCase();
-  
+
   console.log(`🎯 INTELLIGENTE GRUPPENVERTEILUNG für ${language} (${count} Fragen)`);
-  
+
   // Fallback wenn Pool leer ist
   if (pool.length === 0) {
     console.log(`⚠️ Kein Pool für ${language}, verwende deutschen Pool als Fallback`);
     return getRandomQuestionsFromPool('de', count);
   }
-  
+
   // Ziel: 5 Gruppen gleichmäßig verteilt
   const questionsPerGroup = Math.floor(count / 5); // 20→4, 50→10, 100→20
   const extraQuestions = count % 5; // Rest verteilen
-  
+
   const selectedQuestions = [];
   const groupStats = {};
-  
+
   // Für jede Gruppe Fragen auswählen
   Object.entries(TOPIC_GROUPS).forEach(([groupName, topics], groupIndex) => {
     const topicsForLang = topics[langCode] || topics.de || [];
-    
+
     // Alle verfügbaren Fragen für diese Gruppe sammeln
-    const groupQuestions = pool.filter(q => 
+    const groupQuestions = pool.filter(q =>
       topicsForLang.some(topic => topic.toLowerCase() === q.topic.toLowerCase())
     );
-    
+
     // Anzahl Fragen für diese Gruppe berechnen
     let targetCount = questionsPerGroup;
     if (groupIndex < extraQuestions) {
       targetCount += 1; // Erste Gruppen bekommen die Extra-Fragen
     }
-    
+
     // Zufällige Auswahl aus der Gruppe
     const shuffledGroupQuestions = shuffleArray([...groupQuestions]);
     const selectedFromGroup = shuffledGroupQuestions.slice(0, Math.min(targetCount, shuffledGroupQuestions.length));
-    
+
     selectedQuestions.push(...selectedFromGroup);
     groupStats[groupName] = selectedFromGroup.length;
-    
+
     console.log(`📚 ${groupName}: ${selectedFromGroup.length} Fragen aus [${topicsForLang.join(', ')}]`);
   });
-  
+
   console.log(`✅ FINALE VERTEILUNG:`, groupStats);
   console.log(`📊 Total: ${selectedQuestions.length}/${count} Fragen`);
-  
+
   // Falls noch Fragen fehlen, fülle mit zufälligen Fragen auf
   if (selectedQuestions.length < count) {
     const usedQuestions = new Set(selectedQuestions.map(q => q.question));
     const remainingQuestions = pool.filter(q => !usedQuestions.has(q.question));
     const additionalNeeded = count - selectedQuestions.length;
-    
+
     const shuffledRemaining = shuffleArray(remainingQuestions);
     selectedQuestions.push(...shuffledRemaining.slice(0, additionalNeeded));
-    
+
     console.log(`🔄 Zusätzlich ${additionalNeeded} Fragen hinzugefügt`);
   }
-  
+
   // Final shuffle für gute Mischung
   return shuffleArray(selectedQuestions);
 };
