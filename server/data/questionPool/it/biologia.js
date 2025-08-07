@@ -47,7 +47,9 @@ export const BIOLOGIA_IT = [
     { question: "Gli animali nelle zone più fredde sono più grandi o più piccoli?", topic: "Biologia", answer: "Più grandi" },
     { question: "Quale specie di orso è la più grande del mondo?", topic: "Biologia", answer: "Orso polare" },
     { question: "Quale specie di gatto è la più grande del mondo?", topic: "Biologia", answer: "Tigre" },
-    { question: "Chi ha sviluppato la teoria dell'evoluzione?", topic: "Biologia", answer: "Darwin" }
+    { question: "Chi ha sviluppato la teoria dell'evoluzione?", topic: "Biologia", answer: "Darwin" },
+    { question: "I pinguini sono dinosauri?", topic: "Biologia", answer: "Sì" },
+    { question: "I diversi colori del pepe provengono da piante diverse?", topic: "Biologia", answer: "No" }
 ];
 
 export default BIOLOGIA_IT;

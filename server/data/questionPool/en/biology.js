@@ -49,6 +49,8 @@ export const BIOLOGY_EN = [
     { question: "What is the largest bear species in the world?", topic: "Biology", answer: "Polar bear" },
     { question: "What is the largest cat species in the world?", topic: "Biology", answer: "Tiger" },
     { question: "Who developed the theory of evolution?", topic: "Biology", answer: "Darwin" },
+    { question: "Are penguins dinosaurs?", topic: "Biology", answer: "Yes" },
+    { question: "Do different pepper colors come from different plants?", topic: "Biology", answer: "No" }
 ];
 
 export default BIOLOGY_EN;

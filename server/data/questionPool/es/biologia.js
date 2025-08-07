@@ -50,6 +50,8 @@ export const BIOLOGIA_ES = [
     { question: "¿Cuál es la especie de oso más grande del mundo?", topic: "Biología", answer: "Oso polar" },
     { question: "¿Cuál es la especie de felino más grande del mundo?", topic: "Biología", answer: "Tigre" },
     { question: "¿Quién desarrolló la teoría de la evolución?", topic: "Biología", answer: "Darwin" },
+    { question: "¿Los pingüinos son dinosaurios?", topic: "Biología", answer: "Sí" },
+    { question: "¿Los distintos colores de pimienta se deben a que vienen de distintas plantas?", topic: "Biología", answer: "No" },
 ];
 
 export default BIOLOGIA_ES;

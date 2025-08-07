@@ -49,6 +49,8 @@ export const BIOLOGIE_DE = [
     { question: "Welche Bärenart ist die größte der Welt?", topic: "Biologie", answer: "Eisbär" },
     { question: "Welche Katzenart ist die größte der Welt?", topic: "Biologie", answer: "Tiger" },
     { question: "Wer entwickelte die Evolutionstheorie?", topic: "Biologie", answer: "Darwin" },
+    { question: "Sind Pinguine Dinosaurier?", topic: "Biologie", answer: "Ja" },
+    { question: "Kommen die verschiedenen Pfefferfarben von unterschiedlichen Pflanzen?", topic: "Biologie", answer: "Nein" },
 ];
 
 export default BIOLOGIE_DE;
