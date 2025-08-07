@@ -25,7 +25,9 @@ export const INVENTOS_ES = [
     { question: "¿Qué existió primero: el café o el té?", topic: "Inventos", answer: "Té" },
     { question: "¿En qué país se inventó el bolígrafo?", topic: "Inventos", answer: "Argentina" },
     { question: "¿En qué país se inventó el inodoro?", topic: "Inventos", answer: "Inglaterra" },
-    { question: "¿Las 'cajas negras' de los aviones son realmente negras?", topic: "Inventos", answer: "No" }
+    { question: "¿Las 'cajas negras' de los aviones son realmente negras?", topic: "Inventos", answer: "No" },
+
+    { question: "En cuál país fue inventado el analgésico Aspirina?", topic: "Inventos", answer: "Alemania" }
 ];
 
 export default INVENTOS_ES;

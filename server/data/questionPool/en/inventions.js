@@ -25,7 +25,11 @@ export const INVENTIONS_EN = [
     { question: "Which came first: coffee or tea?", topic: "Inventions", answer: "Tea" },
     { question: "In which country was the ballpoint pen invented?", topic: "Inventions", answer: "Argentina" },
     { question: "In which country was the toilet invented?", topic: "Inventions", answer: "England" },
-    { question: "Are airplane 'black boxes' actually black?", topic: "Inventions", answer: "No" }
+    { question: "Are airplane 'black boxes' actually black?", topic: "Inventions", answer: "No" },
+
+    {
+        question: "In which country was the painkiller Aspirin invented?", topic: "Inventions", answer: "Germany"
+    }
 ];
 
 export default INVENTIONS_EN;
