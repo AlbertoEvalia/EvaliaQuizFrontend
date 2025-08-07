@@ -1,0 +1,41 @@
+// src/data/questionPool/fr/art.js
+// Questions d'art en français
+
+export const ART_FR = [
+  { question: "Qui a peint la Joconde ?", topic: "Art", answer: "Léonard de Vinci" },
+  { question: "Qui a peint le tableau 'La Nuit étoilée' ?", topic: "Art", answer: "Van Gogh" },
+  { question: "Qui a peint la Chapelle Sixtine ?", topic: "Art", answer: "Michel-Ange" },
+  { question: "Qui a peint le tableau 'Guernica' ?", topic: "Art", answer: "Picasso" },
+  { question: "Quel célèbre peintre s'est coupé l'oreille ?", topic: "Art", answer: "Van Gogh" },
+  { question: "Dans quel musée est exposée la Joconde ?", topic: "Art", answer: "Louvre" },
+  { question: "Quel artiste a peint 'Le Cri' ?", topic: "Art", answer: "Munch" },
+  { question: "De quel pays est originaire Pablo Picasso ?", topic: "Art", answer: "Espagne" },
+  { question: "Quel artiste a peint le célèbre plafond de la Chapelle Sixtine ?", topic: "Art", answer: "Michel-Ange" },
+  { question: "À quel mouvement artistique appartenait Claude Monet ?", topic: "Art", answer: "Impressionnisme" },
+  { question: "Quel artiste a peint 'La Cène' ?", topic: "Art", answer: "Léonard de Vinci" },
+  { question: "Quel artiste a créé la sculpture 'David' ?", topic: "Art", answer: "Michel-Ange" },
+  { question: "Quel artiste a peint 'La Naissance de Vénus' ?", topic: "Art", answer: "Botticelli" },
+  { question: "Quel peintre français est célèbre pour ses nénuphars ?", topic: "Art", answer: "Monet" },
+  { question: "Quel artiste a peint 'La Ronde de nuit' ?", topic: "Art", answer: "Rembrandt" },
+  { question: "Qui est célèbre pour ses peintures de boîtes de soupe ?", topic: "Art", answer: "Andy Warhol" },
+  { question: "Dans quel musée est exposée La Joconde ?", topic: "Art", answer: "Louvre" },
+  { question: "Parmi les sept merveilles du monde antique, laquelle existe encore ?", topic: "Art", answer: "Pyramides de Gizeh" },
+  { question: "Où la Statue de la Liberté a-t-elle été construite ?", topic: "Art", answer: "France" },
+  { question: "À quel style appartiennent les 'montres molles' de Dalí ?", topic: "Art", answer: "Surréalisme" },
+  { question: "Que manque-t-il au visage du Grand Sphinx de Gizeh ?", topic: "Art", answer: "Nez" },
+  { question: "Que manquait-il déjà à la Vénus de Milo lorsqu'elle a été découverte en 1820 ?", topic: "Art", answer: "Bras" },
+  { question: "Quel artiste a créé la sculpture 'Le Penseur' ?", topic: "Art", answer: "Rodin" },
+  { question: "Dans quelle ville se trouve la célèbre statue 'David' de Michel-Ange ?", topic: "Art", answer: "Florence" },
+  { question: "De quel matériau est principalement faite la Statue de la Liberté ?", topic: "Art", answer: "Cuivre" },
+  { question: "Les statues de l'île de Pâques ont-elles un corps sous terre ?", topic: "Art", answer: "Oui" },
+  { question: "D'où proviennent les blocs de pierre de Stonehenge ?", topic: "Art", answer: "Pays de Galles" },
+  { question: "Dans quel pays se trouvent les peintures rupestres d'Altamira ?", topic: "Art", answer: "Espagne" },
+  { question: "Dans quelle ville se trouve la statue du Christ Rédempteur ?", topic: "Art", answer: "Rio de Janeiro" },
+  { question: "Quelle merveille antique se trouvait à Babylone ?", topic: "Art", answer: "Jardins suspendus" },
+  { question: "Quel matériau a été principalement utilisé pour les sculptures de l'île de Pâques ?", topic: "Art", answer: "Pierre volcanique" },
+  { question: "À quel mouvement artistique appartenait René Magritte ?", topic: "Art", answer: "Surréalisme" },
+  { question: "Quel photographe est célèbre pour ses études de mouvement avec des chevaux au galop ?", topic: "Art", answer: "Muybridge" },
+  { question: "Qu'est-ce que le MoMA ?", topic: "Art", answer: "Museum of Modern Art" },
+  { question: "Quel est le plus grand musée du monde ?", topic: "Art", answer: "Louvre" }
+];
+export default ART_FR;

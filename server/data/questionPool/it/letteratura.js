@@ -1,0 +1,41 @@
+// src/data/questionPool/it/letteratura.js
+// Domande di letteratura in italiano
+
+export const LETTERATURA_IT = [
+    { question: "Chi ha scritto 'Romeo e Giulietta'?", topic: "Letteratura", answer: "Shakespeare" },
+    { question: "Chi ha scritto 'Il piccolo principe'?", topic: "Letteratura", answer: "Antoine de Saint-Exupéry" },
+    { question: "Chi ha scritto 'Faust'?", topic: "Letteratura", answer: "Goethe" },
+    { question: "Chi ha scritto 'Amleto'?", topic: "Letteratura", answer: "Shakespeare" },
+    { question: "Da quale paese proviene l'autore di 'Don Chisciotte'?", topic: "Letteratura", answer: "Spagna" },
+    { question: "Chi ha scritto '1984'?", topic: "Letteratura", answer: "George Orwell" },
+    { question: "Quale detective è stato creato da Arthur Conan Doyle?", topic: "Letteratura", answer: "Sherlock Holmes" },
+    { question: "Chi ha scritto 'L'Odissea'?", topic: "Letteratura", answer: "Omero" },
+    { question: "In quale città è ambientato 'Romeo e Giulietta'?", topic: "Letteratura", answer: "Verona" },
+    { question: "Chi ha scritto 'Moby Dick'?", topic: "Letteratura", answer: "Herman Melville" },
+    { question: "Chi ha scritto 'Il conte di Montecristo'?", topic: "Letteratura", answer: "Alexandre Dumas" },
+    { question: "Chi ha scritto 'Guerra e pace'?", topic: "Letteratura", answer: "Tolstoj" },
+    { question: "Chi ha scritto 'I tre moschettieri'?", topic: "Letteratura", answer: "Alexandre Dumas" },
+    { question: "Quale autore ha scritto 'Il vecchio e il mare'?", topic: "Letteratura", answer: "Hemingway" },
+    { question: "Chi ha scritto 'Orgoglio e pregiudizio'?", topic: "Letteratura", answer: "Jane Austen" },
+    { question: "Chi ha scritto 'Il nome della rosa'?", topic: "Letteratura", answer: "Umberto Eco" },
+    { question: "Quale autore ha scritto 'Cent'anni di solitudine'?", topic: "Letteratura", answer: "García Márquez" },
+    { question: "Da quale paese proviene lo scrittore James Joyce?", topic: "Letteratura", answer: "Irlanda" },
+    { question: "Quale autore francese ha scritto 'Alla ricerca del tempo perduto'?", topic: "Letteratura", answer: "Proust" },
+    { question: "Chi ha scritto il romanzo 'Mrs. Dalloway'?", topic: "Letteratura", answer: "Virginia Woolf" },
+    { question: "Quanti giorni dura il viaggio intorno al mondo nel romanzo di Jules Verne?", topic: "Letteratura", answer: "Ottanta" },
+    { question: "Quanti anni di solitudine vive la famiglia nel romanzo di García Márquez?", topic: "Letteratura", answer: "Cento" },
+    { question: "Quante leghe sotto i mari ha viaggiato il Capitano Nemo?", topic: "Letteratura", answer: "Ventimila" },
+    { question: "Quale animale guida Alice nel Paese delle Meraviglie?", topic: "Letteratura", answer: "Coniglio bianco" },
+    { question: "In quale paese si trova Alice secondo Lewis Carroll?", topic: "Letteratura", answer: "Paese delle Meraviglie" },
+    { question: "Quanti giorni dura il viaggio intorno al mondo nel romanzo di Jules Verne?", topic: "Letteratura", answer: "Ottanta" },
+    { question: "Quanti anni di solitudine vive la famiglia nel romanzo di García Márquez?", topic: "Letteratura", answer: "Cento" },
+    { question: "Quante leghe sotto i mari ha viaggiato il Capitano Nemo?", topic: "Letteratura", answer: "Ventimila" },
+    { question: "Quale personaggio del romanzo di Herman Melville è una balena?", topic: "Letteratura", answer: "Moby Dick" },
+    { question: "Come si chiama il compagno di Sherlock Holmes?", topic: "Letteratura", answer: "Dr. Watson" },
+    { question: "Chi ha scritto la trilogia fantasy 'Il Signore degli Anelli'?", topic: "Letteratura", answer: "Tolkien" },
+    { question: "Chi è l'autore de 'La storia infinita'?", topic: "Letteratura", answer: "Michael Ende" },
+    { question: "Chi ha detto la celebre frase 'Essere o non essere'?", topic: "Letteratura", answer: "Shakespeare" }
+  ];
+  
+  export default LETTERATURA_IT;
+  

@@ -1,0 +1,48 @@
+// src/data/questionPool/it/astronomia.js
+// Domande di astronomia in italiano
+
+export const ASTRONOMIA_IT = [
+    { question: "Quale pianeta è più vicino al Sole?", topic: "Astronomia", answer: "Mercurio" },
+    { question: "Qual è il pianeta più grande del sistema solare?", topic: "Astronomia", answer: "Giove" },
+    { question: "Quale pianeta è conosciuto come il pianeta rosso?", topic: "Astronomia", answer: "Marte" },
+    { question: "Quale pianeta ha il maggior numero di anelli?", topic: "Astronomia", answer: "Saturno" },
+    { question: "Quante lune ha Marte?", topic: "Astronomia", answer: "2" },
+    { question: "Quale corpo celeste causa le maree?", topic: "Astronomia", answer: "Luna" },
+    { question: "Come si chiama il percorso che un pianeta compie intorno al Sole?", topic: "Astronomia", answer: "Orbita" },
+    { question: "Quanti pianeti nel nostro sistema solare sono giganti gassosi?", topic: "Astronomia", answer: "4" },
+    { question: "Quanti minuti impiega la luce solare a raggiungere la Terra?", topic: "Fisica", answer: "8 minuti" },
+    { question: "Quale pianeta è stato declassato a pianeta nano nel 2006?", topic: "Astronomia", answer: "Plutone" },
+    { question: "Come si chiama un gruppo di miliardi di stelle?", topic: "Astronomia", answer: "Galassia" },
+    { question: "Quale pianeta ha la tempesta più grande del sistema solare?", topic: "Astronomia", answer: "Giove" },
+    { question: "Quale pianeta è più vicino alla Terra?", topic: "Astronomia", answer: "Venere" },
+    { question: "Venere ha un'atmosfera?", topic: "Astronomia", answer: "Sì" },
+    { question: "Quale pianeta è più lontano dal Sole?", topic: "Astronomia", answer: "Nettuno" },
+    { question: "Venere ha una luna?", topic: "Astronomia", answer: "No" },
+    { question: "Come si chiama la nostra galassia?", topic: "Astronomia", answer: "Via Lattea" },
+    { question: "Quale stella brilla di giorno?", topic: "Astronomia", answer: "Sole" },
+    { question: "Come si chiamano scientificamente le stelle cadenti?", topic: "Astronomia", answer: "Meteore" },
+    { question: "Quale stella è più vicina alla Terra?", topic: "Astronomia", answer: "Sole" },
+    { question: "Come si chiamano i frammenti rocciosi nello spazio?", topic: "Astronomia", answer: "Asteroidi" },
+    { question: "In quale eclissi la Terra si trova tra Sole e Luna?", topic: "Astronomia", answer: "Eclissi lunare" },
+    { question: "Quale pianeta ha un diametro minore: Marte o Venere?", topic: "Astronomia", answer: "Marte" },
+    { question: "C'è acqua sulla Luna?", topic: "Astronomia", answer: "Sì" },
+    { question: "Giove è un gigante gassoso o un pianeta roccioso?", topic: "Astronomia", answer: "Gigante gassoso" },
+    { question: "Quale pianeta impiega più tempo a orbitare intorno al Sole?", topic: "Astronomia", answer: "Nettuno" },
+    { question: "Qual è la stella più luminosa nel cielo notturno?", topic: "Astronomia", answer: "Sirio" },
+    { question: "Il Sole ha una superficie solida?", topic: "Astronomia", answer: "No" },
+    { question: "Quale pianeta ha una grande macchia rossa?", topic: "Astronomie", answer: "Giove" },
+    { question: "Quale pianeta ruota su un fianco?", topic: "Astronomia", answer: "Urano" },
+    { question: "Quale corpo celeste è più grande: la nostra Luna o Plutone?", topic: "Astronomia", answer: "Luna" },
+    { question: "Piove su altri pianeti del nostro sistema solare?", topic: "Astronomia", answer: "Sì" },
+    { question: "Quanto dura un giorno sulla Luna?", topic: "Astronomia", answer: "28 giorni terrestri" },
+    { question: "La Via Lattea è una galassia a spirale o ellittica?", topic: "Astronomia", answer: "Galassia a spirale" },
+    { question: "I pianeti brillano di luce propria o riflettono la luce solare?", topic: "Astronomia", answer: "Riflettono la luce solare" },
+    { question: "Qual è la stella più vicina al Sole?", topic: "Astronomia", answer: "Proxima Centauri" },
+    { question: "Cosa è più grande: l'Australia o la Luna?", topic: "Astronomia", answer: "Australia" },
+    { question: "In quale direzione cresce la Luna nell'emisfero nord?", topic: "Astronomia", answer: "Da destra a sinistra" },
+    { question: "Si può vedere la stella polare a sud dell'equatore?", topic: "Astronomia", answer: "No" },
+    { question: "Ci sono aurore nell'emisfero sud?", topic: "Astronomia", answer: "Sì" },
+    { question: "Chi sviluppò la teoria eliocentrica?", topic: "Astronomia", answer: "Copernico" }
+];
+
+export default ASTRONOMIA_IT;

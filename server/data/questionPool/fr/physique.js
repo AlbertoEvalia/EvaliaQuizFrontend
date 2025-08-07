@@ -1,0 +1,53 @@
+// src/data/questionPool/fr/physique.js
+// Questions de physique en français
+
+export const PHYSIQUE_FR = [
+  // Nouvelles questions sélectionnées
+  { question: "L'eau change-t-elle de volume lorsqu'elle gèle ?", topic: "Physique", answer: "Oui" },
+  { question: "Où se forment les bulles lorsque l'eau bout ?", topic: "Physique", answer: "Au fond" },
+  { question: "Quelle force agit toujours vers le bas ?", topic: "Physique", answer: "Gravité" },
+  { question: "Que se passe-t-il avec l'eau à 100 degrés Celsius ?", topic: "Physique", answer: "Elle s'évapore" },
+  { question: "Comment s'appelle l'unité d'énergie ?", topic: "Physique", answer: "Joule" },
+  { question: "Les glaçons flottent-ils sur l'huile alimentaire ?", topic: "Physique", answer: "Oui" },
+  { question: "Une mine de crayon peut-elle conduire l'électricité ?", topic: "Physique", answer: "Oui" },
+  { question: "Le son se transmet-il plus vite dans l'air ou dans l'eau ?", topic: "Physique", answer: "Eau" },
+  { question: "L'aluminium s'oxyde-t-il ?", topic: "Physique", answer: "Oui" },
+  { question: "De quelle couleur devient le cuivre lorsqu'il s'oxyde ?", topic: "Physique", answer: "Vert" },
+  { question: "Quel gaz fait flotter les ballons ?", topic: "Physique", answer: "Hélium" },
+  { question: "La lumière ralentit-elle lorsqu'elle traverse du verre ?", topic: "Physique", answer: "Oui" },
+  { question: "Le pôle Nord est-il plus au nord magnétiquement ou géographiquement ?", topic: "Physique", answer: "Géographique" },
+  { question: "Le mercure peut-il devenir solide ?", topic: "Physique", answer: "Oui" },
+  { question: "Les pôles magnétiques opposés s'attirent-ils ou se repoussent-ils ?", topic: "Physique", answer: "S'attirent" },
+  { question: "Une balançoire oscille-t-elle plus vite si on la lance plus haut ?", topic: "Physique", answer: "Non" },
+  { question: "Les plongeurs respirent-ils de l'oxygène pur ?", topic: "Physique", answer: "Non" },
+  { question: "Le diamant est-il plus dur que l'acier ?", topic: "Physique", answer: "Oui" },
+  { question: "Où y a-t-il plus de couleurs possibles : sur un écran ou sur du papier ?", topic: "Physique", answer: "Écran" },
+  { question: "Qui a formulé la théorie de la relativité ?", topic: "Physique", answer: "Einstein" },
+  { question: "L'or peut-il être attiré par des aimants ?", topic: "Physique", answer: "Non" },
+  { question: "De quoi est principalement fait le verre ?", topic: "Physique", answer: "Sable" },
+  { question: "Quelle couleur a la flamme la plus chaude ?", topic: "Physique", answer: "Bleue" },
+  { question: "Existe-t-il des couleurs que l'homme ne peut pas voir ?", topic: "Physique", answer: "Oui" },
+  { question: "Les plantes peuvent-elles respirer de l'oxygène ?", topic: "Physique", answer: "Oui" },
+  { question: "Qu'est-ce qui est plus rapide : le son ou la lumière ?", topic: "Physique", answer: "Lumière" },
+  { question: "Quel métal conduit le mieux l'électricité ?", topic: "Physique", answer: "Argent" },
+  { question: "À quelle température Celsius et Fahrenheit ont-ils la même valeur ?", topic: "Physique", answer: "-40 degrés" },
+  { question: "Peut-on enlever la rouille avec du Coca ?", topic: "Physique", answer: "Oui" },
+  { question: "Les cornflakes contiennent-ils des métaux ?", topic: "Physique", answer: "Oui" },
+  { question: "La glace flotte-t-elle sur l'alcool ?", topic: "Physique", answer: "Non" },
+  { question: "Les aimants peuvent-ils perdre leur force avec la chaleur ?", topic: "Physique", answer: "Oui" },
+  { question: "L'eau devient-elle plus lourde ou plus légère en gelant ?", topic: "Physique", answer: "Plus légère" },
+  { question: "Les bougies fonctionnent-elles dans l'espace ?", topic: "Physique", answer: "Non" },
+  { question: "Une boussole fonctionne-t-elle dans l'espace ?", topic: "Physique", answer: "Non" },
+  { question: "Quelle forme ont les flammes dans l'espace ?", topic: "Physique", answer: "Ronde" },
+  { question: "L'eau bout-elle à une température plus basse en montagne ?", topic: "Physique", answer: "Oui" },
+  { question: "Qu'est-ce qui est plus lourd : l'air chaud ou l'air froid ?", topic: "Physique", answer: "Air froid" },
+  { question: "Quel gaz combustible était utilisé dans les zeppelins ?", topic: "Physique", answer: "Hydrogène" },
+  { question: "Quel gaz rend la voix cartoon ?", topic: "Physique", answer: "Hélium" },
+  { question: "Qu'est-ce qui est plus rapide : une balle de fusil ou le son ?", topic: "Physique", answer: "Balle de fusil" },
+  { question: "Combien de miroirs a un périscope simple ?", topic: "Physique", answer: "Deux" },
+  { question: "L'image est-elle à l'envers dans une caméra ?", topic: "Physique", answer: "Oui" },
+  { question: "Quelle femme a été la première à gagner un prix Nobel ?", topic: "Physique", answer: "Curie" },
+  { question: "Où un pingouin pèse-t-il moins : au pôle Sud ou à l'équateur ?", topic: "Physique", answer: "À l'équateur" }
+];
+
+export default PHYSIQUE_FR;

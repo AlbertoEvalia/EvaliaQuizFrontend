@@ -1,0 +1,42 @@
+// src/data/questionPool/fr/chimie.js
+// Questions de chimie en français
+
+export const CHIMIE_FR = [
+  { question: "Quel élément a le symbole Au ?", topic: "Chimie", answer: "Or" },
+  { question: "Quel élément a le symbole Fe ?", topic: "Chimie", answer: "Fer" },
+  { question: "Quelle est la formule chimique de l'eau ?", topic: "Chimie", answer: "H2O" },
+  { question: "Quel gaz les plantes absorbent-elles pour la photosynthèse ?", topic: "Chimie", answer: "Dioxyde de carbone" },
+  { question: "Quel élément a le symbole O ?", topic: "Chimie", answer: "Oxygène" },
+  { question: "Quel élément a le symbole Na ?", topic: "Chimie", answer: "Sodium" },
+  { question: "Quelle est la formule du sel de cuisine ?", topic: "Chimie", answer: "NaCl" },
+  { question: "Quel élément a le symbole Ag ?", topic: "Chimie", answer: "Argent" },
+  { question: "Comment appelle-t-on le tableau qui regroupe tous les éléments chimiques ?", topic: "Chimie", answer: "Tableau périodique" },
+  { question: "Qu'est-ce qui est plus grand, un atome ou une molécule ?", topic: "Chimie", answer: "Molécule" },
+  { question: "Quel élément a le symbole Cu ?", topic: "Chimie", answer: "Cuivre" },
+  { question: "Quel gaz représente environ 78 % de l'atmosphère terrestre ?", topic: "Chimie", answer: "Azote" },
+  { question: "Quel élément a le symbole Hg ?", topic: "Chimie", answer: "Mercure" },
+  { question: "À quelle température l'eau gèle-t-elle ?", topic: "Chimie", answer: "0 degré" },
+  { question: "Quel élément est le plus abondant dans l'univers ?", topic: "Chimie", answer: "Hydrogène" },
+  { question: "Quel élément a le symbole Li ?", topic: "Chimie", answer: "Lithium" },
+  { question: "Quel élément a le symbole K ?", topic: "Chimie", answer: "Potassium" },
+  { question: "Quel élément a le symbole Ca ?", topic: "Chimie", answer: "Calcium" },
+  { question: "Quel élément a le symbole F ?", topic: "Chimie", answer: "Fluor" },
+  { question: "Quels deux gaz sont produits par l'électrolyse de l'eau ?", topic: "Chimie", answer: "Hydrogène et oxygène" },
+  { question: "Quel élément a le symbole Cl ?", topic: "Chimie", answer: "Chlore" },
+  { question: "L'or est-il plus lourd que le plomb ?", topic: "Chimie", answer: "Oui" },
+  { question: "Quel métal est liquide à température ambiante ?", topic: "Chimie", answer: "Mercure" },
+  { question: "Pourquoi les oignons font-ils pleurer ?", topic: "Chimie", answer: "Acide sulfurique" },
+  { question: "Comment appelle-t-on le processus chimique de la rouille ?", topic: "Chimie", answer: "Oxydation" },
+  { question: "Quel gaz rend le cola pétillant ?", topic: "Chimie", answer: "Dioxyde de carbone" },
+  { question: "Quel est le principal composant des diamants ?", topic: "Chimie", answer: "Carbone" },
+  { question: "Les protéines sont constituées de protéines - de quoi est constitué le jaune d'œuf ?", topic: "Chimie", answer: "Graisse" },
+  { question: "Pourquoi une pomme devient-elle brune ?", topic: "Chimie", answer: "Oxydation" },
+  { question: "Quel élément donne sa couleur rouge au sang ?", topic: "Chimie", answer: "Fer" },
+  { question: "De quoi est fait le papier ?", topic: "Chimie", answer: "Bois" },
+  { question: "De quoi est principalement composé le rouge à lèvres ?", topic: "Chimie", answer: "Cire" },
+  { question: "De quoi est fait le chewing-gum ?", topic: "Chimie", answer: "Plastique" },
+  { question: "De quoi est constitué un crayon ?", topic: "Chimie", answer: "Graphite" },
+  { question: "Un crayon contient-il du plomb ?", topic: "Chimie", answer: "Non" },
+];
+
+export default CHIMIE_FR;
