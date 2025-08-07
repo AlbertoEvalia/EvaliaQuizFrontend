@@ -7,9 +7,11 @@ import { QUESTIONS_DE } from './de/index.js';
 // Neue englische modulare Struktur importieren (analog DE)
 import { QUESTIONS_EN } from './en/index.js';
 
+// Neue spanische modulare Struktur importieren (analog DE)
+import { QUESTIONS_ES } from './es/index.js';
+
 // Alte Struktur für andere Sprachen (vorerst beibehalten)
 import { QUESTIONS_FR } from './questions_fr.js';
-import { QUESTIONS_ES } from './questions_es.js';
 import { QUESTIONS_IT } from './questions_it.js';
 
 // Haupt-Pool mit allen Sprachen
