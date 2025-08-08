@@ -1,15 +1,15 @@
 import express from 'express';
 import pkg from 'nodemailer';
-const { createTransporter } = pkg;
 import dotenv from 'dotenv';
 
+const nodemailer = pkg;
 dotenv.config();
 
 const router = express.Router();
 const magicTokens = new Map();
 
 // Email transporter
-const transporter = createTransporter({
+const transporter = nodemailer.createTransporter({
   host: process.env.SMTP_HOST,
   port: 587,
   secure: false,
@@ -33,7 +33,6 @@ router.post('/magic-link', async (req, res) => {
     expiresAt: Date.now() + 15 * 60 * 1000
   });
 
-  // Send email
   const magicLink = `${process.env.FRONTEND_URL}/auth/verify?token=${token}&email=${email}`;
   
   try {
