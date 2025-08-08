@@ -1,5 +1,5 @@
 import express from 'express';
-import nodemailer from 'nodemailer';
+import { createTransporter } from 'nodemailer';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -8,7 +8,7 @@ const router = express.Router();
 const magicTokens = new Map();
 
 // Email transporter
-const transporter = nodemailer.createTransporter({
+const transporter = createTransporter({
   host: process.env.SMTP_HOST,
   port: 587,
   secure: false,
