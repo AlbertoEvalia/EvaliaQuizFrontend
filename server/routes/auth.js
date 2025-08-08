@@ -1,5 +1,5 @@
 import express from 'express';
-import nodemailer from 'nodemailer';
+import * as nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 
 dotenv.config();
