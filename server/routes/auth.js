@@ -1,5 +1,6 @@
 import express from 'express';
-import { createTransporter } from 'nodemailer';
+import pkg from 'nodemailer';
+const { createTransporter } = pkg;
 import dotenv from 'dotenv';
 
 dotenv.config();
