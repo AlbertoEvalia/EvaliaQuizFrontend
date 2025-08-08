@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { TRANSLATIONS } from './data/translations';
 import LanguageSelector from './components/LanguageSelector/LanguageSelector';
-import DifficultySelector from './components/DifficultySelector/DifficultySelector';
 import QuizQuestion from './components/QuizQuestion/QuizQuestion';
 import ResultsScreen from './components/ResultsScreen/ResultsScreen';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
@@ -18,7 +17,7 @@ import AGB from './components/LegalPages/AGB';
 import Kontakt from './components/LegalPages/Kontakt';
 import CookieBanner from './components/LegalPages/CookieBanner';
 
-// Backend API Services - Backend macht alles (OpenTDB + Translation + Pool)
+// Backend API Services
 import { generateQuestions, evaluateAnswer } from './services/apiService';
 
 export default function App() {
@@ -27,7 +26,7 @@ export default function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [scores, setScores] = useState([]);
   const [status, setStatus] = useState('language');
-  const [questionCount, setQuestionCount] = useState(20);
+  const [questionCount] = useState(20); // 🔥 FIX AUF 20 FRAGEN
   const [error, setError] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showAd, setShowAd] = useState(false);
@@ -37,71 +36,60 @@ export default function App() {
   const [showUpgradePrompt, setShowUpgradePrompt] = useState(false);
   const [userType, setUserType] = useState('free'); // 'free' | 'registered'
 
-  // 🧠 VERBESSERTE Question History mit intelligenter Rotation
+  // Question History Management
   const [askedQuestions, setAskedQuestions] = useState(new Set());
-  const [sessionRound, setSessionRound] = useState(1); // Track der aktuellen Runde
+  const [sessionRound, setSessionRound] = useState(1);
 
   const t = TRANSLATIONS[language] || TRANSLATIONS.en;
 
-  // Standard Ad-Strategie: 3 Ads bei 20 Fragen für Free User
+  // 🎯 FREEMIUM AD-STRATEGIE: Ads nur bei Free Users
   const getAdPositions = (totalQuestions) => {
     console.log(`🎯 Ad positions for userType: ${userType}, questions: ${totalQuestions}`);
-    if (totalQuestions === 20) {
-      return userType === 'free' ? [5, 10, 15] : [];
-    }
-    return [];
+    // Für 20 Fragen: Ads nach 5, 10, 15
+    return userType === 'free' ? [5, 10, 15] : [];
   };
 
-  // 🔍 VERBESSERTE Ähnliche Fragen erkennen
+  // Question filtering functions (keeping existing logic)
   const areQuestionsSimilar = (question1, question2) => {
-    // Normalisiere Fragen für Vergleich
     const normalize = (str) => str.toLowerCase()
-      .replace(/[¿?¡!.,;:„"'']/g, '') // Erweiterte Satzzeichen
-      .replace(/\s+/g, ' ') // Normalisiere Leerzeichen
-      .replace(/(normalerweise|typically|usually|generally)/g, '') // Entferne Modifikatoren
+      .replace(/[¿?¡!.,;:„"'']/g, '')
+      .replace(/\s+/g, ' ')
+      .replace(/(normalerweise|typically|usually|generally)/g, '')
       .trim();
 
     const q1 = normalize(question1);
     const q2 = normalize(question2);
 
-    // Exakte Übereinstimmung
     if (q1 === q2) return true;
 
-    // Ähnlichkeit durch gemeinsame Schlüsselwörter
     const getKeywords = (str) => str.split(' ').filter(word => word.length > 3);
     const keywords1 = getKeywords(q1);
     const keywords2 = getKeywords(q2);
     
-    // Wenn >= 80% der Keywords übereinstimmen (verschärft von 70%)
     const commonKeywords = keywords1.filter(word => keywords2.includes(word));
     const similarity = commonKeywords.length / Math.max(keywords1.length, keywords2.length);
     
     return similarity >= 0.8;
   };
 
-  // 🔍 VERBESSERTE Fragen-Fingerprint mit schärferer Erkennung
   const getQuestionFingerprint = (question) => {
     let normalized = question.toLowerCase()
       .replace(/[¿?¡!.,;:„"'']/g, '')
       .replace(/\s+/g, ' ')
-      .replace(/(normalerweise|typically|usually|generally)/g, '') // Entferne Modifikatoren
+      .replace(/(normalerweise|typically|usually|generally)/g, '')
       .trim();
     
-    // 🎯 SCHÄRFERE Erkennung ähnlicher Fragen
-    
-    // Spinnen-Fragen zusammenfassen
+    // Specific question patterns
     if ((normalized.includes('beine') || normalized.includes('legs')) && 
         (normalized.includes('spinne') || normalized.includes('spider'))) {
       return 'SPIDER_LEGS_QUESTION';
     }
     
-    // Insekten-Fragen zusammenfassen
     if ((normalized.includes('beine') || normalized.includes('legs')) && 
         (normalized.includes('insekt') || normalized.includes('insect'))) {
       return 'INSECT_LEGS_QUESTION';
     }
     
-    // Chemie Symbol-Fragen zusammenfassen nach Element
     if (normalized.includes('symbol') || normalized.includes('elemento')) {
       const elementMatch = normalized.match(/symbol\s+([a-z]+)/);
       if (elementMatch) {
@@ -109,7 +97,6 @@ export default function App() {
       }
     }
     
-    // Hauptstadt-Fragen zusammenfassen nach Land
     if (normalized.includes('hauptstadt') || normalized.includes('capital')) {
       const countryMatch = normalized.match(/(deutschland|frankreich|spanien|italien|germany|france|spain|italy|usa|china|japan)/);
       if (countryMatch) {
@@ -117,35 +104,6 @@ export default function App() {
       }
     }
     
-    // Planeten-Fragen zusammenfassen
-    if (normalized.includes('planet')) {
-      if (normalized.includes('größte') || normalized.includes('largest')) {
-        return 'LARGEST_PLANET_QUESTION';
-      }
-      if (normalized.includes('nächsten') || normalized.includes('closest')) {
-        return 'CLOSEST_PLANET_QUESTION';
-      }
-      if (normalized.includes('rote') || normalized.includes('red')) {
-        return 'RED_PLANET_QUESTION';
-      }
-    }
-    
-    // Kunst-Fragen zusammenfassen nach Werk
-    if (normalized.includes('malte') || normalized.includes('painted')) {
-      if (normalized.includes('mona lisa')) return 'ART_MONA_LISA';
-      if (normalized.includes('sternennacht') || normalized.includes('starry night')) return 'ART_STARRY_NIGHT';
-      if (normalized.includes('guernica')) return 'ART_GUERNICA';
-      if (normalized.includes('sixtinisch') || normalized.includes('sistine')) return 'ART_SISTINE_CHAPEL';
-    }
-    
-    // Musik-Fragen zusammenfassen nach Werk
-    if (normalized.includes('komponierte') || normalized.includes('composed')) {
-      if (normalized.includes('9') || normalized.includes('neunte')) return 'MUSIC_9TH_SYMPHONY';
-      if (normalized.includes('nachtmusik')) return 'MUSIC_NACHTMUSIK';
-      if (normalized.includes('jahreszeiten') || normalized.includes('seasons')) return 'MUSIC_FOUR_SEASONS';
-    }
-    
-    // Standard: Erste 4 wichtige Wörter (erweitert von 3)
     const keywords = normalized.split(' ')
       .filter(word => word.length > 3)
       .slice(0, 4)
@@ -155,26 +113,22 @@ export default function App() {
     return keywords || normalized.substring(0, 25);
   };
 
-  // 🧠 INTELLIGENTE Session-Rotation statt kompletter Reset
   const handleIntelligentSessionManagement = () => {
     const currentHistory = Array.from(askedQuestions);
     console.log(`🧠 Current session history: ${currentHistory.length} questions, Round: ${sessionRound}`);
     
-    // Nach jeder 3. Runde: Lasse nur die neuesten 30 Fragen
     if (sessionRound % 3 === 0 && currentHistory.length > 30) {
       const recentQuestions = new Set(currentHistory.slice(-30));
       setAskedQuestions(recentQuestions);
       console.log(`🔄 Rotated history: ${currentHistory.length} → ${recentQuestions.size} questions kept`);
     }
     
-    // Nach jeder 5. Runde: Kompletter Reset für maximale Variation
     if (sessionRound % 5 === 0) {
       setAskedQuestions(new Set());
       console.log(`🔥 Complete history reset after round ${sessionRound}`);
     }
   };
 
-  // 🧹 VERBESSERTE Duplikate filtern mit schärferer Erkennung
   const filterDuplicateQuestions = (newQuestions) => {
     const filtered = [];
     const currentFingerprints = new Set(askedQuestions);
@@ -182,9 +136,7 @@ export default function App() {
     for (const question of newQuestions) {
       const fingerprint = getQuestionFingerprint(question.question);
       
-      // Prüfe gegen bereits gestellte Fragen
       if (!currentFingerprints.has(fingerprint)) {
-        // Zusätzlich: Prüfe gegen bereits gefilterte Fragen in dieser Session
         const isDuplicateInBatch = filtered.some(existing => 
           areQuestionsSimilar(question.question, existing.question)
         );
@@ -192,11 +144,7 @@ export default function App() {
         if (!isDuplicateInBatch) {
           filtered.push(question);
           currentFingerprints.add(fingerprint);
-        } else {
-          console.log(`🔄 Batch duplicate filtered: "${question.question.substring(0, 40)}..."`);
         }
-      } else {
-        console.log(`🧠 History duplicate filtered: "${question.question.substring(0, 40)}..."`);
       }
     }
     
@@ -204,7 +152,7 @@ export default function App() {
     return filtered;
   };
 
-  // Score berechnen für UpgradePrompt
+  // Score calculation for UpgradePrompt
   const calculateCorrectAnswers = () => {
     if (!scores || scores.length === 0) return 0;
     
@@ -214,7 +162,7 @@ export default function App() {
       if (typeof score === 'object' && score !== null) {
         const numericScore = score.score;
         if (typeof numericScore === 'number') {
-          isCorrect = numericScore >= 70; // 70%+ = richtig
+          isCorrect = numericScore >= 70;
         } else if (numericScore === 1 || numericScore === '1') {
           isCorrect = true;
         }
@@ -230,7 +178,6 @@ export default function App() {
     }, 0);
   };
 
-  // Sprach-Mapping für Backend
   const getBackendLanguage = (langCode) => {
     const languageMap = {
       'en': 'English',
@@ -242,23 +189,20 @@ export default function App() {
     return languageMap[langCode] || 'English';
   };
 
-  // Navigation zu Legal Pages
+  // Navigation handlers
   const handleNavigateToLegalPage = (page) => {
     setCurrentPage(page);
   };
 
-  // Zurück zum Quiz
   const handleBackToQuiz = () => {
     setCurrentPage('quiz');
   };
 
-  // UpgradePrompt Handlers
+  // UpgradePrompt handlers
   const handleRegister = (email) => {
     console.log('User registered with email:', email);
     setUserType('registered');
     setShowUpgradePrompt(false);
-    
-    // TODO: Hier später lokale Speicherung hinzufügen
     alert(`Welcome ${email}! You're now registered! 🎉`);
   };
 
@@ -266,12 +210,12 @@ export default function App() {
     setShowUpgradePrompt(false);
   };
 
-  // Debug-Logging (erweitert)
+  // Debug logging
   useEffect(() => {
     console.log('App State Update:', {
       status,
       language,
-      questionCount,
+      questionCount: 20, // Always 20
       currentIndex,
       questionsLength: questions.length,
       scoresLength: scores.length,
@@ -284,22 +228,21 @@ export default function App() {
       askedQuestionsCount: askedQuestions.size,
       sessionRound: sessionRound
     });
-  }, [status, language, questionCount, currentIndex, questions.length, scores.length, error, isSubmitting, showAd, currentPage, userType, showUpgradePrompt, askedQuestions, sessionRound]);
+  }, [status, language, currentIndex, questions.length, scores.length, error, isSubmitting, showAd, currentPage, userType, showUpgradePrompt, askedQuestions, sessionRound]);
 
-  // 🔄 VERBESSERTE loadQuestions mit intelligenter Session-Verwaltung
+  // 🚀 VEREINFACHTE QUESTION LOADING
   const loadQuestions = async () => {
     setStatus('loading');
     setError(null);
     setIsSubmitting(false);
     
     try {
-      console.log(`🚀 Loading ${questionCount} questions for ${language} from backend (Round ${sessionRound})`);
+      console.log(`🚀 Loading 20 questions for ${language} from backend (Round ${sessionRound})`);
       
-      // Intelligente Session-Verwaltung vor dem Laden neuer Fragen
       handleIntelligentSessionManagement();
       
-      // Backend macht OpenTDB + Translation + Pool intelligent
-      const generated = await generateQuestions(language, questionCount + 8); // Mehr Buffer für bessere Filterung
+      // Backend generates questions - always 20 + buffer
+      const generated = await generateQuestions(language, 28); // 20 + 8 buffer
       
       if (!generated?.length) {
         throw new Error('No questions received from backend');
@@ -307,19 +250,16 @@ export default function App() {
       
       console.log(`📝 Generated ${generated.length} questions from ${generated[0]?.source || 'backend'} source`);
       
-      // Filtere Duplikate mit verbesserter Logik
       const filtered = filterDuplicateQuestions(generated);
-      const finalQuestions = filtered.slice(0, questionCount);
+      const finalQuestions = filtered.slice(0, 20); // Always 20
       
-      // Update Question History mit neuen Fingerprints
       const newFingerprints = new Set(askedQuestions);
       finalQuestions.forEach(q => {
         newFingerprints.add(getQuestionFingerprint(q.question));
       });
       setAskedQuestions(newFingerprints);
       
-      console.log(`✅ Questions loaded: ${finalQuestions.length}/${questionCount}, Total History: ${newFingerprints.size}, Round: ${sessionRound}`);
-      console.log('📊 Question sources:', [...new Set(finalQuestions.map(q => q.source))]);
+      console.log(`✅ Questions loaded: ${finalQuestions.length}/20, Total History: ${newFingerprints.size}, Round: ${sessionRound}`);
       
       setQuestions(finalQuestions);
       setCurrentIndex(0);
@@ -354,22 +294,19 @@ export default function App() {
         totalQuestions: questions.length
       });
       
-      // Backend macht Antwort-Bewertung
       const evaluation = await evaluateAnswer(
         currentQuestion.question,
         answer,
         backendLanguage
       );
       
-      console.log('Evaluation result:', evaluation);
-      
       setScores(prev => [...prev, evaluation]);
 
       const nextIndex = currentIndex + 1;
       
-      // Ads nur für Free User
+      // 🎯 ADS NUR FÜR FREE USER
       if (userType === 'free') {
-        const adPositions = getAdPositions(questions.length);
+        const adPositions = getAdPositions(20); // Always 20
         
         if (adPositions.includes(nextIndex) && nextIndex < questions.length) {
           console.log(`Showing ad after question ${currentIndex + 1} (position ${nextIndex})`);
@@ -382,14 +319,13 @@ export default function App() {
         console.log('Quiz completed, showing results');
         setStatus('results');
         
-        // UpgradePrompt nur für Free User zeigen
+        // 🎯 UPGRADE-PROMPT NUR FÜR FREE USER
         if (userType === 'free') {
           setTimeout(() => {
             setShowUpgradePrompt(true);
-          }, 2000); // 2 Sekunden nach Results anzeigen
+          }, 2000);
         }
       } else {
-        console.log(`Moving to question ${nextIndex + 1} of ${questions.length}`);
         setCurrentIndex(nextIndex);
         setStatus('quiz');
       }
@@ -410,7 +346,6 @@ export default function App() {
     if (nextIndex >= questions.length) {
       setStatus('results');
       
-      // UpgradePrompt nach Ad + Results nur für Free User
       if (userType === 'free') {
         setTimeout(() => {
           setShowUpgradePrompt(true);
@@ -422,7 +357,6 @@ export default function App() {
     }
   };
 
-  // 🔄 INTELLIGENTER Restart mit Session-Round-Management
   const handleRestart = () => {
     setQuestions([]);
     setScores([]);
@@ -434,27 +368,27 @@ export default function App() {
     setCurrentPage('quiz');
     setShowUpgradePrompt(false);
     
-    // Erhöhe Session-Round für intelligente Rotation
     setSessionRound(prev => prev + 1);
     
     console.log(`🔄 Restarting quiz - Round ${sessionRound + 1}, History size: ${askedQuestions.size}`);
   };
 
-  // 🔥 Kompletter Reset für Debug/Tests (optional)
   const handleFullReset = () => {
-    setAskedQuestions(new Set()); // Kompletter History-Reset
-    setSessionRound(1); // Reset auf Round 1
+    setAskedQuestions(new Set());
+    setSessionRound(1);
     handleRestart();
     console.log('🔥 Full reset - clearing all history and resetting to round 1');
   };
 
+  // 🚀 VEREINFACHTER START: Direkt ins Quiz
   const handleStart = () => {
-    setStatus('difficulty');
+    console.log('🚀 Starting quiz directly with 20 questions');
+    loadQuestions(); // Direkt laden, kein difficulty screen
   };
 
   const currentQuestion = questions[currentIndex];
 
-  // Legal Pages anzeigen
+  // Legal Pages (unchanged)
   if (currentPage === 'impressum') {
     return <Impressum onBack={handleBackToQuiz} translations={t} />;
   }
@@ -468,7 +402,7 @@ export default function App() {
     return <Kontakt onBack={handleBackToQuiz} translations={t} />;
   }
 
-  // Ad-Screen anzeigen (nur für Free User)
+  // Ad Screen (unchanged)
   if (showAd && userType === 'free') {
     return (
       <AdComponent
@@ -476,20 +410,18 @@ export default function App() {
         onShowUpgrade={() => setShowUpgradePrompt(true)}
         translations={t}
         questionNumber={currentIndex + 1}
-        totalQuestions={questionCount}
+        totalQuestions={20} // Always 20
         language={language}
         userType={userType}
       />
     );
   }
 
-  // Quiz-Screens mit Legal Link
   const renderQuizWithLegal = (content) => (
     <div className="app-container">
       {content}
       <CookieBanner />
       
-      {/* UpgradePrompt Overlay */}
       {showUpgradePrompt && (
         <UpgradePrompt
           isVisible={showUpgradePrompt}
@@ -497,7 +429,7 @@ export default function App() {
           onClose={handleCloseUpgradePrompt}
           translations={t}
           userScore={calculateCorrectAnswers()}
-          totalQuestions={questionCount}
+          totalQuestions={20} // Always 20
           userType={userType}
         />
       )}
@@ -511,14 +443,13 @@ export default function App() {
           <LanguageSelector
             selectedLanguage={language}
             onLanguageSelect={(lang) => setLanguage(lang)}
-            onStart={handleStart}
+            onStart={handleStart} // 🚀 Direkt ins Quiz
             translations={t}
             showLegalLink={true}
             onNavigateToLegal={handleNavigateToLegalPage}
           />
           <CookieBanner />
           
-          {/* UpgradePrompt */}
           {showUpgradePrompt && (
             <UpgradePrompt
               isVisible={showUpgradePrompt}
@@ -526,29 +457,14 @@ export default function App() {
               onClose={handleCloseUpgradePrompt}
               translations={t}
               userScore={calculateCorrectAnswers()}
-              totalQuestions={questionCount}
+              totalQuestions={20}
               userType={userType}
             />
           )}
         </div>
       );
 
-    case 'difficulty':
-      return (
-        <div className="app-container">
-          <DifficultySelector
-            onSelect={(count) => {
-              setQuestionCount(count);
-              loadQuestions();
-            }}
-            translations={t}
-            showLegalLink={true}
-            onNavigateToLegal={handleNavigateToLegalPage}
-            userType={userType}
-          />
-          <CookieBanner />
-        </div>
-      );
+    // 🔥 DIFFICULTY STATUS ENTFERNT - Direkt ins Quiz
 
     case 'quiz':
       if (!currentQuestion) {
@@ -564,7 +480,7 @@ export default function App() {
         <>
           <Header
             currentIndex={currentIndex}
-            questionCount={questionCount}
+            questionCount={20} // Always 20
             translations={t}
             language={language}
           />
@@ -572,7 +488,7 @@ export default function App() {
             question={currentQuestion.question}
             topic={currentQuestion.topic}
             currentIndex={currentIndex}
-            questionCount={questionCount}
+            questionCount={20} // Always 20
             onSubmit={handleAnswerSubmit}
             translations={t}
             isSubmitting={isSubmitting}
@@ -612,7 +528,7 @@ export default function App() {
         <>
           <LoadingScreen isLoading={true} translations={t} />
           <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '14px', color: '#FFF' }}>
-            Round {sessionRound}
+            Round {sessionRound} - 20 Questions
           </div>
         </>
       );

@@ -54,7 +54,7 @@ export const TRANSLATIONS = {
     connectionError: "Connection error – please try again later",
     
     // Introduction Text
-    introText: "Test your general knowledge in a fun way! Answer at least 20 questions from different topics to build your personal knowledge map. The more questions you answer, the more accurate your result will be. Remember: it's just a game! There may be some mistakes, the answers aren't explained, and the results don't define who you are. A low score isn't permanent — it can always improve! We don't provide the correct answers or confirm if yours are right or wrong. It's simply a fun way to explore what you know, in your language, and see how you compare to the average person.",
+    introText: "Test your general knowledge in a fun way! Answer 20 questions from different topics to build your personal knowledge map. The more questions you answer, the more accurate your result will be. Remember: it's just a game! There may be some mistakes, the answers aren't explained, and the results don't define who you are. A low score isn't permanent — it can always improve! We don't provide the correct answers or confirm if yours are right or wrong. It's simply a fun way to explore what you know, in your language, and see how you compare to the average person.",
     
     // ===== FREEMIUM FEATURES =====
     // Registration & Premium
@@ -193,7 +193,7 @@ export const TRANSLATIONS = {
     connectionError: "Verbindungsfehler – bitte versuchen Sie es später erneut",
     
     // Introduction Text
-    introText: "Teste dein Allgemeinwissen auf spielerische Weise! Beantworte mindestens 20 Fragen aus verschiedenen Bereichen, um deine Wissenskarte zu erstellen. Je mehr Fragen du beantwortest, desto genauer wird das Ergebnis. Denk daran: Das ist nur ein Spiel! Es kann Fehler enthalten, die Antworten werden nicht erklärt und das Ergebnis sagt nichts über dich als Person aus. Ein niedriges Ergebnis ist nicht endgültig – es kann sich jederzeit verbessern! Wir geben keine richtigen Antworten an und bestätigen nicht, ob deine Antwort korrekt war. Es ist einfach eine unterhaltsame Möglichkeit, dein Wissen in deiner Sprache mit dem Durchschnitt der Bevölkerung zu vergleichen.",
+    introText: "Teste dein Allgemeinwissen auf spielerische Weise! Beantworte 20 Fragen aus verschiedenen Bereichen, um deine Wissenskarte zu erstellen. Je mehr Fragen du beantwortest, desto genauer wird das Ergebnis. Denk daran: Das ist nur ein Spiel! Es kann Fehler enthalten, die Antworten werden nicht erklärt und das Ergebnis sagt nichts über dich als Person aus. Ein niedriges Ergebnis ist nicht endgültig – es kann sich jederzeit verbessern! Wir geben keine richtigen Antworten an und bestätigen nicht, ob deine Antwort korrekt war. Es ist einfach eine unterhaltsame Möglichkeit, dein Wissen in deiner Sprache mit dem Durchschnitt der Bevölkerung zu vergleichen.",
     
     // ===== FREEMIUM FEATURES =====
     // Registration & Premium
@@ -332,7 +332,7 @@ export const TRANSLATIONS = {
     connectionError: "Erreur de connexion – veuillez réessayer plus tard",
     
     // Introduction Text
-    introText: "Teste ta culture générale de façon ludique ! Réponds à au moins 20 questions sur des sujets variés pour créer ta carte de connaissances. Plus tu réponds à de questions, plus le résultat sera précis. Souviens-toi : ce n'est qu'un jeu ! Il peut contenir des erreurs, les réponses ne sont pas expliquées, et les résultats ne reflètent pas qui tu es. Un score bas n'est que temporaire — il peut s'améliorer ! Nous ne fournissons pas les bonnes réponses, ni ne confirmons si tes réponses sont justes ou non. C'est juste une manière amusante d'explorer ce que tu sais, dans ta langue, et comparé à la moyenne de la population.",
+    introText: "Teste ta culture générale de façon ludique ! Réponds à 20 questions sur des sujets variés pour créer ta carte de connaissances. Plus tu réponds à de questions, plus le résultat sera précis. Souviens-toi : ce n'est qu'un jeu ! Il peut contenir des erreurs, les réponses ne sont pas expliquées, et les résultats ne reflètent pas qui tu es. Un score bas n'est que temporaire — il peut s'améliorer ! Nous ne fournissons pas les bonnes réponses, ni ne confirmons si tes réponses sont justes ou non. C'est juste une manière amusante d'explorer ce que tu sais, dans ta langue, et comparé à la moyenne de la population.",
     
     // ===== FREEMIUM FEATURES =====
     // Registration & Premium
@@ -471,7 +471,7 @@ export const TRANSLATIONS = {
     connectionError: "Error de conexión – por favor, intenta más tarde",
     
     // Introduction Text
-    introText: "¡Pon a prueba tu conocimiento general de forma divertida! Responde al menos 20 preguntas de diferentes temas y crea tu propio mapa de conocimientos. Cuantas más preguntas contestes, más ajustado será el resultado. Recuerda que esto es un juego: puede contener errores, no explica cada respuesta y los resultados no definen quién eres. Si obtienes un puntaje bajo, no te preocupes: ¡puede mejorar con el tiempo! No damos las respuestas correctas ni confirmamos cuáles lo son. Solo queremos ofrecerte una forma entretenida de explorar lo que sabes, en tu idioma y comparado con el promedio de la población.",
+    introText: "¡Pon a prueba tu conocimiento general de forma divertida! Responde 20 preguntas de diferentes temas y crea tu propio mapa de conocimientos. Cuantas más preguntas contestes, más ajustado será el resultado. Recuerda que esto es un juego: puede contener errores, no explica cada respuesta y los resultados no definen quién eres. Si obtienes un puntaje bajo, no te preocupes: ¡puede mejorar con el tiempo! No damos las respuestas correctas ni confirmamos cuáles lo son. Solo queremos ofrecerte una forma entretenida de explorar lo que sabes, en tu idioma y comparado con el promedio de la población.",
     
     // ===== FREEMIUM FEATURES =====
     // Registration & Premium
@@ -610,7 +610,7 @@ export const TRANSLATIONS = {
     connectionError: "Errore di connessione – riprova più tardi",
     
     // Introduction Text
-    introText: "Metti alla prova la tua cultura generale in modo divertente! Rispondi ad almeno 20 domande su temi diversi per creare la tua mappa delle conoscenze. Più domande affronti, più preciso sarà il risultato. Ricorda: è solo un gioco! Potrebbero esserci degli errori, le risposte non vengono spiegate e i risultati non definiscono chi sei. Un punteggio basso non è definitivo: può sempre migliorare! Non forniamo le risposte corrette né confermiamo se hai risposto giusto o sbagliato. È solo un modo divertente per esplorare quello che sai, nella tua lingua e confrontato con la media della popolazione.",
+    introText: "Metti alla prova la tua cultura generale in modo divertente! Rispondi a 20 domande su temi diversi per creare la tua mappa delle conoscenze. Più domande affronti, più preciso sarà il risultato. Ricorda: è solo un gioco! Potrebbero esserci degli errori, le risposte non vengono spiegate e i risultati non definiscono chi sei. Un punteggio basso non è definitivo: può sempre migliorare! Non forniamo le risposte corrette né confermiamo se hai risposto giusto o sbagliato. È solo un modo divertente per esplorare quello che sai, nella tua lingua e confrontato con la media della popolazione.",
     
     // ===== FREEMIUM FEATURES =====
     // Registration & Premium
