@@ -447,6 +447,7 @@ export default function App() {
             translations={t}
             showLegalLink={true}
             onNavigateToLegal={handleNavigateToLegalPage}
+            onTestUpgrade={() => setShowUpgradePrompt(true)}
           />
           <CookieBanner />
           

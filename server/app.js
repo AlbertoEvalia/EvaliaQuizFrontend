@@ -1,7 +1,8 @@
 // server/app.js
 import express from 'express';
 import cors from 'cors';
-import apiRouter from './routes/api.js';  // ← KORRIGIERT!
+import apiRouter from './routes/api.js';
+import authRouter from './routes/auth.js'; // ← NEU
 
 const app = express();
 
@@ -11,12 +12,13 @@ app.use(express.json());
 
 // Routes
 app.use('/api', apiRouter);
+app.use('/api/auth', authRouter); // ← NEU
 
 // Health check
 app.get('/', (req, res) => {
-  res.json({ 
-    message: 'EVALIA Server läuft!', 
-    timestamp: new Date().toISOString() 
+  res.json({
+    message: 'EVALIA Server läuft!',
+    timestamp: new Date().toISOString()
   });
 });
 

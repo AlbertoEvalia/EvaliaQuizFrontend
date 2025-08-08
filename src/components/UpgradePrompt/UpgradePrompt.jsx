@@ -20,14 +20,27 @@ const UpgradePrompt = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email.trim()) return;
-
+    
     setIsSubmitting(true);
     
-    // Simulate API call delay
-    setTimeout(() => {
-      onRegister(email.trim());
-      setIsSubmitting(false);
-    }, 1000);
+    try {
+      const response = await fetch('/api/auth/magic-link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim() })
+      });
+      
+      if (response.ok) {
+        console.log('Magic link sent!');
+        onRegister(email.trim()); // Existing function
+      } else {
+        console.error('Failed to send magic link');
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+    }
+    
+    setIsSubmitting(false);
   };
 
   const getScoreMessage = () => {

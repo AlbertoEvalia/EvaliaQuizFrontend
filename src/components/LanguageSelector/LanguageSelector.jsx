@@ -11,7 +11,8 @@ const LanguageSelector = ({
   onStart,
   translations,
   showLegalLink = false,
-  onNavigateToLegal
+  onNavigateToLegal,
+  onTestUpgrade
 }) => {
   const LANGUAGES = [
     { value: 'en', label: 'English' },
@@ -48,7 +49,7 @@ const LanguageSelector = ({
             {translations.subtitle || 'Test your knowledge'}
           </p>
         </header>
-        
+
         <div className="form-container">
           <select
             className="language-select"
@@ -66,7 +67,19 @@ const LanguageSelector = ({
               </option>
             ))}
           </select>
-          
+
+          <button
+            onClick={onTestUpgrade}
+            style={{
+              margin: '10px',
+              padding: '10px',
+              background: 'red',
+              color: 'white'
+            }}
+          >
+            TEST REGISTRATION
+          </button>
+
           <button
             className={`start-button ${!selectedLanguage ? 'disabled' : ''}`}
             onClick={handleStartClick}
@@ -76,7 +89,6 @@ const LanguageSelector = ({
             {translations.startButton || 'Start Quiz'}
           </button>
 
-          {/* Legal Link INNERHALB form-container */}
           {showLegalLink && onNavigateToLegal && (
             <LegalLink onNavigate={onNavigateToLegal} translations={translations} />
           )}
@@ -97,7 +109,8 @@ LanguageSelector.propTypes = {
     startButton: PropTypes.string
   }).isRequired,
   showLegalLink: PropTypes.bool,
-  onNavigateToLegal: PropTypes.func
+  onNavigateToLegal: PropTypes.func,
+  onTestUpgrade: PropTypes.func
 };
 
 export default LanguageSelector;
