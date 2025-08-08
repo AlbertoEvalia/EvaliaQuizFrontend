@@ -24,7 +24,7 @@ const UpgradePrompt = ({
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('/api/auth/magic-link', {
+      const response = await fetch('https://evaliaquizbackend.onrender.com/api/auth/magic-link',  {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email.trim() })
