@@ -23,7 +23,7 @@ export const LEGAL_TRANSLATIONS = {
     copyrightHeading: "Copyright",
     
     tmgText: "EVAL(IA) - Alberto Sejas Knapp\nEinsteinstrasse 59\nDE71229, Leonberg\nGermany",
-    contactText: "Phone: +49 170 967 0950\nEmail: [YOUR EMAIL]",
+    contactText: "Phone: +49 170 967 0950\nEmail: kontakt@evaliaquiz.com",
     taxIdText: "VAT identification number according to § 27 a VAT law:\nTax No. 97 099 20751",
     responsibleText: "Alberto Sejas Knapp\nEinsteinstrasse 59\nDE71229, Leonberg",
     contentLiabilityText: "As a service provider, we are responsible for our own content on these pages according to general laws pursuant to § 7 para. 1 TMG. However, according to §§ 8 to 10 TMG, we are not obligated as a service provider to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity.",
@@ -96,7 +96,7 @@ export const LEGAL_TRANSLATIONS = {
     copyrightHeading: "Urheberrecht",
     
     tmgText: "EVAL(IA) - Alberto Sejas Knapp\nEinsteinstrasse 59\nDE71229, Leonberg\nDeutschland",
-    contactText: "Telefon: +49 170 967 0950\nE-Mail: [IHRE E-MAIL]",
+    contactText: "Telefon: +49 170 967 0950\nE-Mail: kontakt@evaliaquiz.com",
     taxIdText: "Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:\nSt-Nr 97 099 20751",
     responsibleText: "Alberto Sejas Knapp\nEinsteinstrasse 59\nDE71229, Leonberg",
     contentLiabilityText: "Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht unter der Verpflichtung, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.",
@@ -169,7 +169,7 @@ export const LEGAL_TRANSLATIONS = {
     copyrightHeading: "Droit d'auteur",
     
     tmgText: "EVAL(IA) - Alberto Sejas Knapp\nEinsteinstrasse 59\nDE71229, Leonberg\nAllemagne",
-    contactText: "Téléphone: +49 170 967 0950\nEmail: [VOTRE EMAIL]",
+    contactText: "Téléphone: +49 170 967 0950\nEmail: kontakt@evaliaquiz.com",
     taxIdText: "Numéro d'identification TVA selon § 27 a loi TVA:\nN° fiscal 97 099 20751",
     responsibleText: "Alberto Sejas Knapp\nEinsteinstrasse 59\nDE71229, Leonberg",
     contentLiabilityText: "En tant que prestataire de services, nous sommes responsables de notre propre contenu sur ces pages selon les lois générales conformément au § 7 para. 1 TMG.",
@@ -242,7 +242,7 @@ export const LEGAL_TRANSLATIONS = {
     copyrightHeading: "Derechos de autor",
     
     tmgText: "EVAL(IA) - Alberto Sejas Knapp\nEinsteinstrasse 59\nDE71229, Leonberg\nAlemania",
-    contactText: "Teléfono: +49 170 967 0950\nEmail: [TU EMAIL]",
+    contactText: "Teléfono: +49 170 967 0950\nEmail: kontakt@evaliaquiz.com",
     taxIdText: "Número de identificación de IVA según § 27 a ley de IVA:\nNº fiscal 97 099 20751",
     responsibleText: "Alberto Sejas Knapp\nEinsteinstrasse 59\nDE71229, Leonberg",
     contentLiabilityText: "Como proveedor de servicios, somos responsables de nuestro propio contenido en estas páginas.",
@@ -315,7 +315,7 @@ export const LEGAL_TRANSLATIONS = {
     copyrightHeading: "Copyright",
     
     tmgText: "EVAL(IA) - Alberto Sejas Knapp\nEinsteinstrasse 59\nDE71229, Leonberg\nGermania",
-    contactText: "Telefono: +49 170 967 0950\nEmail: [LA TUA EMAIL]",
+    contactText: "Telefono: +49 170 967 0950\nEmail: kontakt@evaliaquiz.com",
     taxIdText: "Numero di identificazione IVA secondo § 27 a legge IVA:\nN. fiscale 97 099 20751",
     responsibleText: "Alberto Sejas Knapp\nEinsteinstrasse 59\nDE71229, Leonberg",
     contentLiabilityText: "Come fornitore di servizi, siamo responsabili del nostro contenuto su queste pagine.",
