@@ -210,12 +210,41 @@ export default function App() {
     setShowUpgradePrompt(false);
   };
 
-  // Debug logging
   useEffect(() => {
+    // NEW: Check for auth parameters on load
+    const urlParams = new URLSearchParams(window.location.search);
+    const authToken = urlParams.get('auth');
+    const userEmail = urlParams.get('email');
+    const error = urlParams.get('error');
+  
+    if (authToken && userEmail) {
+      // Successful login
+      setUserType('registered');
+      console.log(`✅ User logged in: ${userEmail}`);
+      
+      // Clean URL
+      window.history.replaceState({}, document.title, window.location.pathname);
+      
+      // Show success message
+      alert(`Welcome back! You're now logged in as ${userEmail} 🎉`);
+    }
+    
+    if (error) {
+      console.error('Auth error:', error);
+      let message = 'Login failed';
+      if (error === 'expired') message = 'Magic link expired';
+      if (error === 'invalid') message = 'Invalid magic link';
+      alert(message);
+      
+      // Clean URL
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  
+    // Original debug logging
     console.log('App State Update:', {
       status,
       language,
-      questionCount: 20, // Always 20
+      questionCount: 20,
       currentIndex,
       questionsLength: questions.length,
       scoresLength: scores.length,
@@ -229,7 +258,7 @@ export default function App() {
       sessionRound: sessionRound
     });
   }, [status, language, currentIndex, questions.length, scores.length, error, isSubmitting, showAd, currentPage, userType, showUpgradePrompt, askedQuestions, sessionRound]);
-
+  
   // 🚀 VEREINFACHTE QUESTION LOADING
   const loadQuestions = async () => {
     setStatus('loading');

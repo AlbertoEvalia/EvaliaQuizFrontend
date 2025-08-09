@@ -58,4 +58,34 @@ router.post('/magic-link', async (req, res) => {
   }
 });
 
+router.get('/verify', async (req, res) => {
+  const { token, email } = req.query;
+
+  if (!token || !email) {
+    return res.status(400).json({ error: 'Token and email required' });
+  }
+
+  const tokenData = magicTokens.get(token);
+
+  if (!tokenData) {
+    return res.redirect(`${process.env.FRONTEND_URL}?error=invalid`);
+  }
+
+  if (Date.now() > tokenData.expiresAt) {
+    magicTokens.delete(token);
+    return res.redirect(`${process.env.FRONTEND_URL}?error=expired`);
+  }
+
+  if (tokenData.email !== email.toLowerCase()) {
+    return res.redirect(`${process.env.FRONTEND_URL}?error=mismatch`);
+  }
+
+  // Mark token as used
+  magicTokens.delete(token);
+
+  // Redirect with success token
+  const sessionToken = Math.random().toString(36).substring(7);
+  res.redirect(`${process.env.FRONTEND_URL}?auth=${sessionToken}&email=${email}`);
+});
+
 export default router;
