@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './HamburgerMenu.css';
 
-const HamburgerMenu = ({ onNavigate, translations }) => {
+const HamburgerMenu = ({ onNavigate, translations, userType, onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -14,10 +14,15 @@ const HamburgerMenu = ({ onNavigate, translations }) => {
     onNavigate(page);
   };
 
+  const handleLogoutClick = () => {
+    setIsOpen(false); // Menü schließen
+    onLogout();
+  };
+
   return (
     <>
       {/* Hamburger Button */}
-      <button 
+      <button
         className={`hamburger-button ${isOpen ? 'active' : ''}`}
         onClick={toggleMenu}
         aria-label="Menu"
@@ -36,10 +41,23 @@ const HamburgerMenu = ({ onNavigate, translations }) => {
       <div className={`hamburger-menu ${isOpen ? 'open' : ''}`}>
         <div className="menu-header">
           <h3>EVALIA</h3>
-          {/* Close Button entfernt - nur Hamburger-Animation */}
         </div>
-
+        
         <nav className="menu-content">
+          {/* User Status Section */}
+          {userType === 'registered' && (
+            <div className="menu-section">
+              <h4>{translations?.account || 'Account'}</h4>
+              <p className="user-status">✅ {translations?.loggedIn || 'Logged in'}</p>
+              <button 
+                className="logout-button"
+                onClick={handleLogoutClick}
+              >
+                🚪 {translations?.logout || 'Logout'}
+              </button>
+            </div>
+          )}
+
           <div className="menu-section">
             <h4>{translations?.legal || 'Legal'}</h4>
             <button onClick={() => handleLegalClick('impressum')}>

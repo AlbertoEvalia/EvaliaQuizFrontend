@@ -210,56 +210,89 @@ export default function App() {
     setShowUpgradePrompt(false);
   };
 
-  useEffect(() => {
-    // NEW: Check for auth parameters on load
-    const urlParams = new URLSearchParams(window.location.search);
-    const authToken = urlParams.get('auth');
-    const userEmail = urlParams.get('email');
-    const error = urlParams.get('error');
-  
-    if (authToken && userEmail) {
-      // Successful login
-      setUserType('registered');
-      console.log(`✅ User logged in: ${userEmail}`);
-      
-      // Clean URL
-      window.history.replaceState({}, document.title, window.location.pathname);
-      
-      // Show success message
-      alert(`Welcome back! You're now logged in as ${userEmail} 🎉`);
+  // Logout function
+const handleLogout = () => {
+  localStorage.removeItem('evalia_user');
+  setUserType('free');
+  console.log('✅ User logged out');
+  alert('You have been logged out! 👋');
+};
+
+// Debug logging (erweitert)
+useEffect(() => {
+  // Check localStorage for saved user on app start
+  const savedUser = localStorage.getItem('evalia_user');
+  if (savedUser) {
+    try {
+      const userData = JSON.parse(savedUser);
+      if (userData.userType === 'registered' && userData.email) {
+        setUserType('registered');
+        console.log(`✅ User restored from localStorage: ${userData.email}`);
+      }
+    } catch (error) {
+      console.error('Error parsing saved user data:', error);
+      localStorage.removeItem('evalia_user'); // Clean invalid data
     }
+  }
+
+  // Check for auth parameters from magic link
+  const urlParams = new URLSearchParams(window.location.search);
+  const authToken = urlParams.get('auth');
+  const userEmail = urlParams.get('email');
+  const error = urlParams.get('error');
+
+  if (authToken && userEmail) {
+    // Successful magic link login
+    const userData = {
+      email: userEmail,
+      userType: 'registered',
+      registeredAt: new Date().toISOString()
+    };
     
-    if (error) {
-      console.error('Auth error:', error);
-      let message = 'Login failed';
-      if (error === 'expired') message = 'Magic link expired';
-      if (error === 'invalid') message = 'Invalid magic link';
-      alert(message);
-      
-      // Clean URL
-      window.history.replaceState({}, document.title, window.location.pathname);
-    }
+    // Save to localStorage
+    localStorage.setItem('evalia_user', JSON.stringify(userData));
+    setUserType('registered');
+    console.log(`✅ User logged in via magic link: ${userEmail}`);
+    
+    // Clean URL
+    window.history.replaceState({}, document.title, window.location.pathname);
+    
+    // Show success message
+    alert(`Welcome back! You're now logged in as ${userEmail} 🎉`);
+  }
   
-    // Original debug logging
-    console.log('App State Update:', {
-      status,
-      language,
-      questionCount: 20,
-      currentIndex,
-      questionsLength: questions.length,
-      scoresLength: scores.length,
-      error: error,
-      isSubmitting,
-      showAd,
-      currentPage,
-      userType,
-      showUpgradePrompt,
-      askedQuestionsCount: askedQuestions.size,
-      sessionRound: sessionRound
-    });
-  }, [status, language, currentIndex, questions.length, scores.length, error, isSubmitting, showAd, currentPage, userType, showUpgradePrompt, askedQuestions, sessionRound]);
+  if (error) {
+    console.error('Auth error:', error);
+    let message = 'Login failed';
+    if (error === 'expired') message = 'Magic link expired';
+    if (error === 'invalid') message = 'Invalid magic link';
+    if (error === 'mismatch') message = 'Email mismatch';
+    alert(message);
+    
+    // Clean URL
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+
+  // Original debug logging
+  console.log('App State Update:', {
+    status,
+    language,
+    questionCount: 20,
+    currentIndex,
+    questionsLength: questions.length,
+    scoresLength: scores.length,
+    error: error,
+    isSubmitting,
+    showAd,
+    currentPage,
+    userType,
+    showUpgradePrompt,
+    askedQuestionsCount: askedQuestions.size,
+    sessionRound: sessionRound
+  });
+}, [status, language, currentIndex, questions.length, scores.length, error, isSubmitting, showAd, currentPage, userType, showUpgradePrompt, askedQuestions, sessionRound]);
   
-  // 🚀 VEREINFACHTE QUESTION LOADING
+// 🚀 VEREINFACHTE QUESTION LOADING
   const loadQuestions = async () => {
     setStatus('loading');
     setError(null);
