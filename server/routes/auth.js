@@ -33,7 +33,7 @@ router.post('/magic-link', async (req, res) => {
     expiresAt: Date.now() + 15 * 60 * 1000
   });
 
-  const magicLink = `${process.env.FRONTEND_URL}/auth/verify?token=${token}&email=${email}`;
+  const magicLink = `https://evaliaquizbackend.onrender.com/api/auth/verify?token=${token}&email=${email}`;  
   
   try {
     await transporter.sendMail({
