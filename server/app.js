@@ -7,7 +7,10 @@ import authRouter from './routes/auth.js'; // ← NEU
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ['https://evaliaquiz.com', 'https://evalia-quiz-frontend.vercel.app'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Routes
