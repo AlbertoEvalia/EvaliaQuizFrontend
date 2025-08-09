@@ -85,7 +85,7 @@ router.get('/verify', async (req, res) => {
 
   // Redirect with success token
   const sessionToken = Math.random().toString(36).substring(7);
-  res.redirect(`${process.env.FRONTEND_URL}?auth=${sessionToken}&email=${email}`);
+  res.redirect(`https://evaliaquiz.com/?auth=${sessionToken}&email=${encodeURIComponent(email)}`);
 });
 
 export default router;
