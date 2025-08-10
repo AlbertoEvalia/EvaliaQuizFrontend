@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './AdComponent.css';
 
-// 🎯 AD NETWORK KONFIGURATION - MONETAG INTERSTITIAL
+// 🎯 AD NETWORK KONFIGURATION - MONETAG VIGNETTE BANNER
 const MONETAG_ZONES = {
-  interstitial: "9695605",
+  vignette: "9695605", // Gleiche Zone ID für Vignette
   script_domain: "groleegni.net"
 };
 
@@ -32,11 +32,11 @@ const AdComponent = ({
     return geoLangMap[language] || geoLangMap['en'];
   };
 
-  // 📱 Monetag Integration - KORREKTE IMPLEMENTIERUNG
-  const loadMonetagInterstitial = () => {
+  // 📱 Monetag Vignette Banner Integration - ZUVERLÄSSIGER
+  const loadMonetagVignette = () => {
     // Verhindere mehrfaches Laden
-    if (window.MonetagInterstitialLoaded) {
-      console.log('⚠️ Monetag already loaded, skipping...');
+    if (window.MonetagVignetteLoaded) {
+      console.log('⚠️ Monetag Vignette already loaded, skipping...');
       setAdLoaded(true);
       return;
     }
@@ -47,42 +47,36 @@ const AdComponent = ({
       if (existingScript) {
         console.log('📝 Monetag script already exists');
         setAdLoaded(true);
-        window.MonetagInterstitialLoaded = true;
+        window.MonetagVignetteLoaded = true;
         return;
       }
 
-      // Erstelle Script Element
+      // Erstelle Script Element für Vignette Banner
       const script = document.createElement('script');
-      script.src = `https://${MONETAG_ZONES.script_domain}/401/${MONETAG_ZONES.interstitial}`;
+      script.src = `https://${MONETAG_ZONES.script_domain}/400/${MONETAG_ZONES.vignette}`;
       script.async = true;
       script.setAttribute('data-cfasync', 'false');
       
       // Event Listener für Script Load
       script.onload = () => {
-        console.log('✅ Monetag script loaded successfully');
+        console.log('✅ Monetag Vignette script loaded successfully');
         setAdLoaded(true);
-        window.MonetagInterstitialLoaded = true;
-        
-        // Trigger Interstitial nach kurzer Verzögerung
-        setTimeout(() => {
-          if (window.monetag) {
-            console.log('🚀 Triggering Monetag interstitial');
-            window.monetag.interstitial.show();
-          }
-        }, 1000);
+        window.MonetagVignetteLoaded = true;
+        window.MonetagVignetteShown = true; // Flag für Timeout
+        console.log('🎯 Vignette Banner ready - loads automatically on user interaction');
       };
 
       script.onerror = (error) => {
-        console.error('❌ Monetag script failed to load:', error);
+        console.error('❌ Monetag Vignette script failed to load:', error);
         setAdLoaded(true);
       };
 
       // Script zu Head hinzufügen
       document.head.appendChild(script);
-      console.log('📤 Monetag script injected - Zone:', MONETAG_ZONES.interstitial);
+      console.log('📤 Monetag Vignette script injected - Zone:', MONETAG_ZONES.vignette);
       
     } catch (error) {
-      console.error('❌ Monetag integration error:', error);
+      console.error('❌ Monetag Vignette integration error:', error);
       setAdLoaded(true);
     }
   };
@@ -103,20 +97,29 @@ const AdComponent = ({
 
     // Ad laden nach kurzem Delay
     const adTimer = setTimeout(() => {
-      loadMonetagInterstitial();
+      loadMonetagVignette();
     }, 500);
+
+    // TIMEOUT für langsame Ads - nach 8 Sekunden automatisch weiter (kürzer für Vignette)
+    const adTimeout = setTimeout(() => {
+      if (!window.MonetagVignetteShown) {
+        console.log('⏰ Monetag Vignette timeout - proceeding without ad');
+        setCanSkip(true);
+      }
+    }, 8000); // 8 Sekunden Timeout für Vignette
 
     // Cleanup
     return () => {
       clearInterval(timer);
       clearTimeout(adTimer);
+      clearTimeout(adTimeout);
     };
   }, []); // Keine Dependencies
 
   const handleSkip = () => {
     if (canSkip) {
       const targetingInfo = getAdTargetingInfo();
-      console.log(`📊 Ad completed - Monetag Interstitial, Language: ${language}, Expected CPM: ${targetingInfo.expectedCPM}`);
+      console.log(`📊 Ad completed - Monetag Vignette Banner, Language: ${language}, Expected CPM: ${targetingInfo.expectedCPM}`);
       onAdComplete();
     }
   };
@@ -188,14 +191,14 @@ const AdComponent = ({
               <div className="monetag-container">
                 {!adLoaded ? (
                   <div className="ad-loading">
-                    <div className="loading-spinner">⚡</div>
-                    <p>Loading Monetag Interstitial...</p>
+                    <div className="loading-spinner">🎯</div>
+                    <p>Loading Vignette Banner...</p>
                   </div>
                 ) : (
                   <div className="ad-status">
-                    <h3>⚡ Monetag Interstitial Active</h3>
-                    <p>Zone ID: {MONETAG_ZONES.interstitial}</p>
-                    <small>Interstitial ads will appear automatically</small>
+                    <h3>🎯 Vignette Banner Ready</h3>
+                    <p>Zone ID: {MONETAG_ZONES.vignette}</p>
+                    <small>Native banner will appear on user interaction</small>
                   </div>
                 )}
               </div>
