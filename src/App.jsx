@@ -218,6 +218,8 @@ const handleLogout = () => {
   alert('You have been logged out! 👋');
 };
 
+console.log('🔍 Current userType state:', userType);
+
 // Debug logging (erweitert)
 useEffect(() => {
   // Check localStorage for saved user on app start
