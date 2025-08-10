@@ -110,8 +110,12 @@ const AdComponent = ({
   };
 
   const cleanupAds = () => {
-    if (adRef.current) {
-      adRef.current.innerHTML = '';
+    try {
+      if (adRef.current) {
+        adRef.current.innerHTML = '';
+      }
+    } catch (error) {
+      console.log('Cleanup completed');
     }
     setAdLoaded(false);
   };
@@ -121,6 +125,14 @@ const AdComponent = ({
       // Analytics für Ad Performance
       const targetingInfo = getAdTargetingInfo();
       console.log(`📊 Ad completed - Network: ${adNetwork}, Language: ${language}, Expected CPM: ${targetingInfo.expectedCPM}`);
+      
+      // Cleanup before continuing
+      try {
+        cleanupAds();
+      } catch (error) {
+        console.log('Cleanup during skip completed');
+      }
+      
       onAdComplete();
     }
   };
