@@ -4,18 +4,18 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8); /* Dunkler Overlay */
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8); /* Schwarzer Overlay - genau wie UpgradePrompt */
   display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 10000;
+  justify-content: center;
+  z-index: 1000;
   padding: 20px;
 }
 
 .ad-container {
-  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%); /* Orange-Gradient wie UpgradePrompt */
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%); /* Orange-Gradient - NUR das Modal */
   border-radius: 0; /* Komplett eckig */
   max-width: 500px;
   width: 100%;
