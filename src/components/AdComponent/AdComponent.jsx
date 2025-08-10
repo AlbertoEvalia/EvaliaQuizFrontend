@@ -32,23 +32,31 @@ const AdComponent = ({
     return geoLangMap[language] || geoLangMap['en'];
   };
 
-  // ⚡ Monetag Interstitial Integration - OPTIMIERT FÜR SPEED
+  // ⚡ Monetag Interstitial Integration - FORCE RELOAD
   const loadMonetagInterstitial = () => {
-    // Reset für Debugging
+    // AGGRESSIVE Reset - IMMER neu laden in Development
     if (process.env.NODE_ENV === 'development') {
-      window.MonetagInterstitialLoaded = false;
-      window.MonetagInterstitialShown = false;
+      console.log('🔄 Development mode - forcing fresh load');
+      delete window.MonetagInterstitialLoaded;
+      delete window.MonetagInterstitialShown;
+      
+      // Entferne alte Scripts
+      const oldScripts = document.querySelectorAll(`script[src*="${MONETAG_ZONES.script_domain}"]`);
+      oldScripts.forEach(script => {
+        console.log('🗑️ Removing old Monetag script');
+        script.remove();
+      });
     }
     
-    // Verhindere mehrfaches Laden
-    if (window.MonetagInterstitialLoaded) {
+    // Verhindere mehrfaches Laden (nur in Production)
+    if (window.MonetagInterstitialLoaded && process.env.NODE_ENV !== 'development') {
       console.log('⚠️ Monetag Interstitial already loaded, skipping...');
       setAdLoaded(true);
       return;
     }
 
     try {
-      console.log('🚀 Starting Monetag Interstitial load...');
+      console.log('🚀 Starting Monetag Interstitial load (FRESH)...');
       
       // Original Monetag Methode - AUTOMATISCHER TRIGGER
       const script = document.createElement('script');
