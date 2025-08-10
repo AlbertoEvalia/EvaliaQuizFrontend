@@ -1,19 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './AdComponent.css';
 
-// 🎯 AD NETWORK KONFIGURATION
-const PROPELLERADS_ZONES = {
-  banner: "YOUR_PROPELLER_BANNER_ZONE_ID",        // Hier deine PropellerAds Zone ID einfügen
-  interstitial: "YOUR_PROPELLER_INTERSTITIAL_ID", // Für Vollbild-Ads
-  popup: "YOUR_PROPELLER_POPUP_ID",               // Für Popup-Ads
-  native: "YOUR_PROPELLER_NATIVE_ID"              // Für Native-Ads
-};
-
-const ADSTERRA_ZONES = {
-  banner: "YOUR_ADSTERRA_BANNER_KEY",             // Hier deine Adsterra Key einfügen
-  interstitial: "YOUR_ADSTERRA_INTERSTITIAL_KEY",// Für Vollbild-Ads
-  popup: "YOUR_ADSTERRA_POPUP_KEY",               // Für Popup-Ads
-  native: "YOUR_ADSTERRA_NATIVE_KEY"              // Für Native-Ads
+// 🎯 AD NETWORK KONFIGURATION - MONETAG
+const MONETAG_ZONES = {
+  banner: "9695448",        // Deine Monetag In-Page Push Zone ID
+  fallback: "9695447",      // Fallback Zone ID
+  script_domain: "ileeckut.com"  // Monetag Script Domain
 };
 
 const AdComponent = ({
@@ -27,7 +19,7 @@ const AdComponent = ({
 }) => {
   const [countdown, setCountdown] = useState(5);
   const [canSkip, setCanSkip] = useState(false);
-  const [adNetwork, setAdNetwork] = useState('propellerads'); // 'propellerads' | 'adsterra'
+  const [adNetwork, setAdNetwork] = useState('monetag'); // Nur Monetag erstmal
   const [adLoaded, setAdLoaded] = useState(false);
   const adRef = useRef(null);
 
@@ -62,17 +54,9 @@ const AdComponent = ({
   };
 
   useEffect(() => {
-    // Smart Network Selection
-    let selectedNetwork = selectOptimalAdNetwork(language);
-    
-    // A/B Testing
-    if (shouldUseAlternativeNetwork()) {
-      selectedNetwork = selectedNetwork === 'propellerads' ? 'adsterra' : 'propellerads';
-      console.log(`🧪 A/B Test: Using alternative network ${selectedNetwork} for ${language}`);
-    }
-    
-    setAdNetwork(selectedNetwork);
-    console.log(`🎯 Selected ad network: ${selectedNetwork} for language: ${language}`);
+    // Monetag verwenden
+    setAdNetwork('monetag');
+    console.log('🎯 Using Monetag for ads');
   }, [language]);
 
   useEffect(() => {
@@ -225,10 +209,8 @@ const AdComponent = ({
   };
 
   const loadAdScript = () => {
-    if (adNetwork === 'propellerads') {
-      loadPropellerAds();
-    } else if (adNetwork === 'adsterra') {
-      loadAdsterra();
+    if (adNetwork === 'monetag') {
+      loadMonetag();
     }
   };
 
@@ -283,7 +265,7 @@ const AdComponent = ({
 
   // Network Display Name für User
   const getNetworkDisplayName = () => {
-    return adNetwork === 'propellerads' ? 'PropellerAds' : 'Adsterra';
+    return 'Monetag';
   };
 
   const targetingInfo = getAdTargetingInfo();
