@@ -54,18 +54,22 @@ const AdComponent = ({
       });
     }, 1000);
 
-    // Load Ad Scripts
-    loadAdScript();
+    // Load Ad Scripts nur einmal pro Mount
+    if (!window.MonetagLoadedForSession) {
+      loadAdScript();
+    } else {
+      setAdLoaded(true);
+    }
 
     return () => {
       clearInterval(timer);
-      cleanupAds();
+      // Kein DOM cleanup - das verursacht den Fehler
     };
-  }, [adNetwork]);
+  }, []); // Dependency array leer - nur beim ersten Mount
 
   // 📱 Monetag Integration
   const loadMonetag = () => {
-    if (window.MonetagLoaded) {
+    if (window.MonetagLoadedForSession) {
       setAdLoaded(true);
       return;
     }
@@ -73,13 +77,13 @@ const AdComponent = ({
     try {
       if (!adRef.current) return;
       
-      // Monetag Script - ohne DOM-Manipulation
+      // Monetag Script - nur einmal pro Session laden
       const script = document.createElement('script');
       script.innerHTML = `(function(d,z,s,c){s.src='//'+d+'/400/'+z;s.onerror=s.onload=E;function E(){c&&c();c=null}try{(document.body||document.documentElement).appendChild(s)}catch(e){E()}})('${MONETAG_ZONES.script_domain}',${MONETAG_ZONES.banner},document.createElement('script'),function(){console.log('✅ Monetag loaded');});`;
       
       document.head.appendChild(script);
       
-      // Einfacher Placeholder - Monetag zeigt Ads automatisch
+      // Einfacher Placeholder
       const adContainer = adRef.current;
       adContainer.innerHTML = `
         <div style="background: #f0f8ff; border: 2px dashed #0075BE; border-radius: 8px; padding: 20px; margin: 10px 0;">
@@ -90,7 +94,7 @@ const AdComponent = ({
       `;
       
       setAdLoaded(true);
-      window.MonetagLoaded = true;
+      window.MonetagLoadedForSession = true; // Session flag statt global
       console.log('✅ Monetag integration complete');
     } catch (error) {
       console.error('❌ Monetag error:', error);
