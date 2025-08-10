@@ -13,7 +13,7 @@ const emailDatabase = new Map(); // E-Mail → Newsletter-Daten
 const magicTokens = new Map();   // Token → {email, expires, used}
 
 // E-Mail-Konfiguration (Gmail SMTP) - verwendet bestehende SMTP_* Variablen
-const emailTransporter = nodemailer.createTransporter({
+const emailTransporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST || 'smtp.gmail.com',
   port: process.env.SMTP_PORT || 587,
   secure: false, // true für 465, false für andere Ports
