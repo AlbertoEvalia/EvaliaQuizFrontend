@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './AdComponent.css';
 
-// 🎯 AD NETWORK KONFIGURATION - MONETAG
+// 🎯 AD NETWORK KONFIGURATION - MONETAG INTERSTITIAL
 const MONETAG_ZONES = {
-  banner: "9695448",        // Deine Monetag In-Page Push Zone ID
-  fallback: "9695447",      // Fallback Zone ID
-  script_domain: "ileeckut.com"  // Monetag Script Domain
+  interstitial: "9695605",        // Deine Monetag Interstitial Zone ID
+  fallback: "9695447",            // Fallback Zone ID
+  script_domain: "groleegni.net"  // Monetag Interstitial Domain
 };
 
 const AdComponent = ({
@@ -54,8 +54,8 @@ const AdComponent = ({
       });
     }, 1000);
 
-    // Load Ad Scripts nur einmal pro Mount
-    if (!window.MonetagLoadedForSession) {
+    // Load Interstitial nur einmal pro Mount
+    if (!window.MonetagInterstitialLoaded) {
       loadAdScript();
     } else {
       setAdLoaded(true);
@@ -63,13 +63,13 @@ const AdComponent = ({
 
     return () => {
       clearInterval(timer);
-      // Kein DOM cleanup - das verursacht den Fehler
+      // Kein DOM cleanup für Interstitials
     };
   }, []); // Dependency array leer - nur beim ersten Mount
 
   // 📱 Monetag Integration
   const loadMonetag = () => {
-    if (window.MonetagLoadedForSession) {
+    if (window.MonetagInterstitialLoaded) {
       setAdLoaded(true);
       return;
     }
@@ -77,27 +77,27 @@ const AdComponent = ({
     try {
       if (!adRef.current) return;
       
-      // Monetag Script - nur einmal pro Session laden
+      // Monetag Interstitial Script - sauberer als In-Page Push
       const script = document.createElement('script');
-      script.innerHTML = `(function(d,z,s,c){s.src='//'+d+'/400/'+z;s.onerror=s.onload=E;function E(){c&&c();c=null}try{(document.body||document.documentElement).appendChild(s)}catch(e){E()}})('${MONETAG_ZONES.script_domain}',${MONETAG_ZONES.banner},document.createElement('script'),function(){console.log('✅ Monetag loaded');});`;
+      script.innerHTML = `(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('${MONETAG_ZONES.script_domain}',${MONETAG_ZONES.interstitial},document.createElement('script'))`;
       
       document.head.appendChild(script);
       
-      // Einfacher Placeholder
+      // Sauberer Placeholder für Interstitial
       const adContainer = adRef.current;
       adContainer.innerHTML = `
-        <div style="background: #f0f8ff; border: 2px dashed #0075BE; border-radius: 8px; padding: 20px; margin: 10px 0;">
-          <h3 style="color: #0075BE; margin: 0 0 10px 0;">💡 Monetag Active</h3>
-          <p style="color: #666; margin: 0;">Zone ID: ${MONETAG_ZONES.banner} | In-Page Push ready</p>
-          <small style="color: #999;">Ads will appear automatically during quiz</small>
+        <div style="background: #f0f8ff; border: 2px solid #0075BE; border-radius: 8px; padding: 20px; margin: 10px 0; text-align: center;">
+          <h3 style="color: #0075BE; margin: 0 0 10px 0;">⚡ Monetag Interstitial</h3>
+          <p style="color: #666; margin: 0;">Zone ID: ${MONETAG_ZONES.interstitial} | Loading ad...</p>
+          <small style="color: #999;">Interstitial will appear automatically</small>
         </div>
       `;
       
       setAdLoaded(true);
-      window.MonetagLoadedForSession = true; // Session flag statt global
-      console.log('✅ Monetag integration complete');
+      window.MonetagInterstitialLoaded = true;
+      console.log('✅ Monetag Interstitial integration complete');
     } catch (error) {
-      console.error('❌ Monetag error:', error);
+      console.error('❌ Monetag Interstitial error:', error);
       setAdLoaded(true);
     }
   };
