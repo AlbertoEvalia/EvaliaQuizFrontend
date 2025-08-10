@@ -123,6 +123,7 @@
 
 .ad-status {
   padding: 20px 0; /* 20px Raster */
+  text-align: center !important; /* FORCED CENTER */
 }
 
 .ad-status h3 {
@@ -130,17 +131,21 @@
   margin: 0 0 20px 0; /* 20px Raster */
   font-size: 1.4rem;
   font-weight: 600;
+  text-align: center !important; /* FORCED CENTER */
 }
 
 .ad-status p {
   color: rgba(255, 255, 255, 0.9) !important; /* Leicht transparente weiße Schrift */
   margin: 8px 0;
   font-size: 1rem;
+  text-align: center !important; /* FORCED CENTER */
 }
 
 .ad-status small {
   color: rgba(255, 255, 255, 0.8) !important; /* Leicht transparente weiße Schrift */
   font-size: 0.9rem;
+  text-align: center !important; /* FORCED CENTER */
+  display: block !important; /* Block für center */
 }
 
 .ad-footer-info {
