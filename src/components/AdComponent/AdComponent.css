@@ -15,7 +15,7 @@
 }
 
 .ad-container {
-  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%); /* Orange-Gradient - NUR das Modal */
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%); /* Orange-Gradient wie UpgradePrompt */
   border-radius: 0; /* Komplett eckig */
   max-width: 500px;
   width: 100%;
