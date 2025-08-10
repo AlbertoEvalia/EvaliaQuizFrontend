@@ -50,39 +50,20 @@ const AdComponent = ({
     try {
       console.log('🚀 Starting Monetag Interstitial load...');
       
-      // Erstelle Script Element
+      // Original Monetag Methode - AUTOMATISCHER TRIGGER
       const script = document.createElement('script');
-      script.src = `https://${MONETAG_ZONES.script_domain}/401/${MONETAG_ZONES.interstitial}`;
-      script.async = true;
-      script.setAttribute('data-cfasync', 'false');
+      script.innerHTML = `(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('${MONETAG_ZONES.script_domain}',${MONETAG_ZONES.interstitial},document.createElement('script'))`;
       
-      // Event Listener für Script Load
-      script.onload = () => {
-        console.log('✅ Monetag Interstitial script loaded successfully');
-        setAdLoaded(true);
-        window.MonetagInterstitialLoaded = true;
-        
-        // Trigger Interstitial sofort
-        setTimeout(() => {
-          if (window.monetag && window.monetag.interstitial) {
-            console.log('🚀 Triggering Monetag interstitial NOW');
-            window.monetag.interstitial.show();
-            window.MonetagInterstitialShown = true;
-          } else {
-            console.log('⚠️ Monetag interstitial API not available');
-          }
-        }, 500); // Nur 500ms Delay
-      };
-
-      script.onerror = (error) => {
-        console.error('❌ Monetag Interstitial script failed to load:', error);
-        setAdLoaded(true);
-        window.MonetagInterstitialLoaded = false;
-      };
-
       // Script zu Head hinzufügen
       document.head.appendChild(script);
-      console.log('📤 Monetag Interstitial script injected - Zone:', MONETAG_ZONES.interstitial);
+      
+      // Sofort als geladen markieren
+      setAdLoaded(true);
+      window.MonetagInterstitialLoaded = true;
+      window.MonetagInterstitialShown = true; // Assume success
+      
+      console.log('📤 Monetag Interstitial (Original Method) injected - Zone:', MONETAG_ZONES.interstitial);
+      console.log('✅ Using automatic trigger - no API calls needed');
       
     } catch (error) {
       console.error('❌ Monetag Interstitial integration error:', error);
