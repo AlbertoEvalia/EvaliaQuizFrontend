@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './LegalLink.css';
 
-const LegalLink = ({ onNavigate, translations }) => {
+const LegalLink = ({ onNavigate, translations, userType, onLogout }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   const handleLegalClick = (page) => {
@@ -11,32 +11,62 @@ const LegalLink = ({ onNavigate, translations }) => {
   };
 
   const handleToggleClick = (e) => {
-    e.preventDefault(); // Verhindert Form-Submit
-    e.stopPropagation(); // Stoppt Event-Bubbling
+    e.preventDefault();
+    e.stopPropagation();
     setShowMenu(!showMenu);
   };
 
   const handleDropdownClick = (page) => (e) => {
-    e.preventDefault(); // Verhindert Form-Submit
-    e.stopPropagation(); // Stoppt Event-Bubbling
+    e.preventDefault();
+    e.stopPropagation();
     handleLegalClick(page);
   };
+
+  const handleLogoutClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setShowMenu(false);
+    onLogout();
+  };
+
+  // DEBUG: Props anzeigen
+  console.log('🔍 LegalLink Props:', { userType, onLogout: !!onLogout });
 
   return (
     <div className="legal-link-container">
       <button
-        type="button" // WICHTIG: type="button" verhindert Form-Submit
+        type="button"
         className="legal-hamburger"
         onClick={handleToggleClick}
-        aria-label="Legal Menu"
+        aria-label="Menu"
       >
         <span></span>
         <span></span>
         <span></span>
       </button>
-      
+
       {showMenu && (
         <div className="legal-dropdown">
+          {/* User Status Section - nur wenn registriert */}
+          {userType === 'registered' && (
+            <>
+              <div className="user-status-section">
+                <span className="user-status">
+                  ✅ {translations?.loggedIn || 'Logged in'}
+                </span>
+                <button
+                  type="button"
+                  className="logout-button"
+                  onClick={handleLogoutClick}
+                >
+                  🚪 {translations?.logout || 'Logout'}
+                </button>
+              </div>
+              <div className="dropdown-divider"></div>
+            </>
+          )}
+
+          {/* Legal Links */}
           <button
             type="button"
             onClick={handleDropdownClick('impressum')}
