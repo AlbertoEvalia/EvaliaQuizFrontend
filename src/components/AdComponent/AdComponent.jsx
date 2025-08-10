@@ -73,33 +73,28 @@ const AdComponent = ({
     try {
       if (!adRef.current) return;
       
-      const adContainer = adRef.current;
-      adContainer.innerHTML = ''; // Clear previous ads
-
-      // Monetag Script
+      // Monetag Script - ohne DOM-Manipulation
       const script = document.createElement('script');
       script.innerHTML = `(function(d,z,s,c){s.src='//'+d+'/400/'+z;s.onerror=s.onload=E;function E(){c&&c();c=null}try{(document.body||document.documentElement).appendChild(s)}catch(e){E()}})('${MONETAG_ZONES.script_domain}',${MONETAG_ZONES.banner},document.createElement('script'),function(){console.log('✅ Monetag loaded');});`;
       
       document.head.appendChild(script);
       
-      // Ad Container
-      const adElement = document.createElement('div');
-      adElement.style.cssText = 'min-height: 250px; width: 100%; text-align: center; padding: 20px;';
-      adElement.innerHTML = `
-        <div style="background: #f0f8ff; border: 2px dashed #0075BE; border-radius: 8px; padding: 20px;">
-          <h3 style="color: #0075BE; margin: 0 0 10px 0;">💡 Monetag In-Page Push</h3>
-          <p style="color: #666; margin: 0;">Zone ID: ${MONETAG_ZONES.banner}</p>
-          <small style="color: #999;">Ads will appear automatically</small>
+      // Einfacher Placeholder - Monetag zeigt Ads automatisch
+      const adContainer = adRef.current;
+      adContainer.innerHTML = `
+        <div style="background: #f0f8ff; border: 2px dashed #0075BE; border-radius: 8px; padding: 20px; margin: 10px 0;">
+          <h3 style="color: #0075BE; margin: 0 0 10px 0;">💡 Monetag Active</h3>
+          <p style="color: #666; margin: 0;">Zone ID: ${MONETAG_ZONES.banner} | In-Page Push ready</p>
+          <small style="color: #999;">Ads will appear automatically during quiz</small>
         </div>
       `;
       
-      adContainer.appendChild(adElement);
       setAdLoaded(true);
       window.MonetagLoaded = true;
       console.log('✅ Monetag integration complete');
     } catch (error) {
       console.error('❌ Monetag error:', error);
-      setAdLoaded(true); // Prevent infinite loading
+      setAdLoaded(true);
     }
   };
 
@@ -110,13 +105,7 @@ const AdComponent = ({
   };
 
   const cleanupAds = () => {
-    try {
-      if (adRef.current) {
-        adRef.current.innerHTML = '';
-      }
-    } catch (error) {
-      console.log('Cleanup completed');
-    }
+    // Kein DOM-Cleanup bei Monetag - das Script managed sich selbst
     setAdLoaded(false);
   };
 
@@ -126,13 +115,7 @@ const AdComponent = ({
       const targetingInfo = getAdTargetingInfo();
       console.log(`📊 Ad completed - Network: ${adNetwork}, Language: ${language}, Expected CPM: ${targetingInfo.expectedCPM}`);
       
-      // Cleanup before continuing
-      try {
-        cleanupAds();
-      } catch (error) {
-        console.log('Cleanup during skip completed');
-      }
-      
+      // Direkt weiter ohne DOM-Cleanup (Monetag managed sich selbst)
       onAdComplete();
     }
   };
