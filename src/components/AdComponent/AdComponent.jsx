@@ -19,21 +19,9 @@ const AdComponent = ({
 }) => {
   const [countdown, setCountdown] = useState(5);
   const [canSkip, setCanSkip] = useState(false);
-  const [adNetwork, setAdNetwork] = useState('monetag'); // Nur Monetag erstmal
+  const [adNetwork, setAdNetwork] = useState('monetag');
   const [adLoaded, setAdLoaded] = useState(false);
   const adRef = useRef(null);
-
-  // 🌍 Language-basierte Ad-Network-Auswahl für bessere Performance
-  const selectOptimalAdNetwork = (lang) => {
-    const networkPreferences = {
-      'en': 'propellerads', // PropellerAds stark in EN-Märkten
-      'de': 'adsterra',     // Adsterra stark in DE-Markt
-      'es': 'propellerads', // PropellerAds stark in LATAM
-      'fr': 'adsterra',     // Adsterra stark in FR-Markt
-      'it': 'propellerads'  // PropellerAds für IT-Markt
-    };
-    return networkPreferences[lang] || 'propellerads';
-  };
 
   // 🎯 Geo + Language Detection für Smart Targeting
   const getAdTargetingInfo = () => {
@@ -45,12 +33,6 @@ const AdComponent = ({
       'it': { geos: ['IT', 'CH'], expectedCPM: '$2-3' }
     };
     return geoLangMap[language] || geoLangMap['en'];
-  };
-
-  // 🔄 A/B Testing zwischen Networks
-  const shouldUseAlternativeNetwork = () => {
-    // 30% Chance für das alternative Network zum Testing
-    return Math.random() < 0.3;
   };
 
   useEffect(() => {
@@ -81,130 +63,43 @@ const AdComponent = ({
     };
   }, [adNetwork]);
 
-  // 📱 PropellerAds Integration
-  const loadPropellerAds = () => {
-    if (window.PropellerAdsLoaded) {
-      initializePropellerAd();
+  // 📱 Monetag Integration
+  const loadMonetag = () => {
+    if (window.MonetagLoaded) {
+      setAdLoaded(true);
       return;
     }
 
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://cdn.propellerads.com/script.js';
-    script.onload = () => {
-      window.PropellerAdsLoaded = true;
-      initializePropellerAd();
-    };
-    script.onerror = () => {
-      console.error('❌ PropellerAds script failed to load');
-      setAdNetwork('adsterra'); // Fallback
-    };
-    document.head.appendChild(script);
-  };
-
-  const initializePropellerAd = () => {
-    if (!adRef.current) return;
-
     try {
+      if (!adRef.current) return;
+      
       const adContainer = adRef.current;
       adContainer.innerHTML = ''; // Clear previous ads
 
-      // Create PropellerAds banner
-      const adElement = document.createElement('div');
-      adElement.id = `propeller-banner-${Date.now()}`;
-      adElement.style.cssText = 'min-height: 250px; width: 100%; text-align: center;';
+      // Monetag Script
+      const script = document.createElement('script');
+      script.innerHTML = `(function(d,z,s,c){s.src='//'+d+'/400/'+z;s.onerror=s.onload=E;function E(){c&&c();c=null}try{(document.body||document.documentElement).appendChild(s)}catch(e){E()}})('${MONETAG_ZONES.script_domain}',${MONETAG_ZONES.banner},document.createElement('script'),function(){console.log('✅ Monetag loaded');});`;
       
-      // PropellerAds Banner Code
-      const adScript = document.createElement('script');
-      adScript.type = 'text/javascript';
-      adScript.innerHTML = `
-        (function(d, s, id) {
-          var js, pjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//cdn.propellerads.com/script.js";
-          js.async = true;
-          js.onload = function() {
-            if (window.PropellerAds) {
-              PropellerAds.displayAd({
-                zoneId: "${PROPELLERADS_ZONES.banner}",
-                width: "auto",
-                height: "auto",
-                format: "banner"
-              });
-            }
-          };
-          pjs.parentNode.insertBefore(js, pjs);
-        }(document, 'script', 'propeller-ads-sdk'));
+      document.head.appendChild(script);
+      
+      // Ad Container
+      const adElement = document.createElement('div');
+      adElement.style.cssText = 'min-height: 250px; width: 100%; text-align: center; padding: 20px;';
+      adElement.innerHTML = `
+        <div style="background: #f0f8ff; border: 2px dashed #0075BE; border-radius: 8px; padding: 20px;">
+          <h3 style="color: #0075BE; margin: 0 0 10px 0;">💡 Monetag In-Page Push</h3>
+          <p style="color: #666; margin: 0;">Zone ID: ${MONETAG_ZONES.banner}</p>
+          <small style="color: #999;">Ads will appear automatically</small>
+        </div>
       `;
       
-      adElement.appendChild(adScript);
       adContainer.appendChild(adElement);
       setAdLoaded(true);
-      console.log('✅ PropellerAds banner loaded with Zone ID:', PROPELLERADS_ZONES.banner);
+      window.MonetagLoaded = true;
+      console.log('✅ Monetag integration complete');
     } catch (error) {
-      console.error('❌ PropellerAds initialization error:', error);
-      setAdNetwork('adsterra'); // Fallback
-    }
-  };
-
-  // 🎯 Adsterra Integration
-  const loadAdsterra = () => {
-    if (window.AdsterraLoaded) {
-      initializeAdsterraAd();
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://a.exdynsrv.com/ads.js';
-    script.onload = () => {
-      window.AdsterraLoaded = true;
-      initializeAdsterraAd();
-    };
-    script.onerror = () => {
-      console.error('❌ Adsterra script failed to load');
-      setAdNetwork('propellerads'); // Fallback
-    };
-    document.head.appendChild(script);
-  };
-
-  const initializeAdsterraAd = () => {
-    if (!adRef.current) return;
-
-    try {
-      const adContainer = adRef.current;
-      adContainer.innerHTML = ''; // Clear previous ads
-
-      // Create Adsterra banner
-      const adElement = document.createElement('div');
-      adElement.style.cssText = 'min-height: 250px; width: 100%; text-align: center;';
-      
-      // Adsterra Banner Code
-      const adScript = document.createElement('script');
-      adScript.type = 'text/javascript';
-      adScript.innerHTML = `
-        atOptions = {
-          'key' : '${ADSTERRA_ZONES.banner}',
-          'format' : 'iframe',
-          'height' : 250,
-          'width' : 300,
-          'params' : {}
-        };
-      `;
-      
-      const adScript2 = document.createElement('script');
-      adScript2.type = 'text/javascript';
-      adScript2.src = '//a.exdynsrv.com/ads.js';
-      
-      adElement.appendChild(adScript);
-      adElement.appendChild(adScript2);
-      adContainer.appendChild(adElement);
-      setAdLoaded(true);
-      console.log('✅ Adsterra banner loaded with Key:', ADSTERRA_ZONES.banner);
-    } catch (error) {
-      console.error('❌ Adsterra initialization error:', error);
-      setAdNetwork('propellerads'); // Fallback
+      console.error('❌ Monetag error:', error);
+      setAdLoaded(true); // Prevent infinite loading
     }
   };
 
@@ -298,7 +193,7 @@ const AdComponent = ({
             <div className="ad-banner">
               <p>🎯 {getAdText('adPlaceholder', 'Advertisement')}</p>
               
-              {/* Multi-Network Ad Container */}
+              {/* Monetag Ad Container */}
               <div 
                 ref={adRef}
                 className={`ad-network-container ${adNetwork}-container`}
