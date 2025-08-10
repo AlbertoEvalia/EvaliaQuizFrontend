@@ -140,7 +140,9 @@ const DifficultySelector = ({
 
           {/* Legal Link */}
           {showLegalLink && onNavigateToLegal && (
-            <LegalLink onNavigate={onNavigateToLegal} translations={translations} />
+            <LegalLink onNavigate={onNavigateToLegal} translations={translations}
+            userType={userType}        // ← NEU
+            onLogout={handleLogout}    />
           )}
         </div>
       </div>
