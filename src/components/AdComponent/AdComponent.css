@@ -85,14 +85,17 @@
 .monetag-container {
   min-height: 250px;
   width: 100%;
-  text-align: center;
+  text-align: center !important;
   border: 2px solid rgba(255, 255, 255, 0.3); /* Weiße transparente Border */
-  border-radius: 0; /* Eckig */
+  border-radius: 0 !important; /* Eckig */
   padding: 20px;
-  margin: 20px 0; /* 20px Raster */
+  margin: 20px auto !important; /* AUTO für Zentrierung */
   background: rgba(255, 255, 255, 0.1); /* Leicht transparent auf Orange */
   border-left: 4px solid #ffffff; /* Weißer Accent wie bei Benefits */
+  display: block !important;
+  box-sizing: border-box !important;
 }
+
 
 .ad-loading {
   display: flex;
