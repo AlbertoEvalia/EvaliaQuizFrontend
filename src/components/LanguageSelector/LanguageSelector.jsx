@@ -90,9 +90,9 @@ const LanguageSelector = ({
           </button>
 
           {showLegalLink && onNavigateToLegal && (
-            <LegalLink onNavigate={onNavigateToLegal} translations={translations} 
-            userType={userType}        // ← NEU
-            onLogout={handleLogout}   />
+            <LegalLink onNavigate={onNavigateToLegal} translations={translations}
+              userType={userType}        // ← NEU
+              onLogout={onLogout} />
           )}
         </div>
       </div>
@@ -112,7 +112,9 @@ LanguageSelector.propTypes = {
   }).isRequired,
   showLegalLink: PropTypes.bool,
   onNavigateToLegal: PropTypes.func,
-  onTestUpgrade: PropTypes.func
+  onTestUpgrade: PropTypes.func,
+  userType: PropTypes.string,    // ← NEU
+  onLogout: PropTypes.func
 };
 
 export default LanguageSelector;

@@ -510,6 +510,8 @@ useEffect(() => {
             showLegalLink={true}
             onNavigateToLegal={handleNavigateToLegalPage}
             onTestUpgrade={() => setShowUpgradePrompt(true)}
+            userType={userType}        // ← NEU
+            onLogout={handleLogout}  
           />
           <CookieBanner />
           
@@ -557,6 +559,8 @@ useEffect(() => {
             isSubmitting={isSubmitting}
             showLegalLink={true}
             onNavigateToLegal={handleNavigateToLegalPage}
+            userType={userType}        // ← NEU
+            onLogout={handleLogout}   
             key={`question-${currentIndex}`}
           />
         </>
@@ -573,6 +577,7 @@ useEffect(() => {
           showLegalLink={true}
           onNavigateToLegal={handleNavigateToLegalPage}
           userType={userType}
+          onLogout={handleLogout}   
         />
       );
 

@@ -457,7 +457,7 @@ const ResultsScreen = ({
           <div style={{ marginTop: 'calc(2 * var(--grid-unit))', width: '100%' }}>
             <LegalLink onNavigate={onNavigateToLegal} translations={translations} 
               userType={userType}        // ← NEU
-              onLogout={handleLogout}   />
+              onLogout={onLogout}      />
           </div>
         )}
       </div>
