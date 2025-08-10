@@ -1,6 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './AdComponent.css';
 
+// 🎯 AD NETWORK KONFIGURATION
+const PROPELLERADS_ZONES = {
+  banner: "YOUR_PROPELLER_BANNER_ZONE_ID",        // Hier deine PropellerAds Zone ID einfügen
+  interstitial: "YOUR_PROPELLER_INTERSTITIAL_ID", // Für Vollbild-Ads
+  popup: "YOUR_PROPELLER_POPUP_ID",               // Für Popup-Ads
+  native: "YOUR_PROPELLER_NATIVE_ID"              // Für Native-Ads
+};
+
+const ADSTERRA_ZONES = {
+  banner: "YOUR_ADSTERRA_BANNER_KEY",             // Hier deine Adsterra Key einfügen
+  interstitial: "YOUR_ADSTERRA_INTERSTITIAL_KEY",// Für Vollbild-Ads
+  popup: "YOUR_ADSTERRA_POPUP_KEY",               // Für Popup-Ads
+  native: "YOUR_ADSTERRA_NATIVE_KEY"              // Für Native-Ads
+};
+
 const AdComponent = ({
   onAdComplete,
   onShowUpgrade,
@@ -91,7 +106,7 @@ const AdComponent = ({
 
     const script = document.createElement('script');
     script.async = true;
-    script.src = 'https://cdn.propellerads.com/script.js'; // PropellerAds Universal Script
+    script.src = 'https://cdn.propellerads.com/script.js';
     script.onload = () => {
       window.PropellerAdsLoaded = true;
       initializePropellerAd();
@@ -107,7 +122,6 @@ const AdComponent = ({
     if (!adRef.current) return;
 
     try {
-      // PropellerAds Banner Integration
       const adContainer = adRef.current;
       adContainer.innerHTML = ''; // Clear previous ads
 
@@ -116,32 +130,34 @@ const AdComponent = ({
       adElement.id = `propeller-banner-${Date.now()}`;
       adElement.style.cssText = 'min-height: 250px; width: 100%; text-align: center;';
       
-      // PropellerAds Configuration
-      adElement.innerHTML = `
-        <script type="text/javascript">
-          (function(d, s, id) {
-            var js, pjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//cdn.propellerads.com/script.js";
-            js.async = true;
-            js.onload = function() {
-              // Deine PropellerAds Zone ID hier einfügen
+      // PropellerAds Banner Code
+      const adScript = document.createElement('script');
+      adScript.type = 'text/javascript';
+      adScript.innerHTML = `
+        (function(d, s, id) {
+          var js, pjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//cdn.propellerads.com/script.js";
+          js.async = true;
+          js.onload = function() {
+            if (window.PropellerAds) {
               PropellerAds.displayAd({
-                zoneId: "DEINE_PROPELLER_ZONE_ID", // 🔧 Hier deine Zone ID einfügen
+                zoneId: "${PROPELLERADS_ZONES.banner}",
                 width: "auto",
                 height: "auto",
                 format: "banner"
               });
-            };
-            pjs.parentNode.insertBefore(js, pjs);
-          }(document, 'script', 'propeller-ads-sdk'));
-        </script>
+            }
+          };
+          pjs.parentNode.insertBefore(js, pjs);
+        }(document, 'script', 'propeller-ads-sdk'));
       `;
       
+      adElement.appendChild(adScript);
       adContainer.appendChild(adElement);
       setAdLoaded(true);
-      console.log('✅ PropellerAds banner loaded');
+      console.log('✅ PropellerAds banner loaded with Zone ID:', PROPELLERADS_ZONES.banner);
     } catch (error) {
       console.error('❌ PropellerAds initialization error:', error);
       setAdNetwork('adsterra'); // Fallback
@@ -157,7 +173,7 @@ const AdComponent = ({
 
     const script = document.createElement('script');
     script.async = true;
-    script.src = 'https://a.exdynsrv.com/ads.js'; // Adsterra Universal Script
+    script.src = 'https://a.exdynsrv.com/ads.js';
     script.onload = () => {
       window.AdsterraLoaded = true;
       initializeAdsterraAd();
@@ -181,22 +197,27 @@ const AdComponent = ({
       adElement.style.cssText = 'min-height: 250px; width: 100%; text-align: center;';
       
       // Adsterra Banner Code
-      adElement.innerHTML = `
-        <script type="text/javascript">
-          atOptions = {
-            'key' : 'DEINE_ADSTERRA_KEY', // 🔧 Hier deine Adsterra Key einfügen
-            'format' : 'iframe',
-            'height' : 250,
-            'width' : 300,
-            'params' : {}
-          };
-        </script>
-        <script type="text/javascript" src="//a.exdynsrv.com/ads.js"></script>
+      const adScript = document.createElement('script');
+      adScript.type = 'text/javascript';
+      adScript.innerHTML = `
+        atOptions = {
+          'key' : '${ADSTERRA_ZONES.banner}',
+          'format' : 'iframe',
+          'height' : 250,
+          'width' : 300,
+          'params' : {}
+        };
       `;
       
+      const adScript2 = document.createElement('script');
+      adScript2.type = 'text/javascript';
+      adScript2.src = '//a.exdynsrv.com/ads.js';
+      
+      adElement.appendChild(adScript);
+      adElement.appendChild(adScript2);
       adContainer.appendChild(adElement);
       setAdLoaded(true);
-      console.log('✅ Adsterra banner loaded');
+      console.log('✅ Adsterra banner loaded with Key:', ADSTERRA_ZONES.banner);
     } catch (error) {
       console.error('❌ Adsterra initialization error:', error);
       setAdNetwork('propellerads'); // Fallback
