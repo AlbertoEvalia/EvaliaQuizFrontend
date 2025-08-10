@@ -64,8 +64,8 @@ router.post('/auth/magic-link', async (req, res) => {
       createdAt: Date.now()
     });
     
-    // 3. MAGIC-LINK ERSTELLEN
-    const magicLink = `${req.protocol}://${req.get('host')}/auth/verify?token=${token}&email=${encodeURIComponent(email)}`;
+    // 3. MAGIC-LINK ERSTELLEN (direkt zum Backend)
+    const magicLink = `https://evaliaquizbackend.onrender.com/api/auth/verify?token=${token}&email=${encodeURIComponent(email)}`;
     
     // 4. E-MAIL SENDEN
     const emailTemplate = {
@@ -160,7 +160,7 @@ router.get('/auth/verify', (req, res) => {
     const { token, email } = req.query;
     
     if (!token || !email) {
-      return res.redirect('/?error=invalid');
+      return res.redirect('https://evaliaquiz.com/?error=invalid');
     }
     
     const tokenData = magicTokens.get(token);
@@ -168,22 +168,22 @@ router.get('/auth/verify', (req, res) => {
     // Token prüfen
     if (!tokenData) {
       console.log(`[VERIFY] Invalid token: ${token}`);
-      return res.redirect('/?error=invalid');
+      return res.redirect('https://evaliaquiz.com/?error=invalid');
     }
     
     if (tokenData.used) {
       console.log(`[VERIFY] Token already used: ${token}`);
-      return res.redirect('/?error=invalid');
+      return res.redirect('https://evaliaquiz.com/?error=invalid');
     }
     
     if (tokenData.expiresAt < Date.now()) {
       console.log(`[VERIFY] Token expired: ${token}`);
-      return res.redirect('/?error=expired');
+      return res.redirect('https://evaliaquiz.com/?error=expired');
     }
     
     if (tokenData.email !== email.toLowerCase()) {
       console.log(`[VERIFY] Email mismatch: ${tokenData.email} vs ${email.toLowerCase()}`);
-      return res.redirect('/?error=mismatch');
+      return res.redirect('https://evaliaquiz.com/?error=mismatch');
     }
     
     // Token als verwendet markieren
@@ -192,12 +192,12 @@ router.get('/auth/verify', (req, res) => {
     
     console.log(`[VERIFY] Success for: ${email}`);
     
-    // Redirect zur App mit Auth-Success
-    res.redirect(`/?auth=${token}&email=${encodeURIComponent(email)}`);
+    // Redirect zur Startseite mit Auth-Parametern (keine separate /auth/verify Route)
+    res.redirect(`https://evaliaquiz.com/?auth=${token}&email=${encodeURIComponent(email)}`);
     
   } catch (error) {
     console.error(`[VERIFY] Error: ${error.message}`);
-    res.redirect('/?error=invalid');
+    res.redirect('https://evaliaquiz.com/?error=invalid');
   }
 });
 
