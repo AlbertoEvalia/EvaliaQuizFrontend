@@ -34,6 +34,12 @@ const AdComponent = ({
 
   // 🤖 Monetag MultiTag Integration - AI-POWERED
   const loadMonetagMultiTag = () => {
+    // Reset für Debugging
+    if (process.env.NODE_ENV === 'development') {
+      window.MonetagMultiTagLoaded = false;
+      window.MonetagMultiTagShown = false;
+    }
+    
     // Verhindere mehrfaches Laden
     if (window.MonetagMultiTagLoaded) {
       console.log('⚠️ Monetag MultiTag already loaded, skipping...');
@@ -42,6 +48,8 @@ const AdComponent = ({
     }
 
     try {
+      console.log('🚀 Starting Monetag MultiTag load...');
+      
       // Prüfe ob Script bereits existiert
       const existingScript = document.querySelector(`script[src*="${MONETAG_ZONES.script_domain}"]`);
       if (existingScript) {
@@ -69,6 +77,7 @@ const AdComponent = ({
       script.onerror = (error) => {
         console.error('❌ Monetag MultiTag script failed to load:', error);
         setAdLoaded(true);
+        window.MonetagMultiTagLoaded = false; // Reset bei Fehler
       };
 
       // Script zu Head hinzufügen
@@ -78,6 +87,7 @@ const AdComponent = ({
     } catch (error) {
       console.error('❌ Monetag MultiTag integration error:', error);
       setAdLoaded(true);
+      window.MonetagMultiTagLoaded = false; // Reset bei Fehler
     }
   };
 
