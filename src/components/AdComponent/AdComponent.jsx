@@ -3,8 +3,8 @@ import './AdComponent.css';
 
 // 🎯 AD NETWORK KONFIGURATION - MONETAG VIGNETTE BANNER
 const MONETAG_ZONES = {
-  vignette: "9695605", // Gleiche Zone ID für Vignette
-  script_domain: "groleegni.net"
+  vignette: "9696819", // Neue Vignette Zone ID
+  script_domain: "shaiwourtijogno.net" // Domain aus deinem Code
 };
 
 const AdComponent = ({
