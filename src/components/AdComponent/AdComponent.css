@@ -1,103 +1,96 @@
-/* AdComponent.css - EVALIA ECKIG + Orange + 20px Grid */
-
-/* Grid System (20px) */
-:root {
-  --grid-unit: 20px;
-}
+/* AdComponent.css - Clean Orange Design */
 
 .ad-component {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Lila wie Registration */
-  color: white;
-  padding: calc(1 * var(--grid-unit));
-  box-sizing: border-box;
-  font-family: Helvetica, Arial, sans-serif;
+  z-index: 10000;
+  backdrop-filter: blur(4px);
 }
 
 .ad-container {
-  background: white;
-  padding: calc(1.5 * var(--grid-unit)); /* 30px */
-  color: #333;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  width: calc(100% - calc(2 * var(--grid-unit))); /* 40px margin */
-  max-width: calc(40 * var(--grid-unit)); /* 800px */
-  border-radius: 0; /* ECKIG! */
-  position: relative;
-  margin: var(--grid-unit);
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 480px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e0e0e0;
 }
 
 .ad-header {
   text-align: center;
-  margin-bottom: calc(1.25 * var(--grid-unit)); /* 25px */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .ad-header h2 {
-  margin: 0 0 calc(0.5 * var(--grid-unit)) 0; /* 10px */
-  font-size: calc(1.2 * var(--grid-unit)); /* 24px */
+  margin: 0 0 8px 0;
+  font-size: 24px;
   font-weight: 600;
-  color: #2c3e50;
+  color: #333333;
 }
 
 .progress-info {
-  font-size: calc(0.7 * var(--grid-unit)); /* 14px */
-  color: #7f8c8d;
-  margin-top: calc(0.2 * var(--grid-unit)); /* 4px */
-  font-weight: 500;
+  font-size: 14px;
+  color: #666666;
+  margin: 4px 0;
 }
 
 .ad-debug-info {
-  margin-top: calc(0.4 * var(--grid-unit)); /* 8px */
-  padding: calc(0.25 * var(--grid-unit)) calc(0.5 * var(--grid-unit)); /* 5px 10px */
-  background: rgba(52, 152, 219, 0.1);
-  border-radius: 0; /* ECKIG! */
-  border-left: 3px solid #3498db;
+  margin-top: 8px;
 }
 
 .ad-content {
-  margin: calc(1.25 * var(--grid-unit)) 0; /* 25px */
+  margin: 20px 0;
 }
 
 .ad-placeholder {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.ad-banner {
-  width: 100%;
   text-align: center;
 }
 
-.ad-banner > p {
-  margin: 0 0 calc(0.75 * var(--grid-unit)) 0; /* 15px */
-  font-size: calc(0.8 * var(--grid-unit)); /* 16px */
+.ad-banner p {
+  font-size: 16px;
+  color: #555555;
+  margin: 0 0 16px 0;
   font-weight: 500;
-  color: #34495e;
 }
 
-/* Loading States - ECKIG */
+/* Monetag Container - Clean Design */
+.monetag-container {
+  min-height: 250px;
+  width: 100%;
+  text-align: center;
+  border: 2px solid #FF8C00; /* Orange border */
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px 0;
+  background: #ffffff; /* White background */
+  box-shadow: 0 2px 8px rgba(255, 140, 0, 0.1);
+}
+
 .ad-loading {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: calc(10 * var(--grid-unit)); /* 200px */
-  color: #7f8c8d;
+  justify-content: center;
+  height: 100%;
+  min-height: 210px;
 }
 
 .loading-spinner {
-  font-size: calc(1.2 * var(--grid-unit)); /* 24px */
+  font-size: 32px;
   animation: spin 2s linear infinite;
-  margin-bottom: calc(0.5 * var(--grid-unit)); /* 10px */
+  margin-bottom: 16px;
 }
 
 @keyframes spin {
@@ -106,143 +99,163 @@
 }
 
 .ad-loading p {
+  color: #666666;
+  font-size: 14px;
   margin: 0;
-  font-size: calc(0.7 * var(--grid-unit)); /* 14px */
+}
+
+.ad-status {
+  padding: 20px 0;
+}
+
+.ad-status h3 {
+  color: #FF8C00; /* Orange */
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.ad-status p {
+  color: #666666;
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.ad-status small {
+  color: #999999;
+  font-size: 12px;
+}
+
+.ad-footer-info {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.ad-footer-info p {
+  margin: 0 0 4px 0;
+  font-size: 12px;
+  color: #888888;
   font-weight: 500;
 }
 
-/* Footer */
+.ad-footer-info small {
+  font-size: 11px;
+  color: #999999;
+}
+
+/* Footer Section */
 .ad-footer {
   text-align: center;
-  margin-top: calc(1.25 * var(--grid-unit)); /* 25px */
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
 }
 
 .countdown {
-  margin-bottom: var(--grid-unit); /* 20px */
+  margin-bottom: 16px;
 }
 
-.countdown span {
-  font-size: calc(0.8 * var(--grid-unit)); /* 16px */
+.countdown-text {
+  font-size: 16px;
+  color: #666666;
   font-weight: 500;
-  color: #7f8c8d;
-  padding: calc(0.4 * var(--grid-unit)) calc(0.8 * var(--grid-unit)); /* 8px 16px */
-  background: rgba(149, 165, 166, 0.1);
-  border-radius: 0; /* ECKIG! */
-  display: inline-block;
-  border: 1px solid #7f8c8d;
 }
 
-/* ORANGE Continue Button - ECKIG */
+/* Orange Buttons - FIXED */
+.continue-btn,
+.upgrade-hint-btn {
+  background-color: #FF8C00 !important; /* Orange background */
+  background-image: none !important; /* Remove gradient */
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 12px 24px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 4px rgba(255, 140, 0, 0.3) !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+}
+
+.continue-btn:hover,
+.upgrade-hint-btn:hover {
+  background-color: #e07b00 !important; /* Darker orange on hover */
+  background-image: none !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 8px rgba(255, 140, 0, 0.4) !important;
+}
+
+.continue-btn:active,
+.upgrade-hint-btn:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 4px rgba(255, 140, 0, 0.3) !important;
+}
+
 .continue-btn {
-  width: 100%;
-  height: calc(2.5 * var(--grid-unit)); /* 50px */
-  background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%); /* Orange */
-  color: white;
-  border: none;
-  border-radius: 0; /* ECKIG! */
-  font-size: calc(0.8 * var(--grid-unit)); /* 16px */
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 calc(0.2 * var(--grid-unit)) calc(0.75 * var(--grid-unit)) rgba(255, 154, 86, 0.3); /* 4px 15px */
-  margin-bottom: calc(0.75 * var(--grid-unit)); /* 15px */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
+  font-size: 18px !important;
+  padding: 14px 28px !important;
+  margin: 0 !important;
 }
 
-.continue-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 calc(0.3 * var(--grid-unit)) var(--grid-unit) rgba(255, 154, 86, 0.4); /* 6px 20px */
-}
-
-.continue-btn:active {
-  transform: translateY(0);
-}
-
-/* ORANGE Upgrade Hint - ECKIG */
 .upgrade-hint {
-  margin-top: calc(0.75 * var(--grid-unit)); /* 15px */
+  margin-top: 12px;
 }
 
 .upgrade-hint-btn {
-  width: 100%;
-  height: calc(2.5 * var(--grid-unit)); /* 50px */
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); /* Pink-Orange */
-  color: white;
-  border: none;
-  border-radius: 0; /* ECKIG! */
-  font-size: calc(0.7 * var(--grid-unit)); /* 14px */
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 calc(0.2 * var(--grid-unit)) calc(0.75 * var(--grid-unit)) rgba(240, 147, 251, 0.3); /* 4px 15px */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
+  font-size: 14px !important;
+  padding: 10px 20px !important;
 }
 
-.upgrade-hint-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 calc(0.3 * var(--grid-unit)) var(--grid-unit) rgba(240, 147, 251, 0.4); /* 6px 20px */
-}
-
-/* Registered Message - ECKIG */
 .registered-message {
-  background: linear-gradient(135deg, #a8e6cf 0%, #56ab2f 100%);
-  color: white;
-  padding: calc(0.5 * var(--grid-unit)) var(--grid-unit); /* 10px 20px */
-  border-radius: 0; /* ECKIG! */
-  font-size: calc(0.7 * var(--grid-unit)); /* 14px */
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #28a745;
   font-weight: 500;
-  display: inline-block;
-  box-shadow: 0 calc(0.2 * var(--grid-unit)) calc(0.75 * var(--grid-unit)) rgba(86, 171, 47, 0.3); /* 4px 15px */
 }
 
-/* Responsive Design - 20px Grid */
-@media (max-width: calc(40 * var(--grid-unit))) { /* 800px */
-  .ad-component {
-    padding: calc(0.75 * var(--grid-unit)); /* 15px */
-  }
-  
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
   .ad-container {
-    padding: var(--grid-unit); /* 20px */
-    margin: calc(0.5 * var(--grid-unit)); /* 10px */
+    width: 95%;
+    padding: 20px;
+    margin: 10px;
   }
   
-  .ad-header h2 {
-    font-size: var(--grid-unit); /* 20px */
+  .monetag-container {
+    min-height: 200px;
+    padding: 16px;
+  }
+  
+  .continue-btn {
+    width: 100%;
+    font-size: 16px !important;
+    padding: 12px !important;
+  }
+  
+  .upgrade-hint-btn {
+    width: 100%;
+    margin-top: 8px;
   }
 }
 
-@media (max-width: calc(24 * var(--grid-unit))) { /* 480px */
-  .ad-container {
-    padding: calc(0.75 * var(--grid-unit)); /* 15px */
-  }
-  
-  .ad-header h2 {
-    font-size: calc(0.9 * var(--grid-unit)); /* 18px */
-  }
-  
-  .progress-info {
-    font-size: calc(0.6 * var(--grid-unit)); /* 12px */
-  }
+/* Remove any unwanted gradients globally for this component */
+.ad-component * {
+  background-image: none !important;
 }
 
-/* Success animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(calc(1.5 * var(--grid-unit))); /* 30px */
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.ad-component button:not(.continue-btn):not(.upgrade-hint-btn) {
+  background: #FF8C00 !important;
+  background-image: none !important;
 }
 
+/* Ensure clean white background for ad container */
 .ad-container {
-  animation: fadeInUp 0.6s ease-out;
+  background: #ffffff !important;
+  background-image: none !important;
 }

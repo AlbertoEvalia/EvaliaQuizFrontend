@@ -32,31 +32,62 @@ const AdComponent = ({
     return geoLangMap[language] || geoLangMap['en'];
   };
 
-  // 📱 Monetag Integration - KOMPLETT ISOLIERT
+  // 📱 Monetag Integration - KORREKTE IMPLEMENTIERUNG
   const loadMonetagInterstitial = () => {
     // Verhindere mehrfaches Laden
-    if (window.MonetagInterstitialActive) {
+    if (window.MonetagInterstitialLoaded) {
+      console.log('⚠️ Monetag already loaded, skipping...');
       setAdLoaded(true);
       return;
     }
 
     try {
-      // Sauberer Script-Load
+      // Prüfe ob Script bereits existiert
+      const existingScript = document.querySelector(`script[src*="${MONETAG_ZONES.script_domain}"]`);
+      if (existingScript) {
+        console.log('📝 Monetag script already exists');
+        setAdLoaded(true);
+        window.MonetagInterstitialLoaded = true;
+        return;
+      }
+
+      // Erstelle Script Element
       const script = document.createElement('script');
-      script.innerHTML = `(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('${MONETAG_ZONES.script_domain}',${MONETAG_ZONES.interstitial},document.createElement('script'))`;
+      script.src = `https://${MONETAG_ZONES.script_domain}/401/${MONETAG_ZONES.interstitial}`;
+      script.async = true;
+      script.setAttribute('data-cfasync', 'false');
       
+      // Event Listener für Script Load
+      script.onload = () => {
+        console.log('✅ Monetag script loaded successfully');
+        setAdLoaded(true);
+        window.MonetagInterstitialLoaded = true;
+        
+        // Trigger Interstitial nach kurzer Verzögerung
+        setTimeout(() => {
+          if (window.monetag) {
+            console.log('🚀 Triggering Monetag interstitial');
+            window.monetag.interstitial.show();
+          }
+        }, 1000);
+      };
+
+      script.onerror = (error) => {
+        console.error('❌ Monetag script failed to load:', error);
+        setAdLoaded(true);
+      };
+
+      // Script zu Head hinzufügen
       document.head.appendChild(script);
+      console.log('📤 Monetag script injected - Zone:', MONETAG_ZONES.interstitial);
       
-      setAdLoaded(true);
-      window.MonetagInterstitialActive = true;
-      console.log('✅ Monetag Interstitial loaded - Zone:', MONETAG_ZONES.interstitial);
     } catch (error) {
-      console.error('❌ Monetag error:', error);
+      console.error('❌ Monetag integration error:', error);
       setAdLoaded(true);
     }
   };
 
-  // EINMALIGER EFFECT - kein Cleanup, kein DOM-Handling
+  // EINMALIGER EFFECT 
   useEffect(() => {
     // Countdown Timer
     const timer = setInterval(() => {
@@ -70,12 +101,15 @@ const AdComponent = ({
       });
     }, 1000);
 
-    // Ad laden
-    loadMonetagInterstitial();
+    // Ad laden nach kurzem Delay
+    const adTimer = setTimeout(() => {
+      loadMonetagInterstitial();
+    }, 500);
 
-    // Nur Timer cleanup
+    // Cleanup
     return () => {
       clearInterval(timer);
+      clearTimeout(adTimer);
     };
   }, []); // Keine Dependencies
 
@@ -150,33 +184,24 @@ const AdComponent = ({
             <div className="ad-banner">
               <p>🎯 {getAdText('adPlaceholder', 'Advertisement')}</p>
               
-              {/* Statischer Monetag Container */}
-              <div style={{ 
-                minHeight: '250px', 
-                width: '100%', 
-                textAlign: 'center',
-                border: '2px solid #0075BE',
-                borderRadius: '8px',
-                padding: '20px',
-                margin: '10px 0',
-                background: 'linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%)'
-              }}>
+              {/* Monetag Container - CLEAN DESIGN */}
+              <div className="monetag-container">
                 {!adLoaded ? (
                   <div className="ad-loading">
                     <div className="loading-spinner">⚡</div>
                     <p>Loading Monetag Interstitial...</p>
                   </div>
                 ) : (
-                  <div>
-                    <h3 style={{ color: '#0075BE', margin: '0 0 10px 0' }}>⚡ Monetag Interstitial Active</h3>
-                    <p style={{ color: '#666', margin: '0' }}>Zone ID: {MONETAG_ZONES.interstitial}</p>
-                    <small style={{ color: '#999' }}>Interstitial ads will appear automatically</small>
+                  <div className="ad-status">
+                    <h3>⚡ Monetag Interstitial Active</h3>
+                    <p>Zone ID: {MONETAG_ZONES.interstitial}</p>
+                    <small>Interstitial ads will appear automatically</small>
                   </div>
                 )}
               </div>
 
               {/* Fallback Message */}
-              <div style={{ marginTop: '10px', fontSize: '12px', color: '#888' }}>
+              <div className="ad-footer-info">
                 <p>Powered by Monetag</p>
                 <small>Revenue optimization for {language.toUpperCase()} users</small>
               </div>
@@ -187,7 +212,7 @@ const AdComponent = ({
         <div className="ad-footer">
           <div className="countdown">
             {!canSkip ? (
-              <span>
+              <span className="countdown-text">
                 {getTextWithPlaceholders(
                   'countdownText',
                   `Continue in ${countdown}s`,
