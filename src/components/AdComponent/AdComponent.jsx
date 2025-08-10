@@ -51,9 +51,11 @@ const AdComponent = ({
         return;
       }
 
-      // MultiTag Script - automatische Format-Auswahl
+      // MultiTag Script - KORREKTE METHODE
       const script = document.createElement('script');
-      script.innerHTML = `(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('${MONETAG_ZONES.script_domain}',${MONETAG_ZONES.multitag},document.createElement('script'))`;
+      script.src = `https://${MONETAG_ZONES.script_domain}/401/${MONETAG_ZONES.multitag}`;
+      script.async = true;
+      script.setAttribute('data-cfasync', 'false');
       
       // Event Handling
       script.onload = () => {
