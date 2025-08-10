@@ -29,9 +29,6 @@ const LegalLink = ({ onNavigate, translations, userType, onLogout }) => {
     onLogout();
   };
 
-  // DEBUG: Props anzeigen
-  console.log('🔍 LegalLink Props:', { userType, onLogout: !!onLogout });
-
   return (
     <div className="legal-link-container">
       <button
@@ -47,21 +44,16 @@ const LegalLink = ({ onNavigate, translations, userType, onLogout }) => {
 
       {showMenu && (
         <div className="legal-dropdown">
-          {/* User Status Section - nur wenn registriert */}
+          {/* Logout Button - nur wenn registriert */}
           {userType === 'registered' && (
             <>
-              <div className="user-status-section">
-                <span className="user-status">
-                  ✅ {translations?.loggedIn || 'Logged in'}
-                </span>
-                <button
-                  type="button"
-                  className="logout-button"
-                  onClick={handleLogoutClick}
-                >
-                  🚪 {translations?.logout || 'Logout'}
-                </button>
-              </div>
+              <button
+                type="button"
+                className="logout-button"
+                onClick={handleLogoutClick}
+              >
+                {translations?.logout || 'Logout'}
+              </button>
               <div className="dropdown-divider"></div>
             </>
           )}
@@ -96,4 +88,5 @@ const LegalLink = ({ onNavigate, translations, userType, onLogout }) => {
     </div>
   );
 };
+
 export default LegalLink;
