@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './AdComponent.css';
 
-// 🎯 AD NETWORK KONFIGURATION - MONETAG MULTITAG (AI-BASED)
+// 🎯 AD NETWORK KONFIGURATION - MONETAG INTERSTITIAL (OPTIMIERT)
 const MONETAG_ZONES = {
-  multitag: "9695605", // Hauptzone für MultiTag
-  script_domain: "groleegni.net" // Zurück zur ursprünglichen Domain
+  interstitial: "9695605", // Bewährte Zone für Interstitials
+  script_domain: "groleegni.net" // Funktionierende Domain
 };
 
 const AdComponent = ({
@@ -32,62 +32,62 @@ const AdComponent = ({
     return geoLangMap[language] || geoLangMap['en'];
   };
 
-  // 🤖 Monetag MultiTag Integration - AI-POWERED
-  const loadMonetagMultiTag = () => {
+  // ⚡ Monetag Interstitial Integration - OPTIMIERT FÜR SPEED
+  const loadMonetagInterstitial = () => {
     // Reset für Debugging
     if (process.env.NODE_ENV === 'development') {
-      window.MonetagMultiTagLoaded = false;
-      window.MonetagMultiTagShown = false;
+      window.MonetagInterstitialLoaded = false;
+      window.MonetagInterstitialShown = false;
     }
     
     // Verhindere mehrfaches Laden
-    if (window.MonetagMultiTagLoaded) {
-      console.log('⚠️ Monetag MultiTag already loaded, skipping...');
+    if (window.MonetagInterstitialLoaded) {
+      console.log('⚠️ Monetag Interstitial already loaded, skipping...');
       setAdLoaded(true);
       return;
     }
 
     try {
-      console.log('🚀 Starting Monetag MultiTag load...');
+      console.log('🚀 Starting Monetag Interstitial load...');
       
-      // Prüfe ob Script bereits existiert
-      const existingScript = document.querySelector(`script[src*="${MONETAG_ZONES.script_domain}"]`);
-      if (existingScript) {
-        console.log('📝 Monetag MultiTag script already exists');
-        setAdLoaded(true);
-        window.MonetagMultiTagLoaded = true;
-        return;
-      }
-
-      // MultiTag Script - KORREKTE METHODE
+      // Erstelle Script Element
       const script = document.createElement('script');
-      script.src = `https://${MONETAG_ZONES.script_domain}/401/${MONETAG_ZONES.multitag}`;
+      script.src = `https://${MONETAG_ZONES.script_domain}/401/${MONETAG_ZONES.interstitial}`;
       script.async = true;
       script.setAttribute('data-cfasync', 'false');
       
-      // Event Handling
+      // Event Listener für Script Load
       script.onload = () => {
-        console.log('✅ Monetag MultiTag script loaded successfully');
+        console.log('✅ Monetag Interstitial script loaded successfully');
         setAdLoaded(true);
-        window.MonetagMultiTagLoaded = true;
-        window.MonetagMultiTagShown = true; // Flag für Timeout
-        console.log('🤖 MultiTag AI analyzing - will auto-select best ad format');
+        window.MonetagInterstitialLoaded = true;
+        
+        // Trigger Interstitial sofort
+        setTimeout(() => {
+          if (window.monetag && window.monetag.interstitial) {
+            console.log('🚀 Triggering Monetag interstitial NOW');
+            window.monetag.interstitial.show();
+            window.MonetagInterstitialShown = true;
+          } else {
+            console.log('⚠️ Monetag interstitial API not available');
+          }
+        }, 500); // Nur 500ms Delay
       };
 
       script.onerror = (error) => {
-        console.error('❌ Monetag MultiTag script failed to load:', error);
+        console.error('❌ Monetag Interstitial script failed to load:', error);
         setAdLoaded(true);
-        window.MonetagMultiTagLoaded = false; // Reset bei Fehler
+        window.MonetagInterstitialLoaded = false;
       };
 
       // Script zu Head hinzufügen
       document.head.appendChild(script);
-      console.log('📤 Monetag MultiTag script injected - Zone:', MONETAG_ZONES.multitag);
+      console.log('📤 Monetag Interstitial script injected - Zone:', MONETAG_ZONES.interstitial);
       
     } catch (error) {
-      console.error('❌ Monetag MultiTag integration error:', error);
+      console.error('❌ Monetag Interstitial integration error:', error);
       setAdLoaded(true);
-      window.MonetagMultiTagLoaded = false; // Reset bei Fehler
+      window.MonetagInterstitialLoaded = false;
     }
   };
 
@@ -107,16 +107,16 @@ const AdComponent = ({
 
     // Ad laden nach kurzem Delay
     const adTimer = setTimeout(() => {
-      loadMonetagMultiTag();
-    }, 500);
+      loadMonetagInterstitial();
+    }, 300);
 
-    // TIMEOUT für MultiTag - nach 6 Sekunden automatisch weiter (optimiert)
+    // TIMEOUT optimiert - nur 4 Sekunden!
     const adTimeout = setTimeout(() => {
-      if (!window.MonetagMultiTagShown) {
-        console.log('⏰ Monetag MultiTag timeout - proceeding without ad');
+      if (!window.MonetagInterstitialShown) {
+        console.log('⏰ Monetag Interstitial timeout (4s) - proceeding without ad');
         setCanSkip(true);
       }
-    }, 6000); // 6 Sekunden Timeout für MultiTag
+    }, 4000); // NUR 4 Sekunden Timeout!
 
     // Cleanup
     return () => {
@@ -129,7 +129,7 @@ const AdComponent = ({
   const handleSkip = () => {
     if (canSkip) {
       const targetingInfo = getAdTargetingInfo();
-      console.log(`📊 Ad completed - Monetag MultiTag AI, Language: ${language}, Expected CPM: ${targetingInfo.expectedCPM}`);
+      console.log(`📊 Ad completed - Monetag Interstitial (Optimiert), Language: ${language}, Expected CPM: ${targetingInfo.expectedCPM}`);
       onAdComplete();
     }
   };
@@ -201,14 +201,14 @@ const AdComponent = ({
               <div className="monetag-container">
                 {!adLoaded ? (
                   <div className="ad-loading">
-                    <div className="loading-spinner">🤖</div>
-                    <p>Loading MultiTag AI...</p>
+                    <div className="loading-spinner">⚡</div>
+                    <p>Loading Interstitial...</p>
                   </div>
                 ) : (
                   <div className="ad-status">
-                    <h3>🤖 MultiTag AI Active</h3>
-                    <p>Zone ID: {MONETAG_ZONES.multitag}</p>
-                    <small>AI analyzing optimal ad format...</small>
+                    <h3>⚡ Interstitial Ready</h3>
+                    <p>Zone ID: {MONETAG_ZONES.interstitial}</p>
+                    <small>Ad will appear automatically</small>
                   </div>
                 )}
               </div>
