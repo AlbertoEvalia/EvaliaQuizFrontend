@@ -12,7 +12,8 @@ const ResultsScreen = ({
   onRestart,
   showLegalLink = false,
   onNavigateToLegal,
-  userType = 'free' // NEU: 'free' | 'registered'
+  userType = 'free',
+  onLogout            
 }) => {
 
   // 💾 LOKALE STATS für Registered Users

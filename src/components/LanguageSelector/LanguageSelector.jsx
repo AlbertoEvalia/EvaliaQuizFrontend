@@ -12,7 +12,9 @@ const LanguageSelector = ({
   translations,
   showLegalLink = false,
   onNavigateToLegal,
-  onTestUpgrade
+  onTestUpgrade,
+  userType = 'free',      // ← NEU
+  onLogout        
 }) => {
   const LANGUAGES = [
     { value: 'en', label: 'English' },
