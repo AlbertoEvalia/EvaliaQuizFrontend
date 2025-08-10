@@ -14,15 +14,29 @@
   padding: 20px;
 }
 
+/* Spezifischerer Selektor für ad-container */
+.ad-component .ad-container {
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%) !important; /* Orange-Gradient FORCED */
+  background-color: #FF6B35 !important; /* Fallback Orange */
+  border-radius: 0 !important; /* Komplett eckig */
+  max-width: 500px !important;
+  width: 100% !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+  animation: slideIn 0.3s ease !important;
+}
+
 .ad-container {
-  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%); /* Orange-Gradient wie UpgradePrompt */
-  border-radius: 0; /* Komplett eckig */
-  max-width: 500px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  animation: slideIn 0.3s ease;
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%) !important; /* Orange-Gradient FORCED */
+  background-color: #FF6B35 !important; /* Fallback Orange */
+  border-radius: 0 !important; /* Komplett eckig */
+  max-width: 500px !important;
+  width: 100% !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+  animation: slideIn 0.3s ease !important;
 }
 
 .ad-header {
