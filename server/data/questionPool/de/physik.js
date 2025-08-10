@@ -11,6 +11,7 @@ export const PHYSIK_DE = [
   { question: "Schwimmen Eiswürfel auf Speiseöl?", topic: "Physik", answer: "Ja" },
   { question: "Kann eine Bleistiftmine Strom leiten?", topic: "Physik", answer: "Ja" },
   { question: "Wird Schall schneller durch Luft oder durch Wasser übertragen?", topic: "Physik", answer: "Wasser" },
+  { question: "Wird Licht schneller durch Luft oder durch Wasser übertragen?", topic: "Physik", answer: "Luft" },
   { question: "Oxidiert Aluminium?", topic: "Physik", answer: "Ja" },
   { question: "Welche Farbe bekommt Kupfer, wenn es oxidiert?", topic: "Physik", answer: "Grün" },
   { question: "Welches Gas macht Luftballons schweben?", topic: "Physik", answer: "Helium" },

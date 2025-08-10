@@ -11,6 +11,7 @@ export const PHYSIQUE_FR = [
   { question: "Les glaçons flottent-ils sur l'huile alimentaire ?", topic: "Physique", answer: "Oui" },
   { question: "Une mine de crayon peut-elle conduire l'électricité ?", topic: "Physique", answer: "Oui" },
   { question: "Le son se transmet-il plus vite dans l'air ou dans l'eau ?", topic: "Physique", answer: "Eau" },
+  { question: "La lumière se déplace-t-elle plus rapidement dans l'air ou dans l'eau ?", topic: "Physique", answer: "Air" },
   { question: "L'aluminium s'oxyde-t-il ?", topic: "Physique", answer: "Oui" },
   { question: "De quelle couleur devient le cuivre lorsqu'il s'oxyde ?", topic: "Physique", answer: "Vert" },
   { question: "Quel gaz fait flotter les ballons ?", topic: "Physique", answer: "Hélium" },

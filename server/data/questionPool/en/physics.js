@@ -10,6 +10,7 @@ export const PHYSICS_EN = [
     { question: "Do ice cubes float on cooking oil?", topic: "Physics", answer: "Yes" },
     { question: "Can a pencil lead conduct electricity?", topic: "Physics", answer: "Yes" },
     { question: "Is sound transmitted faster through air or water?", topic: "Physics", answer: "Water" },
+    { question: "Does light travel faster through air or through water?", topic: "Physics", answer: "Air" },
     { question: "Does aluminum oxidize?", topic: "Physics", answer: "Yes" },
     { question: "What color does copper turn when it oxidizes?", topic: "Physics", answer: "Green" },
     { question: "Which gas makes balloons float?", topic: "Physics", answer: "Helium" },

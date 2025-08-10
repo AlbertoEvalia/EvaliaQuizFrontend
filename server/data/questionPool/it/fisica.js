@@ -10,6 +10,7 @@ export const FISICA_IT = [
     { question: "I cubetti di ghiaccio galleggiano sull'olio alimentare?", topic: "Fisica", answer: "Sì" },
     { question: "La mina di una matita può condurre elettricità?", topic: "Fisica", answer: "Sì" },
     { question: "Il suono si trasmette più velocemente nell'aria o nell'acqua?", topic: "Fisica", answer: "Acqua" },
+    { question: "La luce viaggia più velocemente nell'aria o nell'acqua?", topic: "Fisica", answer: "Aria" },
     { question: "L'alluminio si ossida?", topic: "Fisica", answer: "Sì" },
     { question: "Di che colore diventa il rame quando si ossida?", topic: "Fisica", answer: "Verde" },
     { question: "Quale gas fa galleggiare i palloncini?", topic: "Fisica", answer: "Elio" },
