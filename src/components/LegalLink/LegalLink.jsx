@@ -96,5 +96,4 @@ const LegalLink = ({ onNavigate, translations, userType, onLogout }) => {
     </div>
   );
 };
-
 export default LegalLink;
