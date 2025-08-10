@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './AdComponent.css';
 
-// 🎯 AD NETWORK KONFIGURATION - MONETAG VIGNETTE BANNER
+// 🎯 AD NETWORK KONFIGURATION - MONETAG MULTITAG (AI-BASED)
 const MONETAG_ZONES = {
-  vignette: "9696819", // Neue Vignette Zone ID
-  script_domain: "shaiwourtijogno.net" // Domain aus deinem Code
+  multitag: "9695605", // Hauptzone für MultiTag
+  script_domain: "groleegni.net" // Zurück zur ursprünglichen Domain
 };
 
 const AdComponent = ({
@@ -32,11 +32,11 @@ const AdComponent = ({
     return geoLangMap[language] || geoLangMap['en'];
   };
 
-  // 📱 Monetag Vignette Banner Integration - ZUVERLÄSSIGER
-  const loadMonetagVignette = () => {
+  // 🤖 Monetag MultiTag Integration - AI-POWERED
+  const loadMonetagMultiTag = () => {
     // Verhindere mehrfaches Laden
-    if (window.MonetagVignetteLoaded) {
-      console.log('⚠️ Monetag Vignette already loaded, skipping...');
+    if (window.MonetagMultiTagLoaded) {
+      console.log('⚠️ Monetag MultiTag already loaded, skipping...');
       setAdLoaded(true);
       return;
     }
@@ -45,38 +45,36 @@ const AdComponent = ({
       // Prüfe ob Script bereits existiert
       const existingScript = document.querySelector(`script[src*="${MONETAG_ZONES.script_domain}"]`);
       if (existingScript) {
-        console.log('📝 Monetag script already exists');
+        console.log('📝 Monetag MultiTag script already exists');
         setAdLoaded(true);
-        window.MonetagVignetteLoaded = true;
+        window.MonetagMultiTagLoaded = true;
         return;
       }
 
-      // Erstelle Script Element für Vignette Banner
+      // MultiTag Script - automatische Format-Auswahl
       const script = document.createElement('script');
-      script.src = `https://${MONETAG_ZONES.script_domain}/400/${MONETAG_ZONES.vignette}`;
-      script.async = true;
-      script.setAttribute('data-cfasync', 'false');
+      script.innerHTML = `(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('${MONETAG_ZONES.script_domain}',${MONETAG_ZONES.multitag},document.createElement('script'))`;
       
-      // Event Listener für Script Load
+      // Event Handling
       script.onload = () => {
-        console.log('✅ Monetag Vignette script loaded successfully');
+        console.log('✅ Monetag MultiTag script loaded successfully');
         setAdLoaded(true);
-        window.MonetagVignetteLoaded = true;
-        window.MonetagVignetteShown = true; // Flag für Timeout
-        console.log('🎯 Vignette Banner ready - loads automatically on user interaction');
+        window.MonetagMultiTagLoaded = true;
+        window.MonetagMultiTagShown = true; // Flag für Timeout
+        console.log('🤖 MultiTag AI analyzing - will auto-select best ad format');
       };
 
       script.onerror = (error) => {
-        console.error('❌ Monetag Vignette script failed to load:', error);
+        console.error('❌ Monetag MultiTag script failed to load:', error);
         setAdLoaded(true);
       };
 
       // Script zu Head hinzufügen
       document.head.appendChild(script);
-      console.log('📤 Monetag Vignette script injected - Zone:', MONETAG_ZONES.vignette);
+      console.log('📤 Monetag MultiTag script injected - Zone:', MONETAG_ZONES.multitag);
       
     } catch (error) {
-      console.error('❌ Monetag Vignette integration error:', error);
+      console.error('❌ Monetag MultiTag integration error:', error);
       setAdLoaded(true);
     }
   };
@@ -97,16 +95,16 @@ const AdComponent = ({
 
     // Ad laden nach kurzem Delay
     const adTimer = setTimeout(() => {
-      loadMonetagVignette();
+      loadMonetagMultiTag();
     }, 500);
 
-    // TIMEOUT für langsame Ads - nach 8 Sekunden automatisch weiter (kürzer für Vignette)
+    // TIMEOUT für MultiTag - nach 6 Sekunden automatisch weiter (optimiert)
     const adTimeout = setTimeout(() => {
-      if (!window.MonetagVignetteShown) {
-        console.log('⏰ Monetag Vignette timeout - proceeding without ad');
+      if (!window.MonetagMultiTagShown) {
+        console.log('⏰ Monetag MultiTag timeout - proceeding without ad');
         setCanSkip(true);
       }
-    }, 8000); // 8 Sekunden Timeout für Vignette
+    }, 6000); // 6 Sekunden Timeout für MultiTag
 
     // Cleanup
     return () => {
@@ -119,7 +117,7 @@ const AdComponent = ({
   const handleSkip = () => {
     if (canSkip) {
       const targetingInfo = getAdTargetingInfo();
-      console.log(`📊 Ad completed - Monetag Vignette Banner, Language: ${language}, Expected CPM: ${targetingInfo.expectedCPM}`);
+      console.log(`📊 Ad completed - Monetag MultiTag AI, Language: ${language}, Expected CPM: ${targetingInfo.expectedCPM}`);
       onAdComplete();
     }
   };
@@ -191,14 +189,14 @@ const AdComponent = ({
               <div className="monetag-container">
                 {!adLoaded ? (
                   <div className="ad-loading">
-                    <div className="loading-spinner">🎯</div>
-                    <p>Loading Vignette Banner...</p>
+                    <div className="loading-spinner">🤖</div>
+                    <p>Loading MultiTag AI...</p>
                   </div>
                 ) : (
                   <div className="ad-status">
-                    <h3>🎯 Vignette Banner Ready</h3>
-                    <p>Zone ID: {MONETAG_ZONES.vignette}</p>
-                    <small>Native banner will appear on user interaction</small>
+                    <h3>🤖 MultiTag AI Active</h3>
+                    <p>Zone ID: {MONETAG_ZONES.multitag}</p>
+                    <small>AI analyzing optimal ad format...</small>
                   </div>
                 )}
               </div>
