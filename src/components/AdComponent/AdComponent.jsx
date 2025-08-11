@@ -124,7 +124,18 @@ const AdComponent = ({
                   </div>
                 )}
               </div>
+
+              {/* PFEIL NACH UNTEN */}
+              <div className="arrow-down">
+                <svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M30 40L0 0H60L30 40Z" fill="currentColor"/>
+                </svg>
+              </div>
             </div>
+          </div>
+
+          <div className="ad-footer">
+            {/* Footer-Inhalte bei Bedarf */}
           </div>
         </div>
       </div>

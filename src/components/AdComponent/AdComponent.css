@@ -1,4 +1,4 @@
-/* AdComponent.css - Finale Version mit allen Optimierungen */
+/* AdComponent.css - Orange Eckig Design mit A-Ads Sticky Integration */
 /* STRENGES 20px RASTER - RATIONALISTISCHES DESIGN */
 
 .ad-component {
@@ -57,7 +57,7 @@
 
 .ad-info-minimal p {
   margin: 0;
-  font-size: 0.8125rem; /* 13px */
+  font-size: 0.8125rem;
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
@@ -88,9 +88,8 @@
   white-space: nowrap !important;
 }
 
-/* Spezieller Style für Registrieren-Button */
 .ad-actions .action-btn:nth-child(2) {
-  font-size: 0.875rem !important; /* 14px */
+  font-size: 0.875rem !important;
   padding: 0 15px !important;
 }
 
@@ -110,13 +109,25 @@
 }
 
 .upgrade-hint-inline {
-  font-size: 0.8125rem !important; /* 13px */
+  font-size: 0.8125rem !important;
   color: rgba(255, 255, 255, 0.85) !important;
   margin: 0;
 }
 
+/* ARROW DOWN */
+.arrow-down {
+  margin: 20px 0;
+  text-align: center;
+  animation: bounce 2s infinite;
+}
 
-/* FOOTER - 20px Raster */
+.arrow-down svg {
+  width: 60px;
+  height: 40px;
+  fill: rgba(255, 255, 255, 0.9);
+}
+
+/* FOOTER */
 .ad-footer {
   text-align: center;
   padding: 0 40px 20px 40px;
@@ -177,6 +188,11 @@
 @keyframes slideIn {
   from { opacity: 0; transform: scale(0.9) translateY(-20px); }
   to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
 }
 
 /* MOBILE */
