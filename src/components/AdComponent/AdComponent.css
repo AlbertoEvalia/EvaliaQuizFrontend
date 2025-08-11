@@ -75,19 +75,18 @@
   font-style: normal !important;
 }
 
-/* Action Buttons Container - Untereinander */
+/* Action Buttons Container - Nur noch für Quiz fortsetzen */
 .ad-actions {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin: 20px 0; /* Weniger margin */
+  margin: 20px 0;
   align-items: center;
 }
 
 .action-btn {
   width: 100%;
   max-width: 320px;
-  padding: 14px 20px !important;
+  padding: 0 20px !important;
   font-size: 1rem !important;
   font-weight: 600 !important;
   border: none !important;
@@ -95,10 +94,11 @@
   cursor: pointer !important;
   transition: all 0.2s ease !important;
   text-transform: none !important;
-  height: 50px !important;
-  background: #E55B2B !important; /* Beide orange */
+  height: 40px !important; /* Im 20px Raster: 40px */
+  background: #E55B2B !important;
   color: #ffffff !important;
-  box-shadow: none !important; /* Kein Schatten - 2D */
+  box-shadow: none !important;
+  line-height: 40px !important; /* Vertikale Zentrierung */
 }
 
 .action-btn:hover:not(:disabled) {
@@ -112,25 +112,21 @@
   opacity: 0.7;
 }
 
-/* Beide Buttons gleich - kein Unterschied mehr */
-.action-btn.continue-btn,
-.action-btn.register-btn {
-  background: #E55B2B !important;
-  color: #ffffff !important;
-  border: none !important;
+/* Button im Kästchen - spezifischer Selektor */
+.witty-text-box .action-btn.register-btn {
+  width: 100% !important;
+  max-width: none !important;
+  margin-top: 20px !important; /* 20px Raster */
+  height: 40px !important; /* Gleiche Höhe wie andere Button */
+  line-height: 40px !important;
 }
 
-.action-btn.continue-btn:hover:not(:disabled),
-.action-btn.register-btn:hover {
-  background: #D44A21 !important;
-}
-
-/* Witziger Text Box - Kombiniert Text und Upgrade Hint */
+/* Witziger Text Box - Mit Button drin */
 .witty-text-box {
   margin: 20px 0;
-  padding: 15px 20px;
+  padding: 20px; /* 20px Raster überall */
   background: rgba(255, 255, 255, 0.1);
-  border-left: 4px solid #ffffff; /* Linke weiße Linie bleibt */
+  border-left: 4px solid #ffffff;
 }
 
 .witty-text {
@@ -140,18 +136,19 @@
   font-weight: 500;
   text-align: left;
   font-style: normal !important;
-  margin-bottom: 12px;
+  margin-bottom: 20px; /* 20px Raster */
 }
 
 .upgrade-hint-inline {
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.85) !important;
-  padding-top: 12px;
+  padding-top: 20px; /* 20px Raster */
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-  text-align: left; /* Linksbündig */
+  text-align: left;
+  margin-bottom: 0; /* Kein margin, button hat margin-top */
 }
 
-/* Wenn kein Upgrade Hint, dann kein margin-bottom */
+/* Wenn kein Upgrade Section */
 .witty-text-box .witty-text:last-child {
   margin-bottom: 0;
 }
