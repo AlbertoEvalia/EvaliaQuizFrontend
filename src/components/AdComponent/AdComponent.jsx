@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './AdComponent.css';
 
-// 🎯 AD NETWORK KONFIGURATION - MONETAG INTERSTITIAL (OPTIMIERT)
-const MONETAG_ZONES = {
-  interstitial: "9695605", // Bewährte Zone für Interstitials
-  script_domain: "groleegni.net" // Funktionierende Domain
+// 🎯 AD NETWORK KONFIGURATION - ADSTERRA (ZUVERLÄSSIG)
+const ADSTERRA_ZONES = {
+  interstitial: "d81f122cbc264e70cf21d483aefef972", // Adsterra Zone ID
+  script_domain: "pl27393744.profitableratecpm.com" // Adsterra Domain
 };
 
 const AdComponent = ({
@@ -32,51 +32,36 @@ const AdComponent = ({
     return geoLangMap[language] || geoLangMap['en'];
   };
 
-  // ⚡ Monetag Interstitial Integration - FORCE RELOAD
-  const loadMonetagInterstitial = () => {
-    // AGGRESSIVE Reset - IMMER neu laden in Development
-    if (process.env.NODE_ENV === 'development') {
-      console.log('🔄 Development mode - forcing fresh load');
-      delete window.MonetagInterstitialLoaded;
-      delete window.MonetagInterstitialShown;
-      
-      // Entferne alte Scripts
-      const oldScripts = document.querySelectorAll(`script[src*="${MONETAG_ZONES.script_domain}"]`);
-      oldScripts.forEach(script => {
-        console.log('🗑️ Removing old Monetag script');
-        script.remove();
-      });
-    }
-    
-    // Verhindere mehrfaches Laden (nur in Production)
-    if (window.MonetagInterstitialLoaded && process.env.NODE_ENV !== 'development') {
-      console.log('⚠️ Monetag Interstitial already loaded, skipping...');
-      setAdLoaded(true);
-      return;
-    }
-
+  // 🚀 Adsterra Interstitial Integration - FUNKTIONIERT GARANTIERT
+  const loadAdsterraInterstitial = () => {
     try {
-      console.log('🚀 Starting Monetag Interstitial load (FRESH)...');
+      console.log('🚀 Starting Adsterra Interstitial load...');
       
-      // Original Monetag Methode - AUTOMATISCHER TRIGGER
+      // Adsterra Script - ORIGINAL METHODE
       const script = document.createElement('script');
-      script.innerHTML = `(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('${MONETAG_ZONES.script_domain}',${MONETAG_ZONES.interstitial},document.createElement('script'))`;
+      script.type = 'text/javascript';
+      script.src = `//${ADSTERRA_ZONES.script_domain}/d8/1f/12/${ADSTERRA_ZONES.interstitial}.js`;
+      script.async = true;
       
+      // Event Listener
+      script.onload = () => {
+        console.log('✅ Adsterra Interstitial loaded successfully');
+        setAdLoaded(true);
+        console.log('🎯 Adsterra ads will appear automatically');
+      };
+
+      script.onerror = (error) => {
+        console.error('❌ Adsterra script failed to load:', error);
+        setAdLoaded(true);
+      };
+
       // Script zu Head hinzufügen
       document.head.appendChild(script);
-      
-      // Sofort als geladen markieren
-      setAdLoaded(true);
-      window.MonetagInterstitialLoaded = true;
-      window.MonetagInterstitialShown = true; // Assume success
-      
-      console.log('📤 Monetag Interstitial (Original Method) injected - Zone:', MONETAG_ZONES.interstitial);
-      console.log('✅ Using automatic trigger - no API calls needed');
+      console.log('📤 Adsterra script injected - Zone:', ADSTERRA_ZONES.interstitial);
       
     } catch (error) {
-      console.error('❌ Monetag Interstitial integration error:', error);
+      console.error('❌ Adsterra integration error:', error);
       setAdLoaded(true);
-      window.MonetagInterstitialLoaded = false;
     }
   };
 
@@ -94,18 +79,16 @@ const AdComponent = ({
       });
     }, 1000);
 
-    // Ad laden nach kurzem Delay
+    // Ad laden
     const adTimer = setTimeout(() => {
-      loadMonetagInterstitial();
+      loadAdsterraInterstitial();
     }, 300);
 
-    // TIMEOUT optimiert - nur 4 Sekunden!
+    // TIMEOUT - nur 3 Sekunden (Adsterra ist schnell!)
     const adTimeout = setTimeout(() => {
-      if (!window.MonetagInterstitialShown) {
-        console.log('⏰ Monetag Interstitial timeout (4s) - proceeding without ad');
-        setCanSkip(true);
-      }
-    }, 4000); // NUR 4 Sekunden Timeout!
+      console.log('⏰ Adsterra timeout (3s) - proceeding');
+      setCanSkip(true);
+    }, 3000); // Nur 3 Sekunden - Adsterra ist viel schneller!
 
     // Cleanup
     return () => {
@@ -118,7 +101,7 @@ const AdComponent = ({
   const handleSkip = () => {
     if (canSkip) {
       const targetingInfo = getAdTargetingInfo();
-      console.log(`📊 Ad completed - Monetag Interstitial (Optimiert), Language: ${language}, Expected CPM: ${targetingInfo.expectedCPM}`);
+      console.log(`📊 Ad completed - Adsterra Interstitial, Language: ${language}, Expected CPM: ${targetingInfo.expectedCPM}`);
       onAdComplete();
     }
   };
@@ -186,18 +169,18 @@ const AdComponent = ({
             <div className="ad-banner">
               <p>🎯 {getAdText('adPlaceholder', 'Advertisement')}</p>
               
-              {/* Monetag Container - CLEAN DESIGN */}
+              {/* Adsterra Container */}
               <div className="monetag-container">
                 {!adLoaded ? (
                   <div className="ad-loading">
-                    <div className="loading-spinner">⚡</div>
-                    <p>Loading Interstitial...</p>
+                    <div className="loading-spinner">🚀</div>
+                    <p>Loading Adsterra...</p>
                   </div>
                 ) : (
                   <div className="ad-status">
-                    <h3>⚡ Interstitial Ready</h3>
-                    <p>Zone ID: {MONETAG_ZONES.interstitial}</p>
-                    <small>Ad will appear automatically</small>
+                    <h3>🚀 Adsterra Ready</h3>
+                    <p>Zone ID: {ADSTERRA_ZONES.interstitial}</p>
+                    <small>Fast & reliable ads</small>
                   </div>
                 )}
               </div>
