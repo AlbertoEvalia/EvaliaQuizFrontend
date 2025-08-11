@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import './AdComponent.css';
 
-// 🎯 AD NETWORK KONFIGURATION - ADSTERRA (ZUVERLÄSSIG)
+// 🎯 AD NETWORK KONFIGURATION - ADSTERRA MIX (OPTIMAL)
 const ADSTERRA_ZONES = {
-  interstitial: "d81f122cbc264e70cf21d483aefef972", // Adsterra Zone ID
-  script_domain: "pl27393744.profitableratecpm.com" // Adsterra Domain
+  // Banner für Frage 5 + 10 (user-freundlich)
+  banner: {
+    key: "727a12d85692a72c89847e0c843a42b6",
+    domain: "www.highperformanceformat.com"
+  },
+  // Popunder für Frage 15 (höhere CPM)
+  popunder: {
+    id: "d81f122cbc264e70cf21d483aefef972",
+    domain: "pl27393744.profitableratecpm.com"
+  }
 };
 
 const AdComponent = ({
@@ -32,37 +40,83 @@ const AdComponent = ({
     return geoLangMap[language] || geoLangMap['en'];
   };
 
-  // 🚀 Adsterra Interstitial Integration - FUNKTIONIERT GARANTIERT
-  const loadAdsterraInterstitial = () => {
+  // 🚀 Adsterra Smart Mix - Banner + Popunder
+  const loadAdsterraAd = () => {
+    // Bestimme Ad-Typ basierend auf Frage-Position
+    const isPopunderPosition = questionNumber === 15; // Nur bei Frage 15
+    const adType = isPopunderPosition ? 'popunder' : 'banner';
+    
     try {
-      console.log('🚀 Starting Adsterra Interstitial load...');
+      console.log(`🚀 Loading Adsterra ${adType} for question ${questionNumber}...`);
       
-      // Adsterra Script - ORIGINAL METHODE
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = `//${ADSTERRA_ZONES.script_domain}/d8/1f/12/${ADSTERRA_ZONES.interstitial}.js`;
-      script.async = true;
-      
-      // Event Listener
-      script.onload = () => {
-        console.log('✅ Adsterra Interstitial loaded successfully');
-        setAdLoaded(true);
-        console.log('🎯 Adsterra ads will appear automatically');
-      };
-
-      script.onerror = (error) => {
-        console.error('❌ Adsterra script failed to load:', error);
-        setAdLoaded(true);
-      };
-
-      // Script zu Head hinzufügen
-      document.head.appendChild(script);
-      console.log('📤 Adsterra script injected - Zone:', ADSTERRA_ZONES.interstitial);
+      if (adType === 'banner') {
+        // Banner laden (300x250)
+        loadAdsterraBanner();
+      } else {
+        // Popunder laden 
+        loadAdsterraPopunder();
+      }
       
     } catch (error) {
       console.error('❌ Adsterra integration error:', error);
       setAdLoaded(true);
     }
+  };
+
+  // Banner Integration
+  const loadAdsterraBanner = () => {
+    // Banner Options
+    const script1 = document.createElement('script');
+    script1.innerHTML = `
+      atOptions = {
+        'key' : '${ADSTERRA_ZONES.banner.key}',
+        'format' : 'iframe',
+        'height' : 250,
+        'width' : 300,
+        'params' : {}
+      };
+    `;
+    document.head.appendChild(script1);
+
+    // Banner Script
+    const script2 = document.createElement('script');
+    script2.type = 'text/javascript';
+    script2.src = `//${ADSTERRA_ZONES.banner.domain}/${ADSTERRA_ZONES.banner.key}/invoke.js`;
+    script2.async = true;
+    
+    script2.onload = () => {
+      console.log('✅ Adsterra Banner loaded successfully');
+      setAdLoaded(true);
+    };
+
+    script2.onerror = () => {
+      console.error('❌ Adsterra Banner failed to load');
+      setAdLoaded(true);
+    };
+
+    document.head.appendChild(script2);
+    console.log('📤 Adsterra Banner injected (300x250)');
+  };
+
+  // Popunder Integration  
+  const loadAdsterraPopunder = () => {
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = `//${ADSTERRA_ZONES.popunder.domain}/d8/1f/12/${ADSTERRA_ZONES.popunder.id}.js`;
+    script.async = true;
+    
+    script.onload = () => {
+      console.log('✅ Adsterra Popunder loaded successfully');
+      setAdLoaded(true);
+    };
+
+    script.onerror = () => {
+      console.error('❌ Adsterra Popunder failed to load');
+      setAdLoaded(true);
+    };
+
+    document.head.appendChild(script);
+    console.log('📤 Adsterra Popunder injected');
   };
 
   // EINMALIGER EFFECT 
@@ -81,14 +135,14 @@ const AdComponent = ({
 
     // Ad laden
     const adTimer = setTimeout(() => {
-      loadAdsterraInterstitial();
+      loadAdsterraAd();
     }, 300);
 
-    // TIMEOUT - nur 3 Sekunden (Adsterra ist schnell!)
+    // TIMEOUT - 3 Sekunden
     const adTimeout = setTimeout(() => {
       console.log('⏰ Adsterra timeout (3s) - proceeding');
       setCanSkip(true);
-    }, 3000); // Nur 3 Sekunden - Adsterra ist viel schneller!
+    }, 3000);
 
     // Cleanup
     return () => {
@@ -100,8 +154,8 @@ const AdComponent = ({
 
   const handleSkip = () => {
     if (canSkip) {
-      const targetingInfo = getAdTargetingInfo();
-      console.log(`📊 Ad completed - Adsterra Interstitial, Language: ${language}, Expected CPM: ${targetingInfo.expectedCPM}`);
+      const adType = questionNumber === 15 ? 'Popunder' : 'Banner';
+      console.log(`📊 Ad completed - Adsterra ${adType}, Question: ${questionNumber}, Language: ${language}`);
       onAdComplete();
     }
   };
@@ -174,13 +228,13 @@ const AdComponent = ({
                 {!adLoaded ? (
                   <div className="ad-loading">
                     <div className="loading-spinner">🚀</div>
-                    <p>Loading Adsterra...</p>
+                    <p>Loading {questionNumber === 15 ? 'Popunder' : 'Banner'}...</p>
                   </div>
                 ) : (
                   <div className="ad-status">
                     <h3>🚀 Adsterra Ready</h3>
-                    <p>Zone ID: {ADSTERRA_ZONES.interstitial}</p>
-                    <small>Fast & reliable ads</small>
+                    <p>Type: {questionNumber === 15 ? 'Popunder (High CPM)' : 'Banner (300x250)'}</p>
+                    <small>Question {questionNumber} • Fast & reliable</small>
                   </div>
                 )}
               </div>
