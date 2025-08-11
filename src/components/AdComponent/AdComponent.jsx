@@ -131,7 +131,7 @@ const AdComponent = ({
       <div className="ad-component">
         <div className="ad-container" ref={adContainerRef}>
           <div className="ad-header">
-            <h2>Kurze Pause</h2>
+            <h2>Kurze Werbepause</h2>
             <div className="progress-info">
               Frage {questionNumber} von {totalQuestions}
             </div>
@@ -148,16 +148,12 @@ const AdComponent = ({
 
           <div className="ad-content">
             <div className="ad-placeholder">
-              {/* Werbung Label */}
-              <div className="ad-label">WERBUNG</div>
-              
-              {/* Info Container - Kompakter */}
+              {/* Info Container - Eine Zeile mit Gedankenstrich */}
               <div className="ad-info-minimal">
-                <p>Powered by A-Ads Network</p>
-                <p>Sticky banner active</p>
+                <p>Powered by A-Ads Network — Sticky banner active</p>
               </div>
 
-              {/* Action Buttons */}
+              {/* Action Buttons - Untereinander, volle Breite */}
               <div className="ad-actions">
                 <button 
                   onClick={handleSkip} 
@@ -174,9 +170,16 @@ const AdComponent = ({
                 </button>
               </div>
 
-              {/* Witziger rotierender Text */}
-              <div className="witty-text">
-                {wittyText}
+              {/* Witziger Text + Upgrade Hint im gleichen Kästchen */}
+              <div className="witty-text-box">
+                <div className="witty-text">
+                  {wittyText}
+                </div>
+                {userType === 'free' && (
+                  <div className="upgrade-hint-inline">
+                    💡 Weniger Werbung mit kostenloser Registrierung
+                  </div>
+                )}
               </div>
 
               {/* Großer Pfeil nach unten */}
@@ -189,12 +192,7 @@ const AdComponent = ({
           </div>
 
           <div className="ad-footer">
-            {/* Upgrade Hint nur für Free Users - jetzt kleiner/dezenter */}
-            {userType === 'free' && (
-              <div className="upgrade-hint-small">
-                <small>💡 Weniger Werbung mit kostenloser Registrierung</small>
-              </div>
-            )}
+            {/* Footer jetzt leer, alles ist oben integriert */}
           </div>
         </div>
       </div>

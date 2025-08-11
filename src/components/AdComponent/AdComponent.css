@@ -61,19 +61,7 @@
   text-align: center;
 }
 
-/* WERBUNG Label - Prominent */
-.ad-label {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #ffffff !important;
-  letter-spacing: 2px;
-  margin-bottom: 15px;
-  padding: 10px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-/* Minimale Info */
+/* Minimale Info - Eine Zeile mit Gedankenstrich */
 .ad-info-minimal {
   margin-bottom: 20px;
   padding: 10px;
@@ -82,23 +70,24 @@
 }
 
 .ad-info-minimal p {
-  margin: 2px 0;
+  margin: 0;
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.7) !important;
-  font-style: italic;
+  font-style: normal !important; /* Nicht kursiv */
 }
 
-/* Action Buttons Container */
+/* Action Buttons Container - Untereinander */
 .ad-actions {
   display: flex;
-  gap: 15px;
+  flex-direction: column; /* Untereinander statt nebeneinander */
+  gap: 12px;
   margin: 25px 0;
-  justify-content: center;
+  align-items: center;
 }
 
 .action-btn {
-  flex: 1;
-  max-width: 200px;
+  width: 100%; /* Volle Breite */
+  max-width: 320px; /* Maximale Breite für große Screens */
   padding: 14px 20px !important;
   font-size: 1rem !important;
   font-weight: 600 !important;
@@ -141,18 +130,35 @@
   box-shadow: 0 5px 10px rgba(255, 255, 255, 0.2) !important;
 }
 
-/* Witziger Text */
-.witty-text {
+/* Witziger Text Box - Kombiniert Text und Upgrade Hint */
+.witty-text-box {
   margin: 25px 0;
   padding: 15px 20px;
   background: rgba(255, 255, 255, 0.1);
   border-left: 4px solid #ffffff;
+}
+
+.witty-text {
   font-size: 1.05rem;
   line-height: 1.5;
   color: #ffffff !important;
   font-weight: 500;
   text-align: left;
-  font-style: italic;
+  font-style: normal !important; /* Nicht kursiv */
+  margin-bottom: 12px;
+}
+
+.upgrade-hint-inline {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85) !important;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: left;
+}
+
+/* Wenn kein Upgrade Hint, dann kein margin-bottom */
+.witty-text-box .witty-text:last-child {
+  margin-bottom: 0;
 }
 
 /* Großer Pfeil nach unten */
@@ -173,13 +179,7 @@
 /* Footer Section - Minimal */
 .ad-footer {
   text-align: center;
-  padding: 10px 40px 20px 40px;
-}
-
-.upgrade-hint-small {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.6) !important;
-  margin-top: 10px;
+  padding: 0 40px 20px 40px; /* Weniger padding oben da jetzt leer */
 }
 
 /* Buttons */
