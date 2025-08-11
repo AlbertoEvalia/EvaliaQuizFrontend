@@ -29,7 +29,7 @@
 /* HEADER - 20px Raster */
 .ad-header {
   text-align: center;
-  padding: 40px 40px 20px 40px; /* top:40px, sides:40px, bottom:20px */
+  padding: 40px 40px 0 40px; /* Oben 40px, seitlich 40px, unten 0 */
 }
 
 .ad-header h2 {
@@ -42,7 +42,7 @@
 .progress-info {
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.9) !important;
-  margin: 0 0 20px 0;
+  margin: 0 0 10px 0; /* Reduziert von 20px auf 10px für "Frage X von Y" */
 }
 
 /* CONTENT - 20px Raster */
@@ -51,10 +51,10 @@
 }
 
 .ad-info-minimal {
-  margin: 0 0 20px 0; /* 20px Abstand nach unten */
+  margin: 0 0 20px 0; /* "Powered by" behält 20px Abstand nach unten */
   padding: 0;
-  background: none;
-  border: none;
+  position: relative;
+  top: -5px; /* Leicht nach oben geschoben */
 }
 
 .ad-info-minimal p {
