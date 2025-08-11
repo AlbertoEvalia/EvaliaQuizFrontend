@@ -120,7 +120,7 @@
   text-align: center;
   animation: bounce 2s infinite;
   position: relative;
-  /* top: 10px; Zusätzlich nach oben verschoben */
+  /* top: 12px; Zusätzlich nach oben verschoben */
 }
 
 .arrow-down svg {
