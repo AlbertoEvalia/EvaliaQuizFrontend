@@ -54,92 +54,132 @@
 }
 
 .ad-content {
-  padding: 20px 40px;
+  padding: 30px 40px 20px 40px;
 }
 
 .ad-placeholder {
   text-align: center;
 }
 
-.ad-banner p {
-  font-size: 1.2rem;
+/* WERBUNG Label - Prominent */
+.ad-label {
+  font-size: 1.4rem;
+  font-weight: 700;
   color: #ffffff !important;
-  margin: 0 0 20px 0;
-  font-weight: 500;
-}
-
-/* A-Ads Info Container */
-.a-ads-info-container {
-  min-height: 150px;
-  width: 100%;
-  text-align: center !important;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  padding: 10px;
   border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 0 !important;
-  padding: 20px;
-  margin: 20px auto !important;
   background: rgba(255, 255, 255, 0.1);
-  border-left: 4px solid #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box !important;
 }
 
-.ad-icon {
-  font-size: 2rem;
-  margin-right: 20px;
-  color: #ffffff !important;
-  flex-shrink: 0;
+/* Minimale Info */
+.ad-info-minimal {
+  margin-bottom: 20px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 3px solid rgba(255, 255, 255, 0.5);
 }
 
-.ad-text {
-  flex: 1;
-  color: #ffffff !important;
-  text-align: left;
-}
-
-.ad-text h3 {
-  margin: 0 0 8px 0;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #ffffff !important;
-}
-
-.ad-text p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.9) !important;
-  line-height: 1.4;
-}
-
-.ad-disclaimer {
-  text-align: center;
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.ad-disclaimer small {
-  color: rgba(255, 255, 255, 0.6) !important;
-  font-size: 0.8rem;
+.ad-info-minimal p {
+  margin: 2px 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7) !important;
   font-style: italic;
 }
 
-/* Footer Section */
+/* Action Buttons Container */
+.ad-actions {
+  display: flex;
+  gap: 15px;
+  margin: 25px 0;
+  justify-content: center;
+}
+
+.action-btn {
+  flex: 1;
+  max-width: 200px;
+  padding: 14px 20px !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  text-transform: none !important;
+  height: 50px !important;
+}
+
+.action-btn.continue-btn {
+  background: #E55B2B !important;
+  color: #ffffff !important;
+  box-shadow: 0 3px 6px rgba(229, 91, 43, 0.3) !important;
+}
+
+.action-btn.continue-btn:hover:not(:disabled) {
+  background: #D44A21 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 10px rgba(229, 91, 43, 0.4) !important;
+}
+
+.action-btn.continue-btn:disabled {
+  background: #999 !important;
+  cursor: not-allowed !important;
+  opacity: 0.7;
+}
+
+.action-btn.register-btn {
+  background: transparent !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  box-sizing: border-box !important;
+}
+
+.action-btn.register-btn:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 10px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Witziger Text */
+.witty-text {
+  margin: 25px 0;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 4px solid #ffffff;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #ffffff !important;
+  font-weight: 500;
+  text-align: left;
+  font-style: italic;
+}
+
+/* Großer Pfeil nach unten */
+.arrow-down {
+  margin-top: 20px;
+  animation: bounce 2s infinite;
+}
+
+.arrow-down svg {
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+/* Footer Section - Minimal */
 .ad-footer {
   text-align: center;
-  padding: 20px 40px 40px 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 40px 20px 40px;
 }
 
-.countdown {
-  margin-bottom: 20px;
-}
-
-.countdown-text {
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.9) !important;
-  font-weight: 500;
+.upgrade-hint-small {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6) !important;
+  margin-top: 10px;
 }
 
 /* Buttons */

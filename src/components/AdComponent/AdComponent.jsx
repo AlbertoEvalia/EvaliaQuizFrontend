@@ -9,6 +9,15 @@ const A_ADS_CONFIG = {
   backgroundColor: 'FF6B35', // Orange passend zu deinem Design
 };
 
+// 😄 FRECHE SPRÜCHE - ROTATION
+const WITTY_AD_TEXTS = [
+  "Evalia wird durch Werbeeinnahmen finanziert. Du guckst, wir kassieren. Win-win!",
+  "Evalia ist 100% kapitalistisch finanziert. Klick, konsumier, repeat.",
+  "Evalia lebt von Werbung. Also iss, trink, rauch, kauf … was immer hier steht.",
+  "Ohne Werbung wären wir nur ein leeres Quiz. Und du wärst viel produktiver.",
+  "Das ist eine Werbeunterbrechung. Weil wir Miete zahlen müssen."
+];
+
 const AdComponent = ({
   onAdComplete,
   onShowUpgrade,
@@ -22,6 +31,7 @@ const AdComponent = ({
   const [canSkip, setCanSkip] = useState(false);
   const [adLoaded, setAdLoaded] = useState(false);
   const [stickyAdVisible, setStickyAdVisible] = useState(true);
+  const [wittyText, setWittyText] = useState('');
   const adContainerRef = useRef(null);
 
   // 🎯 Geo + Language Detection
@@ -59,6 +69,10 @@ const AdComponent = ({
 
   // EINMALIGER EFFECT 
   useEffect(() => {
+    // Zufälligen witzigen Text auswählen
+    const randomIndex = Math.floor(Math.random() * WITTY_AD_TEXTS.length);
+    setWittyText(WITTY_AD_TEXTS[randomIndex]);
+    
     // Countdown Timer
     const timer = setInterval(() => {
       setCountdown(prev => {
@@ -109,20 +123,6 @@ const AdComponent = ({
     return text;
   };
 
-  const getUpgradeHintText = () => {
-    if (userType === 'registered') {
-      return getAdText('registeredMessage', 'Thanks for being registered! 🎉');
-    }
-    return getAdText('registerFree', 'Register for free to reduce ads!');
-  };
-
-  const getAdTitle = () => {
-    if (userType === 'registered') {
-      return getAdText('shortBreak', 'Short Break');
-    }
-    return getAdText('adTitle', 'Quick Break');
-  };
-
   const targetingInfo = getAdTargetingInfo();
 
   return (
@@ -131,13 +131,9 @@ const AdComponent = ({
       <div className="ad-component">
         <div className="ad-container" ref={adContainerRef}>
           <div className="ad-header">
-            <h2>{getAdTitle()}</h2>
+            <h2>Kurze Pause</h2>
             <div className="progress-info">
-              {getTextWithPlaceholders(
-                'progressInfo',
-                `Question ${questionNumber} of ${totalQuestions}`,
-                { questionNumber, totalQuestions }
-              )}
+              Frage {questionNumber} von {totalQuestions}
             </div>
             
             {/* Debug Info */}
@@ -152,57 +148,51 @@ const AdComponent = ({
 
           <div className="ad-content">
             <div className="ad-placeholder">
-              <div className="ad-banner">
-                <p>🎯 {getAdText('adPlaceholder', 'Advertisement')}</p>
-                
-                {/* Info Container */}
-                <div className="a-ads-info-container">
-                  <div className="ad-icon">💼</div>
-                  <div className="ad-text">
-                    <h3>{getAdText('sponsoredContent', 'Sponsored Content')}</h3>
-                    <p>{getAdText('stickyAdInfo', 'Ad banner appears at the bottom of your screen')}</p>
-                  </div>
-                </div>
+              {/* Werbung Label */}
+              <div className="ad-label">WERBUNG</div>
+              
+              {/* Info Container - Kompakter */}
+              <div className="ad-info-minimal">
+                <p>Powered by A-Ads Network</p>
+                <p>Sticky banner active</p>
+              </div>
 
-                <div className="ad-disclaimer">
-                  <small>Powered by A-Ads Network • Sticky Banner Active</small>
-                </div>
+              {/* Action Buttons */}
+              <div className="ad-actions">
+                <button 
+                  onClick={handleSkip} 
+                  className="action-btn continue-btn"
+                  disabled={!canSkip}
+                >
+                  {!canSkip ? `Quiz fortsetzen (${countdown}s)` : 'Quiz fortsetzen'}
+                </button>
+                <button 
+                  onClick={handleUpgradeClick} 
+                  className="action-btn register-btn"
+                >
+                  Kostenlos registrieren
+                </button>
+              </div>
+
+              {/* Witziger rotierender Text */}
+              <div className="witty-text">
+                {wittyText}
+              </div>
+
+              {/* Großer Pfeil nach unten */}
+              <div className="arrow-down">
+                <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M30 40L0 0H60L30 40Z" fill="rgba(255, 255, 255, 0.9)"/>
+                </svg>
               </div>
             </div>
           </div>
 
           <div className="ad-footer">
-            <div className="countdown">
-              {!canSkip ? (
-                <span className="countdown-text">
-                  {getTextWithPlaceholders(
-                    'countdownText',
-                    `Continue in ${countdown}s`,
-                    { countdown }
-                  )}
-                </span>
-              ) : (
-                <button onClick={handleSkip} className="continue-btn">
-                  {getAdText('continueQuiz', 'Continue Quiz')} →
-                </button>
-              )}
-            </div>
-
-            {/* Upgrade Hint - nur für Free Users */}
+            {/* Upgrade Hint nur für Free Users - jetzt kleiner/dezenter */}
             {userType === 'free' && (
-              <div className="upgrade-hint">
-                <button onClick={handleUpgradeClick} className="upgrade-hint-btn">
-                  💡 {getUpgradeHintText()}
-                </button>
-              </div>
-            )}
-
-            {/* Thank you message für Registered Users */}
-            {userType === 'registered' && (
-              <div className="upgrade-hint">
-                <div className="registered-message">
-                  🎉 {getUpgradeHintText()}
-                </div>
+              <div className="upgrade-hint-small">
+                <small>💡 Weniger Werbung mit kostenloser Registrierung</small>
               </div>
             )}
           </div>
