@@ -41,7 +41,38 @@ const AdComponent = ({
     try {
       console.log(`🎯 Loading Native Banner for question ${questionNumber}...`);
       
-      // Erstelle Native Banner Script
+      // Prüfe ob Script bereits existiert
+      const existingScript = document.querySelector(`script[src*="${ADSTERRA_ZONES.nativeBanner.scriptId}"]`);
+      
+      if (existingScript) {
+        console.log('📝 Native Banner script already exists - reusing');
+        setAdLoaded(true);
+        
+        // Trigger refresh für bestehende Ads
+        setTimeout(() => {
+          console.log('🔄 Refreshing existing native ads');
+          // Container leeren und neu laden lassen
+          const container = document.getElementById(ADSTERRA_ZONES.nativeBanner.containerId);
+          if (container) {
+            container.innerHTML = ''; // Clear existing content
+            // Trigger reload via script re-execution
+            try {
+              if (window.atAsyncOptions) {
+                window.atAsyncOptions.push({
+                  key: ADSTERRA_ZONES.nativeBanner.scriptId,
+                  format: 'native',
+                  async: true
+                });
+              }
+            } catch (e) {
+              console.log('Native ad refresh attempted');
+            }
+          }
+        }, 500);
+        return;
+      }
+      
+      // Erstelle Native Banner Script (nur wenn noch nicht vorhanden)
       const script = document.createElement('script');
       script.async = true;
       script.setAttribute('data-cfasync', 'false');
@@ -178,9 +209,9 @@ const AdComponent = ({
               {/* Native Banner Container - Real Ad Content */}
               <div className="monetag-container">
                 <div className="native-banner-wrapper">
-                  {/* Adsterra Native Banner Container */}
+                  {/* Unique Container ID für jede Question */}
                   <div 
-                    id={ADSTERRA_ZONES.nativeBanner.containerId}
+                    id={`${ADSTERRA_ZONES.nativeBanner.containerId}-q${questionNumber}`}
                     className="adsterra-native-container"
                   ></div>
                   
