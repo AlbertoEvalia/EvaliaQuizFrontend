@@ -1,4 +1,4 @@
-/* AdComponent.css - Orange Eckig Design wie UpgradePrompt */
+/* AdComponent.css - Orange Eckig Design mit Adsterra Native Fix */
 
 .ad-component {
   position: fixed;
@@ -6,7 +6,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.8); /* Schwarzer Overlay - genau wie UpgradePrompt */
+  background: rgba(0, 0, 0, 0.8); /* Schwarzer Overlay */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,8 +14,7 @@
   padding: 20px;
 }
 
-/* Spezifischerer Selektor für ad-container */
-.ad-component .ad-container {
+.ad-container {
   background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%) !important; /* Orange-Gradient FORCED */
   background-color: #FF6B35 !important; /* Fallback Orange */
   border-radius: 0 !important; /* Komplett eckig */
@@ -27,7 +26,8 @@
   animation: slideIn 0.3s ease !important;
 }
 
-.ad-container {
+/* Spezifischerer Selektor für ad-container */
+.ad-component .ad-container {
   background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%) !important; /* Orange-Gradient FORCED */
   background-color: #FF6B35 !important; /* Fallback Orange */
   border-radius: 0 !important; /* Komplett eckig */
@@ -94,6 +94,92 @@
   border-left: 4px solid #ffffff; /* Weißer Accent wie bei Benefits */
   display: block !important;
   box-sizing: border-box !important;
+}
+
+/* Native Banner Styling - Real Ad Integration */
+.native-banner-wrapper {
+  position: relative;
+  min-height: 200px;
+  width: 100%;
+}
+
+.adsterra-native-container {
+  width: 100% !important;
+  min-height: 200px;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 0 !important; /* Eckig */
+  padding: 15px !important;
+  overflow: visible !important; /* Wichtig für Adsterra Ads */
+  display: block !important;
+}
+
+/* Adsterra Native Ad Specific Styling */
+.adsterra-native-container div[class*="__bn-container"] {
+  display: inline-block !important;
+  width: calc(50% - 10px) !important;
+  margin: 5px !important;
+  vertical-align: top !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 0 !important;
+  padding: 10px !important;
+  min-height: 120px !important;
+}
+
+.adsterra-native-container div[class*="__bn"] {
+  position: relative !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  height: auto !important;
+  background: transparent !important;
+}
+
+/* Ad Images */
+.adsterra-native-container div[class*="__img-container"] {
+  display: block !important;
+  margin-bottom: 8px !important;
+  height: 60px !important;
+}
+
+.adsterra-native-container div[class*="__img"] {
+  display: block !important;
+  width: 100% !important;
+  height: 60px !important;
+  background-size: cover !important;
+  background-position: center !important;
+  border-radius: 0 !important;
+}
+
+/* Ad Titles */
+.adsterra-native-container div[class*="__title"] {
+  display: block !important;
+  color: #ffffff !important;
+  font-size: 0.9rem !important;
+  line-height: 1.3 !important;
+  text-align: center !important;
+  margin: 8px 0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Hide Report/Cancel buttons and "Ad was closed" */
+.adsterra-native-container div[class*="__cancel-btn"],
+.adsterra-native-container div[class*="__report-container"],
+.adsterra-native-container div[class*="__report-final"] {
+  display: none !important;
+}
+
+/* Links clickable */
+.adsterra-native-container a[class*="__link"] {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 2 !important;
+  opacity: 0 !important; /* Unsichtbar aber klickbar */
 }
 
 .ad-loading {
@@ -185,61 +271,51 @@
   font-weight: 500;
 }
 
-/* Orange Buttons - Genau wie UpgradePrompt */
-.continue-btn {
-  background: #E55B2B !important; /* Dunkleres Orange wie Register-Button */
-  color: white !important;
-  border: none !important;
-  padding: 8px 20px !important; /* Kompakter: 8px oben/unten */
-  border-radius: 0 !important; /* Eckig */
-  font-size: 1.1rem !important;
-  font-weight: bold !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-  text-transform: uppercase !important;
-  letter-spacing: 1px !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  height: 40px !important; /* Kompakter: 40px Höhe */
-}
-
-.continue-btn:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 10px 25px rgba(229, 91, 43, 0.4) !important;
-  background: #D44A21 !important; /* Noch dunkler beim Hover */
-}
-
-.continue-btn:active {
-  transform: translateY(0) !important;
-  box-shadow: 0 5px 15px rgba(229, 91, 43, 0.3) !important;
-}
-
-.upgrade-hint {
-  margin-top: 20px; /* 20px Raster */
-}
-
+/* Orange Buttons - FIXED */
+.continue-btn,
 .upgrade-hint-btn {
-  background: rgba(255, 255, 255, 0.1) !important; /* Leicht transparent auf Orange */
-  border: 2px solid rgba(255, 255, 255, 0.3) !important; /* Weiße transparente Border */
-  color: #ffffff !important; /* Weiße Schrift */
-  border-radius: 0 !important; /* Eckig */
-  padding: 8px 20px !important; /* Kompakter */
-  font-size: 0.9rem !important;
-  font-weight: 500 !important;
+  background-color: #FF8C00 !important; /* Orange background */
+  background-image: none !important; /* Remove gradient */
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 12px 24px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
   cursor: pointer !important;
-  transition: all 0.3s ease !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  height: 40px !important; /* Kompakter: 40px Höhe */
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 4px rgba(255, 140, 0, 0.3) !important;
   text-decoration: none !important;
   display: inline-block !important;
 }
 
+.continue-btn:hover,
 .upgrade-hint-btn:hover {
-  background: rgba(255, 255, 255, 0.15) !important; /* Heller beim Hover */
-  border-color: #ffffff !important; /* Weiße Border beim Hover */
-  transform: translateX(5px) !important;
-  color: #ffffff !important;
+  background-color: #e07b00 !important; /* Darker orange on hover */
+  background-image: none !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 8px rgba(255, 140, 0, 0.4) !important;
+}
+
+.continue-btn:active,
+.upgrade-hint-btn:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 4px rgba(255, 140, 0, 0.3) !important;
+}
+
+.continue-btn {
+  font-size: 18px !important;
+  padding: 14px 28px !important;
+  margin: 0 !important;
+}
+
+.upgrade-hint {
+  margin-top: 12px;
+}
+
+.upgrade-hint-btn {
+  font-size: 14px !important;
+  padding: 10px 20px !important;
 }
 
 .registered-message {
@@ -251,115 +327,6 @@
   color: #ffffff !important; /* Weiße Schrift */
   font-weight: 500 !important;
   border-left: 4px solid #ffffff !important; /* Weißer Accent */
-}
-
-/* Animations */
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9) translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-/* Native Banner Styling - Real Ad Integration */
-.native-banner-wrapper {
-  position: relative;
-  min-height: 200px;
-  width: 100%;
-}
-
-.adsterra-native-container {
-  width: 100% !important;
-  min-height: 200px;
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 0 !important; /* Eckig */
-  padding: 15px !important; /* Mehr Padding für bessere Formatierung */
-  overflow: hidden;
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 15px !important;
-}
-
-/* Style Adsterra Content to match Orange Theme */
-.adsterra-native-container * {
-  border-radius: 0 !important; /* Force eckig */
-}
-
-.adsterra-native-container img {
-  border-radius: 0 !important;
-  max-width: 100% !important;
-  height: auto !important;
-}
-
-.adsterra-native-container a {
-  color: #ffffff !important;
-  text-decoration: none !important;
-  flex: 1 1 calc(50% - 10px) !important; /* 2 Spalten statt 5 */
-  min-width: 200px !important;
-  padding: 10px !important;
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  text-align: center !important;
-  font-size: 0.9rem !important;
-  line-height: 1.4 !important;
-}
-
-.adsterra-native-container a:hover {
-  color: #E55B2B !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-}
-
-/* Style für bessere Text-Formatierung */
-.adsterra-native-container div {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 10px !important;
-  width: 100% !important;
-}
-
-/* Bessere Mobile-Darstellung */
-@media (max-width: 768px) {
-  .adsterra-native-container a {
-    flex: 1 1 100% !important; /* Auf Mobile: 1 Spalte */
-    min-width: unset !important;
-  }
-}
-
-.ad-loading-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  z-index: 1;
-}
-
-.ad-loading-overlay .loading-spinner {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  animation: spin 2s linear infinite;
-}
-
-.ad-loading-overlay p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
 
 .ad-disclaimer {
@@ -375,8 +342,71 @@
   font-style: italic;
 }
 
-/* Remove any unwanted styles globally for this component */
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .ad-container {
+    margin: 20px; /* 20px Raster */
+    max-width: calc(100% - 40px); /* 20px Raster */
+    border-radius: 0; /* Eckig */
+  }
+  
+  .ad-header {
+    padding: 40px 20px 20px 20px; /* 20px Raster */
+  }
+  
+  .ad-content {
+    padding: 20px; /* 20px Raster */
+  }
+  
+  .ad-footer {
+    padding: 20px; /* 20px Raster */
+  }
+  
+  .monetag-container {
+    min-height: 200px;
+    padding: 20px; /* 20px Raster */
+  }
+  
+  .ad-header h2 {
+    font-size: 1.6rem;
+  }
+  
+  .progress-info {
+    font-size: 1rem;
+  }
+  
+  /* Mobile Adsterra Ads */
+  .adsterra-native-container div[class*="__bn-container"] {
+    width: calc(100% - 10px) !important;
+    display: block !important;
+  }
+}
+
+/* Remove any unwanted gradients globally for this component */
 .ad-component * {
+  background-image: none !important;
+}
+
+.ad-component button:not(.continue-btn):not(.upgrade-hint-btn) {
+  background: #FF8C00 !important;
+  background-image: none !important;
+}
+
+/* Ensure clean white background for ad container */
+.ad-container {
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%) !important;
   background-image: none !important;
 }
 
