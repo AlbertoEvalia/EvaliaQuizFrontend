@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './AdComponent.css';
 
-// 🎯 AD NETWORK KONFIGURATION - ADSTERRA MIX (OPTIMAL)
+// 🎯 AD NETWORK KONFIGURATION - ADSTERRA NATIVE (OPTIMAL)
 const ADSTERRA_ZONES = {
   // Banner für Frage 5 + 10 (user-freundlich)
   banner: {
     key: "727a12d85692a72c89847e0c843a42b6",
     domain: "www.highperformanceformat.com"
   },
-  // Popunder für Frage 15 (höhere CPM)
-  popunder: {
-    id: "d81f122cbc264e70cf21d483aefef972",
-    domain: "pl27393744.profitableratecpm.com"
-  }
+  // Direct Link für alle Positionen (native integration)
+  directLink: "https://www.profitableratecpm.com/x7cacaya?key=9c1b093376fca84f315125d6dd3ca7fb"
 };
 
 const AdComponent = ({
@@ -40,83 +37,33 @@ const AdComponent = ({
     return geoLangMap[language] || geoLangMap['en'];
   };
 
-  // 🚀 Adsterra Smart Mix - Banner + Popunder
-  const loadAdsterraAd = () => {
-    // Bestimme Ad-Typ basierend auf Frage-Position
-    const isPopunderPosition = questionNumber === 15; // Nur bei Frage 15
-    const adType = isPopunderPosition ? 'popunder' : 'banner';
+  // 🎯 Native Ad Integration - Clean & Elegant
+  const handleNativeAdClick = () => {
+    // Track click für Analytics
+    console.log('📊 Native ad clicked - Direct Link');
     
+    // Öffne Direct Link in neuem Tab
+    window.open(ADSTERRA_ZONES.directLink, '_blank', 'noopener,noreferrer');
+    
+    // Optional: Continue Quiz automatisch nach Click
+    setTimeout(() => {
+      onAdComplete();
+    }, 1000);
+  };
+
+  // 🚀 Adsterra Smart System - Native First
+  const loadAdsterraAd = () => {
     try {
-      console.log(`🚀 Loading Adsterra ${adType} for question ${questionNumber}...`);
+      console.log(`🎯 Loading Native Ad for question ${questionNumber}...`);
       
-      if (adType === 'banner') {
-        // Banner laden (300x250)
-        loadAdsterraBanner();
-      } else {
-        // Popunder laden 
-        loadAdsterraPopunder();
-      }
+      // Sofort als geladen markieren (kein Script nötig für Direct Link)
+      setAdLoaded(true);
+      console.log('✅ Native Ad ready - Direct Link integration');
       
     } catch (error) {
-      console.error('❌ Adsterra integration error:', error);
+      console.error('❌ Native Ad error:', error);
       setAdLoaded(true);
     }
-  };
-
-  // Banner Integration
-  const loadAdsterraBanner = () => {
-    // Banner Options
-    const script1 = document.createElement('script');
-    script1.innerHTML = `
-      atOptions = {
-        'key' : '${ADSTERRA_ZONES.banner.key}',
-        'format' : 'iframe',
-        'height' : 250,
-        'width' : 300,
-        'params' : {}
-      };
-    `;
-    document.head.appendChild(script1);
-
-    // Banner Script
-    const script2 = document.createElement('script');
-    script2.type = 'text/javascript';
-    script2.src = `//${ADSTERRA_ZONES.banner.domain}/${ADSTERRA_ZONES.banner.key}/invoke.js`;
-    script2.async = true;
-    
-    script2.onload = () => {
-      console.log('✅ Adsterra Banner loaded successfully');
-      setAdLoaded(true);
-    };
-
-    script2.onerror = () => {
-      console.error('❌ Adsterra Banner failed to load');
-      setAdLoaded(true);
-    };
-
-    document.head.appendChild(script2);
-    console.log('📤 Adsterra Banner injected (300x250)');
-  };
-
-  // Popunder Integration  
-  const loadAdsterraPopunder = () => {
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = `//${ADSTERRA_ZONES.popunder.domain}/d8/1f/12/${ADSTERRA_ZONES.popunder.id}.js`;
-    script.async = true;
-    
-    script.onload = () => {
-      console.log('✅ Adsterra Popunder loaded successfully');
-      setAdLoaded(true);
-    };
-
-    script.onerror = () => {
-      console.error('❌ Adsterra Popunder failed to load');
-      setAdLoaded(true);
-    };
-
-    document.head.appendChild(script);
-    console.log('📤 Adsterra Popunder injected');
   };
 
   // EINMALIGER EFFECT 
@@ -154,8 +101,7 @@ const AdComponent = ({
 
   const handleSkip = () => {
     if (canSkip) {
-      const adType = questionNumber === 15 ? 'Popunder' : 'Banner';
-      console.log(`📊 Ad completed - Adsterra ${adType}, Question: ${questionNumber}, Language: ${language}`);
+      console.log(`📊 Ad completed - Native Direct Link, Question: ${questionNumber}, Language: ${language}`);
       onAdComplete();
     }
   };
@@ -223,20 +169,26 @@ const AdComponent = ({
             <div className="ad-banner">
               <p>🎯 {getAdText('adPlaceholder', 'Advertisement')}</p>
               
-              {/* Adsterra Container */}
+              {/* Native Ad Container - Elegant Integration */}
               <div className="monetag-container">
-                {!adLoaded ? (
-                  <div className="ad-loading">
-                    <div className="loading-spinner">🚀</div>
-                    <p>Loading {questionNumber === 15 ? 'Popunder' : 'Banner'}...</p>
+                <div className="native-ad-content">
+                  <div className="ad-icon">📚</div>
+                  <div className="ad-text">
+                    <h3>Verbessere deine Fähigkeiten!</h3>
+                    <p>Entdecke effektive Lernmethoden und erweitere dein Wissen</p>
                   </div>
-                ) : (
-                  <div className="ad-status">
-                    <h3>🚀 Adsterra Ready</h3>
-                    <p>Type: {questionNumber === 15 ? 'Popunder (High CPM)' : 'Banner (300x250)'}</p>
-                    <small>Question {questionNumber} • Fast & reliable</small>
-                  </div>
-                )}
+                </div>
+                
+                <button 
+                  onClick={handleNativeAdClick}
+                  className="native-ad-button"
+                >
+                  Mehr erfahren →
+                </button>
+                
+                <div className="ad-disclaimer">
+                  <small>Gesponserte Inhalte</small>
+                </div>
               </div>
 
               {/* Fallback Message */}
