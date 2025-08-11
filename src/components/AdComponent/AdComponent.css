@@ -116,9 +116,11 @@
 
 /* ARROW DOWN */
 .arrow-down {
-  margin: 20px 0;
+  margin: 6px 0 0 0; /* Statt 20px - Nur 6px Abstand oben */
   text-align: center;
   animation: bounce 2s infinite;
+  position: relative;
+  top: -10px; /* Zusätzlich nach oben verschoben */
 }
 
 .arrow-down svg {
@@ -130,7 +132,7 @@
 /* FOOTER */
 .ad-footer {
   text-align: center;
-  padding: 0 40px 20px 40px;
+  padding: 0 40px 10px 40px;
 }
 
 /* A-ADS STICKY BANNER */
