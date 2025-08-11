@@ -81,6 +81,7 @@
   flex-direction: column;
   margin: 20px 0;
   align-items: center;
+  gap: 20px; /* 20px Abstand zwischen Buttons im Raster */
 }
 
 .action-btn {
