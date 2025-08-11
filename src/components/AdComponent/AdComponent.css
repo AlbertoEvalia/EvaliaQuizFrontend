@@ -96,7 +96,6 @@
   box-sizing: border-box !important;
 }
 
-
 .ad-loading {
   display: flex;
   flex-direction: column;
@@ -266,37 +265,95 @@
   }
 }
 
-/* Mobile Responsiveness */
+/* Native Banner Styling - Real Ad Integration */
+.native-banner-wrapper {
+  position: relative;
+  min-height: 200px;
+  width: 100%;
+}
+
+.adsterra-native-container {
+  width: 100% !important;
+  min-height: 200px;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 0 !important; /* Eckig */
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+/* Style Adsterra Content to match Orange Theme */
+.adsterra-native-container * {
+  border-radius: 0 !important; /* Force eckig */
+}
+
+.adsterra-native-container img {
+  border-radius: 0 !important;
+  max-width: 100% !important;
+}
+
+.adsterra-native-container a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.adsterra-native-container a:hover {
+  color: #E55B2B !important;
+}
+
+.ad-loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  z-index: 1;
+}
+
+.ad-loading-overlay .loading-spinner {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  animation: spin 2s linear infinite;
+}
+
+.ad-loading-overlay p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.ad-disclaimer {
+  text-align: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ad-disclaimer small {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+/* Mobile Optimierung */
 @media (max-width: 768px) {
-  .ad-container {
-    margin: 20px; /* 20px Raster */
-    max-width: calc(100% - 40px); /* 20px Raster */
-    border-radius: 0; /* Eckig */
+  .native-banner-wrapper {
+    min-height: 150px;
   }
   
-  .ad-header {
-    padding: 40px 20px 20px 20px; /* 20px Raster */
-  }
-  
-  .ad-content {
-    padding: 20px; /* 20px Raster */
-  }
-  
-  .ad-footer {
-    padding: 20px; /* 20px Raster */
-  }
-  
-  .monetag-container {
-    min-height: 200px;
-    padding: 20px; /* 20px Raster */
-  }
-  
-  .ad-header h2 {
-    font-size: 1.6rem;
-  }
-  
-  .progress-info {
-    font-size: 1rem;
+  .adsterra-native-container {
+    min-height: 150px;
   }
 }
 
@@ -305,7 +362,7 @@
   background-image: none !important;
 }
 
-/* Ensure no border-radius anywhere */
+/* Ensure no border-radius anywhere except where specified */
 .ad-component *,
 .ad-component *:before,
 .ad-component *:after {

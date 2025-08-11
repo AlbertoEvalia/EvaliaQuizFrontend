@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './AdComponent.css';
 
-// 🎯 AD NETWORK KONFIGURATION - ADSTERRA NATIVE (OPTIMAL)
+// 🎯 AD NETWORK KONFIGURATION - ADSTERRA NATIVE BANNER (OPTIMAL)
 const ADSTERRA_ZONES = {
-  // Banner für Frage 5 + 10 (user-freundlich)
-  banner: {
-    key: "727a12d85692a72c89847e0c843a42b6",
-    domain: "www.highperformanceformat.com"
-  },
-  // Direct Link für alle Positionen (native integration)
-  directLink: "https://www.profitableratecpm.com/x7cacaya?key=9c1b093376fca84f315125d6dd3ca7fb"
+  // Native Banner - echte Ad-Daten + AdBlock Bypass
+  nativeBanner: {
+    scriptId: "66ab811edaaaf94d149b2215a8fac2f2",
+    containerId: "container-66ab811edaaaf94d149b2215a8fac2f2",
+    domain: "pl27394166.profitableratecpm.com"
+  }
 };
 
 const AdComponent = ({
@@ -37,33 +36,40 @@ const AdComponent = ({
     return geoLangMap[language] || geoLangMap['en'];
   };
 
-  // 🎯 Native Ad Integration - Clean & Elegant
-  const handleNativeAdClick = () => {
-    // Track click für Analytics
-    console.log('📊 Native ad clicked - Direct Link');
-    
-    // Öffne Direct Link in neuem Tab
-    window.open(ADSTERRA_ZONES.directLink, '_blank', 'noopener,noreferrer');
-    
-    // Optional: Continue Quiz automatisch nach Click
-    setTimeout(() => {
-      onAdComplete();
-    }, 1000);
-  };
-
-  // 🚀 Adsterra Smart System - Native First
-  const loadAdsterraAd = () => {
+  // 🎯 Native Banner Integration - Real Ad Content
+  const loadAdsterraNativeBanner = () => {
     try {
-      console.log(`🎯 Loading Native Ad for question ${questionNumber}...`);
+      console.log(`🎯 Loading Native Banner for question ${questionNumber}...`);
       
-      // Sofort als geladen markieren (kein Script nötig für Direct Link)
-      setAdLoaded(true);
-      console.log('✅ Native Ad ready - Direct Link integration');
+      // Erstelle Native Banner Script
+      const script = document.createElement('script');
+      script.async = true;
+      script.setAttribute('data-cfasync', 'false');
+      script.src = `//${ADSTERRA_ZONES.nativeBanner.domain}/${ADSTERRA_ZONES.nativeBanner.scriptId}/invoke.js`;
+      
+      script.onload = () => {
+        console.log('✅ Native Banner script loaded successfully');
+        setAdLoaded(true);
+      };
+
+      script.onerror = () => {
+        console.error('❌ Native Banner script failed to load');
+        setAdLoaded(true);
+      };
+
+      // Script zu Head hinzufügen
+      document.head.appendChild(script);
+      console.log('📤 Native Banner script injected');
       
     } catch (error) {
-      console.error('❌ Native Ad error:', error);
+      console.error('❌ Native Banner integration error:', error);
       setAdLoaded(true);
     }
+  };
+
+  // 🚀 Smart Ad Loading
+  const loadAdsterraAd = () => {
+    loadAdsterraNativeBanner();
   };
 
   // EINMALIGER EFFECT 
@@ -169,22 +175,22 @@ const AdComponent = ({
             <div className="ad-banner">
               <p>🎯 {getAdText('adPlaceholder', 'Advertisement')}</p>
               
-              {/* Native Ad Container - Elegant Integration */}
+              {/* Native Banner Container - Real Ad Content */}
               <div className="monetag-container">
-                <div className="native-ad-content">
-                  <div className="ad-icon">📚</div>
-                  <div className="ad-text">
-                    <h3>Verbessere deine Fähigkeiten!</h3>
-                    <p>Entdecke effektive Lernmethoden und erweitere dein Wissen</p>
-                  </div>
+                <div className="native-banner-wrapper">
+                  {/* Adsterra Native Banner Container */}
+                  <div 
+                    id={ADSTERRA_ZONES.nativeBanner.containerId}
+                    className="adsterra-native-container"
+                  ></div>
+                  
+                  {!adLoaded && (
+                    <div className="ad-loading-overlay">
+                      <div className="loading-spinner">🎯</div>
+                      <p>Loading Native Ad...</p>
+                    </div>
+                  )}
                 </div>
-                
-                <button 
-                  onClick={handleNativeAdClick}
-                  className="native-ad-button"
-                >
-                  Mehr erfahren →
-                </button>
                 
                 <div className="ad-disclaimer">
                   <small>Gesponserte Inhalte</small>
