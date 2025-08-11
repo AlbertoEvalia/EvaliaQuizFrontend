@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './AdComponent.css';
 
-// 🎯 AD NETWORK KONFIGURATION - ADSTERRA DIRECT LINK (ZUVERLÄSSIG)
-const ADSTERRA_ZONES = {
-  // Direct Link - funktioniert IMMER
-  directLink: "https://www.profitableratecpm.com/x7cacaya?key=9c1b093376fca84f315125d6dd3ca7fb"
+// 🎯 A-ADS CONFIGURATION
+const A_ADS_CONFIG = {
+  dataAa: '2406370',
+  iframeSrc: '//acceptable.a-ads.com/2406370/?size=Adaptive&background_color=FF6B35',
+  position: 'bottom', // 'bottom' oder 'top'
+  backgroundColor: 'FF6B35', // Orange passend zu deinem Design
 };
 
 const AdComponent = ({
@@ -19,6 +21,8 @@ const AdComponent = ({
   const [countdown, setCountdown] = useState(5);
   const [canSkip, setCanSkip] = useState(false);
   const [adLoaded, setAdLoaded] = useState(false);
+  const [stickyAdVisible, setStickyAdVisible] = useState(true);
+  const adContainerRef = useRef(null);
 
   // 🎯 Geo + Language Detection
   const getAdTargetingInfo = () => {
@@ -32,33 +36,25 @@ const AdComponent = ({
     return geoLangMap[language] || geoLangMap['en'];
   };
 
-  // 🎯 Direct Link Integration - EHRLICH & ZUVERLÄSSIG
-  const handleDirectLinkClick = () => {
-    // Track click für Analytics
-    console.log(`📊 Direct link clicked - Question ${questionNumber}`);
-    
-    // Öffne Direct Link in neuem Tab
-    window.open(ADSTERRA_ZONES.directLink, '_blank', 'noopener,noreferrer');
-    
-    // Continue Quiz nach Click
-    setTimeout(() => {
-      onAdComplete();
-    }, 1000);
-  };
-
-  // 🚀 Simple & Reliable Loading
-  const loadAdsterraAd = () => {
+  // 🚀 Load A-Ads Sticky Banner
+  const loadAAdsSticky = () => {
     try {
-      console.log(`🎯 Loading Direct Link Ad for question ${questionNumber}...`);
+      console.log(`🎯 Loading A-Ads Sticky Banner for question ${questionNumber}...`);
       
-      // Sofort als geladen markieren (kein Script nötig)
+      // A-Ads iframe lädt automatisch
       setAdLoaded(true);
-      console.log('✅ Direct Link ready - 100% reliable');
+      console.log('✅ A-Ads Sticky Banner ready');
       
     } catch (error) {
-      console.error('❌ Direct Link error:', error);
+      console.error('❌ A-Ads error:', error);
       setAdLoaded(true);
     }
+  };
+
+  // Close sticky ad handler
+  const handleCloseStickyAd = () => {
+    setStickyAdVisible(false);
+    console.log('📊 Sticky ad closed by user');
   };
 
   // EINMALIGER EFFECT 
@@ -77,26 +73,19 @@ const AdComponent = ({
 
     // Ad laden
     const adTimer = setTimeout(() => {
-      loadAdsterraAd();
+      loadAAdsSticky();
     }, 300);
-
-    // TIMEOUT - 3 Sekunden
-    const adTimeout = setTimeout(() => {
-      console.log('⏰ Adsterra timeout (3s) - proceeding');
-      setCanSkip(true);
-    }, 3000);
 
     // Cleanup
     return () => {
       clearInterval(timer);
       clearTimeout(adTimer);
-      clearTimeout(adTimeout);
     };
   }, []); // Keine Dependencies
 
   const handleSkip = () => {
     if (canSkip) {
-      console.log(`📊 Ad completed - Native Direct Link, Question: ${questionNumber}, Language: ${language}`);
+      console.log(`📊 Ad completed - A-Ads Sticky, Question: ${questionNumber}, Language: ${language}`);
       onAdComplete();
     }
   };
@@ -137,100 +126,123 @@ const AdComponent = ({
   const targetingInfo = getAdTargetingInfo();
 
   return (
-    <div className="ad-component">
-      <div className="ad-container">
-        <div className="ad-header">
-          <h2>{getAdTitle()}</h2>
-          <div className="progress-info">
-            {getTextWithPlaceholders(
-              'progressInfo',
-              `Question ${questionNumber} of ${totalQuestions}`,
-              { questionNumber, totalQuestions }
+    <>
+      {/* Main Ad Component Modal */}
+      <div className="ad-component">
+        <div className="ad-container" ref={adContainerRef}>
+          <div className="ad-header">
+            <h2>{getAdTitle()}</h2>
+            <div className="progress-info">
+              {getTextWithPlaceholders(
+                'progressInfo',
+                `Question ${questionNumber} of ${totalQuestions}`,
+                { questionNumber, totalQuestions }
+              )}
+            </div>
+            
+            {/* Debug Info */}
+            {process.env.NODE_ENV === 'development' && (
+              <div className="ad-debug-info">
+                <small style={{ color: '#888', fontSize: '11px' }}>
+                  🎯 A-Ads Sticky | Lang: {language} | Expected CPM: {targetingInfo.expectedCPM}
+                </small>
+              </div>
             )}
           </div>
-          
-          {/* Debug Info */}
-          {process.env.NODE_ENV === 'development' && (
-            <div className="ad-debug-info">
-              <small style={{ color: '#888', fontSize: '11px' }}>
-                🎯 Monetag Interstitial | Lang: {language} | Expected CPM: {targetingInfo.expectedCPM}
-              </small>
-            </div>
-          )}
-        </div>
 
-        <div className="ad-content">
-          <div className="ad-placeholder">
-            <div className="ad-banner">
-              <p>🎯 {getAdText('adPlaceholder', 'Advertisement')}</p>
-              
-              {/* Direct Link Container - Ehrlich & Clean */}
-              <div className="monetag-container">
-                <div className="direct-link-content">
+          <div className="ad-content">
+            <div className="ad-placeholder">
+              <div className="ad-banner">
+                <p>🎯 {getAdText('adPlaceholder', 'Advertisement')}</p>
+                
+                {/* Info Container */}
+                <div className="a-ads-info-container">
                   <div className="ad-icon">💼</div>
                   <div className="ad-text">
-                    <h3>Gesponserte Angebote</h3>
-                    <p>Interessante Deals und Angebote unserer Partner</p>
+                    <h3>{getAdText('sponsoredContent', 'Sponsored Content')}</h3>
+                    <p>{getAdText('stickyAdInfo', 'Ad banner appears at the bottom of your screen')}</p>
                   </div>
                 </div>
-                
-                <button 
-                  onClick={handleDirectLinkClick}
-                  className="direct-link-button"
-                >
-                  Angebote ansehen →
-                </button>
-                
+
                 <div className="ad-disclaimer">
-                  <small>Gesponserte Inhalte • Adsterra Partner</small>
+                  <small>Powered by A-Ads Network • Sticky Banner Active</small>
                 </div>
               </div>
-
-              {/* Fallback Message */}
-              <div className="ad-footer-info" style={{ display: 'none' }}>
-                {/* Powered by Text entfernt */}
-              </div>
             </div>
           </div>
-        </div>
 
-        <div className="ad-footer">
-          <div className="countdown">
-            {!canSkip ? (
-              <span className="countdown-text">
-                {getTextWithPlaceholders(
-                  'countdownText',
-                  `Continue in ${countdown}s`,
-                  { countdown }
-                )}
-              </span>
-            ) : (
-              <button onClick={handleSkip} className="continue-btn">
-                {getAdText('continueQuiz', 'Continue Quiz')} →
-              </button>
+          <div className="ad-footer">
+            <div className="countdown">
+              {!canSkip ? (
+                <span className="countdown-text">
+                  {getTextWithPlaceholders(
+                    'countdownText',
+                    `Continue in ${countdown}s`,
+                    { countdown }
+                  )}
+                </span>
+              ) : (
+                <button onClick={handleSkip} className="continue-btn">
+                  {getAdText('continueQuiz', 'Continue Quiz')} →
+                </button>
+              )}
+            </div>
+
+            {/* Upgrade Hint - nur für Free Users */}
+            {userType === 'free' && (
+              <div className="upgrade-hint">
+                <button onClick={handleUpgradeClick} className="upgrade-hint-btn">
+                  💡 {getUpgradeHintText()}
+                </button>
+              </div>
+            )}
+
+            {/* Thank you message für Registered Users */}
+            {userType === 'registered' && (
+              <div className="upgrade-hint">
+                <div className="registered-message">
+                  🎉 {getUpgradeHintText()}
+                </div>
+              </div>
             )}
           </div>
-
-          {/* Upgrade Hint - nur für Free Users */}
-          {userType === 'free' && (
-            <div className="upgrade-hint">
-              <button onClick={handleUpgradeClick} className="upgrade-hint-btn">
-                💡 {getUpgradeHintText()}
-              </button>
-            </div>
-          )}
-
-          {/* Thank you message für Registered Users */}
-          {userType === 'registered' && (
-            <div className="upgrade-hint">
-              <div className="registered-message">
-                🎉 {getUpgradeHintText()}
-              </div>
-            </div>
-          )}
         </div>
       </div>
-    </div>
+
+      {/* A-Ads Sticky Banner */}
+      {stickyAdVisible && (
+        <div className="aads-sticky-wrapper" style={{ position: 'absolute', zIndex: 99999 }}>
+          <input 
+            autoComplete="off" 
+            type="checkbox" 
+            id="aadsstickyme71ksrg" 
+            hidden 
+            onChange={handleCloseStickyAd}
+          />
+          <div style={{ paddingTop: 0, paddingBottom: 'auto' }}>
+            <div className="aads-sticky-container">
+              <label 
+                htmlFor="aadsstickyme71ksrg" 
+                className="aads-close-btn"
+                onClick={handleCloseStickyAd}
+              >
+                <svg fill="#000000" height="16px" width="16px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 490">
+                  <polygon points="456.851,0 245,212.564 33.149,0 0.708,32.337 212.669,245.004 0.708,457.678 33.149,490 245,277.443 456.851,490 489.292,457.678 277.331,245.004 489.292,32.337"/>
+                </svg>
+              </label>
+              <div id="frame" className="aads-frame">
+                <iframe 
+                  data-aa={A_ADS_CONFIG.dataAa}
+                  src={A_ADS_CONFIG.iframeSrc}
+                  className="aads-iframe"
+                  title="A-Ads Advertisement"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

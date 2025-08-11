@@ -1,4 +1,4 @@
-/* AdComponent.css - Orange Eckig Design mit Adsterra Native Fix */
+/* AdComponent.css - Orange Eckig Design mit A-Ads Sticky Integration */
 
 .ad-component {
   position: fixed;
@@ -6,7 +6,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.8); /* Schwarzer Overlay */
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,22 +15,9 @@
 }
 
 .ad-container {
-  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%) !important; /* Orange-Gradient FORCED */
-  background-color: #FF6B35 !important; /* Fallback Orange */
-  border-radius: 0 !important; /* Komplett eckig */
-  max-width: 500px !important;
-  width: 100% !important;
-  max-height: 90vh !important;
-  overflow-y: auto !important;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
-  animation: slideIn 0.3s ease !important;
-}
-
-/* Spezifischerer Selektor für ad-container */
-.ad-component .ad-container {
-  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%) !important; /* Orange-Gradient FORCED */
-  background-color: #FF6B35 !important; /* Fallback Orange */
-  border-radius: 0 !important; /* Komplett eckig */
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%) !important;
+  background-color: #FF6B35 !important;
+  border-radius: 0 !important;
   max-width: 500px !important;
   width: 100% !important;
   max-height: 90vh !important;
@@ -41,25 +28,25 @@
 
 .ad-header {
   text-align: center;
-  padding: 40px 40px 20px 40px; /* 20px Raster */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Weiße transparente Border */
+  padding: 40px 40px 20px 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .ad-header h2 {
-  margin: 0 0 20px 0; /* 20px Raster */
+  margin: 0 0 20px 0;
   font-size: 2rem;
   font-weight: bold;
-  color: #ffffff !important; /* Weiße Überschrift */
+  color: #ffffff !important;
 }
 
 .progress-info {
   font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.9) !important; /* Leicht transparente weiße Schrift */
+  color: rgba(255, 255, 255, 0.9) !important;
   margin: 0;
 }
 
 .ad-debug-info {
-  margin-top: 20px; /* 20px Raster */
+  margin-top: 20px;
 }
 
 .ad-debug-info small {
@@ -67,7 +54,7 @@
 }
 
 .ad-content {
-  padding: 20px 40px; /* 20px Raster */
+  padding: 20px 40px;
 }
 
 .ad-placeholder {
@@ -76,41 +63,31 @@
 
 .ad-banner p {
   font-size: 1.2rem;
-  color: #ffffff !important; /* Weiße Schrift */
-  margin: 0 0 20px 0; /* 20px Raster */
+  color: #ffffff !important;
+  margin: 0 0 20px 0;
   font-weight: 500;
 }
 
-/* Monetag Container - Orange Design */
-.monetag-container {
-  min-height: 250px;
+/* A-Ads Info Container */
+.a-ads-info-container {
+  min-height: 150px;
   width: 100%;
   text-align: center !important;
-  border: 2px solid rgba(255, 255, 255, 0.3); /* Weiße transparente Border */
-  border-radius: 0 !important; /* Eckig */
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0 !important;
   padding: 20px;
-  margin: 20px auto !important; /* AUTO für Zentrierung */
-  background: rgba(255, 255, 255, 0.1); /* Leicht transparent auf Orange */
-  border-left: 4px solid #ffffff; /* Weißer Accent wie bei Benefits */
-  display: block !important;
-  box-sizing: border-box !important;
-}
-
-/* Direct Link Styling - Ehrlich & Clean */
-.direct-link-content {
+  margin: 20px auto !important;
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 4px solid #ffffff;
   display: flex;
   align-items: center;
-  margin-bottom: 20px; /* 20px Raster */
-  padding: 20px; /* 20px Raster */
-  background: rgba(255, 255, 255, 0.1); /* Leicht transparent auf Orange */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Weiße transparente Border */
-  border-radius: 0 !important; /* Eckig */
-  border-left: 4px solid #ffffff; /* Weißer Accent */
+  justify-content: center;
+  box-sizing: border-box !important;
 }
 
 .ad-icon {
   font-size: 2rem;
-  margin-right: 20px; /* 20px Raster */
+  margin-right: 20px;
   color: #ffffff !important;
   flex-shrink: 0;
 }
@@ -118,6 +95,7 @@
 .ad-text {
   flex: 1;
   color: #ffffff !important;
+  text-align: left;
 }
 
 .ad-text h3 {
@@ -134,152 +112,64 @@
   line-height: 1.4;
 }
 
-.direct-link-button {
-  background: #E55B2B !important; /* Dunkleres Orange wie andere Buttons */
-  color: white !important;
-  border: none !important;
-  padding: 12px 24px !important;
-  border-radius: 0 !important; /* Eckig */
-  font-size: 1rem !important;
-  font-weight: 600 !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  text-transform: none !important;
-  letter-spacing: normal !important;
+.ad-disclaimer {
+  text-align: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.direct-link-button:hover {
-  background: #D44A21 !important; /* Noch dunkler beim Hover */
-  transform: translateY(-1px) !important;
-  box-shadow: 0 4px 8px rgba(229, 91, 43, 0.4) !important;
-}
-
-.direct-link-button:active {
-  transform: translateY(0) !important;
-  box-shadow: 0 2px 4px rgba(229, 91, 43, 0.3) !important;
-}
-
-.ad-loading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  min-height: 210px;
-}
-
-.loading-spinner {
-  font-size: 32px;
-  animation: spin 2s linear infinite;
-  margin-bottom: 20px; /* 20px Raster */
-  color: #ffffff !important; /* Weißer Spinner */
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.ad-loading p {
-  color: rgba(255, 255, 255, 0.9) !important; /* Weiße Schrift */
-  font-size: 1rem;
-  margin: 0;
-}
-
-.ad-status {
-  padding: 20px 0; /* 20px Raster */
-  text-align: center !important; /* FORCED CENTER */
-}
-
-.ad-status h3 {
-  color: #ffffff !important; /* Weiße Überschrift */
-  margin: 0 0 20px 0; /* 20px Raster */
-  font-size: 1.4rem;
-  font-weight: 600;
-  text-align: center !important; /* FORCED CENTER */
-}
-
-.ad-status p {
-  color: rgba(255, 255, 255, 0.9) !important; /* Leicht transparente weiße Schrift */
-  margin: 8px 0;
-  font-size: 1rem;
-  text-align: center !important; /* FORCED CENTER */
-}
-
-.ad-status small {
-  color: rgba(255, 255, 255, 0.8) !important; /* Leicht transparente weiße Schrift */
-  font-size: 0.9rem;
-  text-align: center !important; /* FORCED CENTER */
-  display: block !important; /* Block für center */
-}
-
-.ad-footer-info {
-  margin-top: 20px; /* 20px Raster */
-  padding-top: 20px; /* 20px Raster */
-  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Weiße transparente Border */
-}
-
-.ad-footer-info p {
-  margin: 0 0 8px 0;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8) !important; /* Leicht transparente weiße Schrift */
-  font-weight: 500;
-}
-
-.ad-footer-info small {
+.ad-disclaimer small {
+  color: rgba(255, 255, 255, 0.6) !important;
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.7) !important; /* Leicht transparente weiße Schrift */
+  font-style: italic;
 }
 
 /* Footer Section */
 .ad-footer {
   text-align: center;
-  padding: 20px 40px 40px 40px; /* 20px Raster */
-  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Weiße transparente Border */
+  padding: 20px 40px 40px 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .countdown {
-  margin-bottom: 20px; /* 20px Raster */
+  margin-bottom: 20px;
 }
 
 .countdown-text {
   font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.9) !important; /* Leicht transparente weiße Schrift */
+  color: rgba(255, 255, 255, 0.9) !important;
   font-weight: 500;
 }
 
-/* Orange Buttons - FIXED */
+/* Buttons */
 .continue-btn,
 .upgrade-hint-btn {
-  background-color: #FF8C00 !important; /* Orange background */
-  background-image: none !important; /* Remove gradient */
+  background-color: #E55B2B !important;
   color: #ffffff !important;
   border: none !important;
-  border-radius: 8px !important;
+  border-radius: 0 !important;
   padding: 12px 24px !important;
   font-size: 16px !important;
   font-weight: 600 !important;
   cursor: pointer !important;
   transition: all 0.2s ease !important;
-  box-shadow: 0 2px 4px rgba(255, 140, 0, 0.3) !important;
+  box-shadow: 0 2px 4px rgba(229, 91, 43, 0.3) !important;
   text-decoration: none !important;
   display: inline-block !important;
 }
 
 .continue-btn:hover,
 .upgrade-hint-btn:hover {
-  background-color: #e07b00 !important; /* Darker orange on hover */
-  background-image: none !important;
+  background-color: #D44A21 !important;
   transform: translateY(-1px) !important;
-  box-shadow: 0 4px 8px rgba(255, 140, 0, 0.4) !important;
+  box-shadow: 0 4px 8px rgba(229, 91, 43, 0.4) !important;
 }
 
 .continue-btn:active,
 .upgrade-hint-btn:active {
   transform: translateY(0) !important;
-  box-shadow: 0 2px 4px rgba(255, 140, 0, 0.3) !important;
+  box-shadow: 0 2px 4px rgba(229, 91, 43, 0.3) !important;
 }
 
 .continue-btn {
@@ -298,27 +188,87 @@
 }
 
 .registered-message {
-  background: rgba(255, 255, 255, 0.1) !important; /* Leicht transparent auf Orange */
-  border: 1px solid rgba(255, 255, 255, 0.2) !important; /* Weiße transparente Border */
-  border-radius: 0 !important; /* Eckig */
-  padding: 20px !important; /* 20px Raster */
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 0 !important;
+  padding: 20px !important;
   font-size: 1rem !important;
-  color: #ffffff !important; /* Weiße Schrift */
+  color: #ffffff !important;
   font-weight: 500 !important;
-  border-left: 4px solid #ffffff !important; /* Weißer Accent */
+  border-left: 4px solid #ffffff !important;
 }
 
-.ad-disclaimer {
+/* ===== A-ADS STICKY BANNER STYLES ===== */
+
+.aads-sticky-wrapper {
+  pointer-events: all;
+}
+
+.aads-sticky-container {
+  width: 100%;
+  height: auto;
+  position: fixed;
   text-align: center;
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 99998;
 }
 
-.ad-disclaimer small {
-  color: rgba(255, 255, 255, 0.6) !important;
-  font-size: 0.8rem;
-  font-style: italic;
+/* Close Button */
+.aads-close-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 24px;
+  border-radius: 0 !important; /* KOMPLETT ECKIG - RATIONALISTISCH */
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px;
+  z-index: 99999;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.aads-close-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.aads-close-btn svg {
+  display: block;
+}
+
+/* Frame Container */
+.aads-frame {
+  width: 100%;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.50);
+  position: relative;
+  z-index: 99998;
+  padding: 8px 0; /* Etwas Padding für bessere Optik */
+  border-top: 2px solid #FF6B35; /* Orange Accent Line */
+}
+
+/* iFrame Styles */
+.aads-iframe {
+  border: 0;
+  padding: 0;
+  width: 70%;
+  height: auto;
+  overflow: hidden;
+  margin: auto;
+  display: block;
+  max-width: 728px; /* Standard Banner Max Width */
+  min-height: 90px; /* Standard Banner Min Height */
+}
+
+/* Hide when checkbox is checked */
+#aadsstickyme71ksrg:checked + div {
+  display: none;
 }
 
 /* Animations */
@@ -333,29 +283,49 @@
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .ad-container {
-    margin: 20px; /* 20px Raster */
-    max-width: calc(100% - 40px); /* 20px Raster */
-    border-radius: 0; /* Eckig */
+    margin: 20px;
+    max-width: calc(100% - 40px);
+    border-radius: 0;
   }
   
   .ad-header {
-    padding: 40px 20px 20px 20px; /* 20px Raster */
+    padding: 40px 20px 20px 20px;
   }
   
   .ad-content {
-    padding: 20px; /* 20px Raster */
+    padding: 20px;
   }
   
   .ad-footer {
-    padding: 20px; /* 20px Raster */
+    padding: 20px;
   }
   
-  .monetag-container {
-    min-height: 200px;
-    padding: 20px; /* 20px Raster */
+  .a-ads-info-container {
+    min-height: 120px;
+    padding: 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .ad-icon {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  
+  .ad-text {
+    text-align: center;
   }
   
   .ad-header h2 {
@@ -366,10 +336,27 @@
     font-size: 1rem;
   }
   
-  /* Mobile Adsterra Ads */
-  .adsterra-native-container div[class*="__bn-container"] {
-    width: calc(100% - 10px) !important;
-    display: block !important;
+  /* Mobile Sticky Banner */
+  .aads-iframe {
+    width: 90%; /* Mehr Breite auf Mobile */
+    min-height: 50px; /* Kleinere Min-Height auf Mobile */
+  }
+  
+  .aads-close-btn {
+    right: 12px; /* Näher am Rand auf Mobile */
+    padding: 4px;
+  }
+  
+  .aads-frame {
+    padding: 5px 0;
+  }
+}
+
+/* Tablet Responsiveness */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .aads-iframe {
+    width: 80%;
+    max-width: 600px;
   }
 }
 
@@ -378,15 +365,9 @@
   background-image: none !important;
 }
 
-.ad-component button:not(.continue-btn):not(.upgrade-hint-btn) {
-  background: #FF8C00 !important;
-  background-image: none !important;
-}
-
-/* Ensure clean white background for ad container */
-.ad-container {
+/* Ensure clean orange background for ad container */
+.ad-component .ad-container {
   background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%) !important;
-  background-image: none !important;
 }
 
 /* Ensure no border-radius anywhere except where specified */
@@ -395,3 +376,5 @@
 .ad-component *:after {
   border-radius: 0 !important;
 }
+
+/* KEINE AUSNAHMEN - ALLES ECKIG - RATIONALISTISCHES DESIGN */
