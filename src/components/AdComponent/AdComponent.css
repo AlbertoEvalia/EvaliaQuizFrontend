@@ -51,7 +51,8 @@
 }
 
 .ad-info-minimal {
-  margin: 0 0 15px 0;
+  margin-top: -15px;    /* Text nach oben ziehen */
+  margin-bottom: 10px;  /* Abstand nach unten reduzieren */
   padding: 0;
 }
 
