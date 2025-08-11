@@ -36,64 +36,49 @@ const AdComponent = ({
     return geoLangMap[language] || geoLangMap['en'];
   };
 
-  // 🎯 Native Banner Integration - Real Ad Content  
+  // 🎯 Native Banner Integration - Force Fresh Load
   const loadAdsterraNativeBanner = () => {
     try {
       console.log(`🎯 Loading Native Banner for question ${questionNumber}...`);
       
-      // Immer Container leeren für fresh content
+      // Immer Container leeren
       const container = document.getElementById(ADSTERRA_ZONES.nativeBanner.containerId);
       if (container) {
         container.innerHTML = '';
         console.log('🧹 Container cleared for fresh ads');
       }
       
-      // Prüfe ob Script bereits existiert
+      // FORCE: Altes Script komplett entfernen
       const existingScript = document.querySelector(`script[src*="${ADSTERRA_ZONES.nativeBanner.scriptId}"]`);
-      
       if (existingScript) {
-        console.log('📝 Native Banner script already exists - triggering reload');
-        setAdLoaded(true);
+        console.log('🗑️ Removing old script for fresh reload');
+        existingScript.remove();
         
-        // Force reload by re-executing script logic
-        setTimeout(() => {
-          try {
-            // Trigger Adsterra to refill the container
-            if (window.atAsyncOptions && Array.isArray(window.atAsyncOptions)) {
-              window.atAsyncOptions.push({
-                key: ADSTERRA_ZONES.nativeBanner.scriptId,
-                format: 'native',
-                async: true,
-                container: ADSTERRA_ZONES.nativeBanner.containerId
-              });
-              console.log('🔄 Triggered Adsterra reload');
-            }
-          } catch (e) {
-            console.log('⚡ Script re-trigger attempted');
-          }
-        }, 100);
-        return;
+        // Cleanup window objects
+        try {
+          delete window.atAsyncOptions;
+        } catch (e) {}
       }
       
-      // Erstelle Native Banner Script (nur wenn noch nicht vorhanden)
+      // IMMER neues Script erstellen
       const script = document.createElement('script');
       script.async = true;
       script.setAttribute('data-cfasync', 'false');
-      script.src = `//${ADSTERRA_ZONES.nativeBanner.domain}/${ADSTERRA_ZONES.nativeBanner.scriptId}/invoke.js`;
+      script.src = `//${ADSTERRA_ZONES.nativeBanner.domain}/${ADSTERRA_ZONES.nativeBanner.scriptId}/invoke.js?q=${questionNumber}&t=${Date.now()}`;
       
       script.onload = () => {
-        console.log('✅ Native Banner script loaded successfully');
+        console.log(`✅ Native Banner script loaded successfully for question ${questionNumber}`);
         setAdLoaded(true);
       };
 
       script.onerror = () => {
-        console.error('❌ Native Banner script failed to load');
+        console.error(`❌ Native Banner script failed to load for question ${questionNumber}`);
         setAdLoaded(true);
       };
 
       // Script zu Head hinzufügen
       document.head.appendChild(script);
-      console.log('📤 Native Banner script injected');
+      console.log(`📤 Fresh Native Banner script injected for question ${questionNumber}`);
       
     } catch (error) {
       console.error('❌ Native Banner integration error:', error);
