@@ -28,11 +28,11 @@
 
 .ad-header {
   text-align: center;
-  padding: 40px 40px 10px 40px; /* Weniger padding unten, kein Border */
+  padding: 40px 40px 5px 40px; /* Noch weniger padding unten */
 }
 
 .ad-header h2 {
-  margin: 0 0 10px 0; /* Weniger Abstand */
+  margin: 0 0 15px 0; /* Gleichmäßiger Abstand */
   font-size: 2rem;
   font-weight: bold;
   color: #ffffff !important;
@@ -41,7 +41,7 @@
 .progress-info {
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.9) !important;
-  margin: 0 0 5px 0; /* Kleiner Abstand zu powered */
+  margin: 0 0 8px 0; /* Näher an powered */
 }
 
 .ad-debug-info {
@@ -94,11 +94,14 @@
   cursor: pointer !important;
   transition: all 0.2s ease !important;
   text-transform: none !important;
-  height: 40px !important; /* Im 20px Raster: 40px */
+  height: 40px !important;
   background: #E55B2B !important;
   color: #ffffff !important;
   box-shadow: none !important;
-  line-height: 40px !important; /* Vertikale Zentrierung */
+  display: flex !important; /* Flexbox für Zentrierung */
+  align-items: center !important; /* Vertikal zentrieren */
+  justify-content: center !important; /* Horizontal zentrieren */
+  line-height: normal !important; /* Reset line-height */
 }
 
 .action-btn:hover:not(:disabled) {
@@ -116,9 +119,8 @@
 .witty-text-box .action-btn.register-btn {
   width: 100% !important;
   max-width: none !important;
-  margin-top: 20px !important; /* 20px Raster */
-  height: 40px !important; /* Gleiche Höhe wie andere Button */
-  line-height: 40px !important;
+  margin-top: 15px !important; /* Näher zum Text darüber */
+  height: 40px !important;
 }
 
 /* Witziger Text Box - Mit Button drin */
@@ -136,16 +138,15 @@
   font-weight: 500;
   text-align: left;
   font-style: normal !important;
-  margin-bottom: 20px; /* 20px Raster */
+  margin-bottom: 10px; /* Näher zum nächsten Text */
 }
 
 .upgrade-hint-inline {
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.85) !important;
-  padding-top: 20px; /* 20px Raster */
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  /* Keine Trennlinie mehr */
   text-align: left;
-  margin-bottom: 0; /* Kein margin, button hat margin-top */
+  margin-bottom: 0;
 }
 
 /* Wenn kein Upgrade Section */
@@ -155,7 +156,7 @@
 
 /* Großer Pfeil nach unten - OHNE Schatten */
 .arrow-down {
-  margin-top: 20px;
+  margin-top: 10px; /* Halbiert von 20px */
   animation: bounce 2s infinite;
 }
 
@@ -172,7 +173,7 @@
 /* Footer Section - Minimal */
 .ad-footer {
   text-align: center;
-  padding: 0 40px 20px 40px; /* Weniger padding oben da jetzt leer */
+  padding: 0 40px 10px 40px; /* Weniger padding unten - Pfeil näher zur Unterkante */
 }
 
 /* Buttons */
