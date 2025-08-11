@@ -177,7 +177,7 @@ const AdComponent = ({
                 </div>
                 {userType === 'free' && (
                   <div className="upgrade-hint-inline">
-                    💡 Weniger Werbung mit kostenloser Registrierung
+                    Weniger Werbung mit kostenloser Registrierung
                   </div>
                 )}
               </div>

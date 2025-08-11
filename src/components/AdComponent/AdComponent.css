@@ -28,12 +28,11 @@
 
 .ad-header {
   text-align: center;
-  padding: 40px 40px 20px 40px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 40px 40px 10px 40px; /* Weniger padding unten, kein Border */
 }
 
 .ad-header h2 {
-  margin: 0 0 20px 0;
+  margin: 0 0 10px 0; /* Weniger Abstand */
   font-size: 2rem;
   font-weight: bold;
   color: #ffffff !important;
@@ -42,7 +41,7 @@
 .progress-info {
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.9) !important;
-  margin: 0;
+  margin: 0 0 5px 0; /* Kleiner Abstand zu powered */
 }
 
 .ad-debug-info {
@@ -54,40 +53,40 @@
 }
 
 .ad-content {
-  padding: 30px 40px 20px 40px;
+  padding: 10px 40px 20px 40px; /* Weniger padding oben */
 }
 
 .ad-placeholder {
   text-align: center;
 }
 
-/* Minimale Info - Eine Zeile mit Gedankenstrich */
+/* Minimale Info - Ohne Kästchen, nur Text */
 .ad-info-minimal {
-  margin-bottom: 20px;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.05);
-  border-left: 3px solid rgba(255, 255, 255, 0.5);
+  margin-bottom: 15px;
+  padding: 0; /* Kein padding */
+  background: none; /* Kein Hintergrund */
+  border: none; /* Keine Border */
 }
 
 .ad-info-minimal p {
   margin: 0;
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.7) !important;
-  font-style: normal !important; /* Nicht kursiv */
+  font-style: normal !important;
 }
 
 /* Action Buttons Container - Untereinander */
 .ad-actions {
   display: flex;
-  flex-direction: column; /* Untereinander statt nebeneinander */
+  flex-direction: column;
   gap: 12px;
-  margin: 25px 0;
+  margin: 20px 0; /* Weniger margin */
   align-items: center;
 }
 
 .action-btn {
-  width: 100%; /* Volle Breite */
-  max-width: 320px; /* Maximale Breite für große Screens */
+  width: 100%;
+  max-width: 320px;
   padding: 14px 20px !important;
   font-size: 1rem !important;
   font-weight: 600 !important;
@@ -97,45 +96,41 @@
   transition: all 0.2s ease !important;
   text-transform: none !important;
   height: 50px !important;
-}
-
-.action-btn.continue-btn {
-  background: #E55B2B !important;
+  background: #E55B2B !important; /* Beide orange */
   color: #ffffff !important;
-  box-shadow: 0 3px 6px rgba(229, 91, 43, 0.3) !important;
+  box-shadow: none !important; /* Kein Schatten - 2D */
 }
 
-.action-btn.continue-btn:hover:not(:disabled) {
+.action-btn:hover:not(:disabled) {
   background: #D44A21 !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 5px 10px rgba(229, 91, 43, 0.4) !important;
 }
 
-.action-btn.continue-btn:disabled {
+.action-btn:disabled {
   background: #999 !important;
   cursor: not-allowed !important;
   opacity: 0.7;
 }
 
+/* Beide Buttons gleich - kein Unterschied mehr */
+.action-btn.continue-btn,
 .action-btn.register-btn {
-  background: transparent !important;
+  background: #E55B2B !important;
   color: #ffffff !important;
-  border: 2px solid #ffffff !important;
-  box-sizing: border-box !important;
+  border: none !important;
 }
 
+.action-btn.continue-btn:hover:not(:disabled),
 .action-btn.register-btn:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 5px 10px rgba(255, 255, 255, 0.2) !important;
+  background: #D44A21 !important;
 }
 
 /* Witziger Text Box - Kombiniert Text und Upgrade Hint */
 .witty-text-box {
-  margin: 25px 0;
+  margin: 20px 0;
   padding: 15px 20px;
   background: rgba(255, 255, 255, 0.1);
-  border-left: 4px solid #ffffff;
+  border-left: 4px solid #ffffff; /* Linke weiße Linie bleibt */
 }
 
 .witty-text {
@@ -144,7 +139,7 @@
   color: #ffffff !important;
   font-weight: 500;
   text-align: left;
-  font-style: normal !important; /* Nicht kursiv */
+  font-style: normal !important;
   margin-bottom: 12px;
 }
 
@@ -153,7 +148,7 @@
   color: rgba(255, 255, 255, 0.85) !important;
   padding-top: 12px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-  text-align: left;
+  text-align: left; /* Linksbündig */
 }
 
 /* Wenn kein Upgrade Hint, dann kein margin-bottom */
@@ -161,14 +156,15 @@
   margin-bottom: 0;
 }
 
-/* Großer Pfeil nach unten */
+/* Großer Pfeil nach unten - OHNE Schatten */
 .arrow-down {
   margin-top: 20px;
   animation: bounce 2s infinite;
 }
 
 .arrow-down svg {
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
+  /* Kein Schatten - 2D Design */
+  filter: none !important;
 }
 
 @keyframes bounce {
