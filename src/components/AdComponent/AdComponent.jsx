@@ -198,9 +198,8 @@ const AdComponent = ({
               </div>
 
               {/* Fallback Message */}
-              <div className="ad-footer-info">
-                <p>Powered by Monetag</p>
-                <small>Revenue optimization for {language.toUpperCase()} users</small>
+              <div className="ad-footer-info" style={{ display: 'none' }}>
+                {/* Powered by Text entfernt */}
               </div>
             </div>
           </div>

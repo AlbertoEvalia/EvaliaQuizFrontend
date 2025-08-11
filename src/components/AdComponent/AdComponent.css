@@ -278,8 +278,11 @@
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 0 !important; /* Eckig */
-  padding: 0 !important;
+  padding: 15px !important; /* Mehr Padding für bessere Formatierung */
   overflow: hidden;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 15px !important;
 }
 
 /* Style Adsterra Content to match Orange Theme */
@@ -290,15 +293,41 @@
 .adsterra-native-container img {
   border-radius: 0 !important;
   max-width: 100% !important;
+  height: auto !important;
 }
 
 .adsterra-native-container a {
   color: #ffffff !important;
   text-decoration: none !important;
+  flex: 1 1 calc(50% - 10px) !important; /* 2 Spalten statt 5 */
+  min-width: 200px !important;
+  padding: 10px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  text-align: center !important;
+  font-size: 0.9rem !important;
+  line-height: 1.4 !important;
 }
 
 .adsterra-native-container a:hover {
   color: #E55B2B !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Style für bessere Text-Formatierung */
+.adsterra-native-container div {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  width: 100% !important;
+}
+
+/* Bessere Mobile-Darstellung */
+@media (max-width: 768px) {
+  .adsterra-native-container a {
+    flex: 1 1 100% !important; /* Auf Mobile: 1 Spalte */
+    min-width: unset !important;
+  }
 }
 
 .ad-loading-overlay {
@@ -344,17 +373,6 @@
   color: rgba(255, 255, 255, 0.6) !important;
   font-size: 0.8rem;
   font-style: italic;
-}
-
-/* Mobile Optimierung */
-@media (max-width: 768px) {
-  .native-banner-wrapper {
-    min-height: 150px;
-  }
-  
-  .adsterra-native-container {
-    min-height: 150px;
-  }
 }
 
 /* Remove any unwanted styles globally for this component */
