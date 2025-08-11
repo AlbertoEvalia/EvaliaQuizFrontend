@@ -36,39 +36,42 @@ const AdComponent = ({
     return geoLangMap[language] || geoLangMap['en'];
   };
 
-  // 🎯 Native Banner Integration - Real Ad Content
+  // 🎯 Native Banner Integration - Real Ad Content  
   const loadAdsterraNativeBanner = () => {
     try {
       console.log(`🎯 Loading Native Banner for question ${questionNumber}...`);
+      
+      // Immer Container leeren für fresh content
+      const container = document.getElementById(ADSTERRA_ZONES.nativeBanner.containerId);
+      if (container) {
+        container.innerHTML = '';
+        console.log('🧹 Container cleared for fresh ads');
+      }
       
       // Prüfe ob Script bereits existiert
       const existingScript = document.querySelector(`script[src*="${ADSTERRA_ZONES.nativeBanner.scriptId}"]`);
       
       if (existingScript) {
-        console.log('📝 Native Banner script already exists - reusing');
+        console.log('📝 Native Banner script already exists - triggering reload');
         setAdLoaded(true);
         
-        // Trigger refresh für bestehende Ads
+        // Force reload by re-executing script logic
         setTimeout(() => {
-          console.log('🔄 Refreshing existing native ads');
-          // Container leeren und neu laden lassen
-          const container = document.getElementById(ADSTERRA_ZONES.nativeBanner.containerId);
-          if (container) {
-            container.innerHTML = ''; // Clear existing content
-            // Trigger reload via script re-execution
-            try {
-              if (window.atAsyncOptions) {
-                window.atAsyncOptions.push({
-                  key: ADSTERRA_ZONES.nativeBanner.scriptId,
-                  format: 'native',
-                  async: true
-                });
-              }
-            } catch (e) {
-              console.log('Native ad refresh attempted');
+          try {
+            // Trigger Adsterra to refill the container
+            if (window.atAsyncOptions && Array.isArray(window.atAsyncOptions)) {
+              window.atAsyncOptions.push({
+                key: ADSTERRA_ZONES.nativeBanner.scriptId,
+                format: 'native',
+                async: true,
+                container: ADSTERRA_ZONES.nativeBanner.containerId
+              });
+              console.log('🔄 Triggered Adsterra reload');
             }
+          } catch (e) {
+            console.log('⚡ Script re-trigger attempted');
           }
-        }, 500);
+        }, 100);
         return;
       }
       
@@ -209,10 +212,11 @@ const AdComponent = ({
               {/* Native Banner Container - Real Ad Content */}
               <div className="monetag-container">
                 <div className="native-banner-wrapper">
-                  {/* Unique Container ID für jede Question */}
+                  {/* Original Container ID - Adsterra erwartet diese exakte ID */}
                   <div 
-                    id={`${ADSTERRA_ZONES.nativeBanner.containerId}-q${questionNumber}`}
+                    id={ADSTERRA_ZONES.nativeBanner.containerId}
                     className="adsterra-native-container"
+                    key={`native-ad-${questionNumber}`}
                   ></div>
                   
                   {!adLoaded && (
