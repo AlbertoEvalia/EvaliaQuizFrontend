@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './AdComponent.css';
 
-// 🎯 AD NETWORK KONFIGURATION - ADSTERRA NATIVE BANNER (OPTIMAL)
+// 🎯 AD NETWORK KONFIGURATION - ADSTERRA DIRECT LINK (ZUVERLÄSSIG)
 const ADSTERRA_ZONES = {
-  // Native Banner - echte Ad-Daten + AdBlock Bypass
-  nativeBanner: {
-    scriptId: "66ab811edaaaf94d149b2215a8fac2f2",
-    containerId: "container-66ab811edaaaf94d149b2215a8fac2f2",
-    domain: "pl27394166.profitableratecpm.com"
-  }
+  // Direct Link - funktioniert IMMER
+  directLink: "https://www.profitableratecpm.com/x7cacaya?key=9c1b093376fca84f315125d6dd3ca7fb"
 };
 
 const AdComponent = ({
@@ -36,59 +32,33 @@ const AdComponent = ({
     return geoLangMap[language] || geoLangMap['en'];
   };
 
-  // 🎯 Native Banner Integration - Force Fresh Load
-  const loadAdsterraNativeBanner = () => {
-    try {
-      console.log(`🎯 Loading Native Banner for question ${questionNumber}...`);
-      
-      // Immer Container leeren
-      const container = document.getElementById(ADSTERRA_ZONES.nativeBanner.containerId);
-      if (container) {
-        container.innerHTML = '';
-        console.log('🧹 Container cleared for fresh ads');
-      }
-      
-      // FORCE: Altes Script komplett entfernen
-      const existingScript = document.querySelector(`script[src*="${ADSTERRA_ZONES.nativeBanner.scriptId}"]`);
-      if (existingScript) {
-        console.log('🗑️ Removing old script for fresh reload');
-        existingScript.remove();
-        
-        // Cleanup window objects
-        try {
-          delete window.atAsyncOptions;
-        } catch (e) {}
-      }
-      
-      // IMMER neues Script erstellen
-      const script = document.createElement('script');
-      script.async = true;
-      script.setAttribute('data-cfasync', 'false');
-      script.src = `//${ADSTERRA_ZONES.nativeBanner.domain}/${ADSTERRA_ZONES.nativeBanner.scriptId}/invoke.js?q=${questionNumber}&t=${Date.now()}`;
-      
-      script.onload = () => {
-        console.log(`✅ Native Banner script loaded successfully for question ${questionNumber}`);
-        setAdLoaded(true);
-      };
-
-      script.onerror = () => {
-        console.error(`❌ Native Banner script failed to load for question ${questionNumber}`);
-        setAdLoaded(true);
-      };
-
-      // Script zu Head hinzufügen
-      document.head.appendChild(script);
-      console.log(`📤 Fresh Native Banner script injected for question ${questionNumber}`);
-      
-    } catch (error) {
-      console.error('❌ Native Banner integration error:', error);
-      setAdLoaded(true);
-    }
+  // 🎯 Direct Link Integration - EHRLICH & ZUVERLÄSSIG
+  const handleDirectLinkClick = () => {
+    // Track click für Analytics
+    console.log(`📊 Direct link clicked - Question ${questionNumber}`);
+    
+    // Öffne Direct Link in neuem Tab
+    window.open(ADSTERRA_ZONES.directLink, '_blank', 'noopener,noreferrer');
+    
+    // Continue Quiz nach Click
+    setTimeout(() => {
+      onAdComplete();
+    }, 1000);
   };
 
-  // 🚀 Smart Ad Loading
+  // 🚀 Simple & Reliable Loading
   const loadAdsterraAd = () => {
-    loadAdsterraNativeBanner();
+    try {
+      console.log(`🎯 Loading Direct Link Ad for question ${questionNumber}...`);
+      
+      // Sofort als geladen markieren (kein Script nötig)
+      setAdLoaded(true);
+      console.log('✅ Direct Link ready - 100% reliable');
+      
+    } catch (error) {
+      console.error('❌ Direct Link error:', error);
+      setAdLoaded(true);
+    }
   };
 
   // EINMALIGER EFFECT 
@@ -194,26 +164,25 @@ const AdComponent = ({
             <div className="ad-banner">
               <p>🎯 {getAdText('adPlaceholder', 'Advertisement')}</p>
               
-              {/* Native Banner Container - Real Ad Content */}
+              {/* Direct Link Container - Ehrlich & Clean */}
               <div className="monetag-container">
-                <div className="native-banner-wrapper">
-                  {/* Original Container ID - Adsterra erwartet diese exakte ID */}
-                  <div 
-                    id={ADSTERRA_ZONES.nativeBanner.containerId}
-                    className="adsterra-native-container"
-                    key={`native-ad-${questionNumber}`}
-                  ></div>
-                  
-                  {!adLoaded && (
-                    <div className="ad-loading-overlay">
-                      <div className="loading-spinner">🎯</div>
-                      <p>Loading Native Ad...</p>
-                    </div>
-                  )}
+                <div className="direct-link-content">
+                  <div className="ad-icon">💼</div>
+                  <div className="ad-text">
+                    <h3>Gesponserte Angebote</h3>
+                    <p>Interessante Deals und Angebote unserer Partner</p>
+                  </div>
                 </div>
                 
+                <button 
+                  onClick={handleDirectLinkClick}
+                  className="direct-link-button"
+                >
+                  Angebote ansehen →
+                </button>
+                
                 <div className="ad-disclaimer">
-                  <small>Gesponserte Inhalte</small>
+                  <small>Gesponserte Inhalte • Adsterra Partner</small>
                 </div>
               </div>
 
