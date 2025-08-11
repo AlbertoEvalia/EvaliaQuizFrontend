@@ -1,4 +1,4 @@
-/* AdComponent.css - Orange Eckig Design mit A-Ads Sticky Integration */
+/* AdComponent.css - Finale Version mit allen Optimierungen */
 /* STRENGES 20px RASTER - RATIONALISTISCHES DESIGN */
 
 .ad-component {
@@ -26,10 +26,10 @@
   border-radius: 0 !important;
 }
 
-/* HEADER - 20px Raster */
+/* HEADER */
 .ad-header {
   text-align: center;
-  padding: 40px 40px 0 40px; /* Oben 40px, seitlich 40px, unten 0 */
+  padding: 40px 40px 0 40px;
 }
 
 .ad-header h2 {
@@ -42,28 +42,26 @@
 .progress-info {
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.9) !important;
-  margin: 0 0 10px 0; /* Reduziert von 20px auf 10px für "Frage X von Y" */
+  margin: 0 0 10px 0;
 }
 
-/* CONTENT - 20px Raster */
+/* CONTENT */
 .ad-content {
-  padding: 20px 40px 20px 40px; /* top:20px, sides:40px, bottom:20px */
+  padding: 20px 40px 20px 40px;
 }
 
 .ad-info-minimal {
-  margin: 0 0 20px 0; /* "Powered by" behält 20px Abstand nach unten */
+  margin: 0 0 15px 0;
   padding: 0;
-  position: relative;
-  top: -5px; /* Leicht nach oben geschoben */
 }
 
 .ad-info-minimal p {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.8125rem; /* 13px */
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
-/* BUTTONS - 20px Raster */
+/* BUTTONS */
 .ad-actions {
   display: flex;
   flex-direction: column;
@@ -87,13 +85,16 @@
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  white-space: nowrap !important;
 }
 
-.action-btn.continue-btn {
-  height: 40px !important; /* Gleiche Höhe wie andere Buttons */
+/* Spezieller Style für Registrieren-Button */
+.ad-actions .action-btn:nth-child(2) {
+  font-size: 0.875rem !important; /* 14px */
+  padding: 0 15px !important;
 }
 
-/* WITTY BOX - 20px Raster */
+/* WITTY BOX */
 .witty-text-box {
   margin: 20px 0;
   padding: 20px;
@@ -105,14 +106,15 @@
   font-size: 1.05rem;
   line-height: 1.5;
   color: #ffffff !important;
-  margin: 0 0 20px 0;
+  margin: 0 0 15px 0;
 }
 
 .upgrade-hint-inline {
-  font-size: 0.9rem;
+  font-size: 0.8125rem !important; /* 13px */
   color: rgba(255, 255, 255, 0.85) !important;
   margin: 0;
 }
+
 
 /* FOOTER - 20px Raster */
 .ad-footer {
