@@ -523,7 +523,7 @@ export const TRANSLATIONS = {
     adPlaceholder: "Publicidad",
     adCountdown: "Continuar en {seconds}s",
     continueQuiz: "Continuar quiz",
-    upgradeHint: "Registrati gratuitamente per meno pubblicità!",
+    upgradeHint: "¡Regístrate gratis para ver menos anuncios!",
 
     // Feedback
     correct: "¡Correcto!",
@@ -664,7 +664,7 @@ export const TRANSLATIONS = {
     adPlaceholder: "Pubblicità",
     adCountdown: "Continua tra {seconds}s",
     continueQuiz: "Continua quiz",
-    : "Registrati gratuitamente per rimuovere le pubblicità!",
+    upgradeHint: "Registrati gratuitamente per meno pubblicità!",
 
     // Feedback
     correct: "Corretto!",
