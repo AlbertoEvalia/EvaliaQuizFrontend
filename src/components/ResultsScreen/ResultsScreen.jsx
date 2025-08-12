@@ -258,7 +258,7 @@ const ResultsScreen = ({
         de: ["Biologie", "Chemie"],
         fr: ["Biologie", "Chimie"],
         es: ["Biología", "Química"],
-        it: ["Biologia", "Chimica"
+        it: ["Biologia", "Chimica"]
       }
     };
 
