@@ -70,17 +70,7 @@ const LanguageSelector = ({
             ))}
           </select>
 
-          <button
-            onClick={onTestUpgrade}
-            style={{
-              margin: '10px',
-              padding: '10px',
-              background: 'red',
-              color: 'white'
-            }}
-          >
-            TEST REGISTRATION
-          </button>
+
 
           <button
             className={`start-button ${!selectedLanguage ? 'disabled' : ''}`}
