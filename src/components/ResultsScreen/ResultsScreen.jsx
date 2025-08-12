@@ -155,22 +155,20 @@ const ResultsScreen = ({
   const loadAdsterraPopunder = useCallback(() => {
     if (userType === 'premium') return;
 
-    // 🔥 FIX: Nur EINMAL pro Browser-Session laden
-    const sessionKey = 'adsterra_loaded_today';
-    const alreadyLoaded = sessionStorage.getItem(sessionKey);
-    
-    if (alreadyLoaded) {
-      console.log('🎯 Adsterra already loaded this session, skipping');
-      return;
-    }
-
     try {
-      // Prüfen ob Script bereits geladen ist
+      // 🔥 FIX: Erst DOM prüfen, dann sessionStorage
       const existingScript = document.querySelector('script[src*="dominionclatterrounded.com"]');
       if (existingScript) {
         console.log('🎯 Adsterra script already in DOM, skipping');
-        sessionStorage.setItem(sessionKey, 'true');
         return;
+      }
+
+      // Nur EINMAL pro Browser-Session laden
+      const sessionKey = 'adsterra_loaded_today';
+      const alreadyLoaded = sessionStorage.getItem(sessionKey);
+      
+      if (alreadyLoaded) {
+        console.log('🎯 Adsterra already loaded this session, but script missing from DOM - reloading');
       }
 
       // Neues Script laden
@@ -248,7 +246,7 @@ const ResultsScreen = ({
         de: ["Biologie", "Chemie"],
         fr: ["Biologie", "Chimie"],
         es: ["Biología", "Química"],
-        it: ["Biologia", "Chimica"]
+        it: ["Biologia", "Chimica"
       }
     };
 
