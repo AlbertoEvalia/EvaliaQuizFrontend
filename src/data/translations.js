@@ -75,7 +75,7 @@ export const TRANSLATIONS = {
     benefitFewerAds: "Fewer ads",
     benefitProgressTracking: "Track your progress locally",
     benefitSessionHistory: "Save your quiz history",
-    benefitPremiumUpdates: "Get notified about Premium features",
+    benefitPremiumUpdates: "Premium features news",
     benefitEarlyAccess: "Early access to new features",
 
     emailPlaceholder: "Enter your email",
@@ -220,7 +220,7 @@ export const TRANSLATIONS = {
     benefitFewerAds: "Weniger Werbung",
     benefitProgressTracking: "Verfolge deinen Fortschritt lokal",
     benefitSessionHistory: "Quiz-Verlauf speichern",
-    benefitPremiumUpdates: "Benachrichtigungen über Premium-Features",
+    benefitPremiumUpdates: "Premium-Feature News",
     benefitEarlyAccess: "Früher Zugang zu neuen Funktionen",
 
     emailPlaceholder: "E-Mail-Adresse eingeben",
@@ -365,7 +365,7 @@ export const TRANSLATIONS = {
     benefitFewerAds: "Moins de publicités",
     benefitProgressTracking: "Suivez vos progrès localement",
     benefitSessionHistory: "Sauvegarder l'historique des quiz",
-    benefitPremiumUpdates: "Notifications sur les fonctionnalités Premium",
+    benefitPremiumUpdates: "Actualités Premium",
     benefitEarlyAccess: "Accès anticipé aux nouvelles fonctionnalités",
 
     emailPlaceholder: "Entrez votre email",
@@ -439,7 +439,7 @@ export const TRANSLATIONS = {
 
   es: {
     adTitle: "Pausa Rápida",
-    progressInfo: "Pregunta {questionNumber} de {totalQuestions}",
+    progressInfo: "Pregunta {current} de {totalQuestions}",
     adPlaceholder: "Publicidad",
     mockAdTitle: "¡Aprende idiomas en línea!",
     mockAdText: "Descubre nuevos formatos de quiz con nuestros socios",
@@ -510,7 +510,7 @@ export const TRANSLATIONS = {
     benefitFewerAds: "Menos anuncios",
     benefitProgressTracking: "Rastrea tu progreso localmente",
     benefitSessionHistory: "Guardar historial de quiz",
-    benefitPremiumUpdates: "Notificaciones sobre características Premium",
+    benefitPremiumUpdates: "Noticias Premium",
     benefitEarlyAccess: "Acceso temprano a nuevas características",
 
     emailPlaceholder: "Introduce tu email",
@@ -655,7 +655,7 @@ export const TRANSLATIONS = {
     benefitFewerAds: "Meno pubblicità",
     benefitProgressTracking: "Traccia i tuoi progressi localmente",
     benefitSessionHistory: "Salva la cronologia dei quiz",
-    benefitPremiumUpdates: "Notifiche sulle funzionalità Premium",
+    benefitPremiumUpdates: "News Premium",
     benefitEarlyAccess: "Accesso anticipato alle nuove funzionalità",
 
     emailPlaceholder: "Inserisci la tua email",

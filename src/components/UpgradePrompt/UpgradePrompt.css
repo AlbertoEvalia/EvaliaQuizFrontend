@@ -340,8 +340,8 @@
 
   .upgrade-benefits li {
     padding: 8px 20px;
-    text-align: left;
-    align-items: flex-start;
+    text-align: center; /* Mobile zentriert */
+    align-items: center; /* Zurück zu center */
   }
 
   .benefit-icon {
