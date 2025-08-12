@@ -16,39 +16,64 @@ const ResultsScreen = ({
   onLogout            
 }) => {
 
-  // 🎯 ADSTERRA POPUNDER für Registered Users
-  const loadAdsterraPopunder = useCallback(() => {
-    if (userType === 'premium') return;
+// 🎯 ADSTERRA POPUNDER für Registered Users - FIXED
+const loadAdsterraPopunder = useCallback(() => {
+  if (userType === 'premium') return;
 
-    try {
-      // Prüfen ob Script bereits geladen ist
-      const existingScript = document.querySelector('script[src*="dominionclatterrounded.com"]');
-      if (existingScript) {
-        console.log('🎯 Adsterra script already loaded');
-        return;
-      }
+  // 🔥 FIX: Nur EINMAL pro Session laden
+  const sessionKey = 'adsterra_loaded_' + Date.now().toString().slice(0, -7); // Heute
+  const alreadyLoaded = sessionStorage.getItem(sessionKey);
+  
+  if (alreadyLoaded) {
+    console.log('🎯 Adsterra already loaded this session, skipping');
+    return;
+  }
 
-      // Neues Script laden
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = '//dominionclatterrounded.com/d8/1f/12/d81f122cbc264e70cf21d483aefef972.js';
-      script.async = true;
-      
-      script.onload = () => {
-        console.log('🎯 Adsterra popunder script loaded successfully for registered user');
-      };
-      
-      script.onerror = () => {
-        console.error('❌ Failed to load Adsterra popunder script');
-      };
-
-      // Script zum head hinzufügen
-      document.head.appendChild(script);
-      
-    } catch (error) {
-      console.error('❌ Error loading Adsterra script:', error);
+  try {
+    // Prüfen ob Script bereits geladen ist
+    const existingScript = document.querySelector('script[src*="dominionclatterrounded.com"]');
+    if (existingScript) {
+      console.log('🎯 Adsterra script already in DOM, skipping');
+      sessionStorage.setItem(sessionKey, 'true');
+      return;
     }
-  }, [userType]);
+
+    // Neues Script laden
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = '//dominionclatterrounded.com/d8/1f/12/d81f122cbc264e70cf21d483aefef972.js';
+    script.async = true;
+    
+    script.onload = () => {
+      console.log('🎯 Adsterra popunder script loaded successfully for registered user');
+      sessionStorage.setItem(sessionKey, 'true');
+    };
+    
+    script.onerror = () => {
+      console.error('❌ Failed to load Adsterra popunder script');
+    };
+
+    // Script zum head hinzufügen
+    document.head.appendChild(script);
+    
+  } catch (error) {
+    console.error('❌ Error loading Adsterra script:', error);
+  }
+}, [userType]);
+
+// Session Stats speichern + Popunder KONTROLLIERT laden
+useEffect(() => {
+  if (userType !== 'premium') {
+    saveSessionStats();
+    
+    // 🎯 Adsterra Popunder nur EINMAL pro Session
+    const adTimer = setTimeout(() => {
+      loadAdsterraPopunder();
+    }, 2000);
+
+    return () => clearTimeout(adTimer);
+  }
+}, [saveSessionStats, loadAdsterraPopunder, userType]);
 
   // 💾 LOKALE STATS für Registered Users
   const saveSessionStats = useCallback(() => {
