@@ -427,6 +427,16 @@ useEffect(() => {
   };
 
   const handleRestart = () => {
+
+     // 🔥 ADSTERRA SCRIPT CLEANUP vor Restart
+  const adsterraScript = document.querySelector('script[src*="dominionclatterrounded.com"]');
+  if (adsterraScript) {
+    console.log('🧹 Removing Adsterra script before restart');
+    adsterraScript.remove();
+  }
+  
+  // SessionStorage auch cleanen für neuen Popunder
+  sessionStorage.removeItem('adsterra_loaded_today');
     setQuestions([]);
     setScores([]);
     setCurrentIndex(0);
