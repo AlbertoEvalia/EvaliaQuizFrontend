@@ -58,7 +58,7 @@ export const TRANSLATIONS = {
 
     // ===== FREEMIUM FEATURES =====
     // Registration & Premium
-    registrationHint: "💡 Register for free to unlock unlimited questions and remove ads!",
+    registrationHint: "Register for free to unlock unlimited questions and remove ads!",
     premium: "Premium",
     premiumHint: "Register for instant feedback after each question!",
     freeUserNotice: "Free User",
@@ -98,7 +98,7 @@ export const TRANSLATIONS = {
     adPlaceholder: "Advertisement",
     adCountdown: "Continue in {seconds}s",
     continueQuiz: "Continue Quiz",
-    upgradeHint: "💡 Register for free to remove ads!",
+    upgradeHint: "Register for free to remove ads!",
 
     // Feedback
     correct: "Correct!",
@@ -200,7 +200,7 @@ export const TRANSLATIONS = {
 
     // ===== FREEMIUM FEATURES =====
     // Registration & Premium
-    registrationHint: "💡 Kostenlos registrieren für unbegrenzte Fragen und keine Werbung!",
+    registrationHint: "Kostenlos registrieren für unbegrenzte Fragen und keine Werbung!",
     premium: "Premium",
     premiumHint: "Registriere dich für sofortiges Feedback nach jeder Frage!",
     freeUserNotice: "Kostenlos",
@@ -240,7 +240,7 @@ export const TRANSLATIONS = {
     adPlaceholder: "Werbung",
     adCountdown: "Weiter in {seconds}s",
     continueQuiz: "Quiz fortsetzen",
-    upgradeHint: "💡 Kostenlos registrieren um Werbung zu entfernen!",
+    upgradeHint: "Kostenlos registrieren um Werbung zu entfernen!",
 
     // Feedback
     correct: "Richtig!",
@@ -342,7 +342,7 @@ export const TRANSLATIONS = {
 
     // ===== FREEMIUM FEATURES =====
     // Registration & Premium
-    registrationHint: "💡 Inscrivez-vous gratuitement pour des questions illimitées et sans publicité!",
+    registrationHint: "Inscrivez-vous gratuitement pour des questions illimitées et sans publicité!",
     premium: "Premium",
     premiumHint: "Inscrivez-vous pour un retour instantané après chaque question!",
     freeUserNotice: "Utilisateur gratuit",
@@ -382,7 +382,7 @@ export const TRANSLATIONS = {
     adPlaceholder: "Publicité",
     adCountdown: "Continuer dans {seconds}s",
     continueQuiz: "Continuer le quiz",
-    upgradeHint: "💡 Inscrivez-vous gratuitement pour supprimer les publicités!",
+    upgradeHint: "Inscrivez-vous gratuitement pour supprimer les publicités!",
 
     // Feedback
     correct: "Correct!",
@@ -483,7 +483,7 @@ export const TRANSLATIONS = {
 
     // ===== FREEMIUM FEATURES =====
     // Registration & Premium
-    registrationHint: "💡 ¡Regístrate gratis para preguntas ilimitadas y sin anuncios!",
+    registrationHint: "¡Regístrate gratis para preguntas ilimitadas y sin anuncios!",
     premium: "Premium",
     premiumHint: "¡Regístrate para recibir comentarios instantáneos después de cada pregunta!",
     freeUserNotice: "Usuario gratuito",
@@ -523,7 +523,7 @@ export const TRANSLATIONS = {
     adPlaceholder: "Publicidad",
     adCountdown: "Continuar en {seconds}s",
     continueQuiz: "Continuar quiz",
-    upgradeHint: "💡 ¡Regístrate gratis para eliminar anuncios!",
+    upgradeHint: "¡Regístrate gratis para eliminar anuncios!",
 
     // Feedback
     correct: "¡Correcto!",
@@ -624,7 +624,7 @@ export const TRANSLATIONS = {
 
     // ===== FREEMIUM FEATURES =====
     // Registration & Premium
-    registrationHint: "💡 Registrati gratuitamente per domande illimitate e senza pubblicità!",
+    registrationHint: "Registrati gratuitamente per domande illimitate e senza pubblicità!",
     premium: "Premium",
     premiumHint: "Registrati per feedback istantaneo dopo ogni domanda!",
     freeUserNotice: "Utente gratuito",
@@ -664,7 +664,7 @@ export const TRANSLATIONS = {
     adPlaceholder: "Pubblicità",
     adCountdown: "Continua tra {seconds}s",
     continueQuiz: "Continua quiz",
-    upgradeHint: "💡 Registrati gratuitamente per rimuovere le pubblicità!",
+    upgradeHint: "Registrati gratuitamente per rimuovere le pubblicità!",
 
     // Feedback
     correct: "Corretto!",
