@@ -180,6 +180,18 @@ const ResultsScreen = ({
       script.onload = () => {
         console.log('🎯 Adsterra popunder script loaded successfully for registered user');
         sessionStorage.setItem(sessionKey, 'true');
+        
+        // 🔥 FIX: Trigger Popunder nach Script-Load
+        setTimeout(() => {
+          console.log('🎯 Triggering Adsterra popunder...');
+          // Simuliere User-Interaktion für Popunder
+          const event = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true
+          });
+          document.body.dispatchEvent(event);
+        }, 1000); // 1 Sekunde nach Script-Load
       };
       
       script.onerror = () => {
@@ -246,7 +258,7 @@ const ResultsScreen = ({
         de: ["Biologie", "Chemie"],
         fr: ["Biologie", "Chimie"],
         es: ["Biología", "Química"],
-        it: ["Biologia", "Chimica"]
+        it: ["Biologia", "Chimica"
       }
     };
 
