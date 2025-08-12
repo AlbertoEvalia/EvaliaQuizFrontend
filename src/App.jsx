@@ -482,7 +482,7 @@ useEffect(() => {
           setShowUpgradePrompt(true);
         }}
         translations={t}
-        questionNumber={currentIndex + 1}
+        questionNumber={currentIndex}
         totalQuestions={20}
         language={language}
         userType={userType}
