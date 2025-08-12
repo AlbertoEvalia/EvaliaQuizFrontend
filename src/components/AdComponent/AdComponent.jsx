@@ -80,11 +80,11 @@ const AdComponent = ({
   const loadAAdsSticky = () => {
     try {
       console.log(`🎯 Loading A-Ads Sticky Banner for question ${questionNumber}...`);
-      
+
       // A-Ads iframe lädt automatisch
       setAdLoaded(true);
       console.log('✅ A-Ads Sticky Banner ready');
-      
+
     } catch (error) {
       console.error('❌ A-Ads error:', error);
       setAdLoaded(true);
@@ -103,7 +103,7 @@ const AdComponent = ({
     const texts = WITTY_AD_TEXTS[language] || WITTY_AD_TEXTS['en'];
     const randomIndex = Math.floor(Math.random() * texts.length);
     setWittyText(texts[randomIndex]);
-    
+
     // Countdown Timer
     const timer = setInterval(() => {
       setCountdown(prev => {
@@ -170,7 +170,7 @@ const AdComponent = ({
             <div className="progress-info">
               {getTextWithPlaceholders('progressInfo', 'Question {questionNumber} of {totalQuestions}', { questionNumber, totalQuestions })}
             </div>
-            
+
             {/* Debug Info */}
             {process.env.NODE_ENV === 'development' && (
               <div className="ad-debug-info">
@@ -190,15 +190,15 @@ const AdComponent = ({
 
               {/* Action Buttons - Untereinander, volle Breite */}
               <div className="ad-actions">
-                <button 
-                  onClick={handleSkip} 
+                <button
+                  onClick={handleSkip}
                   className="action-btn continue-btn"
                   disabled={!canSkip}
                 >
                   {!canSkip ? getTextWithPlaceholders('adCountdown', 'Continue in {seconds}s', { seconds: countdown }) : getAdText('continueQuiz', 'Continue Quiz')}
                 </button>
-                <button 
-                  onClick={handleUpgradeClick} 
+                <button
+                  onClick={handleUpgradeClick}
                   className="action-btn register-btn"
                 >
                   {getAdText('registerFree', 'Register for free')}
@@ -207,7 +207,7 @@ const AdComponent = ({
 
               {/* Witziger Text + Upgrade Hint im gleichen Kästchen */}
               <div className="witty-text-box">
-              {userType === 'free' && (
+                {userType === 'free' && (
                   <div className="upgrade-hint-inline">
                     {getAdText('upgradeHint', 'Register for free to remove ads!')}
                   </div>
@@ -221,7 +221,7 @@ const AdComponent = ({
               {/* Großer Pfeil nach unten */}
               <div className="arrow-down">
                 <svg width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 30L0 0H40L20 30Z" fill="rgba(255, 255, 255, 0.9)"/>
+                  <path d="M20 30L0 0H40L20 30Z" fill="rgba(255, 255, 255, 0.9)" />
                 </svg>
               </div>
             </div>
@@ -236,26 +236,26 @@ const AdComponent = ({
       {/* A-Ads Sticky Banner */}
       {stickyAdVisible && (
         <div className="aads-sticky-wrapper" style={{ position: 'absolute', zIndex: 99999 }}>
-          <input 
-            autoComplete="off" 
-            type="checkbox" 
-            id="aadsstickyme71ksrg" 
-            hidden 
+          <input
+            autoComplete="off"
+            type="checkbox"
+            id="aadsstickyme71ksrg"
+            hidden
             onChange={handleCloseStickyAd}
           />
           <div style={{ paddingTop: 0, paddingBottom: 'auto' }}>
             <div className="aads-sticky-container">
-              <label 
-                htmlFor="aadsstickyme71ksrg" 
+              <label
+                htmlFor="aadsstickyme71ksrg"
                 className="aads-close-btn"
                 onClick={handleCloseStickyAd}
               >
                 <svg fill="#000000" height="16px" width="16px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 490">
-                  <polygon points="456.851,0 245,212.564 33.149,0 0.708,32.337 212.669,245.004 0.708,457.678 33.149,490 245,277.443 456.851,490 489.292,457.678 277.331,245.004 489.292,32.337"/>
+                  <polygon points="456.851,0 245,212.564 33.149,0 0.708,32.337 212.669,245.004 0.708,457.678 33.149,490 245,277.443 456.851,490 489.292,457.678 277.331,245.004 489.292,32.337" />
                 </svg>
               </label>
               <div id="frame" className="aads-frame">
-                <iframe 
+                <iframe
                   data-aa={A_ADS_CONFIG.dataAa}
                   src={A_ADS_CONFIG.iframeSrc}
                   className="aads-iframe"
