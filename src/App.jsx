@@ -467,11 +467,12 @@ useEffect(() => {
         onAdComplete={handleAdComplete}
         onShowUpgrade={() => {
           console.log('🔔 Setting showUpgradePrompt to true');
+          setShowAd(false); // Neu: Schließe Werbung
           setShowUpgradePrompt(true);
         }}
         translations={t}
         questionNumber={currentIndex + 1}
-        totalQuestions={20} // Always 20
+        totalQuestions={20}
         language={language}
         userType={userType}
       />
