@@ -27,7 +27,6 @@ export const TRANSLATIONS = {
     title: "EVALIA",
     subtitle: "Discover Knowledge with AI",
 
-
     // Language Selection
     chooseLanguage: "Choose your language",
 
@@ -64,17 +63,20 @@ export const TRANSLATIONS = {
     freeUserNotice: "Free User",
 
     // Upgrade Prompt - English
-    upgradeTitle: "Unlock Full Experience!",
+    upgradeTitle: "Join our Community!",
     upgradeSubtitle: "Register FREE to get:",
     benefitFeedback: "Enhanced feedback after each question",
     benefitNoAds: "No more ads",
     benefitUnlimited: "20, 50 & 100 questions",
     benefitSaveProgress: "Save your progress",
     benefitDetailedStats: "Detailed statistics",
-    // NEW BENEFIT KEYS
+    
+    // 🆕 NEUE KORREKTE BENEFITS
     benefitFewerAds: "Fewer ads",
-    benefitLocalStats: "Track your progress locally",
-    benefitPersonalized: "Personalized quiz experience",
+    benefitProgressTracking: "Track your progress locally",
+    benefitSessionHistory: "Save your quiz history",
+    benefitPremiumUpdates: "Get notified about Premium features",
+    benefitEarlyAccess: "Early access to new features",
 
     emailPlaceholder: "Enter your email",
     registerFree: "Register FREE",
@@ -206,17 +208,20 @@ export const TRANSLATIONS = {
     freeUserNotice: "Kostenlos",
 
     // Upgrade Prompt - Deutsch
-    upgradeTitle: "Vollversion freischalten!",
+    upgradeTitle: "Werde Teil unserer Community!",
     upgradeSubtitle: "KOSTENLOS registrieren und erhalten:",
     benefitFeedback: "Erweiterte Rückmeldungen nach jeder Frage",
     benefitNoAds: "Keine Werbung mehr",
     benefitUnlimited: "20, 50 & 100 Fragen",
     benefitSaveProgress: "Fortschritt speichern",
     benefitDetailedStats: "Detaillierte Statistiken",
-    // NEUE BENEFIT KEYS
+    
+    // 🆕 NEUE KORREKTE BENEFITS
     benefitFewerAds: "Weniger Werbung",
-    benefitLocalStats: "Verfolge deinen Fortschritt lokal",
-    benefitPersonalized: "Personalisierte Quiz-Erfahrung",
+    benefitProgressTracking: "Verfolge deinen Fortschritt lokal",
+    benefitSessionHistory: "Quiz-Verlauf speichern",
+    benefitPremiumUpdates: "Benachrichtigungen über Premium-Features",
+    benefitEarlyAccess: "Früher Zugang zu neuen Funktionen",
 
     emailPlaceholder: "E-Mail-Adresse eingeben",
     registerFree: "KOSTENLOS registrieren",
@@ -348,17 +353,20 @@ export const TRANSLATIONS = {
     freeUserNotice: "Utilisateur gratuit",
 
     // Upgrade Prompt - Français
-    upgradeTitle: "Débloquez l'expérience complète !",
+    upgradeTitle: "Rejoignez notre communauté !",
     upgradeSubtitle: "Inscrivez-vous GRATUITEMENT pour obtenir :",
     benefitFeedback: "Retour amélioré après chaque question",
     benefitNoAds: "Plus de publicité",
     benefitUnlimited: "20, 50 & 100 questions",
     benefitSaveProgress: "Sauvegardez vos progrès",
     benefitDetailedStats: "Statistiques détaillées",
-    // NOUVELLES CLÉS BENEFIT
+    
+    // 🆕 NOUVELLES PRESTATIONS CORRECTES
     benefitFewerAds: "Moins de publicités",
-    benefitLocalStats: "Suivez vos progrès localement",
-    benefitPersonalized: "Expérience de quiz personnalisée",
+    benefitProgressTracking: "Suivez vos progrès localement",
+    benefitSessionHistory: "Sauvegarder l'historique des quiz",
+    benefitPremiumUpdates: "Notifications sur les fonctionnalités Premium",
+    benefitEarlyAccess: "Accès anticipé aux nouvelles fonctionnalités",
 
     emailPlaceholder: "Entrez votre email",
     registerFree: "S'inscrire GRATUITEMENT",
@@ -423,7 +431,8 @@ export const TRANSLATIONS = {
       "Pop Culture": "Culture populaire",
       "Sports": "Sports",
       "General Knowledge": "Connaissances générales"
-    }, logout: 'Déconnexion',
+    }, 
+    logout: 'Déconnexion',
     loggedIn: 'Connecté',
     account: 'Compte'
   },
@@ -489,17 +498,20 @@ export const TRANSLATIONS = {
     freeUserNotice: "Usuario gratuito",
 
     // Upgrade Prompt - Español
-    upgradeTitle: "¡Desbloquea la experiencia completa!",
+    upgradeTitle: "¡Únete a nuestra comunidad!",
     upgradeSubtitle: "Regístrate GRATIS para obtener:",
     benefitFeedback: "Comentarios mejorados después de cada pregunta",
     benefitNoAds: "Sin más anuncios",
     benefitUnlimited: "20, 50 & 100 preguntas",
     benefitSaveProgress: "Guarda tu progreso",
     benefitDetailedStats: "Estadísticas detalladas",
-    // NUEVAS CLAVES BENEFIT
+    
+    // 🆕 NUEVOS BENEFICIOS CORRECTOS
     benefitFewerAds: "Menos anuncios",
-    benefitLocalStats: "Rastrea tu progreso localmente",
-    benefitPersonalized: "Experiencia de quiz personalizada",
+    benefitProgressTracking: "Rastrea tu progreso localmente",
+    benefitSessionHistory: "Guardar historial de quiz",
+    benefitPremiumUpdates: "Notificaciones sobre características Premium",
+    benefitEarlyAccess: "Acceso temprano a nuevas características",
 
     emailPlaceholder: "Introduce tu email",
     registerFree: "Registrarse GRATIS",
@@ -564,9 +576,10 @@ export const TRANSLATIONS = {
       "Pop Culture": "Cultura popular",
       "Sports": "Deportes",
       "General Knowledge": "Conocimiento general"
-    }, logout: 'Cerrar sesión',
+    }, 
+    logout: 'Cerrar sesión',
     loggedIn: 'Conectado',
-    account: 'Cuenta',
+    account: 'Cuenta'
   },
 
   it: {
@@ -630,17 +643,20 @@ export const TRANSLATIONS = {
     freeUserNotice: "Utente gratuito",
 
     // Upgrade Prompt - Italiano
-    upgradeTitle: "Sblocca l'esperienza completa!",
+    upgradeTitle: "Unisciti alla nostra comunità!",
     upgradeSubtitle: "Registrati GRATIS per ottenere:",
     benefitFeedback: "Feedback migliorato dopo ogni domanda",
     benefitNoAds: "Niente più pubblicità",
     benefitUnlimited: "20, 50 & 100 domande",
     benefitSaveProgress: "Salva i tuoi progressi",
     benefitDetailedStats: "Statistiche dettagliate",
-    // NUOVE CHIAVI BENEFIT
+    
+    // 🆕 NUOVI VANTAGGI CORRETTI
     benefitFewerAds: "Meno pubblicità",
-    benefitLocalStats: "Traccia i tuoi progressi localmente",
-    benefitPersonalized: "Esperienza quiz personalizzata",
+    benefitProgressTracking: "Traccia i tuoi progressi localmente",
+    benefitSessionHistory: "Salva la cronologia dei quiz",
+    benefitPremiumUpdates: "Notifiche sulle funzionalità Premium",
+    benefitEarlyAccess: "Accesso anticipato alle nuove funzionalità",
 
     emailPlaceholder: "Inserisci la tua email",
     registerFree: "Registrati GRATIS",
@@ -705,10 +721,11 @@ export const TRANSLATIONS = {
       "Pop Culture": "Cultura popolare",
       "Sports": "Sport",
       "General Knowledge": "Conoscenza generale"
-    }
-  }, logout: 'Disconnetti',
-  loggedIn: 'Connesso',
-  account: 'Account'
+    },
+    logout: 'Disconnetti',
+    loggedIn: 'Connesso',
+    account: 'Account'
+  }
 };
 
 // Verfügbare Sprachen

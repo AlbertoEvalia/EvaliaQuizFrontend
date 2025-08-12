@@ -13,6 +13,7 @@ const UpgradePrompt = ({
 }) => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [newsletterOptIn, setNewsletterOptIn] = useState(false); // 🆕 Newsletter Opt-in
 
   // Nur für Free Users anzeigen (Registered Users sehen kein UpgradePrompt)
   if (!isVisible || userType !== 'free') return null;
@@ -27,7 +28,10 @@ const UpgradePrompt = ({
       const response = await fetch('https://evaliaquizbackend.onrender.com/api/auth/magic-link',  {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email.trim() })
+        body: JSON.stringify({ 
+          email: email.trim(),
+          newsletterOptIn: newsletterOptIn // 🆕 Newsletter Preference senden
+        })
       });
       
       if (response.ok) {
@@ -69,20 +73,20 @@ const UpgradePrompt = ({
                 {translations.benefitFewerAds || "Fewer ads"}
               </li>
               <li>
-                <span className="benefit-icon">⚡</span>
-                {translations.benefitFeedback || "Enhanced feedback after each question"}
-              </li>
-              <li>
                 <span className="benefit-icon">📈</span>
-                {translations.benefitLocalStats || "Track your progress locally"}
-              </li>
-              <li>
-                <span className="benefit-icon">🎯</span>
-                {translations.benefitPersonalized || "Personalized quiz experience"}
+                {translations.benefitProgressTracking || "Track your progress locally"}
               </li>
               <li>
                 <span className="benefit-icon">💾</span>
-                {translations.benefitSaveProgress || "Save your quiz history"}
+                {translations.benefitSessionHistory || "Save your quiz history"}
+              </li>
+              <li>
+                <span className="benefit-icon">🔔</span>
+                {translations.benefitPremiumUpdates || "Get notified about Premium features"}
+              </li>
+              <li>
+                <span className="benefit-icon">⚡</span>
+                {translations.benefitEarlyAccess || "Early access to new features"}
               </li>
             </ul>
           </div>
@@ -97,6 +101,25 @@ const UpgradePrompt = ({
               disabled={isSubmitting}
               className="email-input"
             />
+            
+            {/* 🆕 Newsletter Opt-in Checkbox */}
+            <div className="newsletter-optin">
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={newsletterOptIn}
+                  onChange={(e) => setNewsletterOptIn(e.target.checked)}
+                  className="newsletter-checkbox"
+                />
+                <span className="checkbox-text">
+                  {translations.newsletterOptinLabel || "I would like to receive newsletters about new features and our upcoming Premium service"}
+                </span>
+              </label>
+              <small className="newsletter-note">
+                {translations.newsletterOptinRequired || "Newsletter subscription is optional but helps us keep you informed about important updates"}
+              </small>
+            </div>
+
             <button
               type="submit"
               disabled={isSubmitting || !email.trim()}
