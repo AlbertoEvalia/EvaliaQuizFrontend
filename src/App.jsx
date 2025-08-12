@@ -409,12 +409,6 @@ useEffect(() => {
     const nextIndex = currentIndex + 1;
     if (nextIndex >= questions.length) {
       setStatus('results');
-      
-      if (userType === 'free') {
-        setTimeout(() => {
-          setShowUpgradePrompt(true);
-        }, 2000);
-      }
     } else {
       setCurrentIndex(nextIndex);
       setStatus('quiz');
@@ -480,6 +474,20 @@ useEffect(() => {
       />
     );
   }
+
+if (showUpgradePrompt) {
+  return (
+    <UpgradePrompt
+      isVisible={showUpgradePrompt}
+      onRegister={handleRegister}
+      onClose={handleCloseUpgradePrompt}
+      translations={t}
+      userScore={calculateCorrectAnswers()}
+      totalQuestions={20}
+      userType={userType}
+    />
+  );
+}
 
   const renderQuizWithLegal = (content) => (
     <div className="app-container">
