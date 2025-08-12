@@ -207,14 +207,15 @@ const AdComponent = ({
 
               {/* Witziger Text + Upgrade Hint im gleichen Kästchen */}
               <div className="witty-text-box">
-                <div className="witty-text">
-                  {wittyText}
-                </div>
-                {userType === 'free' && (
+              {userType === 'free' && (
                   <div className="upgrade-hint-inline">
                     {getAdText('upgradeHint', 'Register for free to remove ads!')}
                   </div>
                 )}
+                <div className="witty-text">
+                  {wittyText}
+                </div>
+
               </div>
 
               {/* Großer Pfeil nach unten */}
