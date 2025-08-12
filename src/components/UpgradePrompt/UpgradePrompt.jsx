@@ -131,15 +131,6 @@ const UpgradePrompt = ({
               }
             </button>
           </form>
-
-          <div className="upgrade-footer">
-            <p className="privacy-note">
-              {translations.privacyNote || "We respect your privacy. No spam, ever."}
-            </p>
-            <button onClick={onClose} className="maybe-later-btn">
-              {translations.maybeLater || "Maybe later"}
-            </button>
-          </div>
         </div>
       </div>
     </div>
