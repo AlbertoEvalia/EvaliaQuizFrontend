@@ -307,6 +307,7 @@
     opacity: 0;
     transform: scale(0.9) translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -320,30 +321,33 @@
     max-width: calc(100% - 40px);
     border-radius: 0;
   }
-  
+
   .upgrade-content {
     padding: 60px 20px 20px;
   }
-  
+
   .upgrade-header h2 {
     font-size: 1.6rem;
   }
-  
+
   .score-message {
     font-size: 1.1rem;
   }
-  
+
   .upgrade-benefits h3 {
     font-size: 1.2rem;
   }
-  
+
   .upgrade-benefits li {
-    padding: 20px;
+    padding: 8px 20px;
+    text-align: left;
+    align-items: flex-start;
   }
-  
+
   .benefit-icon {
     font-size: 1.3rem;
-    margin-right: 20px;
-    width: 40px;
+    margin-right: 15px;
+    width: 30px;
+    flex-shrink: 0;
   }
 }
