@@ -16,95 +16,45 @@ const ResultsScreen = ({
   onLogout            
 }) => {
 
-// 🎯 ADSTERRA POPUNDER für Registered Users - FIXED
-const loadAdsterraPopunder = useCallback(() => {
-  if (userType === 'premium') return;
-
-  // 🔥 FIX: Nur EINMAL pro Session laden
-  const sessionKey = 'adsterra_loaded_' + Date.now().toString().slice(0, -7); // Heute
-  const alreadyLoaded = sessionStorage.getItem(sessionKey);
-  
-  if (alreadyLoaded) {
-    console.log('🎯 Adsterra already loaded this session, skipping');
-    return;
-  }
-
-  try {
-    // Prüfen ob Script bereits geladen ist
-    const existingScript = document.querySelector('script[src*="dominionclatterrounded.com"]');
-    if (existingScript) {
-      console.log('🎯 Adsterra script already in DOM, skipping');
-      sessionStorage.setItem(sessionKey, 'true');
-      return;
+  // Score processing logic (zuerst definieren)
+  const processScore = (score) => {
+    let finalScore = 0;
+    
+    if (typeof score === 'object' && score !== null) {
+      const numericScore = score.score;
+      if (typeof numericScore === 'number') {
+        if (numericScore >= 0 && numericScore <= 100) {
+          finalScore = numericScore;
+        } else if (numericScore >= 0 && numericScore <= 1) {
+          finalScore = numericScore * 100;
+        }
+      } else if (numericScore === 1 || numericScore === '1') {
+        finalScore = 100;
+      }
+    } else {
+      if (typeof score === 'number') {
+        if (score >= 0 && score <= 100) {
+          finalScore = score;
+        } else if (score >= 0 && score <= 1) {
+          finalScore = score * 100;
+        }
+      } else if (score === 1 || score === '1') {
+        finalScore = 100;
+      }
     }
-
-    // Neues Script laden
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = '//dominionclatterrounded.com/d8/1f/12/d81f122cbc264e70cf21d483aefef972.js';
-    script.async = true;
     
-    script.onload = () => {
-      console.log('🎯 Adsterra popunder script loaded successfully for registered user');
-      sessionStorage.setItem(sessionKey, 'true');
-    };
+    return finalScore;
+  };
+
+  const calculateOverallScore = useCallback(() => {
+    if (!scores || scores.length === 0) return 0;
     
-    script.onerror = () => {
-      console.error('❌ Failed to load Adsterra popunder script');
-    };
-
-    // Script zum head hinzufügen
-    document.head.appendChild(script);
+    const totalScore = scores.reduce((sum, score) => {
+      return sum + processScore(score);
+    }, 0);
     
-  } catch (error) {
-    console.error('❌ Error loading Adsterra script:', error);
-  }
-}, [userType]);
-
-// Session Stats speichern + Popunder KONTROLLIERT laden
-useEffect(() => {
-  if (userType !== 'premium') {
-    saveSessionStats();
-    
-    // 🎯 Adsterra Popunder nur EINMAL pro Session
-    const adTimer = setTimeout(() => {
-      loadAdsterraPopunder();
-    }, 2000);
-
-    return () => clearTimeout(adTimer);
-  }
-}, [saveSessionStats, loadAdsterraPopunder, userType]);
-
-  // 💾 LOKALE STATS für Registered Users
-  const saveSessionStats = useCallback(() => {
-    if (userType !== 'registered') return;
-
-    try {
-      const sessionData = {
-        date: new Date().toISOString(),
-        language,
-        totalQuestions: questions.length,
-        overallScore: calculateOverallScore(),
-        groupScores: getGroupScores(),
-        timestamp: Date.now()
-      };
-
-      // Bestehende Sessions laden
-      const existingSessions = JSON.parse(localStorage.getItem('evalia_sessions') || '[]');
-      
-      // Neue Session hinzufügen
-      existingSessions.push(sessionData);
-      
-      // Nur die letzten 10 Sessions behalten
-      const recentSessions = existingSessions.slice(-10);
-      
-      localStorage.setItem('evalia_sessions', JSON.stringify(recentSessions));
-      
-      console.log('📊 Session stats saved for registered user:', sessionData);
-    } catch (error) {
-      console.error('Error saving session stats:', error);
-    }
-  }, [userType, language, questions, scores]);
+    return Math.round(totalScore / scores.length);
+  }, [scores]);
 
   // Gruppe-Scores berechnen (für lokale Speicherung)
   const getGroupScores = useCallback(() => {
@@ -170,35 +120,81 @@ useEffect(() => {
     return groupScores;
   }, [questions, scores, language]);
 
-  // Score processing logic (ausgelagert für Wiederverwendung)
-  const processScore = (score) => {
-    let finalScore = 0;
-    
-    if (typeof score === 'object' && score !== null) {
-      const numericScore = score.score;
-      if (typeof numericScore === 'number') {
-        if (numericScore >= 0 && numericScore <= 100) {
-          finalScore = numericScore;
-        } else if (numericScore >= 0 && numericScore <= 1) {
-          finalScore = numericScore * 100;
-        }
-      } else if (numericScore === 1 || numericScore === '1') {
-        finalScore = 100;
-      }
-    } else {
-      if (typeof score === 'number') {
-        if (score >= 0 && score <= 100) {
-          finalScore = score;
-        } else if (score >= 0 && score <= 1) {
-          finalScore = score * 100;
-        }
-      } else if (score === 1 || score === '1') {
-        finalScore = 100;
-      }
+  // 💾 LOKALE STATS für Registered Users
+  const saveSessionStats = useCallback(() => {
+    if (userType !== 'registered') return;
+
+    try {
+      const sessionData = {
+        date: new Date().toISOString(),
+        language,
+        totalQuestions: questions.length,
+        overallScore: calculateOverallScore(),
+        groupScores: getGroupScores(),
+        timestamp: Date.now()
+      };
+
+      // Bestehende Sessions laden
+      const existingSessions = JSON.parse(localStorage.getItem('evalia_sessions') || '[]');
+      
+      // Neue Session hinzufügen
+      existingSessions.push(sessionData);
+      
+      // Nur die letzten 10 Sessions behalten
+      const recentSessions = existingSessions.slice(-10);
+      
+      localStorage.setItem('evalia_sessions', JSON.stringify(recentSessions));
+      
+      console.log('📊 Session stats saved for registered user:', sessionData);
+    } catch (error) {
+      console.error('Error saving session stats:', error);
     }
+  }, [userType, language, questions, scores, calculateOverallScore, getGroupScores]);
+
+  // 🎯 ADSTERRA POPUNDER für Registered Users - FIXED
+  const loadAdsterraPopunder = useCallback(() => {
+    if (userType === 'premium') return;
+
+    // 🔥 FIX: Nur EINMAL pro Session laden
+    const sessionKey = 'adsterra_loaded_' + Date.now().toString().slice(0, -7); // Heute
+    const alreadyLoaded = sessionStorage.getItem(sessionKey);
     
-    return finalScore;
-  };
+    if (alreadyLoaded) {
+      console.log('🎯 Adsterra already loaded this session, skipping');
+      return;
+    }
+
+    try {
+      // Prüfen ob Script bereits geladen ist
+      const existingScript = document.querySelector('script[src*="dominionclatterrounded.com"]');
+      if (existingScript) {
+        console.log('🎯 Adsterra script already in DOM, skipping');
+        sessionStorage.setItem(sessionKey, 'true');
+        return;
+      }
+
+      // Neues Script laden
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = '//dominionclatterrounded.com/d8/1f/12/d81f122cbc264e70cf21d483aefef972.js';
+      script.async = true;
+      
+      script.onload = () => {
+        console.log('🎯 Adsterra popunder script loaded successfully for registered user');
+        sessionStorage.setItem(sessionKey, 'true');
+      };
+      
+      script.onerror = () => {
+        console.error('❌ Failed to load Adsterra popunder script');
+      };
+
+      // Script zum head hinzufügen
+      document.head.appendChild(script);
+      
+    } catch (error) {
+      console.error('❌ Error loading Adsterra script:', error);
+    }
+  }, [userType]);
 
   const renderChart = useCallback(() => {
     const ctx = document.getElementById("resultsChart");
@@ -406,40 +402,6 @@ useEffect(() => {
 
   }, [questions, scores, translations, language]);
 
-  const calculateOverallScore = useCallback(() => {
-    if (!scores || scores.length === 0) return 0;
-    
-    const totalScore = scores.reduce((sum, score) => {
-      return sum + processScore(score);
-    }, 0);
-    
-    return Math.round(totalScore / scores.length);
-  }, [scores]);
-
-  // 💾 Session Stats speichern wenn Registered User + Adsterra Popunder laden
-  useEffect(() => {
-    if (userType !== 'premium') {
-      saveSessionStats();
-      
-      // 🎯 Adsterra Popunder nach kurzem Delay laden
-      const adTimer = setTimeout(() => {
-        loadAdsterraPopunder();
-      }, 2000); // 2 Sekunden warten, dann Popunder laden
-
-      return () => clearTimeout(adTimer);
-    }
-  }, [saveSessionStats, loadAdsterraPopunder, userType]);
-
-  useEffect(() => {
-    renderChart();
-    return () => {
-      const ctx = document.getElementById("resultsChart");
-      if (ctx && ctx.chart) {
-        ctx.chart.destroy();
-      }
-    };
-  }, [renderChart]);
-
   // 📈 Lokale Stats für Registered Users anzeigen
   const getSessionStats = () => {
     if (userType !== 'registered') return null;
@@ -462,6 +424,30 @@ useEffect(() => {
       return null;
     }
   };
+
+  // 💾 Session Stats speichern + Adsterra Popunder laden
+  useEffect(() => {
+    if (userType !== 'premium') {
+      saveSessionStats();
+      
+      // 🎯 Adsterra Popunder nach kurzem Delay laden
+      const adTimer = setTimeout(() => {
+        loadAdsterraPopunder();
+      }, 2000); // 2 Sekunden warten, dann Popunder laden
+
+      return () => clearTimeout(adTimer);
+    }
+  }, [saveSessionStats, loadAdsterraPopunder, userType]);
+
+  useEffect(() => {
+    renderChart();
+    return () => {
+      const ctx = document.getElementById("resultsChart");
+      if (ctx && ctx.chart) {
+        ctx.chart.destroy();
+      }
+    };
+  }, [renderChart]);
 
   const sessionStats = getSessionStats();
 
