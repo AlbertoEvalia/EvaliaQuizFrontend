@@ -16,6 +16,40 @@ const ResultsScreen = ({
   onLogout            
 }) => {
 
+  // 🎯 ADSTERRA POPUNDER für Registered Users
+  const loadAdsterraPopunder = useCallback(() => {
+    if (userType === 'premium') return;
+
+    try {
+      // Prüfen ob Script bereits geladen ist
+      const existingScript = document.querySelector('script[src*="dominionclatterrounded.com"]');
+      if (existingScript) {
+        console.log('🎯 Adsterra script already loaded');
+        return;
+      }
+
+      // Neues Script laden
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = '//dominionclatterrounded.com/d8/1f/12/d81f122cbc264e70cf21d483aefef972.js';
+      script.async = true;
+      
+      script.onload = () => {
+        console.log('🎯 Adsterra popunder script loaded successfully for registered user');
+      };
+      
+      script.onerror = () => {
+        console.error('❌ Failed to load Adsterra popunder script');
+      };
+
+      // Script zum head hinzufügen
+      document.head.appendChild(script);
+      
+    } catch (error) {
+      console.error('❌ Error loading Adsterra script:', error);
+    }
+  }, [userType]);
+
   // 💾 LOKALE STATS für Registered Users
   const saveSessionStats = useCallback(() => {
     if (userType !== 'registered') return;
@@ -357,12 +391,19 @@ const ResultsScreen = ({
     return Math.round(totalScore / scores.length);
   }, [scores]);
 
-  // 💾 Session Stats speichern wenn Registered User
+  // 💾 Session Stats speichern wenn Registered User + Adsterra Popunder laden
   useEffect(() => {
-    if (userType === 'registered') {
+    if (userType !== 'premium') {
       saveSessionStats();
+      
+      // 🎯 Adsterra Popunder nach kurzem Delay laden
+      const adTimer = setTimeout(() => {
+        loadAdsterraPopunder();
+      }, 2000); // 2 Sekunden warten, dann Popunder laden
+
+      return () => clearTimeout(adTimer);
     }
-  }, [saveSessionStats, userType]);
+  }, [saveSessionStats, loadAdsterraPopunder, userType]);
 
   useEffect(() => {
     renderChart();
@@ -432,8 +473,7 @@ const ResultsScreen = ({
 
         {/* 📊 Lokale Stats für Registered Users */}
         {userType === 'registered' && sessionStats && (
-          <div className="session-stats" 
-          >
+          <div className="session-stats">
             <div style={{ fontSize: '14px', marginBottom: '8px' }}>
               📈 Session #{sessionStats.totalSessions} • Average: {sessionStats.averageScore}%
             </div>
@@ -457,8 +497,8 @@ const ResultsScreen = ({
         {showLegalLink && onNavigateToLegal && (
           <div style={{ marginTop: 'calc(2 * var(--grid-unit))', width: '100%' }}>
             <LegalLink onNavigate={onNavigateToLegal} translations={translations} 
-              userType={userType}        // ← NEU
-              onLogout={onLogout}      />
+              userType={userType}        
+              onLogout={onLogout} />
           </div>
         )}
       </div>
