@@ -41,7 +41,7 @@
 .progress-info {
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.9) !important;
-  margin: 0 0 2px 0; /* Nur 2px zu powered - näher dran */
+  margin: 0 0 -1px 0; /* Nur 2px zu powered - näher dran */
 }
 
 .ad-debug-info {
