@@ -155,8 +155,8 @@ const ResultsScreen = ({
   const loadAdsterraPopunder = useCallback(() => {
     if (userType === 'premium') return;
 
-    // 🔥 FIX: Nur EINMAL pro Session laden
-    const sessionKey = 'adsterra_loaded_' + Date.now().toString().slice(0, -7); // Heute
+    // 🔥 FIX: Nur EINMAL pro Browser-Session laden
+    const sessionKey = 'adsterra_loaded_today';
     const alreadyLoaded = sessionStorage.getItem(sessionKey);
     
     if (alreadyLoaded) {
