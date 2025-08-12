@@ -86,10 +86,12 @@
   width: 100%;
 }
 
-.action-btn {
+/* BUTTONS - KOMPLETT NEU MIT HÖHERER SPEZIFITÄT */
+.ad-component .ad-actions .action-btn {
   width: 100%;
   max-width: 560px;
   height: 40px !important;
+  line-height: 40px !important; /* GLEICH WIE HEIGHT */
   font-size: 1rem !important;
   font-weight: 600 !important;
   border: none !important;
@@ -97,22 +99,20 @@
   cursor: pointer !important;
   background: #E55B2B !important;
   color: #ffffff !important;
-  
-  /* WIE IN DER ALTEN VERSION - EINFACH UND KLAR */
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
   padding: 0 20px !important;
-  white-space: nowrap !important;
   text-align: center !important;
   box-sizing: border-box !important;
   transition: all 0.2s ease !important;
+  display: block !important; /* BLOCK statt FLEX */
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
 
-/* Zweiter Button (außerhalb der Box) - kleinere Schrift */
-.ad-actions .action-btn:nth-child(2) {
+/* Zweiter Button außerhalb - kleinere Schrift */
+.ad-component .ad-actions .action-btn:nth-child(2) {
   font-size: 0.875rem !important;
-  padding: 0 15px !important;
+  text-transform: uppercase !important;
 }
 
 .action-btn:hover:not(:disabled) {
@@ -126,13 +126,14 @@
   opacity: 0.7;
 }
 
-/* Button im Kästchen - spezifischer */
-.witty-text-box .action-btn {
+/* Button im Kästchen - höhere Spezifität */
+.ad-component .witty-text-box .action-btn {
   width: 100% !important;
   max-width: none !important;
   margin-top: 15px !important;
   font-size: 0.875rem !important;
-  padding: 0 15px !important;
+  line-height: 40px !important; /* AUCH HIER */
+  text-transform: uppercase !important;
 }
 
 /* Witziger Text Box - Mit Button drin */
