@@ -70,7 +70,7 @@
   font-size: 1.2rem;
   color: #ffffff !important;
   margin-bottom: 0;
-  font-style: italic;
+  font-style: normal;
   opacity: 0.9;
 }
 
@@ -157,7 +157,7 @@
 
 /* Newsletter Opt-in Styling - Minimalistisch */
 .newsletter-optin {
-  margin: 20px 0;
+  margin: 0;
   padding: 20px;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 0;
