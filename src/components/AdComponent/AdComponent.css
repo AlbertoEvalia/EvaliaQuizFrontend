@@ -41,7 +41,7 @@
 .progress-info {
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.9) !important;
-  margin: 0 0 8px 0;
+  margin: 0 0 2px 0; /* Nur 2px zu powered - näher dran */
 }
 
 .ad-debug-info {
@@ -126,10 +126,12 @@
 
 /* Witziger Text Box - Mit Button drin */
 .witty-text-box {
-  margin: 20px 0;
+  margin: 20px auto; /* Auto für Zentrierung */
   padding: 20px; /* 20px Raster überall */
   background: rgba(255, 255, 255, 0.1);
   border-left: 4px solid #ffffff;
+  max-width: 320px; /* Gleiche Breite wie Buttons auf Desktop */
+  width: 100%; /* Responsive */
 }
 
 .witty-text {
