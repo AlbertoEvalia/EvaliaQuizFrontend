@@ -10,13 +10,43 @@ const A_ADS_CONFIG = {
 };
 
 // 😄 FRECHE SPRÜCHE - ROTATION
-const WITTY_AD_TEXTS = [
-  "Evalia wird durch Werbeeinnahmen finanziert. Du guckst, wir kassieren. Win-win!",
-  "Evalia ist 100% kapitalistisch finanziert. Klick, konsumier, repeat.",
-  "Evalia lebt von Werbung. Also iss, trink, rauch, kauf … was immer hier steht.",
-  "Ohne Werbung wären wir nur ein leeres Quiz. Und du wärst viel produktiver.",
-  "Das ist eine Werbeunterbrechung. Weil wir Miete zahlen müssen."
-];
+const WITTY_AD_TEXTS = {
+  en: [
+    "Evalia is funded by ads. You watch, we earn. Win-win!",
+    "Evalia is 100% capitalist-funded. Click, consume, repeat.",
+    "Evalia lives off ads. So eat, drink, smoke, buy… whatever’s shown here.",
+    "Without ads, we’d just be an empty quiz. And you’d be way more productive.",
+    "This is an ad break. Because we’ve got rent to pay."
+  ],
+  de: [
+    "Evalia wird durch Werbeeinnahmen finanziert. Du guckst, wir kassieren. Win-win!",
+    "Evalia ist 100% kapitalistisch finanziert. Klick, konsumier, repeat.",
+    "Evalia lebt von Werbung. Also iss, trink, rauch, kauf … was immer hier steht.",
+    "Ohne Werbung wären wir nur ein leeres Quiz. Und du wärst viel produktiver.",
+    "Das ist eine Werbeunterbrechung. Weil wir Miete zahlen müssen."
+  ],
+  it: [
+    "Evalia è finanziata dalla pubblicità. Tu guardi, noi guadagniamo. Win-win!",
+    "Evalia è finanziata al 100% dal capitalismo. Clicca, consuma, ripeti.",
+    "Evalia vive di pubblicità. Mangia, bevi, fuma, compra… quello che appare qui.",
+    "Senza pubblicità saremmo solo un quiz vuoto. E tu sarest Way più produttivo.",
+    "Questa è una pausa pubblicitaria. Perché dobbiamo pagare l’affitto."
+  ],
+  es: [
+    "Evalia se financia con anuncios. Tú miras, nosotros ganamos. ¡Todos ganan!",
+    "Evalia está 100% financiada por el capitalismo. Clic, consume, repite.",
+    "Evalia vive de la publicidad. Come, bebe, fuma, compra… lo que sea que veas aquí.",
+    "Sin anuncios, solo seríamos un quiz vacío. Y tú serías mucho más productivo.",
+    "Esto es una pausa publicitaria. Porque tenemos que pagar el alquiler."
+  ],
+  fr: [
+    "Evalia est financé par la publicité. Tu regardes, on encaisse. Gagnant-gagnant !",
+    "Evalia est 100% financé par le capitalisme. Clique, consomme, répète.",
+    "Evalia vit grâce à la pub. Mange, bois, fume, achète… ce qui est affiché ici.",
+    "Sans pub, on serait juste un quiz vide. Et tu serais bien plus productif.",
+    "C’est une pause publicitaire. Parce qu’on doit payer le loyer."
+  ]
+};
 
 const AdComponent = ({
   onAdComplete,
@@ -70,8 +100,9 @@ const AdComponent = ({
   // EINMALIGER EFFECT 
   useEffect(() => {
     // Zufälligen witzigen Text auswählen
-    const randomIndex = Math.floor(Math.random() * WITTY_AD_TEXTS.length);
-    setWittyText(WITTY_AD_TEXTS[randomIndex]);
+    const texts = WITTY_AD_TEXTS[language] || WITTY_AD_TEXTS['en'];
+    const randomIndex = Math.floor(Math.random() * texts.length);
+    setWittyText(texts[randomIndex]);
     
     // Countdown Timer
     const timer = setInterval(() => {
@@ -95,7 +126,7 @@ const AdComponent = ({
       clearInterval(timer);
       clearTimeout(adTimer);
     };
-  }, []); // Keine Dependencies
+  }, [language]); // Dependency auf language
 
   const handleSkip = () => {
     if (canSkip) {
@@ -131,9 +162,9 @@ const AdComponent = ({
       <div className="ad-component">
         <div className="ad-container" ref={adContainerRef}>
           <div className="ad-header">
-            <h2>Kurze Werbepause</h2>
+            <h2>{getAdText('adTitle', 'Quick Break')}</h2>
             <div className="progress-info">
-              Frage {questionNumber} von {totalQuestions}
+              {getTextWithPlaceholders('progressInfo', 'Question {questionNumber} of {totalQuestions}', { questionNumber, totalQuestions })}
             </div>
             
             {/* Debug Info */}
@@ -160,13 +191,13 @@ const AdComponent = ({
                   className="action-btn continue-btn"
                   disabled={!canSkip}
                 >
-                  {!canSkip ? `Quiz fortsetzen (${countdown}s)` : 'Quiz fortsetzen'}
+                  {!canSkip ? getTextWithPlaceholders('adCountdown', 'Continue in {seconds}s', { seconds: countdown }) : getAdText('continueQuiz', 'Continue Quiz')}
                 </button>
                 <button 
                   onClick={handleUpgradeClick} 
                   className="action-btn register-btn"
                 >
-                  Kostenlos registrieren
+                  {getAdText('registerFree', 'Register for free')}
                 </button>
               </div>
 
@@ -177,7 +208,7 @@ const AdComponent = ({
                 </div>
                 {userType === 'free' && (
                   <div className="upgrade-hint-inline">
-                    Weniger Werbung mit kostenloser Registrierung
+                    {getAdText('upgradeHint', 'Register for free to remove ads!')}
                   </div>
                 )}
               </div>
