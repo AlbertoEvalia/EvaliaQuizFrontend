@@ -465,7 +465,10 @@ useEffect(() => {
     return (
       <AdComponent
         onAdComplete={handleAdComplete}
-        onShowUpgrade={() => setShowUpgradePrompt(true)}
+        onShowUpgrade={() => {
+          console.log('🔔 Setting showUpgradePrompt to true');
+          setShowUpgradePrompt(true);
+        }}
         translations={t}
         questionNumber={currentIndex + 1}
         totalQuestions={20} // Always 20
@@ -489,24 +492,12 @@ if (showUpgradePrompt) {
   );
 }
 
-  const renderQuizWithLegal = (content) => (
-    <div className="app-container">
-      {content}
-      <CookieBanner />
-      
-      {showUpgradePrompt && (
-        <UpgradePrompt
-          isVisible={showUpgradePrompt}
-          onRegister={handleRegister}
-          onClose={handleCloseUpgradePrompt}
-          translations={t}
-          userScore={calculateCorrectAnswers()}
-          totalQuestions={20} // Always 20
-          userType={userType}
-        />
-      )}
-    </div>
-  );
+const renderQuizWithLegal = (content) => (
+  <div className="app-container">
+    {content}
+    <CookieBanner />
+  </div>
+);
 
   switch (status) {
     case 'language':

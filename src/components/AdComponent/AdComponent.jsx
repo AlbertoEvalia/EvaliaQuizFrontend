@@ -138,7 +138,10 @@ const AdComponent = ({
   const handleUpgradeClick = () => {
     console.log('📊 Upgrade button clicked');
     if (onShowUpgrade) {
-      onShowUpgrade(); // Sofort Registrierungsfenster öffnen
+      console.log('🔔 onShowUpgrade called');
+      onShowUpgrade();
+    } else {
+      console.error('❌ onShowUpgrade is not defined');
     }
   };
 
