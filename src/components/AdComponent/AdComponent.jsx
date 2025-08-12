@@ -11,7 +11,7 @@ const A_ADS_CONFIG = {
 const WITTY_AD_TEXTS = [
   "Evalia wird durch Werbeeinnahmen finanziert. Du guckst, wir kassieren. Win-win!",
   "Evalia ist 100% kapitalistisch finanziert. Klick, konsumier, repeat.",
-  "Evalia lebt von Werbung. Also iss, trink, rauch, kauf … was immer hier steht.",
+  "Evalia lebt von Werbung. Also iss, trink, rauch, kauf … was immer hier unten steht.",
   "Ohne Werbung wären wir nur ein leeres Quiz. Und du wärst viel produktiver.",
   "Das ist eine Werbeunterbrechung. Weil wir Miete zahlen müssen."
 ];

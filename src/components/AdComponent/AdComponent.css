@@ -1,5 +1,4 @@
 /* AdComponent.css - Orange Eckig Design mit A-Ads Sticky Integration */
-/* STRENGES 20px RASTER - RATIONALISTISCHES DESIGN */
 
 .ad-component {
   position: fixed;
@@ -7,7 +6,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%) !important; /* Orange Gradient statt schwarzer Overlay */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,24 +15,24 @@
 }
 
 .ad-container {
-  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%) !important;
+  background: transparent !important; /* Transparent, damit Gradient durchscheint */
+  border-radius: 0 !important;
   max-width: 500px !important;
   width: 100% !important;
-  max-height: 90vh !important;
+  height: auto !important; /* Auto statt max-height */
+  min-height: fit-content !important;
   overflow-y: auto !important;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: none !important; /* Kein Schatten - 2D */
   animation: slideIn 0.3s ease !important;
-  border-radius: 0 !important;
 }
 
-/* HEADER */
 .ad-header {
   text-align: center;
-  padding: 40px 40px 0 40px;
+  padding: 30px 40px 10px 40px; /* Konsistent auf allen Größen */
 }
 
 .ad-header h2 {
-  margin: 0 0 20px 0;
+  margin: 0 0 15px 0;
   font-size: 2rem;
   font-weight: bold;
   color: #ffffff !important;
@@ -42,62 +41,93 @@
 .progress-info {
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.9) !important;
-  margin: 0 0 10px 0;
+  margin: 0 0 8px 0;
 }
 
-/* CONTENT */
+.ad-debug-info {
+  margin-top: 20px;
+}
+
+.ad-debug-info small {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
 .ad-content {
-  padding: 20px 40px 20px 40px;
+  padding: 10px 40px 20px 40px; /* Weniger padding oben */
 }
 
+.ad-placeholder {
+  text-align: center;
+}
+
+/* Minimale Info - Ohne Kästchen, nur Text */
 .ad-info-minimal {
-  margin-top: -13px;    /* Text nach oben ziehen */
-  margin-bottom: 10px;  /* Abstand nach unten reduzieren */
-  padding: 0;
+  margin-bottom: 15px;
+  padding: 0; /* Kein padding */
+  background: none; /* Kein Hintergrund */
+  border: none; /* Keine Border */
 }
 
 .ad-info-minimal p {
   margin: 0;
-  font-size: 0.8125rem;
+  font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.7) !important;
+  font-style: normal !important;
 }
 
-/* BUTTONS */
+/* Action Buttons Container - Nur noch für Quiz fortsetzen */
 .ad-actions {
   display: flex;
   flex-direction: column;
   margin: 20px 0;
   align-items: center;
-  gap: 20px;
+  gap: 20px; /* 20px Abstand zwischen Buttons im Raster */
 }
 
 .action-btn {
   width: 100%;
   max-width: 320px;
   padding: 0 20px !important;
-  height: 40px !important;
   font-size: 1rem !important;
   font-weight: 600 !important;
   border: none !important;
   border-radius: 0 !important;
   cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  text-transform: none !important;
+  height: 40px !important;
   background: #E55B2B !important;
   color: #ffffff !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  white-space: nowrap !important;
+  box-shadow: none !important;
+  display: flex !important; /* Flexbox für Zentrierung */
+  align-items: center !important; /* Vertikal zentrieren */
+  justify-content: center !important; /* Horizontal zentrieren */
+  line-height: normal !important; /* Reset line-height */
 }
 
-.ad-actions .action-btn:nth-child(2) {
-  font-size: 0.875rem !important;
-  padding: 0 15px !important;
+.action-btn:hover:not(:disabled) {
+  background: #D44A21 !important;
+  transform: translateY(-2px) !important;
 }
 
-/* WITTY BOX */
+.action-btn:disabled {
+  background: #999 !important;
+  cursor: not-allowed !important;
+  opacity: 0.7;
+}
+
+/* Button im Kästchen - spezifischer Selektor */
+.witty-text-box .action-btn.register-btn {
+  width: 100% !important;
+  max-width: none !important;
+  margin-top: 15px !important; /* Näher zum Text darüber */
+  height: 40px !important;
+}
+
+/* Witziger Text Box - Mit Button drin */
 .witty-text-box {
   margin: 20px 0;
-  padding: 20px;
+  padding: 20px; /* 20px Raster überall */
   background: rgba(255, 255, 255, 0.1);
   border-left: 4px solid #ffffff;
 }
@@ -106,37 +136,105 @@
   font-size: 1.05rem;
   line-height: 1.5;
   color: #ffffff !important;
-  margin: 0 0 15px 0;
+  font-weight: 500;
+  text-align: left;
+  font-style: normal !important;
+  margin-bottom: 10px; /* Näher zum nächsten Text */
 }
 
 .upgrade-hint-inline {
-  font-size: 0.8125rem !important;
+  font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.85) !important;
-  margin: 0;
+  /* Keine Trennlinie mehr */
+  text-align: left;
+  margin-bottom: 0;
 }
 
-/* ARROW DOWN */
+/* Wenn kein Upgrade Section */
+.witty-text-box .witty-text:last-child {
+  margin-bottom: 0;
+}
+
+/* Großer Pfeil nach unten - OHNE Schatten */
 .arrow-down {
-  margin: 20px 0 0 0; /* Statt 20px - Nur 6px Abstand oben */
-  text-align: center;
+  margin-top: 10px; /* Halbiert von 20px */
   animation: bounce 2s infinite;
-  position: relative;
-  /* top: 12px; Zusätzlich nach oben verschoben */
 }
 
 .arrow-down svg {
-  width: 60px;
-  height: 40px;
-  fill: rgba(255, 255, 255, 0.9);
+  /* Kein Schatten - 2D Design */
+  filter: none !important;
 }
 
-/* FOOTER */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+/* Footer Section - Minimal */
 .ad-footer {
   text-align: center;
-  padding: 0 40px 10px 40px;
+  padding: 0 40px 10px 40px; /* Weniger padding unten - Pfeil näher zur Unterkante */
 }
 
-/* A-ADS STICKY BANNER */
+/* Buttons */
+.continue-btn,
+.upgrade-hint-btn {
+  background-color: #E55B2B !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 12px 24px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 4px rgba(229, 91, 43, 0.3) !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+}
+
+.continue-btn:hover,
+.upgrade-hint-btn:hover {
+  background-color: #D44A21 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 8px rgba(229, 91, 43, 0.4) !important;
+}
+
+.continue-btn:active,
+.upgrade-hint-btn:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 4px rgba(229, 91, 43, 0.3) !important;
+}
+
+.continue-btn {
+  font-size: 18px !important;
+  padding: 14px 28px !important;
+  margin: 0 !important;
+}
+
+.upgrade-hint {
+  margin-top: 12px;
+}
+
+.upgrade-hint-btn {
+  font-size: 14px !important;
+  padding: 10px 20px !important;
+}
+
+.registered-message {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 0 !important;
+  padding: 20px !important;
+  font-size: 1rem !important;
+  color: #ffffff !important;
+  font-weight: 500 !important;
+  border-left: 4px solid #ffffff !important;
+}
+
+/* ===== A-ADS STICKY BANNER STYLES ===== */
+
 .aads-sticky-wrapper {
   pointer-events: all;
 }
@@ -154,77 +252,164 @@
   z-index: 99998;
 }
 
+/* Close Button */
 .aads-close-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 20px;
+  right: 24px;
+  border-radius: 0 !important; /* KOMPLETT ECKIG - RATIONALISTISCH */
   background: rgba(255, 255, 255, 0.9);
   padding: 6px;
   z-index: 99999;
   cursor: pointer;
+  transition: all 0.2s ease;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.aads-close-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.aads-close-btn svg {
+  display: block;
+}
+
+/* Frame Container */
 .aads-frame {
   width: 100%;
   margin: auto;
   background: rgba(0, 0, 0, 0.50);
   position: relative;
   z-index: 99998;
-  padding: 10px 0;
-  border-top: 2px solid #FF6B35;
+  padding: 8px 0; /* Etwas Padding für bessere Optik */
+  border-top: 2px solid #FF6B35; /* Orange Accent Line */
 }
 
+/* iFrame Styles */
 .aads-iframe {
   border: 0;
   padding: 0;
   width: 70%;
   height: auto;
+  overflow: hidden;
   margin: auto;
   display: block;
-  max-width: 728px;
-  min-height: 90px;
+  max-width: 728px; /* Standard Banner Max Width */
+  min-height: 90px; /* Standard Banner Min Height */
 }
 
-/* ANIMATIONS */
+/* Hide when checkbox is checked */
+#aadsstickyme71ksrg:checked + div {
+  display: none;
+}
+
+/* Animations */
 @keyframes slideIn {
-  from { opacity: 0; transform: scale(0.9) translateY(-20px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(10px); }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-/* MOBILE */
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
   .ad-container {
     margin: 20px;
     max-width: calc(100% - 40px);
+    border-radius: 0;
   }
   
-  .ad-header, 
-  .ad-content, 
+  .ad-header {
+    padding: 40px 20px 20px 20px;
+  }
+  
+  .ad-content {
+    padding: 20px;
+  }
+  
   .ad-footer {
     padding: 20px;
   }
   
+  .a-ads-info-container {
+    min-height: 120px;
+    padding: 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .ad-icon {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  
+  .ad-text {
+    text-align: center;
+  }
+  
+  .ad-header h2 {
+    font-size: 1.6rem;
+  }
+  
+  .progress-info {
+    font-size: 1rem;
+  }
+  
+  /* Mobile Sticky Banner */
   .aads-iframe {
-    width: 90%;
-    min-height: 50px;
+    width: 90%; /* Mehr Breite auf Mobile */
+    min-height: 50px; /* Kleinere Min-Height auf Mobile */
   }
   
   .aads-close-btn {
-    right: 10px;
+    right: 12px; /* Näher am Rand auf Mobile */
     padding: 4px;
+  }
+  
+  .aads-frame {
+    padding: 5px 0;
   }
 }
 
-/* STRENGE ECKIGKEIT */
+/* Tablet Responsiveness */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .aads-iframe {
+    width: 80%;
+    max-width: 600px;
+  }
+}
+
+/* Remove any unwanted gradients globally for this component */
+.ad-component * {
+  background-image: none !important;
+}
+
+/* Ensure orange gradient for main component */
+.ad-component {
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%) !important;
+}
+
+/* Ensure no border-radius anywhere */
 .ad-component *,
 .ad-component *:before,
 .ad-component *:after {
   border-radius: 0 !important;
 }
+
+/* KEINE AUSNAHMEN - ALLES ECKIG - RATIONALISTISCHES DESIGN */
