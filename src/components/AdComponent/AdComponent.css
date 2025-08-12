@@ -98,15 +98,21 @@
   background: #E55B2B !important;
   color: #ffffff !important;
   
-  /* RADIKALER ANSATZ - nur das Nötigste */
-  display: grid !important;
-  place-items: center !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  line-height: normal !important;
+  /* WIE IN DER ALTEN VERSION - EINFACH UND KLAR */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 20px !important;
+  white-space: nowrap !important;
   text-align: center !important;
   box-sizing: border-box !important;
   transition: all 0.2s ease !important;
+}
+
+/* Zweiter Button (außerhalb der Box) - kleinere Schrift */
+.ad-actions .action-btn:nth-child(2) {
+  font-size: 0.875rem !important;
+  padding: 0 15px !important;
 }
 
 .action-btn:hover:not(:disabled) {
@@ -120,16 +126,13 @@
   opacity: 0.7;
 }
 
-/* Button im Kästchen - spezifischer Selektor */
-.witty-text-box .action-btn.register-btn {
+/* Button im Kästchen - spezifischer */
+.witty-text-box .action-btn {
   width: 100% !important;
   max-width: none !important;
   margin-top: 15px !important;
-  height: 40px !important;
-  font-size: 0.875rem !important; /* Wie in deiner funktionierenden Version */
-  padding: 0 15px !important; /* Weniger padding für längeren Text */
-  text-transform: uppercase !important;
-  white-space: nowrap !important; /* Kein Umbruch */
+  font-size: 0.875rem !important;
+  padding: 0 15px !important;
 }
 
 /* Witziger Text Box - Mit Button drin */
