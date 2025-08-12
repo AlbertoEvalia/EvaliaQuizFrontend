@@ -38,13 +38,27 @@ export const LEGAL_TRANSLATIONS = {
     analyticsHeading: "Analytics",
     rightsHeading: "Your Rights",
     contactDataHeading: "Contact for Data Protection",
+    advertisingHeading: "Advertising and Analytics",
+    aaadsHeading: "Banner Advertising (A-ADS)",
+    aaadsText: "We use A-ADS advertising network to display banner advertisements on our platform. A-ADS may collect anonymous data for ad delivery optimization. For more information, please see A-ADS privacy policy at a-ads.com/privacy",
+    adsterraHeading: "Third-Party Advertising (Adsterra)",
+    adsterraText: "We use Adsterra advertising network to display ads on our platform. Adsterra may collect data about your browsing behavior for personalized advertising. For more information, please see Adsterra's privacy policy at adsterra.com/privacy-policy",
+    localStorageHeading: "Local Data Storage",
+    localStorageText: "We store quiz progress and user preferences locally in your browser (localStorage) to improve your experience. This data remains on your device and can be deleted by clearing your browser data.",
+    newsletterHeading: "Newsletter and Marketing Communications",
+    newsletterText: "With your explicit consent, we may send you newsletters and information about new features, including our upcoming Premium service. You can unsubscribe at any time by clicking the unsubscribe link in our emails or contacting us directly.",
+    cookieBannerTitle: "🍪 Cookie Settings",
+    cookieBannerText: "We use cookies to provide you with the best possible use of our website. Some are technically necessary, others help us improve the website and show you personalized advertising.",
+    acceptAll: "Accept All",
+    onlyNecessary: "Only Necessary",
+    settings: "Settings",
     
     dataProtectionText: "We take the protection of your personal data very seriously. We treat your personal data confidentially and in accordance with the statutory data protection regulations and this privacy policy.",
     dataCollectionText: "We collect and use personal data only insofar as this is necessary for the provision of a functional website as well as our content and services.",
     cookiesText: "This website uses cookies to improve user experience. By using our website, you consent to the use of cookies in accordance with this privacy policy.",
     analyticsText: "We use web analytics services to analyze the use of our website and to continuously improve our offering.",
     rightsText: "You have the right to information, correction, deletion, restriction, data portability, revocation and objection regarding your personal data.",
-    contactDataText: "For questions regarding data protection, please contact us at: [YOUR EMAIL]",
+    contactDataText: "For questions regarding data protection, please contact us at: kontakt@evaliaquiz.com",
     
     // Terms of Service
     agbTitle: "Terms of Service",
@@ -54,6 +68,10 @@ export const LEGAL_TRANSLATIONS = {
     liabilityHeading: "Liability",
     modificationHeading: "Modifications",
     finalProvisionsHeading: "Final Provisions",
+    freemiumHeading: "Freemium Service Model",
+    freemiumText: "EVALIA offers a freemium service model with three tiers: (1) Free users: Full quiz access with advertising, (2) Registered users: Reduced advertising and progress tracking, (3) Premium users: Ad-free experience with additional features. Service features may change with advance notice.",
+    accountDeletionHeading: "Account Management and Deletion",
+    accountDeletionText: "Registered users can request account deletion at any time by contacting us. Upon deletion, all personal data will be permanently removed from our systems, except where retention is required by law.",
     
     scopeText: "These terms of service apply to all services provided by EVALIA through this website.",
     servicesText: "EVALIA provides an AI-powered knowledge quiz platform. The service is provided as-is without warranties.",
@@ -72,7 +90,9 @@ export const LEGAL_TRANSLATIONS = {
     contactInfoHeading: "Contact Information",
     addressHeading: "Address",
     phoneHeading: "Phone",
-    emailHeading: "Email"
+    emailHeading: "Email",
+    newsletterOptinLabel: "I would like to receive newsletters about new features and our upcoming Premium service",
+    newsletterOptinRequired: "Newsletter subscription is optional but helps us keep you informed about important updates",
   },
   
   de: {
@@ -111,13 +131,27 @@ export const LEGAL_TRANSLATIONS = {
     analyticsHeading: "Analyse-Tools",
     rightsHeading: "Ihre Rechte",
     contactDataHeading: "Kontakt Datenschutz",
+    advertisingHeading: "Werbung und Analyse",
+    aaadsHeading: "Banner-Werbung (A-ADS)",
+    aaadsText: "Wir nutzen das Werbenetzwerk A-ADS zur Anzeige von Banner-Werbung auf unserer Plattform. A-ADS kann anonyme Daten zur Optimierung der Anzeigenauslieferung sammeln. Weitere Informationen finden Sie in der Datenschutzerklärung von A-ADS unter a-ads.com/privacy",
+    adsterraHeading: "Werbung durch Dritte (Adsterra)",
+    adsterraText: "Wir nutzen das Werbenetzwerk Adsterra zur Anzeige von Werbung auf unserer Plattform. Adsterra kann Daten über Ihr Surfverhalten für personalisierte Werbung sammeln. Weitere Informationen finden Sie in Adsterras Datenschutzerklärung unter adsterra.com/privacy-policy",
+    localStorageHeading: "Lokale Datenspeicherung",
+    localStorageText: "Wir speichern Quiz-Fortschritt und Nutzereinstellungen lokal in Ihrem Browser (localStorage), um Ihre Erfahrung zu verbessern. Diese Daten verbleiben auf Ihrem Gerät und können durch Löschen der Browserdaten entfernt werden.",
+    newsletterHeading: "Newsletter und Marketing-Kommunikation",
+    newsletterText: "Mit Ihrer ausdrücklichen Einwilligung können wir Ihnen Newsletter und Informationen über neue Funktionen senden, einschließlich unseres kommenden Premium-Services. Sie können sich jederzeit abmelden, indem Sie auf den Abmelde-Link in unseren E-Mails klicken oder uns direkt kontaktieren.",
+    cookieBannerTitle: "🍪 Cookie-Einstellungen",
+    cookieBannerText: "Wir verwenden Cookies, um Ihnen die bestmögliche Nutzung unserer Website zu ermöglichen. Einige sind technisch notwendig, andere helfen uns, die Website zu verbessern und Ihnen personalisierte Werbung anzuzeigen.",
+    acceptAll: "Alle akzeptieren",
+    onlyNecessary: "Nur Notwendige",
+    settings: "Einstellungen",
     
     dataProtectionText: "Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.",
     dataCollectionText: "Wir erheben und verwenden personenbezogene Daten nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich ist.",
     cookiesText: "Diese Website verwendet Cookies zur Verbesserung der Nutzererfahrung. Durch die Nutzung unserer Website stimmen Sie der Verwendung von Cookies gemäß dieser Datenschutzerklärung zu.",
     analyticsText: "Wir setzen Web-Analyse-Dienste ein, um die Nutzung unserer Website zu analysieren und unser Angebot stetig zu verbessern.",
     rightsText: "Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerruf und Widerspruch bezüglich Ihrer personenbezogenen Daten.",
-    contactDataText: "Bei Fragen zum Datenschutz wenden Sie sich bitte an: [IHRE E-MAIL]",
+    contactDataText: "Bei Fragen zum Datenschutz wenden Sie sich bitte an: kontakt@evaliaquiz.com",
     
     // AGB
     agbTitle: "Allgemeine Geschäftsbedingungen",
@@ -127,6 +161,10 @@ export const LEGAL_TRANSLATIONS = {
     liabilityHeading: "Haftung",
     modificationHeading: "Änderungen",
     finalProvisionsHeading: "Schlussbestimmungen",
+    freemiumHeading: "Freemium-Service-Modell",
+    freemiumText: "EVALIA bietet ein Freemium-Service-Modell mit drei Stufen: (1) Kostenlose Nutzer: Vollzugriff auf Quiz mit Werbung, (2) Registrierte Nutzer: Reduzierte Werbung und Fortschrittsverfolgung, (3) Premium-Nutzer: Werbefreie Erfahrung mit zusätzlichen Funktionen. Service-Features können mit vorheriger Ankündigung geändert werden.",
+    accountDeletionHeading: "Kontoverwaltung und -löschung",
+    accountDeletionText: "Registrierte Nutzer können jederzeit die Löschung ihres Kontos beantragen, indem sie uns kontaktieren. Bei der Löschung werden alle personenbezogenen Daten dauerhaft aus unseren Systemen entfernt, außer wenn eine Aufbewahrung gesetzlich vorgeschrieben ist.",
     
     scopeText: "Diese Allgemeinen Geschäftsbedingungen gelten für alle über diese Website erbrachten Leistungen von EVALIA.",
     servicesText: "EVALIA stellt eine KI-gestützte Wissensquiz-Plattform zur Verfügung. Die Leistung wird wie besehen ohne Gewährleistungen erbracht.",
@@ -145,7 +183,9 @@ export const LEGAL_TRANSLATIONS = {
     contactInfoHeading: "Kontaktinformationen",
     addressHeading: "Adresse",
     phoneHeading: "Telefon",
-    emailHeading: "E-Mail"
+    emailHeading: "E-Mail",
+    newsletterOptinLabel: "Ich möchte Newsletter über neue Funktionen und unseren kommenden Premium-Service erhalten",
+    newsletterOptinRequired: "Der Newsletter-Abonnement ist optional, hilft uns aber, Sie über wichtige Updates zu informieren",
   },
   
   fr: {
@@ -184,13 +224,27 @@ export const LEGAL_TRANSLATIONS = {
     analyticsHeading: "Analyse",
     rightsHeading: "Vos droits",
     contactDataHeading: "Contact protection des données",
+    advertisingHeading: "Publicité et analyse",
+    aaadsHeading: "Publicité bannière (A-ADS)",
+    aaadsText: "Nous utilisons le réseau publicitaire A-ADS pour afficher des bannières publicitaires sur notre plateforme. A-ADS peut collecter des données anonymes pour l'optimisation de la diffusion d'annonces. Pour plus d'informations, consultez la politique de confidentialité d'A-ADS sur a-ads.com/privacy",
+    adsterraHeading: "Publicité tierce (Adsterra)",
+    adsterraText: "Nous utilisons le réseau publicitaire Adsterra pour afficher des publicités sur notre plateforme. Adsterra peut collecter des données sur votre comportement de navigation pour la publicité personnalisée. Pour plus d'informations, consultez la politique de confidentialité d'Adsterra sur adsterra.com/privacy-policy",
+    localStorageHeading: "Stockage de données locales",
+    localStorageText: "Nous stockons les progrès du quiz et les préférences utilisateur localement dans votre navigateur (localStorage) pour améliorer votre expérience. Ces données restent sur votre appareil et peuvent être supprimées en effaçant les données de votre navigateur.",
+    newsletterHeading: "Newsletter et communications marketing",
+    newsletterText: "Avec votre consentement explicite, nous pouvons vous envoyer des newsletters et des informations sur les nouvelles fonctionnalités, y compris notre service Premium à venir. Vous pouvez vous désabonner à tout moment en cliquant sur le lien de désabonnement dans nos e-mails ou en nous contactant directement.",
+    cookieBannerTitle: "🍪 Paramètres des cookies",
+    cookieBannerText: "Nous utilisons des cookies pour vous offrir la meilleure utilisation possible de notre site web. Certains sont techniquement nécessaires, d'autres nous aident à améliorer le site web et à vous montrer de la publicité personnalisée.",
+    acceptAll: "Accepter tout",
+    onlyNecessary: "Seulement nécessaires",
+    settings: "Paramètres",
     
     dataProtectionText: "Nous prenons très au sérieux la protection de vos données personnelles.",
     dataCollectionText: "Nous collectons et utilisons des données personnelles uniquement dans la mesure nécessaire.",
     cookiesText: "Ce site Web utilise des cookies pour améliorer l'expérience utilisateur.",
-    analyticsText: "Nous utilisons des services d'analyse Web pour analyser l'utilisation de notre site Web.",
+    analyticsText: "Nous utilisons des services d'analyse web pour analyser l'utilisation de notre site Web.",
     rightsText: "Vous avez le droit à l'information, à la correction, à la suppression de vos données personnelles.",
-    contactDataText: "Pour les questions concernant la protection des données: [VOTRE EMAIL]",
+    contactDataText: "Pour les questions concernant la protection des données: kontakt@evaliaquiz.com",
     
     // Terms of Service
     agbTitle: "Conditions d'Utilisation",
@@ -200,6 +254,10 @@ export const LEGAL_TRANSLATIONS = {
     liabilityHeading: "Responsabilité",
     modificationHeading: "Modifications",
     finalProvisionsHeading: "Dispositions finales",
+    freemiumHeading: "Modèle de service Freemium",
+    freemiumText: "EVALIA propose un modèle de service freemium à trois niveaux : (1) Utilisateurs gratuits : accès complet au quiz avec publicité, (2) Utilisateurs enregistrés : publicité réduite et suivi des progrès, (3) Utilisateurs Premium : expérience sans publicité avec fonctionnalités supplémentaires. Les fonctionnalités du service peuvent changer avec préavis.",
+    accountDeletionHeading: "Gestion et suppression de compte",
+    accountDeletionText: "Les utilisateurs enregistrés peuvent demander la suppression de leur compte à tout moment en nous contactant. Lors de la suppression, toutes les données personnelles seront définitivement supprimées de nos systèmes, sauf lorsque la conservation est requise par la loi.",
     
     scopeText: "Ces conditions d'utilisation s'appliquent à tous les services fournis par EVALIA.",
     servicesText: "EVALIA fournit une plateforme de quiz de connaissances alimentée par l'IA.",
@@ -218,7 +276,9 @@ export const LEGAL_TRANSLATIONS = {
     contactInfoHeading: "Informations de contact",
     addressHeading: "Adresse",
     phoneHeading: "Téléphone",
-    emailHeading: "Email"
+    emailHeading: "Email",
+    newsletterOptinLabel: "Je souhaite recevoir des newsletters sur les nouvelles fonctionnalités et notre prochain service Premium",
+    newsletterOptinRequired: "L'abonnement à la newsletter est optionnel mais nous aide à vous tenir informé des mises à jour importantes",
   },
   
   es: {
@@ -257,13 +317,27 @@ export const LEGAL_TRANSLATIONS = {
     analyticsHeading: "Análisis",
     rightsHeading: "Tus derechos",
     contactDataHeading: "Contacto protección de datos",
+    advertisingHeading: "Publicidad y análisis",
+    aaadsHeading: "Publicidad banner (A-ADS)",
+    aaadsText: "Utilizamos la red publicitaria A-ADS para mostrar anuncios banner en nuestra plataforma. A-ADS puede recopilar datos anónimos para la optimización de entrega de anuncios. Para más información, consulte la política de privacidad de A-ADS en a-ads.com/privacy",
+    adsterraHeading: "Publicidad de terceros (Adsterra)",
+    adsterraText: "Utilizamos la red publicitaria Adsterra para mostrar anuncios en nuestra plataforma. Adsterra puede recopilar datos sobre su comportamiento de navegación para publicidad personalizada. Para más información, consulte la política de privacidad de Adsterra en adsterra.com/privacy-policy",
+    localStorageHeading: "Almacenamiento local de datos",
+    localStorageText: "Almacenamos el progreso del quiz y las preferencias del usuario localmente en su navegador (localStorage) para mejorar su experiencia. Estos datos permanecen en su dispositivo y pueden eliminarse borrando los datos del navegador.",
+    newsletterHeading: "Newsletter y comunicaciones de marketing",
+    newsletterText: "Con su consentimiento explícito, podemos enviarle newsletters e información sobre nuevas características, incluyendo nuestro próximo servicio Premium. Puede darse de baja en cualquier momento haciendo clic en el enlace de cancelación en nuestros correos o contactándonos directamente.",
+    cookieBannerTitle: "🍪 Configuración de cookies",
+    cookieBannerText: "Utilizamos cookies para brindarle el mejor uso posible de nuestro sitio web. Algunas son técnicamente necesarias, otras nos ayudan a mejorar el sitio web y mostrarle publicidad personalizada.",
+    acceptAll: "Aceptar todo",
+    onlyNecessary: "Solo necesarias",
+    settings: "Configuración",
     
     dataProtectionText: "Nos tomamos muy en serio la protección de sus datos personales.",
     dataCollectionText: "Recopilamos y utilizamos datos personales solo en la medida necesaria.",
     cookiesText: "Este sitio web utiliza cookies para mejorar la experiencia del usuario.",
     analyticsText: "Utilizamos servicios de análisis web para analizar el uso de nuestro sitio web.",
     rightsText: "Tienes derecho a la información, corrección, eliminación de tus datos personales.",
-    contactDataText: "Para preguntas sobre protección de datos: [TU EMAIL]",
+    contactDataText: "Para preguntas sobre protección de datos: kontakt@evaliaquiz.com",
     
     // Terms of Service
     agbTitle: "Términos de Servicio",
@@ -273,6 +347,10 @@ export const LEGAL_TRANSLATIONS = {
     liabilityHeading: "Responsabilidad",
     modificationHeading: "Modificaciones",
     finalProvisionsHeading: "Disposiciones finales",
+    freemiumHeading: "Modelo de servicio Freemium",
+    freemiumText: "EVALIA ofrece un modelo de servicio freemium con tres niveles: (1) Usuarios gratuitos: Acceso completo al quiz con publicidad, (2) Usuarios registrados: Publicidad reducida y seguimiento de progreso, (3) Usuarios Premium: Experiencia sin anuncios con características adicionales. Las características del servicio pueden cambiar con aviso previo.",
+    accountDeletionHeading: "Gestión y eliminación de cuenta",
+    accountDeletionText: "Los usuarios registrados pueden solicitar la eliminación de su cuenta en cualquier momento contactándonos. Al eliminarla, todos los datos personales se eliminarán permanentemente de nuestros sistemas, excepto cuando la retención sea requerida por ley.",
     
     scopeText: "Estos términos de servicio se aplican a todos los servicios proporcionados por EVALIA.",
     servicesText: "EVALIA proporciona una plataforma de quiz de conocimientos impulsada por IA.",
@@ -291,7 +369,9 @@ export const LEGAL_TRANSLATIONS = {
     contactInfoHeading: "Información de contacto",
     addressHeading: "Dirección",
     phoneHeading: "Teléfono",
-    emailHeading: "Email"
+    emailHeading: "Email",
+    newsletterOptinLabel: "Me gustaría recibir newsletters sobre nuevas características y nuestro próximo servicio Premium",
+    newsletterOptinRequired: "La suscripción al newsletter es opcional pero nos ayuda a mantenerle informado sobre actualizaciones importantes",
   },
   
   it: {
@@ -330,13 +410,27 @@ export const LEGAL_TRANSLATIONS = {
     analyticsHeading: "Analisi",
     rightsHeading: "I tuoi diritti",
     contactDataHeading: "Contatto protezione dati",
+    advertisingHeading: "Pubblicità e analisi",
+    aaadsHeading: "Publicità banner (A-ADS)",
+    aaadsText: "Utilizziamo la rete pubblicitaria A-ADS per visualizzare banner pubblicitari sulla nostra piattaforma. A-ADS può raccogliere dati anonimi per l'ottimizzazione della consegna degli annunci. Per maggiori informazioni, consulta la politica sulla privacy di A-ADS su a-ads.com/privacy",
+    adsterraHeading: "Publicità di terze parti (Adsterra)",
+    adsterraText: "Utilizziamo la rete pubblicitaria Adsterra per visualizzare annunci sulla nostra piattaforma. Adsterra può raccogliere dati sul tuo comportamento di navigazione per pubblicità personalizzata. Per maggiori informazioni, consulta la politica sulla privacy di Adsterra su adsterra.com/privacy-policy",
+    localStorageHeading: "Archiviazione dati locale",
+    localStorageText: "Memorizziamo i progressi del quiz e le preferenze utente localmente nel tuo browser (localStorage) per migliorare la tua esperienza. Questi dati rimangono sul tuo dispositivo e possono essere eliminati cancellando i dati del browser.",
+    newsletterHeading: "Newsletter e comunicazioni di marketing",
+    newsletterText: "Con il tuo consenso esplicito, possiamo inviarti newsletter e informazioni su nuove funzionalità, incluso il nostro prossimo servizio Premium. Puoi annullare l'iscrizione in qualsiasi momento cliccando sul link di cancellazione nelle nostre email o contattandoci direttamente.",
+    cookieBannerTitle: "🍪 Impostazioni cookie",
+    cookieBannerText: "Utilizziamo i cookie per offrirti il miglior uso possibile del nostro sito web. Alcuni sono tecnicamente necessari, altri ci aiutano a migliorare il sito web e a mostrarti pubblicità personalizzata.",
+    acceptAll: "Accetta tutto",
+    onlyNecessary: "Solo necessari",
+    settings: "Impostazioni",
     
     dataProtectionText: "Prendiamo molto sul serio la protezione dei tuoi dati personali.",
     dataCollectionText: "Raccogliamo e utilizziamo dati personali solo nella misura necessaria.",
     cookiesText: "Questo sito web utilizza cookie per migliorare l'esperienza utente.",
     analyticsText: "Utilizziamo servizi di analisi web per analizzare l'uso del nostro sito web.",
     rightsText: "Hai il diritto all'informazione, correzione, cancellazione dei tuoi dati personali.",
-    contactDataText: "Per domande sulla protezione dei dati: [LA TUA EMAIL]",
+    contactDataText: "Per domande sulla protezione dei dati: kontakt@evaliaquiz.com",
     
     // Terms of Service
     agbTitle: "Termini di Servizio",
@@ -346,6 +440,10 @@ export const LEGAL_TRANSLATIONS = {
     liabilityHeading: "Responsabilità",
     modificationHeading: "Modifiche",
     finalProvisionsHeading: "Disposizioni finali",
+    freemiumHeading: "Modello di servizio Freemium",
+    freemiumText: "EVALIA offre un modello di servizio freemium a tre livelli: (1) Utenti gratuiti: accesso completo al quiz con pubblicità, (2) Utenti registrati: pubblicità ridotta e monitoraggio dei progressi, (3) Utenti Premium: esperienza senza pubblicità con funzionalità aggiuntive. Le funzionalità del servizio possono cambiare con preavviso.",
+    accountDeletionHeading: "Gestione ed eliminazione dell'account",
+    accountDeletionText: "Gli utenti registrati possono richiedere la cancellazione dell'account in qualsiasi momento contattandoci. Alla cancellazione, tutti i dati personali saranno rimossi permanentemente dai nostri sistemi, tranne dove la conservazione è richiesta dalla legge.",
     
     scopeText: "Questi termini di servizio si applicano a tutti i servizi forniti da EVALIA.",
     servicesText: "EVALIA fornisce una piattaforma di quiz della conoscenza alimentata dall'IA.",
@@ -364,7 +462,9 @@ export const LEGAL_TRANSLATIONS = {
     contactInfoHeading: "Informazioni di contatto",
     addressHeading: "Indirizzo",
     phoneHeading: "Telefono",
-    emailHeading: "Email"
+    emailHeading: "Email",
+    newsletterOptinLabel: "Vorrei ricevere newsletter su nuove funzionalità e il nostro prossimo servizio Premium",
+    newsletterOptinRequired: "L'iscrizione alla newsletter è opzionale ma ci aiuta a tenerti informato su aggiornamenti importanti",
   }
 };
 
