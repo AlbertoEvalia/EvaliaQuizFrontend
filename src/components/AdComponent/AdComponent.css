@@ -89,7 +89,7 @@
 .action-btn {
   width: 100%;
   max-width: 320px;
-  padding: 0 20px !important;
+  padding: 10px 20px !important; /* Padding oben/unten für bessere Zentrierung */
   font-size: 1rem !important;
   font-weight: 600 !important;
   border: none !important;
@@ -104,7 +104,8 @@
   display: flex !important; /* Flexbox für Zentrierung */
   align-items: center !important; /* Vertikal zentrieren */
   justify-content: center !important; /* Horizontal zentrieren */
-  line-height: 1 !important; /* Line-height reset für bessere Flexbox-Zentrierung */
+  line-height: 1 !important; /* Line-height reset */
+  box-sizing: border-box !important; /* Border-box einschließen */
 }
 
 .action-btn:hover:not(:disabled) {
@@ -134,7 +135,7 @@
   padding: 20px; /* 20px Raster überall */
   background: rgba(255, 255, 255, 0.1);
   border-left: 4px solid #ffffff;
-  max-width: 280px; /* Noch etwas schmaler, damit definitiv nicht breiter als Buttons */
+  max-width: 320px; /* EXAKT gleiche Breite wie Buttons */
   width: 100%; /* Responsive */
   box-sizing: border-box; /* Border-box für korrektes width-Verhalten */
 }
