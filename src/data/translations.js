@@ -11,7 +11,7 @@ export const TRANSLATIONS = {
     mockAdButton: "Learn More",
     countdownText: "Continue in {countdown}s",
     continueQuiz: "Continue Quiz",
-    registerFree: "Register for free to see less ads!"
+    registerFree: "Register for free to see less ads!",
     resultsTitle: "Your Results",
     overallScore: "Overall Score",
     playAgain: "Play Again",
@@ -154,7 +154,7 @@ export const TRANSLATIONS = {
     mockAdButton: "Mehr erfahren",
     countdownText: "Weiter in {countdown}s",
     continueQuiz: "Quiz fortsetzen",
-    registerFree: "Kostenlos registrieren für weniger Werbung!"
+    registerFree: "Kostenlos registrieren für weniger Werbung!",
     resultsTitle: "Ihre Ergebnisse",
     overallScore: "Gesamtpunktzahl",
     playAgain: "Nochmal spielen",
@@ -296,7 +296,7 @@ export const TRANSLATIONS = {
     mockAdButton: "En savoir plus",
     countdownText: "Continuer dans {countdown}s",
     continueQuiz: "Continuer le Quiz",
-    registerFree: "Inscrivez-vous gratuitement pour moins de publicités!"
+    registerFree: "Inscrivez-vous gratuitement pour moins de publicités!",
     resultsTitle: "Vos Résultats",
     overallScore: "Score Global",
     playAgain: "Rejouer",
@@ -437,7 +437,7 @@ export const TRANSLATIONS = {
     mockAdButton: "Saber más",
     countdownText: "Continuar en {countdown}s",
     continueQuiz: "Continuar Quiz",
-    registerFree: "¡Regístrate gratis para ver menos anuncios!"
+    registerFree: "¡Regístrate gratis para ver menos anuncios!",
     resultsTitle: "Tus Resultados",
     overallScore: "Puntuación General",
     playAgain: "Jugar de Nuevo",
@@ -578,7 +578,7 @@ export const TRANSLATIONS = {
     mockAdButton: "Scopri di più",
     countdownText: "Continua tra {countdown}s",
     continueQuiz: "Continua Quiz",
-    registerFree: "Registrati gratuitamente per meno pubblicità!"
+    registerFree: "Registrati gratuitamente per meno pubblicità!",
     resultsTitle: "I Tuoi Risultati",
     overallScore: "Punteggio Complessivo",
     playAgain: "Gioca di Nuovo",
