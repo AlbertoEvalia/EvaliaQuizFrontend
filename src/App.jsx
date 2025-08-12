@@ -608,9 +608,7 @@ const renderQuizWithLegal = (content) => (
       return renderQuizWithLegal(
         <>
           <LoadingScreen isLoading={true} translations={t} />
-          <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '14px', color: '#FFF' }}>
-            Round {sessionRound} - 20 Questions
-          </div>
+          
         </>
       );
   }
