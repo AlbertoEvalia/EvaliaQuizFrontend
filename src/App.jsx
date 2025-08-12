@@ -367,17 +367,20 @@ useEffect(() => {
       setScores(prev => [...prev, evaluation]);
 
       const nextIndex = currentIndex + 1;
+
+      setCurrentIndex(nextIndex);
       
       // 🎯 ADS NUR FÜR FREE USER
       if (userType === 'free') {
         const adPositions = getAdPositions(20); // Always 20
         
         if (adPositions.includes(nextIndex) && nextIndex < questions.length) {
-          console.log(`Showing ad after question ${currentIndex + 1} (position ${nextIndex})`);
+          console.log(`Showing ad after question ${nextIndex} (position ${nextIndex})`);
           setShowAd(true);
+          setStatus('quiz'); // Status bleibt quiz, aber mit Ad overlay
           return;
-        }
       }
+    }
 
       if (nextIndex >= questions.length) {
         console.log('Quiz completed, showing results');
@@ -406,11 +409,19 @@ useEffect(() => {
     console.log('Ad completed, continuing quiz');
     setShowAd(false);
     
-    const nextIndex = currentIndex + 1;
-    if (nextIndex >= questions.length) {
+    // 🔥 FIX: currentIndex ist bereits korrekt gesetzt in handleAnswerSubmit
+    // Keine weitere Index-Manipulation nötig
+    
+    if (currentIndex >= questions.length) {
       setStatus('results');
+      
+      // 🎯 UPGRADE-PROMPT NUR FÜR FREE USER nach Quiz Ende
+      if (userType === 'free') {
+        setTimeout(() => {
+          setShowUpgradePrompt(true);
+        }, 2000);
+      }
     } else {
-      setCurrentIndex(nextIndex);
       setStatus('quiz');
     }
   };
