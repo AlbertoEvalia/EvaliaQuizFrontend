@@ -98,7 +98,7 @@ export const TRANSLATIONS = {
     adPlaceholder: "Advertisement",
     adCountdown: "Continue in {seconds}s",
     continueQuiz: "Continue Quiz",
-    upgradeHint: "Register for free to remove ads!",
+    upgradeHint: "Register for free to see less ads!",
 
     // Feedback
     correct: "Correct!",
@@ -240,7 +240,7 @@ export const TRANSLATIONS = {
     adPlaceholder: "Werbung",
     adCountdown: "Weiter in {seconds}s",
     continueQuiz: "Quiz fortsetzen",
-    upgradeHint: "Kostenlos registrieren um Werbung zu entfernen!",
+    upgradeHint: "Kostenlos registrieren für weniger Werbung!",
 
     // Feedback
     correct: "Richtig!",
@@ -382,7 +382,7 @@ export const TRANSLATIONS = {
     adPlaceholder: "Publicité",
     adCountdown: "Continuer dans {seconds}s",
     continueQuiz: "Continuer le quiz",
-    upgradeHint: "Inscrivez-vous gratuitement pour supprimer les publicités!",
+    upgradeHint: "Inscrivez-vous gratuitement pour moins de publicités!",
 
     // Feedback
     correct: "Correct!",
@@ -523,7 +523,7 @@ export const TRANSLATIONS = {
     adPlaceholder: "Publicidad",
     adCountdown: "Continuar en {seconds}s",
     continueQuiz: "Continuar quiz",
-    upgradeHint: "¡Regístrate gratis para eliminar anuncios!",
+    upgradeHint: "Registrati gratuitamente per meno pubblicità!",
 
     // Feedback
     correct: "¡Correcto!",
@@ -664,7 +664,7 @@ export const TRANSLATIONS = {
     adPlaceholder: "Pubblicità",
     adCountdown: "Continua tra {seconds}s",
     continueQuiz: "Continua quiz",
-    upgradeHint: "Registrati gratuitamente per rimuovere le pubblicità!",
+    : "Registrati gratuitamente per rimuovere le pubblicità!",
 
     // Feedback
     correct: "Corretto!",
