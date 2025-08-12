@@ -79,9 +79,11 @@
 .ad-actions {
   display: flex;
   flex-direction: column;
-  margin: 20px 0;
+  margin: 20px auto; /* Auto für Zentrierung */
   align-items: center;
   gap: 20px; /* 20px Abstand zwischen Buttons im Raster */
+  max-width: 320px; /* Gleiche Breite wie Text-Box */
+  width: 100%;
 }
 
 .action-btn {
@@ -102,7 +104,7 @@
   display: flex !important; /* Flexbox für Zentrierung */
   align-items: center !important; /* Vertikal zentrieren */
   justify-content: center !important; /* Horizontal zentrieren */
-  line-height: normal !important; /* Reset line-height */
+  line-height: 1 !important; /* Line-height reset für bessere Flexbox-Zentrierung */
 }
 
 .action-btn:hover:not(:disabled) {
@@ -122,6 +124,8 @@
   max-width: none !important;
   margin-top: 15px !important; /* Näher zum Text darüber */
   height: 40px !important;
+  font-size: 0.9rem !important; /* Kleinere Schrift für "Kostenlos registrieren" */
+  text-transform: uppercase !important; /* Großbuchstaben wie im Button */
 }
 
 /* Witziger Text Box - Mit Button drin */
@@ -130,8 +134,9 @@
   padding: 20px; /* 20px Raster überall */
   background: rgba(255, 255, 255, 0.1);
   border-left: 4px solid #ffffff;
-  max-width: 320px; /* Gleiche Breite wie Buttons auf Desktop */
+  max-width: 280px; /* Noch etwas schmaler, damit definitiv nicht breiter als Buttons */
   width: 100%; /* Responsive */
+  box-sizing: border-box; /* Border-box für korrektes width-Verhalten */
 }
 
 .witty-text {
