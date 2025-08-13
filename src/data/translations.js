@@ -8,7 +8,7 @@ export const TRANSLATIONS = {
     fr: "S'inscrire",
     es: "Registrarse",
     it: "Registrati"
-  }
+  },
 
   en: {
     adTitle: "Quick Break",
