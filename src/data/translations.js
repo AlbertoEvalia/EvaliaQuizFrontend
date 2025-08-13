@@ -2,15 +2,12 @@
 // Zentrale Übersetzungsdatei für EVALIA
 
 export const TRANSLATIONS = {
-  register: {
-    en: "Register",
-    de: "Registrieren", 
-    fr: "S'inscrire",
-    es: "Registrarse",
-    it: "Registrati"
-  },
+
+
+
 
   en: {
+    register: "Register",
     adTitle: "Quick Break",
     progressInfo: "Question {questionNumber} of {totalQuestions}",
     adPlaceholder: "Advertisement",
@@ -78,7 +75,7 @@ export const TRANSLATIONS = {
     benefitUnlimited: "20, 50 & 100 questions",
     benefitSaveProgress: "Save your progress",
     benefitDetailedStats: "Detailed statistics",
-    
+
     // 🆕 NEUE KORREKTE BENEFITS
     benefitFewerAds: "Fewer ads",
     benefitProgressTracking: "Track your progress locally",
@@ -156,6 +153,7 @@ export const TRANSLATIONS = {
   },
 
   de: {
+    register: "Registrieren",
     adTitle: "Kurze Pause",
     progressInfo: "Frage {questionNumber} von {totalQuestions}",
     adPlaceholder: "Werbung",
@@ -223,7 +221,7 @@ export const TRANSLATIONS = {
     benefitUnlimited: "20, 50 & 100 Fragen",
     benefitSaveProgress: "Fortschritt speichern",
     benefitDetailedStats: "Detaillierte Statistiken",
-    
+
     // 🆕 NEUE KORREKTE BENEFITS
     benefitFewerAds: "Weniger Werbung",
     benefitProgressTracking: "Verfolge deinen Fortschritt lokal",
@@ -301,6 +299,8 @@ export const TRANSLATIONS = {
   },
 
   fr: {
+    register: "S'inscrire",
+
     adTitle: "Pause Rapide",
     progressInfo: "Question {questionNumber} de {totalQuestions}",
     adPlaceholder: "Publicité",
@@ -368,7 +368,7 @@ export const TRANSLATIONS = {
     benefitUnlimited: "20, 50 & 100 questions",
     benefitSaveProgress: "Sauvegardez vos progrès",
     benefitDetailedStats: "Statistiques détaillées",
-    
+
     // 🆕 NOUVELLES PRESTATIONS CORRECTES
     benefitFewerAds: "Moins de publicités",
     benefitProgressTracking: "Suivez vos progrès localement",
@@ -439,13 +439,15 @@ export const TRANSLATIONS = {
       "Pop Culture": "Culture populaire",
       "Sports": "Sports",
       "General Knowledge": "Connaissances générales"
-    }, 
+    },
     logout: 'Déconnexion',
     loggedIn: 'Connecté',
     account: 'Compte'
   },
 
   es: {
+    register: "Registrarse",
+
     adTitle: "Pausa Rápida",
     progressInfo: "Pregunta {current} de {totalQuestions}",
     adPlaceholder: "Publicidad",
@@ -513,7 +515,7 @@ export const TRANSLATIONS = {
     benefitUnlimited: "20, 50 & 100 preguntas",
     benefitSaveProgress: "Guarda tu progreso",
     benefitDetailedStats: "Estadísticas detalladas",
-    
+
     // 🆕 NUEVOS BENEFICIOS CORRECTOS
     benefitFewerAds: "Menos anuncios",
     benefitProgressTracking: "Rastrea tu progreso localmente",
@@ -584,13 +586,14 @@ export const TRANSLATIONS = {
       "Pop Culture": "Cultura popular",
       "Sports": "Deportes",
       "General Knowledge": "Conocimiento general"
-    }, 
+    },
     logout: 'Cerrar sesión',
     loggedIn: 'Conectado',
     account: 'Cuenta'
   },
 
   it: {
+    register: "Registrati",
     adTitle: "Pausa Veloce",
     progressInfo: "Domanda {questionNumber} di {totalQuestions}",
     adPlaceholder: "Pubblicità",
@@ -658,7 +661,7 @@ export const TRANSLATIONS = {
     benefitUnlimited: "20, 50 & 100 domande",
     benefitSaveProgress: "Salva i tuoi progressi",
     benefitDetailedStats: "Statistiche dettagliate",
-    
+
     // 🆕 NUOVI VANTAGGI CORRETTI
     benefitFewerAds: "Meno pubblicità",
     benefitProgressTracking: "Traccia i tuoi progressi localmente",
