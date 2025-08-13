@@ -68,7 +68,7 @@ const LegalLink = ({
                 className="register-button"
                 onClick={handleRegisterClick}
               >
-                📧 {translations?.register || 'Registrieren'}
+                 {translations?.register || 'Registrieren'}
               </button>
               <div className="dropdown-divider"></div>
             </>
