@@ -543,7 +543,8 @@ export default function App() {
             onNavigateToLegal={handleNavigateToLegalPage}
             onTestUpgrade={() => setShowUpgradePrompt(true)}
             userType={userType}
-            onLogout={handleLogout}  
+            onLogout={handleLogout}
+            onRegister={() => setShowUpgradePrompt(true)}  
           />
           <CookieBanner />
         </div>
@@ -578,7 +579,8 @@ export default function App() {
             showLegalLink={true}
             onNavigateToLegal={handleNavigateToLegalPage}
             userType={userType}
-            onLogout={handleLogout}   
+            onLogout={handleLogout} 
+            onRegister={() => setShowUpgradePrompt(true)}  
             key={`question-${currentIndex}`}
           />
         </>
@@ -595,7 +597,8 @@ export default function App() {
           showLegalLink={true}
           onNavigateToLegal={handleNavigateToLegalPage}
           userType={userType}
-          onLogout={handleLogout}   
+          onLogout={handleLogout}
+          onRegister={() => setShowUpgradePrompt(true)}   
         />
       );
 
