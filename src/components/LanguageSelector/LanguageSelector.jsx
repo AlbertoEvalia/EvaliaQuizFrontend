@@ -14,7 +14,8 @@ const LanguageSelector = ({
   onNavigateToLegal,
   onTestUpgrade,
   userType = 'free',      // ← NEU
-  onLogout        
+  onLogout,
+  onRegister
 }) => {
   const LANGUAGES = [
     { value: 'en', label: 'English' },
@@ -84,7 +85,9 @@ const LanguageSelector = ({
           {showLegalLink && onNavigateToLegal && (
             <LegalLink onNavigate={onNavigateToLegal} translations={translations}
               userType={userType}        // ← NEU
-              onLogout={onLogout} />
+              onLogout={onLogout}
+              onRegister={onRegister}  // 🆕 HINZUFÜGEN
+            />
           )}
         </div>
       </div>
