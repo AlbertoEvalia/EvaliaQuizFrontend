@@ -2,6 +2,14 @@
 // Zentrale Übersetzungsdatei für EVALIA
 
 export const TRANSLATIONS = {
+  register: {
+    en: "Register",
+    de: "Registrieren", 
+    fr: "S'inscrire",
+    es: "Registrarse",
+    it: "Registrati"
+  }
+
   en: {
     adTitle: "Quick Break",
     progressInfo: "Question {questionNumber} of {totalQuestions}",
