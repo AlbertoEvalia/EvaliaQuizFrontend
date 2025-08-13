@@ -154,7 +154,7 @@ const Kontakt = ({ onBack, translations }) => {
                 📧 {getLegalTranslation(language, 'emailHeading')}
               </h3>
               <p style={{ color: '#005B97', fontSize: '16px', lineHeight: '1.6' }}>
-                alberto.sejas@evalia.de
+                kontakt@evaliaquiz.com
               </p>
             </div>
             
