@@ -26,15 +26,15 @@ export default function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [scores, setScores] = useState([]);
   const [status, setStatus] = useState('language');
-  const [questionCount] = useState(20); // 🔥 FIX AUF 20 FRAGEN
+  const [questionCount] = useState(20);
   const [error, setError] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showAd, setShowAd] = useState(false);
   const [currentPage, setCurrentPage] = useState('quiz');
   
-  // UpgradePrompt States
+  // 🚀 3-STUFEN USER SYSTEM: 'free' | 'pending' | 'registered' | 'premium'
   const [showUpgradePrompt, setShowUpgradePrompt] = useState(false);
-  const [userType, setUserType] = useState('free'); // 'free' | 'registered'
+  const [userType, setUserType] = useState('free');
 
   // Question History Management
   const [askedQuestions, setAskedQuestions] = useState(new Set());
@@ -42,11 +42,10 @@ export default function App() {
 
   const t = TRANSLATIONS[language] || TRANSLATIONS.en;
 
-  // 🎯 FREEMIUM AD-STRATEGIE: Ads nur bei Free Users
+  // 🎯 AD-STRATEGIE: Ads für 'free' UND 'pending' users
   const getAdPositions = (totalQuestions) => {
     console.log(`🎯 Ad positions for userType: ${userType}, questions: ${totalQuestions}`);
-    // Für 20 Fragen: Ads nach 5, 10, 15
-    return userType === 'free' ? [5, 10, 15] : [];
+    return (userType === 'free' || userType === 'pending') ? [5, 10, 15] : [];
   };
 
   // Question filtering functions (keeping existing logic)
@@ -79,7 +78,6 @@ export default function App() {
       .replace(/(normalerweise|typically|usually|generally)/g, '')
       .trim();
     
-    // Specific question patterns
     if ((normalized.includes('beine') || normalized.includes('legs')) && 
         (normalized.includes('spinne') || normalized.includes('spider'))) {
       return 'SPIDER_LEGS_QUESTION';
@@ -198,12 +196,16 @@ export default function App() {
     setCurrentPage('quiz');
   };
 
-  // UpgradePrompt handlers
+  // 🚀 NEUE 3-STUFEN USER MANAGEMENT
   const handleRegister = (email) => {
     console.log('User registered with email:', email);
-    setUserType('registered');
+    setUserType('pending'); // ← Nicht mehr 'registered'!
     setShowUpgradePrompt(false);
-    alert(`Welcome ${email}! You're now registered! 🎉`);
+    
+    // Email für später speichern
+    localStorage.setItem('evalia_pending_email', email);
+    
+    alert(`Magic link sent to ${email}! Check your inbox to complete registration 📧`);
   };
 
   const handleCloseUpgradePrompt = () => {
@@ -211,90 +213,103 @@ export default function App() {
   };
 
   // Logout function
-const handleLogout = () => {
-  localStorage.removeItem('evalia_user');
-  setUserType('free');
-  console.log('✅ User logged out');
-  alert('You have been logged out! 👋');
-};
+  const handleLogout = () => {
+    localStorage.removeItem('evalia_user');
+    localStorage.removeItem('evalia_pending_email');
+    setUserType('free');
+    console.log('✅ User logged out');
+    alert('You have been logged out! 👋');
+  };
 
-console.log('🔍 Current userType state:', userType);
-
-// Debug logging (erweitert)
-useEffect(() => {
-  // Check localStorage for saved user on app start
-  const savedUser = localStorage.getItem('evalia_user');
-  if (savedUser) {
-    try {
-      const userData = JSON.parse(savedUser);
-      if (userData.userType === 'registered' && userData.email) {
-        setUserType('registered');
-        console.log(`✅ User restored from localStorage: ${userData.email}`);
-      }
-    } catch (error) {
-      console.error('Error parsing saved user data:', error);
-      localStorage.removeItem('evalia_user'); // Clean invalid data
+  // User Status Display
+  const getUserStatusText = () => {
+    switch(userType) {
+      case 'free': return 'Free User';
+      case 'pending': return 'Registration Pending - Check Email!';
+      case 'registered': return 'Registered User';
+      case 'premium': return 'Premium User';
+      default: return 'Free User';
     }
-  }
+  };
 
-  // Check for auth parameters from magic link
-  const urlParams = new URLSearchParams(window.location.search);
-  const authToken = urlParams.get('auth');
-  const userEmail = urlParams.get('email');
-  const error = urlParams.get('error');
+  console.log('🔍 Current userType state:', userType);
 
-  if (authToken && userEmail) {
-    // Successful magic link login
-    const userData = {
-      email: userEmail,
-      userType: 'registered',
-      registeredAt: new Date().toISOString()
-    };
+  // 🚀 ERWEITERTE USER STATE MANAGEMENT
+  useEffect(() => {
+    // Check localStorage for saved user on app start
+    const savedUser = localStorage.getItem('evalia_user');
+    if (savedUser) {
+      try {
+        const userData = JSON.parse(savedUser);
+        if (userData.userType === 'registered' && userData.email) {
+          setUserType('registered'); // Nur wenn wirklich bestätigt
+          console.log(`✅ User restored from localStorage: ${userData.email}`);
+        }
+      } catch (error) {
+        console.error('Error parsing saved user data:', error);
+        localStorage.removeItem('evalia_user');
+      }
+    }
+
+    // Check for auth parameters from magic link
+    const urlParams = new URLSearchParams(window.location.search);
+    const authToken = urlParams.get('auth');
+    const userEmail = urlParams.get('email');
+    const error = urlParams.get('error');
+
+    if (authToken && userEmail) {
+      // ✅ ERFOLGREICHE Email-Bestätigung
+      const userData = {
+        email: userEmail,
+        userType: 'registered', // Jetzt erst wirklich registered!
+        registeredAt: new Date().toISOString()
+      };
+      
+      localStorage.setItem('evalia_user', JSON.stringify(userData));
+      localStorage.removeItem('evalia_pending_email'); // Cleanup
+      
+      setUserType('registered'); // ← Jetzt erst!
+      console.log(`✅ User confirmed via magic link: ${userEmail}`);
+      
+      window.history.replaceState({}, document.title, window.location.pathname);
+      alert(`Welcome back! Registration confirmed for ${userEmail} 🎉`);
+    }
     
-    // Save to localStorage
-    localStorage.setItem('evalia_user', JSON.stringify(userData));
-    setUserType('registered');
-    console.log(`✅ User logged in via magic link: ${userEmail}`);
-    
-    // Clean URL
-    window.history.replaceState({}, document.title, window.location.pathname);
-    
-    // Show success message
-    alert(`Welcome back! You're now logged in as ${userEmail} 🎉`);
-  }
+    if (error) {
+      console.error('Auth error:', error);
+      let message = 'Login failed';
+      if (error === 'expired') message = 'Magic link expired. Please register again.';
+      if (error === 'invalid') message = 'Invalid magic link';
+      if (error === 'mismatch') message = 'Email mismatch';
+      
+      // Bei Fehler zurück zu 'free'
+      setUserType('free');
+      localStorage.removeItem('evalia_pending_email');
+      
+      alert(message);
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    // Original debug logging
+    console.log('App State Update:', {
+      status,
+      language,
+      questionCount: 20,
+      currentIndex,
+      questionsLength: questions.length,
+      scoresLength: scores.length,
+      error: error,
+      isSubmitting,
+      showAd,
+      currentPage,
+      userType,
+      showUpgradePrompt,
+      askedQuestionsCount: askedQuestions.size,
+      sessionRound: sessionRound
+    });
+  }, [status, language, currentIndex, questions.length, scores.length, error, isSubmitting, showAd, currentPage, userType, showUpgradePrompt, askedQuestions, sessionRound]);
   
-  if (error) {
-    console.error('Auth error:', error);
-    let message = 'Login failed';
-    if (error === 'expired') message = 'Magic link expired';
-    if (error === 'invalid') message = 'Invalid magic link';
-    if (error === 'mismatch') message = 'Email mismatch';
-    alert(message);
-    
-    // Clean URL
-    window.history.replaceState({}, document.title, window.location.pathname);
-  }
-
-  // Original debug logging
-  console.log('App State Update:', {
-    status,
-    language,
-    questionCount: 20,
-    currentIndex,
-    questionsLength: questions.length,
-    scoresLength: scores.length,
-    error: error,
-    isSubmitting,
-    showAd,
-    currentPage,
-    userType,
-    showUpgradePrompt,
-    askedQuestionsCount: askedQuestions.size,
-    sessionRound: sessionRound
-  });
-}, [status, language, currentIndex, questions.length, scores.length, error, isSubmitting, showAd, currentPage, userType, showUpgradePrompt, askedQuestions, sessionRound]);
-  
-// 🚀 VEREINFACHTE QUESTION LOADING
+  // Question loading
   const loadQuestions = async () => {
     setStatus('loading');
     setError(null);
@@ -305,8 +320,7 @@ useEffect(() => {
       
       handleIntelligentSessionManagement();
       
-      // Backend generates questions - always 20 + buffer
-      const generated = await generateQuestions(language, 28); // 20 + 8 buffer
+      const generated = await generateQuestions(language, 28);
       
       if (!generated?.length) {
         throw new Error('No questions received from backend');
@@ -315,7 +329,7 @@ useEffect(() => {
       console.log(`📝 Generated ${generated.length} questions from ${generated[0]?.source || 'backend'} source`);
       
       const filtered = filterDuplicateQuestions(generated);
-      const finalQuestions = filtered.slice(0, 20); // Always 20
+      const finalQuestions = filtered.slice(0, 20);
       
       const newFingerprints = new Set(askedQuestions);
       finalQuestions.forEach(q => {
@@ -367,33 +381,33 @@ useEffect(() => {
       setScores(prev => [...prev, evaluation]);
 
       const nextIndex = currentIndex + 1;
-
+      
+      // 🔥 Index IMMER erhöhen, bevor Ad-Check
       setCurrentIndex(nextIndex);
       
-      // 🎯 ADS NUR FÜR FREE USER
-      if (userType === 'free') {
-        const adPositions = getAdPositions(20); // Always 20
+      // 🎯 ADS für FREE UND PENDING USER
+      if (userType === 'free' || userType === 'pending') {
+        const adPositions = getAdPositions(20);
         
         if (adPositions.includes(nextIndex) && nextIndex < questions.length) {
           console.log(`Showing ad after question ${nextIndex} (position ${nextIndex})`);
           setShowAd(true);
-          setStatus('quiz'); // Status bleibt quiz, aber mit Ad overlay
+          setStatus('quiz');
           return;
+        }
       }
-    }
 
       if (nextIndex >= questions.length) {
         console.log('Quiz completed, showing results');
         setStatus('results');
         
-        // 🎯 UPGRADE-PROMPT NUR FÜR FREE USER
+        // 🎯 UPGRADE-PROMPT nur für FREE user (nicht pending!)
         if (userType === 'free') {
           setTimeout(() => {
             setShowUpgradePrompt(true);
           }, 2000);
         }
       } else {
-        setCurrentIndex(nextIndex);
         setStatus('quiz');
       }
     } catch (err) {
@@ -409,13 +423,10 @@ useEffect(() => {
     console.log('Ad completed, continuing quiz');
     setShowAd(false);
     
-    // 🔥 FIX: currentIndex ist bereits korrekt gesetzt in handleAnswerSubmit
-    // Keine weitere Index-Manipulation nötig
-    
     if (currentIndex >= questions.length) {
       setStatus('results');
       
-      // 🎯 UPGRADE-PROMPT NUR FÜR FREE USER nach Quiz Ende
+      // 🎯 UPGRADE-PROMPT nur für FREE user nach Quiz Ende
       if (userType === 'free') {
         setTimeout(() => {
           setShowUpgradePrompt(true);
@@ -427,16 +438,14 @@ useEffect(() => {
   };
 
   const handleRestart = () => {
-
-     // 🔥 ADSTERRA SCRIPT CLEANUP vor Restart
-  const adsterraScript = document.querySelector('script[src*="dominionclatterrounded.com"]');
-  if (adsterraScript) {
-    console.log('🧹 Removing Adsterra script before restart');
-    adsterraScript.remove();
-  }
-  
-  // SessionStorage auch cleanen für neuen Popunder
-  sessionStorage.removeItem('adsterra_loaded_today');
+    // 🧹 Adsterra Script cleanup vor Restart
+    const adsterraScript = document.querySelector('script[src*="dominionclatterrounded.com"]');
+    if (adsterraScript) {
+      console.log('🧹 Removing Adsterra script before restart');
+      adsterraScript.remove();
+    }
+    sessionStorage.removeItem('adsterra_loaded_today');
+    
     setQuestions([]);
     setScores([]);
     setCurrentIndex(0);
@@ -449,7 +458,7 @@ useEffect(() => {
     
     setSessionRound(prev => prev + 1);
     
-    console.log(`🔄 Restarting quiz - Round ${sessionRound + 1}, History size: ${askedQuestions.size}`);
+    console.log(`🔄 Restarting quiz - Round ${sessionRound + 1}, History size: ${askedQuestions.size}, UserType: ${userType}`);
   };
 
   const handleFullReset = () => {
@@ -459,10 +468,9 @@ useEffect(() => {
     console.log('🔥 Full reset - clearing all history and resetting to round 1');
   };
 
-  // 🚀 VEREINFACHTER START: Direkt ins Quiz
   const handleStart = () => {
-    console.log('🚀 Starting quiz directly with 20 questions');
-    loadQuestions(); // Direkt laden, kein difficulty screen
+    console.log(`🚀 Starting quiz directly with 20 questions, UserType: ${userType}`);
+    loadQuestions();
   };
 
   const currentQuestion = questions[currentIndex];
@@ -481,14 +489,14 @@ useEffect(() => {
     return <Kontakt onBack={handleBackToQuiz} translations={t} />;
   }
 
-  // Ad Screen (unchanged)
-  if (showAd && userType === 'free') {
+  // 🎯 Ad Screen - für FREE UND PENDING users
+  if (showAd && (userType === 'free' || userType === 'pending')) {
     return (
       <AdComponent
         onAdComplete={handleAdComplete}
         onShowUpgrade={() => {
           console.log('🔔 Setting showUpgradePrompt to true');
-          setShowAd(false); // Neu: Schließe Werbung
+          setShowAd(false);
           setShowUpgradePrompt(true);
         }}
         translations={t}
@@ -500,26 +508,27 @@ useEffect(() => {
     );
   }
 
-if (showUpgradePrompt) {
-  return (
-    <UpgradePrompt
-      isVisible={showUpgradePrompt}
-      onRegister={handleRegister}
-      onClose={handleCloseUpgradePrompt}
-      translations={t}
-      userScore={calculateCorrectAnswers()}
-      totalQuestions={20}
-      userType={userType}
-    />
-  );
-}
+  // 🎯 UpgradePrompt - nur für FREE users
+  if (showUpgradePrompt && userType === 'free') {
+    return (
+      <UpgradePrompt
+        isVisible={showUpgradePrompt}
+        onRegister={handleRegister}
+        onClose={handleCloseUpgradePrompt}
+        translations={t}
+        userScore={calculateCorrectAnswers()}
+        totalQuestions={20}
+        userType={userType}
+      />
+    );
+  }
 
-const renderQuizWithLegal = (content) => (
-  <div className="app-container">
-    {content}
-    <CookieBanner />
-  </div>
-);
+  const renderQuizWithLegal = (content) => (
+    <div className="app-container">
+      {content}
+      <CookieBanner />
+    </div>
+  );
 
   switch (status) {
     case 'language':
@@ -528,31 +537,17 @@ const renderQuizWithLegal = (content) => (
           <LanguageSelector
             selectedLanguage={language}
             onLanguageSelect={(lang) => setLanguage(lang)}
-            onStart={handleStart} // 🚀 Direkt ins Quiz
+            onStart={handleStart}
             translations={t}
             showLegalLink={true}
             onNavigateToLegal={handleNavigateToLegalPage}
             onTestUpgrade={() => setShowUpgradePrompt(true)}
-            userType={userType}        // ← NEU
+            userType={userType}
             onLogout={handleLogout}  
           />
           <CookieBanner />
-          
-          {showUpgradePrompt && (
-            <UpgradePrompt
-              isVisible={showUpgradePrompt}
-              onRegister={handleRegister}
-              onClose={handleCloseUpgradePrompt}
-              translations={t}
-              userScore={calculateCorrectAnswers()}
-              totalQuestions={20}
-              userType={userType}
-            />
-          )}
         </div>
       );
-
-    // 🔥 DIFFICULTY STATUS ENTFERNT - Direkt ins Quiz
 
     case 'quiz':
       if (!currentQuestion) {
@@ -568,7 +563,7 @@ const renderQuizWithLegal = (content) => (
         <>
           <Header
             currentIndex={currentIndex}
-            questionCount={20} // Always 20
+            questionCount={20}
             translations={t}
             language={language}
           />
@@ -576,13 +571,13 @@ const renderQuizWithLegal = (content) => (
             question={currentQuestion.question}
             topic={currentQuestion.topic}
             currentIndex={currentIndex}
-            questionCount={20} // Always 20
+            questionCount={20}
             onSubmit={handleAnswerSubmit}
             translations={t}
             isSubmitting={isSubmitting}
             showLegalLink={true}
             onNavigateToLegal={handleNavigateToLegalPage}
-            userType={userType}        // ← NEU
+            userType={userType}
             onLogout={handleLogout}   
             key={`question-${currentIndex}`}
           />
@@ -618,7 +613,9 @@ const renderQuizWithLegal = (content) => (
       return renderQuizWithLegal(
         <>
           <LoadingScreen isLoading={true} translations={t} />
-          
+          <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '14px', color: '#FFF' }}>
+            Round {sessionRound} - 20 Questions - {getUserStatusText()}
+          </div>
         </>
       );
   }
