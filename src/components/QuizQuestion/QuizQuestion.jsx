@@ -13,7 +13,8 @@ const QuizQuestion = ({
   showLegalLink = false,
   onNavigateToLegal,
   userType = 'free',      // ← NEU
-  onLogout    
+  onLogout, 
+  onRegister   
 }) => {
   const [answer, setAnswer] = React.useState('');
 
@@ -79,7 +80,9 @@ const QuizQuestion = ({
         <div style={{ marginTop: 'calc(2 * var(--grid-unit))' }}>
           <LegalLink onNavigate={onNavigateToLegal} translations={translations} 
             userType={userType}        // ← NEU
-            onLogout={onLogout}     />
+            onLogout={onLogout} 
+            onRegister={onRegister}  
+            />
         </div>
       )}
     </div>
