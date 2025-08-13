@@ -2,7 +2,13 @@
 import React, { useState } from 'react';
 import './LegalLink.css';
 
-const LegalLink = ({ onNavigate, translations, userType, onLogout }) => {
+const LegalLink = ({ 
+  onNavigate, 
+  translations, 
+  userType, 
+  onLogout,
+  onRegister  // 🆕 NEU - aber optional!
+}) => {
   const [showMenu, setShowMenu] = useState(false);
 
   const handleLegalClick = (page) => {
@@ -29,6 +35,16 @@ const LegalLink = ({ onNavigate, translations, userType, onLogout }) => {
     onLogout();
   };
 
+  // 🆕 NEU - Register Handler
+  const handleRegisterClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setShowMenu(false);
+    if (onRegister) {
+      onRegister();
+    }
+  };
+
   return (
     <div className="legal-link-container">
       <button
@@ -44,21 +60,35 @@ const LegalLink = ({ onNavigate, translations, userType, onLogout }) => {
 
       {showMenu && (
         <div className="legal-dropdown">
+          {/* 🆕 Register Button - nur wenn free UND onRegister verfügbar */}
+          {userType === 'free' && onRegister && (
+            <>
+              <button
+                type="button"
+                className="register-button"
+                onClick={handleRegisterClick}
+              >
+                📧 {translations?.register || 'Registrieren'}
+              </button>
+              <div className="dropdown-divider"></div>
+            </>
+          )}
+
           {/* Logout Button - nur wenn registriert */}
-          {userType === 'registered' && (
+          {(userType === 'registered' || userType === 'pending') && (
             <>
               <button
                 type="button"
                 className="logout-button"
                 onClick={handleLogoutClick}
               >
-                {translations?.logout || 'Logout'}
+                👤 {translations?.logout || 'Logout'}
               </button>
               <div className="dropdown-divider"></div>
             </>
           )}
 
-          {/* Legal Links */}
+          {/* Legal Links - unverändert */}
           <button
             type="button"
             onClick={handleDropdownClick('impressum')}

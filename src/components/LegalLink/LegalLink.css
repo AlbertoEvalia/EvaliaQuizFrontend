@@ -60,6 +60,27 @@
     animation: slideUpFromButton 0.3s ease;
     overflow: hidden;
   }
+
+  /* Register Button - ORANGE für Registration UX */
+.legal-dropdown .register-button {
+  /* Erbt alle base styles von .legal-dropdown button */
+  background-color: #FF6B35 !important; /* Orange wie UpgradePrompt */
+  background: #FF6B35 !important;
+}
+
+.legal-dropdown .register-button:hover {
+  background-color: #E55B2B !important; /* Dunkleres Orange */
+  background: #E55B2B !important;
+}
+
+/* Mobile Anpassung - automatisch inherited von .legal-dropdown button */
+@media (max-width: 480px) {
+  .legal-dropdown .register-button {
+    /* Nutzt bereits die mobile Styles von parent */
+    height: calc(2.25 * var(--grid-unit)) !important;
+    font-size: calc(0.8 * var(--grid-unit)) !important;
+  }
+}
   
   /* Animation: Direkt von unten nach oben */
   @keyframes slideUpFromButton {
