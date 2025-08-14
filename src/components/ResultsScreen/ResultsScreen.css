@@ -2,15 +2,24 @@
 
 /* Main Container */
 .results-screen {
-  width: 100%;
-  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #0075BE 0%, #005B97 100%) !important;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px;
 }
 
+
+
+
+
 .results-container {
-  background: linear-gradient(135deg, #0075BE 0%, #005B97 100%);
+  background: transparent !important;
   padding: 30px;
   color: #ffffff;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -33,17 +42,20 @@
   font-weight: bold;
   margin: 10px 0;
   color: #ffffff;
-  letter-spacing: 2px; /* Letter-spacing für bessere Lesbarkeit */
+  letter-spacing: 2px;
+  /* Letter-spacing für bessere Lesbarkeit */
 }
 
 /* Session Stats für Registered Users */
 .session-stats {
   text-align: center;
 
-  margin-bottom: 20px; /* ← NEU: 20px Abstand zum Chart */
+  margin-bottom: 20px;
+  /* ← NEU: 20px Abstand zum Chart */
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 0; /* Keine runden Ecken */
+  border-radius: 0;
+  /* Keine runden Ecken */
   color: #ffffff;
 }
 
@@ -64,7 +76,8 @@
 .chart-container canvas {
   width: 100% !important;
   height: 100% !important;
-  letter-spacing: 1px; /* Letter-spacing für bessere Lesbarkeit */
+  letter-spacing: 1px;
+  /* Letter-spacing für bessere Lesbarkeit */
 }
 
 /* Restart Button */
@@ -105,27 +118,28 @@
   .results-container {
     padding: 20px;
   }
-  
+
   .chart-container {
     height: 350px;
     padding: 15px;
     margin-top: 20px;
   }
-  
+
   .evalia-average {
     font-size: 28px;
   }
-  
+
   .session-stats {
     text-align: center;
-   
-    margin-bottom: 20px; /* ← NEU: 20px Abstand zum Chart */
+
+    margin-bottom: 20px;
+    /* ← NEU: 20px Abstand zum Chart */
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 0;
     color: #ffffff;
   }
-  
+
   .restart-button {
     font-size: 16px;
     height: 45px;
@@ -136,32 +150,34 @@
   .results-container {
     padding: 15px;
   }
-  
+
   .chart-container {
     height: 300px;
     padding: 10px;
     margin-top: 15px;
   }
-  
+
   .evalia-result {
     margin: 15px 0;
     padding: 15px;
   }
-  
+
   .evalia-average {
     font-size: 24px;
   }
-  
+
   .session-stats {
     text-align: center;
-    margin-top: 10px; /* ← Ändern von 20px zu 10px */
-    margin-bottom: 20px; /* ← NEU: 20px Abstand zum Chart */
+    margin-top: 10px;
+    /* ← Ändern von 20px zu 10px */
+    margin-bottom: 20px;
+    /* ← NEU: 20px Abstand zum Chart */
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 0;
     color: #ffffff;
   }
-  
+
   .restart-button {
     font-size: 14px;
     height: 40px;
@@ -173,15 +189,17 @@
     height: 280px;
     padding: 8px;
   }
-  
+
   .evalia-average {
     font-size: 20px;
   }
-  
+
   .session-stats {
     text-align: center;
-    margin-top: 5px; /* ← Ändern von 20px zu 10px */
-    margin-bottom: 20px; /* ← NEU: 20px Abstand zum Chart */
+    margin-top: 5px;
+    /* ← Ändern von 20px zu 10px */
+    margin-bottom: 20px;
+    /* ← NEU: 20px Abstand zum Chart */
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 0;
