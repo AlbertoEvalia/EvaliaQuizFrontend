@@ -7,7 +7,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%) !important; /* Orange Gradient statt schwarzer Overlay */
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%) !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,14 +17,14 @@
 
 /* Container transparent wie AdComponent */
 .upgrade-prompt {
-  background: transparent !important; /* Transparent, damit Gradient durchscheint */
+  background: transparent !important;
   border-radius: 0 !important;
-  max-width: 600px !important; /* Wie QuizQuestion - breiter */
+  max-width: 600px !important;
   width: 100% !important;
   height: auto !important;
   min-height: fit-content !important;
   overflow-y: auto !important;
-  box-shadow: none !important; /* Kein Schatten - 2D */
+  box-shadow: none !important;
   position: relative;
   animation: slideIn 0.3s ease;
 }
@@ -55,19 +55,19 @@
 
 /* Content mit konsistentem Padding - 20px Raster */
 .upgrade-content {
-  padding: 40px 40px 20px; /* Reduziert: 40px statt 60px oben */
+  padding: 40px 40px 20px;
   color: #ffffff !important;
 }
 
 .upgrade-header {
   text-align: center;
-  margin-bottom: 20px; /* Reduziert: 20px statt 40px */
+  margin-bottom: 20px;
 }
 
 .upgrade-header h2 {
   color: #ffffff !important;
   font-size: 2rem;
-  margin-bottom: 10px; /* Reduziert: 10px statt 20px - näher zur nächsten Zeile */
+  margin-bottom: 10px;
   font-weight: bold;
 }
 
@@ -80,13 +80,13 @@
 }
 
 .upgrade-benefits {
-  margin-bottom: 20px; /* Reduziert: 20px statt 40px */
+  margin-bottom: 20px;
 }
 
 .upgrade-benefits h3 {
   color: #ffffff !important;
   font-size: 1.4rem;
-  margin-bottom: 10px; /* Reduziert: 10px statt 20px - näher zur Liste */
+  margin-bottom: 10px;
   text-align: center;
   font-weight: 600;
 }
@@ -129,13 +129,13 @@
 .registration-form {
   display: flex;
   flex-direction: column;
-  gap: 0; /* Kein Gap */
+  gap: 0;
   margin-bottom: 0;
   background: rgba(255, 255, 255, 0.1);
   border-left: 4px solid #ffffff;
-  padding: 20px 20px 20px 20px; /* GLEICHER SATZSPIEGEL: 20px rundum */
-  margin: 0 auto; /* Kein top-margin */
-  max-width: 600px; /* WIE QUIZQUESTION - BREITER */
+  padding: 20px 20px 20px 20px;
+  margin: 0 auto;
+  max-width: 600px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -148,9 +148,9 @@
   transition: all 0.3s ease;
   background: rgba(255, 255, 255, 0.1) !important;
   color: #ffffff !important;
-  height: 40px; /* RASTER: 40px = 2x20px */
+  height: 40px;
   box-sizing: border-box;
-  margin-bottom: 20px; /* RASTER: 20px */
+  margin-bottom: 20px;
 }
 
 .email-input:focus {
@@ -171,7 +171,7 @@
 
 /* Newsletter Opt-in OHNE extra Kästchen */
 .newsletter-optin {
-  margin: 0 0 20px 0; /* RASTER: 20px */
+  margin: 0 0 20px 0;
   padding: 0;
   background: none;
   border: none;
@@ -180,7 +180,7 @@
 .checkbox-label {
   display: flex;
   align-items: flex-start;
-  gap: 20px; /* RASTER: 20px */
+  gap: 20px;
   cursor: pointer;
   margin-bottom: 10px;
 }
@@ -227,7 +227,7 @@
   font-size: 12px;
   color: #ffffff;
   line-height: 1.3;
-  margin-top: 10px; /* Weniger Abstand */
+  margin-top: 10px;
   text-align: left;
   font-style: normal;
 }
@@ -248,7 +248,7 @@
   position: relative !important;
   width: 100% !important;
   box-sizing: border-box !important;
-  height: 40px !important; /* RASTER: 40px = 2x20px */
+  height: 40px !important;
   margin-top: 0 !important;
 }
 
@@ -321,54 +321,113 @@
     opacity: 0;
     transform: scale(0.9) translateY(-20px);
   }
-
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
   }
 }
 
-/* Mobile Responsive - Raster-konform */
+/* Mobile Responsive - VOLLE BREITE NUTZEN */
 @media (max-width: 768px) {
+  .upgrade-prompt-overlay {
+    padding: 0;
+  }
+  
   .upgrade-prompt {
-    margin: 20px; /* RASTER: 20px */
-    max-width: calc(100% - 40px); /* 2x20px */
+    margin: 0;
+    max-width: 100%;
     border-radius: 0;
+    width: 100%;
+    height: 100vh;
   }
 
   .upgrade-content {
-    padding: 40px 20px 20px; /* RASTER: 40px, 20px */
+    padding: 20px;
+    height: 100vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+
+  .upgrade-header {
+    margin-bottom: 10px;
   }
 
   .upgrade-header h2 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+    margin-bottom: 5px;
   }
 
   .score-message {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .upgrade-benefits {
+    margin-bottom: 10px;
   }
 
   .upgrade-benefits h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
   }
 
   .upgrade-benefits li {
-    padding: 8px 20px;
+    padding: 5px 15px;
+    margin-bottom: 10px;
     text-align: left;
     align-items: center;
+    height: 30px;
+    font-size: 0.85rem;
   }
 
   .benefit-icon {
-    font-size: 1.3rem;
-    margin-right: 15px;
-    width: 30px;
+    font-size: 1.1rem;
+    margin-right: 10px;
+    width: 25px;
     flex-shrink: 0;
   }
 
-  /* Registration Form auf Mobile - kompakter */
   .registration-form {
     max-width: none;
-    padding: 20px; /* RASTER: 20px rundum */
+    padding: 15px;
+    margin: 0;
+  }
+
+  .email-input {
+    height: 35px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
+
+  .newsletter-optin {
+    margin: 0 0 15px 0;
+  }
+
+  .checkbox-label {
+    gap: 10px;
+  }
+
+  .checkbox-text {
+    font-size: 0.8rem;
+    line-height: 1.2;
+  }
+
+  .newsletter-note {
+    font-size: 0.75rem;
+    margin-top: 8px;
+  }
+
+  .register-btn {
+    height: 35px !important;
+    font-size: 0.9rem !important;
+  }
+
+  .close-btn {
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
   }
 }
 
