@@ -74,7 +74,7 @@
 .score-message {
   font-size: 1.2rem;
   color: #ffffff !important;
-  margin-bottom: -15px;
+  margin-bottom: -13px;
   font-style: normal;
   opacity: 0.9;
 }
@@ -86,7 +86,7 @@
 .upgrade-benefits h3 {
   color: #ffffff !important;
   font-size: 1.4rem;
-  margin-bottom: 20px;
+  margin-bottom: 17px;
   text-align: center;
   font-weight: 600;
 }
@@ -100,8 +100,8 @@
 .upgrade-benefits li {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
-  padding: 8px 20px;
+  margin-bottom: 10px;
+  padding: 8px 10px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 0;
   border-left: 4px solid #ffffff;
@@ -187,7 +187,7 @@
 }
 
 .newsletter-checkbox {
-  margin-top: 2px;
+  margin-top: 1px;
   min-width: 16px;
   min-height: 16px;
   appearance: none;
