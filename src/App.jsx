@@ -519,6 +519,7 @@ export default function App() {
         userScore={calculateCorrectAnswers()}
         totalQuestions={20}
         userType={userType}
+        language={language} 
       />
     );
   }

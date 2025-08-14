@@ -9,7 +9,8 @@ const UpgradePrompt = ({
   isVisible,
   userScore = 0,
   totalQuestions = 20,
-  userType = 'free' // NEU: 'free' | 'registered'
+  userType = 'free', // NEU: 'free' | 'registered'
+  language = 'de'
 }) => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -30,7 +31,8 @@ const UpgradePrompt = ({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
           email: email.trim(),
-          newsletterOptIn: newsletterOptIn // 🆕 Newsletter Preference senden
+          newsletterOptIn: newsletterOptIn, // 🆕 Newsletter Preference senden
+          language: language 
         })
       });
       
