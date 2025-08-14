@@ -92,7 +92,7 @@
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .restart-button:hover:not(:disabled) {
@@ -142,7 +142,7 @@
 
   .restart-button {
     font-size: 16px;
-    height: 45px;
+    height: 40px;
   }
 }
 
