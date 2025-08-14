@@ -468,7 +468,7 @@ const ResultsScreen = ({
         <h1 style={{
           textAlign: 'center',
           color: '#ffffff',
-          fontSize: 'clamp(24px, 4vw, 32px)',
+          fontSize: 'clamp(20px, 4vw, 24px)',
           fontWeight: 'bold',
           marginBottom: '20px'
         }}>
