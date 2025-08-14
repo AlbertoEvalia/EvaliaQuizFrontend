@@ -125,7 +125,7 @@
   color: #ffffff !important;
 }
 
-/* RASTER-KONFORME ANORDNUNG - Alle Elemente in einem Kästchen */
+/* RASTER-KONFORME ANORDNUNG - GLEICHE BREITE WIE QUIZQUESTION */
 .registration-form {
   display: flex;
   flex-direction: column;
@@ -133,9 +133,9 @@
   margin-bottom: 0;
   background: rgba(255, 255, 255, 0.1);
   border-left: 4px solid #ffffff;
-  padding: 20px; /* RASTER: 20px rundum gleich */
+  padding: 20px 20px 20px 20px; /* GLEICHER SATZSPIEGEL: 20px rundum */
   margin: 0 auto; /* Kein top-margin */
-  max-width: 560px;
+  max-width: 600px; /* WIE QUIZQUESTION - BREITER */
   width: 100%;
   box-sizing: border-box;
 }
