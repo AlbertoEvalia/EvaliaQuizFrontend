@@ -20,11 +20,11 @@
 
 .results-container {
   background: transparent !important;
-  padding: 30px;
+  padding: 20px;
   color: #ffffff;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 600px;
+  max-width: 100%;
   border-radius: 0;
 }
 
