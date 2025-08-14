@@ -67,64 +67,399 @@ router.post('/auth/magic-link', async (req, res) => {
     // 3. MAGIC-LINK ERSTELLEN (direkt zum Backend)
     const magicLink = `https://evaliaquizbackend.onrender.com/api/auth/verify?token=${token}&email=${encodeURIComponent(email)}`;
     
-    // 4. E-MAIL SENDEN
-    const emailTemplate = {
-      de: {
-        subject: 'Dein EVALIA Quiz Login-Link',
-        html: `
-          <h2>Willkommen bei EVALIA! 🎉</h2>
-          <p>Klicke auf den Link um dich einzuloggen:</p>
-          <a href="${magicLink}" style="background: #0075BE; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px;">
-            Jetzt einloggen
-          </a>
-          <p><small>Link läuft in 15 Minuten ab.</small></p>
-        `
-      },
-      en: {
-        subject: 'Your EVALIA Quiz Login Link',
-        html: `
-          <h2>Welcome to EVALIA! 🎉</h2>
-          <p>Click the link to log in:</p>
-          <a href="${magicLink}" style="background: #0075BE; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px;">
-            Login Now
-          </a>
-          <p><small>Link expires in 15 minutes.</small></p>
-        `
-      },
-      fr: {
-        subject: 'Votre lien de connexion EVALIA',
-        html: `
-          <h2>Bienvenue chez EVALIA! 🎉</h2>
-          <p>Cliquez sur le lien pour vous connecter:</p>
-          <a href="${magicLink}" style="background: #0075BE; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px;">
-            Se connecter
-          </a>
-          <p><small>Le lien expire dans 15 minutes.</small></p>
-        `
-      },
-      es: {
-        subject: 'Tu enlace de inicio de sesión EVALIA',
-        html: `
-          <h2>¡Bienvenido a EVALIA! 🎉</h2>
-          <p>Haz clic en el enlace para iniciar sesión:</p>
-          <a href="${magicLink}" style="background: #0075BE; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px;">
-            Iniciar sesión
-          </a>
-          <p><small>El enlace expira en 15 minutos.</small></p>
-        `
-      },
-      it: {
-        subject: 'Il tuo link di accesso EVALIA',
-        html: `
-          <h2>Benvenuto in EVALIA! 🎉</h2>
-          <p>Clicca sul link per accedere:</p>
-          <a href="${magicLink}" style="background: #0075BE; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px;">
-            Accedi ora
-          </a>
-          <p><small>Il link scade tra 15 minuti.</small></p>
-        `
-      }
-    };
+   // Ersetze den emailTemplate-Teil (ca. Zeile 60-120) mit diesem:
+
+const emailTemplate = {
+  de: {
+    subject: 'Willkommen bei EVALIA! 🎉 - Dein Login-Link',
+    html: `
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Willkommen bei EVALIA</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Helvetica, Arial, sans-serif; line-height: 1.6; color: #333333; background-color: #f5f5f5; }
+        .email-container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 0; }
+        .header { background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%); padding: 40px 20px; text-align: center; }
+        .logo { font-size: 32px; font-weight: bold; color: #ffffff; margin-bottom: 10px; letter-spacing: 1px; }
+        .welcome-text { font-size: 18px; color: #ffffff; margin: 0; }
+        .content { padding: 40px 30px; text-align: center; }
+        .main-text { font-size: 18px; color: #333333; margin-bottom: 30px; line-height: 1.5; }
+        .cta-container { margin: 40px 0; }
+        .cta-button { display: inline-block; background: linear-gradient(135deg, #0075BE 0%, #005B97 100%); color: #ffffff !important; text-decoration: none; padding: 16px 40px; font-size: 18px; font-weight: bold; border-radius: 0; text-transform: uppercase; letter-spacing: 1px; }
+        .info-box { background: #f8f9fa; border-left: 4px solid #FF6B35; padding: 20px; margin: 30px 0; text-align: left; }
+        .info-text { font-size: 14px; color: #666666; margin: 0; }
+        .footer { background: #333333; color: #ffffff; padding: 30px 20px; text-align: center; }
+        .footer-text { font-size: 14px; margin-bottom: 10px; }
+        .website-link { color: #FF6B35; text-decoration: none; }
+        @media (max-width: 600px) {
+            .header { padding: 30px 15px; }
+            .logo { font-size: 28px; }
+            .welcome-text { font-size: 16px; }
+            .content { padding: 30px 20px; }
+            .main-text { font-size: 16px; }
+            .cta-button { padding: 14px 30px; font-size: 16px; }
+            .info-box { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <div class="logo">EVALIA</div>
+            <p class="welcome-text">Willkommen bei der Community! 🎉</p>
+        </div>
+        <div class="content">
+            <p class="main-text">
+                Hallo!<br><br>
+                Schön, dass du Teil der EVALIA-Community werden möchtest. 
+                Klicke einfach auf den Button unten, um dich einzuloggen und loszulegen.
+            </p>
+            <div class="cta-container">
+                <a href="${magicLink}" class="cta-button">Jetzt einloggen</a>
+            </div>
+            <div class="info-box">
+                <p class="info-text">
+                    <strong>⏰ Wichtiger Hinweis:</strong><br>
+                    Dieser Link ist aus Sicherheitsgründen nur 15 Minuten gültig. 
+                    Falls der Link abgelaufen ist, kannst du einfach einen neuen anfordern.
+                </p>
+            </div>
+            <p style="font-size: 14px; color: #666666; margin-top: 30px;">
+                Du hast diese Email erhalten, weil du dich bei EVALIA registriert hast. 
+                Falls das nicht der Fall war, kannst du diese Email einfach ignorieren.
+            </p>
+        </div>
+        <div class="footer">
+            <p class="footer-text">
+                Viel Spaß beim Quizzen!<br>
+                Dein EVALIA-Team
+            </p>
+            <p style="font-size: 12px; margin-top: 15px;">
+                <a href="https://evaliaquiz.com" class="website-link">evaliaquiz.com</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+    `
+  },
+  en: {
+    subject: 'Welcome to EVALIA! 🎉 - Your Login Link',
+    html: `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to EVALIA</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Helvetica, Arial, sans-serif; line-height: 1.6; color: #333333; background-color: #f5f5f5; }
+        .email-container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 0; }
+        .header { background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%); padding: 40px 20px; text-align: center; }
+        .logo { font-size: 32px; font-weight: bold; color: #ffffff; margin-bottom: 10px; letter-spacing: 1px; }
+        .welcome-text { font-size: 18px; color: #ffffff; margin: 0; }
+        .content { padding: 40px 30px; text-align: center; }
+        .main-text { font-size: 18px; color: #333333; margin-bottom: 30px; line-height: 1.5; }
+        .cta-container { margin: 40px 0; }
+        .cta-button { display: inline-block; background: linear-gradient(135deg, #0075BE 0%, #005B97 100%); color: #ffffff !important; text-decoration: none; padding: 16px 40px; font-size: 18px; font-weight: bold; border-radius: 0; text-transform: uppercase; letter-spacing: 1px; }
+        .info-box { background: #f8f9fa; border-left: 4px solid #FF6B35; padding: 20px; margin: 30px 0; text-align: left; }
+        .info-text { font-size: 14px; color: #666666; margin: 0; }
+        .footer { background: #333333; color: #ffffff; padding: 30px 20px; text-align: center; }
+        .footer-text { font-size: 14px; margin-bottom: 10px; }
+        .website-link { color: #FF6B35; text-decoration: none; }
+        @media (max-width: 600px) {
+            .header { padding: 30px 15px; }
+            .logo { font-size: 28px; }
+            .welcome-text { font-size: 16px; }
+            .content { padding: 30px 20px; }
+            .main-text { font-size: 16px; }
+            .cta-button { padding: 14px 30px; font-size: 16px; }
+            .info-box { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <div class="logo">EVALIA</div>
+            <p class="welcome-text">Welcome to the Community! 🎉</p>
+        </div>
+        <div class="content">
+            <p class="main-text">
+                Hello!<br><br>
+                Great that you want to become part of the EVALIA community. 
+                Simply click the button below to log in and get started.
+            </p>
+            <div class="cta-container">
+                <a href="${magicLink}" class="cta-button">Login Now</a>
+            </div>
+            <div class="info-box">
+                <p class="info-text">
+                    <strong>⏰ Important Note:</strong><br>
+                    This link is valid for only 15 minutes for security reasons. 
+                    If the link has expired, you can simply request a new one.
+                </p>
+            </div>
+            <p style="font-size: 14px; color: #666666; margin-top: 30px;">
+                You received this email because you registered with EVALIA. 
+                If that's not the case, you can simply ignore this email.
+            </p>
+        </div>
+        <div class="footer">
+            <p class="footer-text">
+                Have fun quizzing!<br>
+                Your EVALIA Team
+            </p>
+            <p style="font-size: 12px; margin-top: 15px;">
+                <a href="https://evaliaquiz.com" class="website-link">evaliaquiz.com</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+    `
+  },
+  
+  
+  fr: {
+    subject: 'Bienvenue chez EVALIA! 🎉 - Votre lien de connexion',
+    html: `
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue chez EVALIA</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Helvetica, Arial, sans-serif; line-height: 1.6; color: #333333; background-color: #f5f5f5; }
+        .email-container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 0; }
+        .header { background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%); padding: 40px 20px; text-align: center; }
+        .logo { font-size: 32px; font-weight: bold; color: #ffffff; margin-bottom: 10px; letter-spacing: 1px; }
+        .welcome-text { font-size: 18px; color: #ffffff; margin: 0; }
+        .content { padding: 40px 30px; text-align: center; }
+        .main-text { font-size: 18px; color: #333333; margin-bottom: 30px; line-height: 1.5; }
+        .cta-container { margin: 40px 0; }
+        .cta-button { display: inline-block; background: linear-gradient(135deg, #0075BE 0%, #005B97 100%); color: #ffffff !important; text-decoration: none; padding: 16px 40px; font-size: 18px; font-weight: bold; border-radius: 0; text-transform: uppercase; letter-spacing: 1px; }
+        .info-box { background: #f8f9fa; border-left: 4px solid #FF6B35; padding: 20px; margin: 30px 0; text-align: left; }
+        .info-text { font-size: 14px; color: #666666; margin: 0; }
+        .footer { background: #333333; color: #ffffff; padding: 30px 20px; text-align: center; }
+        .footer-text { font-size: 14px; margin-bottom: 10px; }
+        .website-link { color: #FF6B35; text-decoration: none; }
+        @media (max-width: 600px) {
+            .header { padding: 30px 15px; }
+            .logo { font-size: 28px; }
+            .welcome-text { font-size: 16px; }
+            .content { padding: 30px 20px; }
+            .main-text { font-size: 16px; }
+            .cta-button { padding: 14px 30px; font-size: 16px; }
+            .info-box { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <div class="logo">EVALIA</div>
+            <p class="welcome-text">Bienvenue dans la communauté! 🎉</p>
+        </div>
+        <div class="content">
+            <p class="main-text">
+                Salut!<br><br>
+                Super que tu veuilles faire partie de la communauté EVALIA. 
+                Clique simplement sur le bouton ci-dessous pour te connecter et commencer.
+            </p>
+            <div class="cta-container">
+                <a href="${magicLink}" class="cta-button">Se connecter</a>
+            </div>
+            <div class="info-box">
+                <p class="info-text">
+                    <strong>⏰ Note importante:</strong><br>
+                    Ce lien n'est valide que 15 minutes pour des raisons de sécurité. 
+                    Si le lien a expiré, tu peux simplement en demander un nouveau.
+                </p>
+            </div>
+            <p style="font-size: 14px; color: #666666; margin-top: 30px;">
+                Tu as reçu cet email parce que tu t'es inscrit chez EVALIA. 
+                Si ce n'est pas le cas, tu peux simplement ignorer cet email.
+            </p>
+        </div>
+        <div class="footer">
+            <p class="footer-text">
+                Amuse-toi bien avec les quiz!<br>
+                Ton équipe EVALIA
+            </p>
+            <p style="font-size: 12px; margin-top: 15px;">
+                <a href="https://evaliaquiz.com" class="website-link">evaliaquiz.com</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+    `
+  },
+  
+  es: {
+    subject: '¡Bienvenido a EVALIA! 🎉 - Tu enlace de inicio de sesión',
+    html: `
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a EVALIA</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Helvetica, Arial, sans-serif; line-height: 1.6; color: #333333; background-color: #f5f5f5; }
+        .email-container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 0; }
+        .header { background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%); padding: 40px 20px; text-align: center; }
+        .logo { font-size: 32px; font-weight: bold; color: #ffffff; margin-bottom: 10px; letter-spacing: 1px; }
+        .welcome-text { font-size: 18px; color: #ffffff; margin: 0; }
+        .content { padding: 40px 30px; text-align: center; }
+        .main-text { font-size: 18px; color: #333333; margin-bottom: 30px; line-height: 1.5; }
+        .cta-container { margin: 40px 0; }
+        .cta-button { display: inline-block; background: linear-gradient(135deg, #0075BE 0%, #005B97 100%); color: #ffffff !important; text-decoration: none; padding: 16px 40px; font-size: 18px; font-weight: bold; border-radius: 0; text-transform: uppercase; letter-spacing: 1px; }
+        .info-box { background: #f8f9fa; border-left: 4px solid #FF6B35; padding: 20px; margin: 30px 0; text-align: left; }
+        .info-text { font-size: 14px; color: #666666; margin: 0; }
+        .footer { background: #333333; color: #ffffff; padding: 30px 20px; text-align: center; }
+        .footer-text { font-size: 14px; margin-bottom: 10px; }
+        .website-link { color: #FF6B35; text-decoration: none; }
+        @media (max-width: 600px) {
+            .header { padding: 30px 15px; }
+            .logo { font-size: 28px; }
+            .welcome-text { font-size: 16px; }
+            .content { padding: 30px 20px; }
+            .main-text { font-size: 16px; }
+            .cta-button { padding: 14px 30px; font-size: 16px; }
+            .info-box { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <div class="logo">EVALIA</div>
+            <p class="welcome-text">¡Bienvenido a la comunidad! 🎉</p>
+        </div>
+        <div class="content">
+            <p class="main-text">
+                ¡Hola!<br><br>
+                Genial que quieras formar parte de la comunidad EVALIA. 
+                Simplemente haz clic en el botón de abajo para iniciar sesión y comenzar.
+            </p>
+            <div class="cta-container">
+                <a href="${magicLink}" class="cta-button">Iniciar sesión</a>
+            </div>
+            <div class="info-box">
+                <p class="info-text">
+                    <strong>⏰ Nota importante:</strong><br>
+                    Este enlace solo es válido durante 15 minutos por razones de seguridad. 
+                    Si el enlace ha expirado, puedes solicitar uno nuevo fácilmente.
+                </p>
+            </div>
+            <p style="font-size: 14px; color: #666666; margin-top: 30px;">
+                Recibiste este email porque te registraste en EVALIA. 
+                Si ese no es el caso, puedes simplemente ignorar este email.
+            </p>
+        </div>
+        <div class="footer">
+            <p class="footer-text">
+                ¡Diviértete con los quiz!<br>
+                Tu equipo EVALIA
+            </p>
+            <p style="font-size: 12px; margin-top: 15px;">
+                <a href="https://evaliaquiz.com" class="website-link">evaliaquiz.com</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+    `
+  },
+  
+  it: {
+    subject: 'Benvenuto in EVALIA! 🎉 - Il tuo link di accesso',
+    html: `
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benvenuto in EVALIA</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Helvetica, Arial, sans-serif; line-height: 1.6; color: #333333; background-color: #f5f5f5; }
+        .email-container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 0; }
+        .header { background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%); padding: 40px 20px; text-align: center; }
+        .logo { font-size: 32px; font-weight: bold; color: #ffffff; margin-bottom: 10px; letter-spacing: 1px; }
+        .welcome-text { font-size: 18px; color: #ffffff; margin: 0; }
+        .content { padding: 40px 30px; text-align: center; }
+        .main-text { font-size: 18px; color: #333333; margin-bottom: 30px; line-height: 1.5; }
+        .cta-container { margin: 40px 0; }
+        .cta-button { display: inline-block; background: linear-gradient(135deg, #0075BE 0%, #005B97 100%); color: #ffffff !important; text-decoration: none; padding: 16px 40px; font-size: 18px; font-weight: bold; border-radius: 0; text-transform: uppercase; letter-spacing: 1px; }
+        .info-box { background: #f8f9fa; border-left: 4px solid #FF6B35; padding: 20px; margin: 30px 0; text-align: left; }
+        .info-text { font-size: 14px; color: #666666; margin: 0; }
+        .footer { background: #333333; color: #ffffff; padding: 30px 20px; text-align: center; }
+        .footer-text { font-size: 14px; margin-bottom: 10px; }
+        .website-link { color: #FF6B35; text-decoration: none; }
+        @media (max-width: 600px) {
+            .header { padding: 30px 15px; }
+            .logo { font-size: 28px; }
+            .welcome-text { font-size: 16px; }
+            .content { padding: 30px 20px; }
+            .main-text { font-size: 16px; }
+            .cta-button { padding: 14px 30px; font-size: 16px; }
+            .info-box { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <div class="logo">EVALIA</div>
+            <p class="welcome-text">Benvenuto nella comunità! 🎉</p>
+        </div>
+        <div class="content">
+            <p class="main-text">
+                Ciao!<br><br>
+                Fantastico che tu voglia far parte della comunità EVALIA. 
+                Clicca semplicemente sul pulsante qui sotto per accedere e iniziare.
+            </p>
+            <div class="cta-container">
+                <a href="${magicLink}" class="cta-button">Accedi ora</a>
+            </div>
+            <div class="info-box">
+                <p class="info-text">
+                    <strong>⏰ Nota importante:</strong><br>
+                    Questo link è valido solo per 15 minuti per motivi di sicurezza. 
+                    Se il link è scaduto, puoi semplicemente richiederne uno nuovo.
+                </p>
+            </div>
+            <p style="font-size: 14px; color: #666666; margin-top: 30px;">
+                Hai ricevuto questa email perché ti sei registrato su EVALIA. 
+                Se non è così, puoi semplicemente ignorare questa email.
+            </p>
+        </div>
+        <div class="footer">
+            <p class="footer-text">
+                Divertiti con i quiz!<br>
+                Il tuo team EVALIA
+            </p>
+            <p style="font-size: 12px; margin-top: 15px;">
+                <a href="https://evaliaquiz.com" class="website-link">evaliaquiz.com</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+    `
+  }
+};
     
     const template = emailTemplate[language] || emailTemplate.en;
     
