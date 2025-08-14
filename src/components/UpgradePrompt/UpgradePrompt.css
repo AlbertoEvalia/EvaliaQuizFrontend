@@ -53,21 +53,21 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* Content mit konsistentem Padding wie AdComponent */
+/* Content mit konsistentem Padding - 20px Raster */
 .upgrade-content {
-  padding: 60px 40px 40px;
+  padding: 40px 40px 20px; /* Reduziert: 40px statt 60px oben */
   color: #ffffff !important;
 }
 
 .upgrade-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px; /* Reduziert: 20px statt 40px */
 }
 
 .upgrade-header h2 {
   color: #ffffff !important;
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px; /* Reduziert: 10px statt 20px - näher zur nächsten Zeile */
   font-weight: bold;
 }
 
@@ -80,13 +80,13 @@
 }
 
 .upgrade-benefits {
-  margin-bottom: 40px;
+  margin-bottom: 20px; /* Reduziert: 20px statt 40px */
 }
 
 .upgrade-benefits h3 {
   color: #ffffff !important;
   font-size: 1.4rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px; /* Reduziert: 10px statt 20px - näher zur Liste */
   text-align: center;
   font-weight: 600;
 }
@@ -125,17 +125,17 @@
   color: #ffffff !important;
 }
 
-/* NEUE KOMPAKTE ANORDNUNG - Alle drei Elemente in einem Kästchen */
+/* RASTER-KONFORME ANORDNUNG - Alle Elemente in einem Kästchen */
 .registration-form {
   display: flex;
   flex-direction: column;
-  gap: 0; /* Kein Gap mehr */
+  gap: 0; /* Kein Gap */
   margin-bottom: 0;
-  background: rgba(255, 255, 255, 0.1); /* Kästchen wie witty-text-box */
+  background: rgba(255, 255, 255, 0.1);
   border-left: 4px solid #ffffff;
-  padding: 20px;
-  margin: 20px auto; /* Zentriert */
-  max-width: 560px; /* Wie QuizQuestion-Breite */
+  padding: 20px; /* RASTER: 20px rundum gleich */
+  margin: 0 auto; /* Kein top-margin */
+  max-width: 560px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -148,9 +148,9 @@
   transition: all 0.3s ease;
   background: rgba(255, 255, 255, 0.1) !important;
   color: #ffffff !important;
-  height: 40px;
+  height: 40px; /* RASTER: 40px = 2x20px */
   box-sizing: border-box;
-  margin-bottom: 15px; /* Weniger Abstand */
+  margin-bottom: 20px; /* RASTER: 20px */
 }
 
 .email-input:focus {
@@ -171,18 +171,18 @@
 
 /* Newsletter Opt-in OHNE extra Kästchen */
 .newsletter-optin {
-  margin: 0 0 15px 0; /* Weniger Abstand */
-  padding: 0; /* Kein padding */
-  background: none; /* Kein Hintergrund */
-  border: none; /* Keine Border */
+  margin: 0 0 20px 0; /* RASTER: 20px */
+  padding: 0;
+  background: none;
+  border: none;
 }
 
 .checkbox-label {
   display: flex;
   align-items: flex-start;
-  gap: 15px; /* Weniger Gap */
+  gap: 20px; /* RASTER: 20px */
   cursor: pointer;
-  margin-bottom: 10px; /* Weniger Abstand */
+  margin-bottom: 10px;
 }
 
 .newsletter-checkbox {
@@ -248,8 +248,8 @@
   position: relative !important;
   width: 100% !important;
   box-sizing: border-box !important;
-  height: 40px !important;
-  margin-top: 0 !important; /* Kein extra Abstand */
+  height: 40px !important; /* RASTER: 40px = 2x20px */
+  margin-top: 0 !important;
 }
 
 .upgrade-prompt .registration-form .register-btn:hover:not(:disabled) {
@@ -328,16 +328,16 @@
   }
 }
 
-/* Mobile Responsive - Wie AdComponent */
+/* Mobile Responsive - Raster-konform */
 @media (max-width: 768px) {
   .upgrade-prompt {
-    margin: 20px;
-    max-width: calc(100% - 40px);
+    margin: 20px; /* RASTER: 20px */
+    max-width: calc(100% - 40px); /* 2x20px */
     border-radius: 0;
   }
 
   .upgrade-content {
-    padding: 60px 20px 20px; /* Wie AdComponent */
+    padding: 40px 20px 20px; /* RASTER: 40px, 20px */
   }
 
   .upgrade-header h2 {
@@ -354,7 +354,7 @@
 
   .upgrade-benefits li {
     padding: 8px 20px;
-    text-align: left; /* Zurück zu links */
+    text-align: left;
     align-items: center;
   }
 
@@ -367,8 +367,8 @@
 
   /* Registration Form auf Mobile - kompakter */
   .registration-form {
-    max-width: none; /* Volle Breite auf Mobile */
-    padding: 15px; /* Weniger Padding */
+    max-width: none;
+    padding: 20px; /* RASTER: 20px rundum */
   }
 }
 
