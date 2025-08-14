@@ -23,7 +23,6 @@ export const ERFINDUNGEN_DE = [
     { question: "Was wurde zuerst erfunden: Fahrrad oder Streichholz?", topic: "Erfindungen", answer: "Fahrrad" },
     { question: "Was wurde zuerst erfunden: Telefon oder Glühbirne?", topic: "Erfindungen", answer: "Telefon" },
     { question: "Was gab es zuerst: Kaffee oder Tee?", topic: "Erfindungen", answer: "Tee" },
-    { question: "In welchem Land wurde der Kugelschreiber erfunden?", topic: "Erfindungen", answer: "Argentinien" },
     { question: "In welchem Land wurde das WC erfunden?", topic: "Erfindungen", answer: "England" },
     { question: "Sind Flugzeug-'Black Boxes' tatsächlich schwarz?", topic: "Erfindungen", answer: "Nein" },
 

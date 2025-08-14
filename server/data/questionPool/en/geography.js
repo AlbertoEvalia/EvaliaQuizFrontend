@@ -44,7 +44,6 @@ export const GEOGRAPHY_EN = [
     { question: "What is the largest lake in the world?", topic: "Geography", answer: "Caspian Sea" },
     { question: "What is the highest mountain in Africa?", topic: "Geography", answer: "Kilimanjaro" },
     { question: "What is the highest mountain in Europe?", topic: "Geography", answer: "Mont Blanc" },
-    { question: "What is the largest desert in the world?", topic: "Geography", answer: "Sahara" },
     { question: "What is the highest waterfall in the world?", topic: "Geography", answer: "Angel Falls" },
     { question: "Which mountain range lies between France and Spain?", topic: "Geography", answer: "Pyrenees" },
     { question: "Which ocean is older: Atlantic or Pacific?", topic: "Geography", answer: "Pacific" },

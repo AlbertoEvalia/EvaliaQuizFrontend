@@ -23,7 +23,6 @@ export const INVENTIONS_EN = [
     { question: "What was invented first: bicycle or match?", topic: "Inventions", answer: "Bicycle" },
     { question: "What was invented first: telephone or light bulb?", topic: "Inventions", answer: "Telephone" },
     { question: "Which came first: coffee or tea?", topic: "Inventions", answer: "Tea" },
-    { question: "In which country was the ballpoint pen invented?", topic: "Inventions", answer: "Argentina" },
     { question: "In which country was the toilet invented?", topic: "Inventions", answer: "England" },
     { question: "Are airplane 'black boxes' actually black?", topic: "Inventions", answer: "No" },
 

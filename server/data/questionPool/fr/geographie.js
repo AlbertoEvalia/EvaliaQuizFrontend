@@ -41,7 +41,6 @@ export const GEOGRAPHIE_FR = [
   { question: "Quel est le plus grand lac du monde ?", topic: "Géographie", answer: "Mer Caspienne" },
   { question: "Quelle est la plus haute montagne d'Afrique ?", topic: "Géographie", answer: "Kilimandjaro" },
   { question: "Quelle est la plus haute montagne d'Europe ?", topic: "Géographie", answer: "Mont Blanc" },
-  { question: "Quel est le plus grand désert du monde ?", topic: "Géographie", answer: "Sahara" },
   { question: "Quelle est la plus haute chute d'eau du monde ?", topic: "Géographie", answer: "Chute de l'Ange" },
   { question: "Quelle chaîne de montagnes sépare la France de l'Espagne ?", topic: "Géographie", answer: "Pyrénées" },
   { question: "Quel océan est le plus ancien : Atlantique ou Pacifique ?", topic: "Géographie", answer: "Pacifique" },

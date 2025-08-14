@@ -23,7 +23,6 @@ export const INVENTOS_ES = [
     { question: "¿Qué se inventó primero: la bicicleta o el fósforo?", topic: "Inventos", answer: "Bicicleta" },
     { question: "¿Qué se inventó primero: el teléfono o la bombilla?", topic: "Inventos", answer: "Teléfono" },
     { question: "¿Qué existió primero: el café o el té?", topic: "Inventos", answer: "Té" },
-    { question: "¿En qué país se inventó el bolígrafo?", topic: "Inventos", answer: "Argentina" },
     { question: "¿En qué país se inventó el inodoro?", topic: "Inventos", answer: "Inglaterra" },
     { question: "¿Las 'cajas negras' de los aviones son realmente negras?", topic: "Inventos", answer: "No" },
 

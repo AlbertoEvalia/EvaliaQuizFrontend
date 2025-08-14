@@ -44,7 +44,6 @@ export const GEOGRAFIA_ES = [
     { question: "¿Cuál es el lago más grande del mundo?", topic: "Geografía", answer: "Mar Caspio" },
     { question: "¿Cuál es la montaña más alta de África?", topic: "Geografía", answer: "Kilimanjaro" },
     { question: "¿Cuál es la montaña más alta de Europa?", topic: "Geografía", answer: "Mont Blanc" },
-    { question: "¿Cuál es el desierto más grande del mundo?", topic: "Geografía", answer: "Sahara" },
     { question: "¿Cuál es la cascada más alta del mundo?", topic: "Geografía", answer: "Salto Ángel" },
     { question: "¿Qué cordillera está entre Francia y España?", topic: "Geografía", answer: "Pirineos" },
     { question: "¿Qué océano es más antiguo: Atlántico o Pacífico?", topic: "Geografía", answer: "Pacífico" },

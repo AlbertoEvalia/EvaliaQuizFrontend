@@ -45,7 +45,7 @@ export const GEOGRAPHIE_DE = [
   { question: "Welcher ist der größte See der Welt?", topic: "Geographie", answer: "Kaspisches Meer" },
   { question: "Welcher ist der höchste Berg Afrikas?", topic: "Geographie", answer: "Kilimandscharo" },
   { question: "Welcher ist der höchste Berg Europas?", topic: "Geographie", answer: "Mont Blanc" },
-  { question: "Welche Wüste ist die größte der Welt?", topic: "Geographie", answer: "Sahara" },
+
   { question: "Welcher Wasserfall ist der höchste der Welt?", topic: "Geographie", answer: "Angelfall" },
   { question: "Welches Gebirge liegt zwischen Frankreich und Spanien?", topic: "Geographie", answer: "Pyrenäen" },
   { question: "Welcher Ozean ist älter: Atlantik oder Pazifik?", topic: "Geographie", answer: "Pazifik" },

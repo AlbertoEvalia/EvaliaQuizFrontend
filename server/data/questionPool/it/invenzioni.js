@@ -23,7 +23,6 @@ export const INVENZIONI_IT = [
     { question: "Cosa è stato inventato per primo: la bicicletta o il fiammifero?", topic: "Invenzioni", answer: "Bicicletta" },
     { question: "Cosa è stato inventato prima: il telefono o la lampadina?", topic: "Invenzioni", answer: "Telefono" },
     { question: "Cosa è venuto prima: il caffè o il tè?", topic: "Invenzioni", answer: "Tè" },
-    { question: "In quale paese è stata inventata la penna a sfera?", topic: "Invenzioni", answer: "Argentina" },
     { question: "In quale paese è stato inventato il WC?", topic: "Invenzioni", answer: "Inghilterra" },
     { question: "Le scatole nere degli aerei sono davvero nere?", topic: "Invenzioni", answer: "No" },
     { question: "In quale paese è stato inventato l'analgesico Aspirina?", topic: "Invenzioni", answer: "Germania" }
