@@ -356,7 +356,7 @@
 
   .upgrade-header h2 {
     font-size: 1.4rem;
-    margin-bottom: 5px;
+    margin-bottom: -10px;
   }
 
   .score-message {
@@ -370,7 +370,7 @@
 
   .upgrade-benefits h3 {
     font-size: 1.1rem;
-    margin-bottom: 5px;
+    margin-bottom: 12px;
   }
 
   .upgrade-benefits li {
