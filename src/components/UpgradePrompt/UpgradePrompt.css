@@ -187,7 +187,7 @@
 }
 
 .newsletter-checkbox {
-  margin-top: 1px;
+  margin-top: 0;
   min-width: 16px;
   min-height: 16px;
   appearance: none;
