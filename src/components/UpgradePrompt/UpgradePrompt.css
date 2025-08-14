@@ -53,7 +53,7 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* Content mit konsistentem Padding - 20px Raster */
+/* Content mit weniger Padding unten */
 .upgrade-content {
   padding: 40px 40px 20px;
   color: #ffffff !important;
@@ -125,16 +125,16 @@
   color: #ffffff !important;
 }
 
-/* RASTER-KONFORME ANORDNUNG - nur padding, kein margin */
+/* RASTER-KONFORME ANORDNUNG - 20px margin unten für Abstand */
 .registration-form {
   display: flex;
   flex-direction: column;
   gap: 0;
-  margin-bottom: 0;
+  margin-bottom: 20px;
   background: rgba(255, 255, 255, 0.1);
   border-left: 4px solid #ffffff;
   padding: 20px;
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
   max-width: 600px;
   width: 100%;
   box-sizing: border-box;
@@ -142,31 +142,32 @@
 
 .email-input {
   padding: 8px 20px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: none;
   border-radius: 0;
   font-size: 1rem;
   transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #ffffff !important;
+  background: #ffffff !important;
+  color: #333333 !important;
   height: 40px;
   box-sizing: border-box;
   margin-bottom: 20px;
+  outline: none;
 }
 
 .email-input:focus {
   outline: none;
-  border-color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.15) !important;
+  background: #ffffff !important;
 }
 
 .email-input:disabled {
-  background: rgba(255, 255, 255, 0.05) !important;
-  opacity: 0.7;
+  background: #f5f5f5 !important;
+  color: #666666 !important;
+  cursor: not-allowed;
 }
 
 .email-input::placeholder {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: #999999 !important;
+  font-style: normal;
 }
 
 /* Newsletter Opt-in OHNE extra Kästchen */
@@ -327,47 +328,48 @@
   }
 }
 
+/* Mobile Responsive - VOLLE BREITE NUTZEN */
 @media (max-width: 768px) {
   .upgrade-prompt-overlay {
-    padding: 20px;
+    padding: 0;
   }
   
   .upgrade-prompt {
-    margin: 20px;
-    max-width: calc(100% - 40px);
+    margin: 0;
+    max-width: 100%;
     border-radius: 0;
-    width: auto;
+    width: 100%;
     height: auto;
   }
 
   .upgrade-content {
     padding: 20px;
     height: auto;
-    overflow-y: visible;
+    overflow-y: auto;
     box-sizing: border-box;
   }
 
   .upgrade-header {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 
   .upgrade-header h2 {
     font-size: 1.4rem;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
   }
 
   .score-message {
     font-size: 1rem;
-    margin-bottom: 0;
+    margin-bottom: 10px;
   }
 
   .upgrade-benefits {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
   .upgrade-benefits h3 {
     font-size: 1.1rem;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
   }
 
   .upgrade-benefits li {
@@ -388,12 +390,12 @@
 
   .registration-form {
     max-width: none;
-    padding: 20px;
-    margin: 0 auto;
+    padding: 15px;
+    margin: 0;
   }
 
   .email-input {
-    height: 35px;
+    height: 40px;
     font-size: 0.9rem;
     margin-bottom: 15px;
   }
@@ -417,7 +419,7 @@
   }
 
   .register-btn {
-    height: 35px !important;
+    height: 40px !important;
     font-size: 0.9rem !important;
   }
 
@@ -429,6 +431,7 @@
     font-size: 20px;
   }
 }
+
 /* Entferne alle border-radius */
 .upgrade-prompt *,
 .upgrade-prompt *:before,
