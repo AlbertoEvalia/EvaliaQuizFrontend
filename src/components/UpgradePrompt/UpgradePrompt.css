@@ -61,13 +61,13 @@
 
 .upgrade-header {
   text-align: center;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .upgrade-header h2 {
   color: #ffffff !important;
   font-size: 2rem;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   font-weight: bold;
 }
 
@@ -80,13 +80,13 @@
 }
 
 .upgrade-benefits {
-  margin-bottom: 25px;
+  margin-bottom: 8px;
 }
 
 .upgrade-benefits h3 {
   color: #ffffff !important;
   font-size: 1.4rem;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   text-align: center;
   font-weight: 600;
 }
@@ -100,7 +100,7 @@
 .upgrade-benefits li {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   padding: 8px 20px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 0;
