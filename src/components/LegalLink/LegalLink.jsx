@@ -82,7 +82,7 @@ const LegalLink = ({
                 className="logout-button"
                 onClick={handleLogoutClick}
               >
-                👤 {translations?.logout || 'Logout'}
+                {translations?.logout || 'Logout'}
               </button>
               <div className="dropdown-divider"></div>
             </>
