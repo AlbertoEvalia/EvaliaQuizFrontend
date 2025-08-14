@@ -67,14 +67,14 @@
 .upgrade-header h2 {
   color: #ffffff !important;
   font-size: 2rem;
-  margin-bottom: 0px;
+  margin-bottom: -15px;
   font-weight: bold;
 }
 
 .score-message {
   font-size: 1.2rem;
   color: #ffffff !important;
-  margin-bottom: 0;
+  margin-bottom: -15px;
   font-style: normal;
   opacity: 0.9;
 }
