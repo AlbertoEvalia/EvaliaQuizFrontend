@@ -52,6 +52,7 @@ export const BIOLOGIA_ES = [
     { question: "¿Quién desarrolló la teoría de la evolución?", topic: "Biología", answer: "Darwin" },
     { question: "¿Los pingüinos son dinosaurios?", topic: "Biología", answer: "Sí" },
     { question: "¿Los distintos colores de pimienta se deben a que vienen de distintas plantas?", topic: "Biología", answer: "No" },
+    { question: "¿Los caballitos de mar son peces?", topic: "Biología", answer: "Sí" }
 ];
 
 export default BIOLOGIA_ES;

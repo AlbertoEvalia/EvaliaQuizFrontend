@@ -49,7 +49,8 @@ export const BIOLOGIE_FR = [
     { question: "Quelle est la plus grande espèce de félin au monde ?", topic: "Biologie", answer: "Tigre" },
     { question: "Qui a développé la théorie de l'évolution ?", topic: "Biologie", answer: "Darwin" },
     { question: "Les pingouins sont-ils des dinosaures ?", topic: "Biologie", answer: "Oui" },
-    { question: "Les différentes couleurs de poivre proviennent-elles de plantes différentes ?", topic: "Biologie", answer: "Non" }
+    { question: "Les différentes couleurs de poivre proviennent-elles de plantes différentes ?", topic: "Biologie", answer: "Non" },
+    { question: "Les hippocampes sont-ils des poissons?", topic: "Biologie", answer: "Oui" }
 ];
 
 export default BIOLOGIE_FR;

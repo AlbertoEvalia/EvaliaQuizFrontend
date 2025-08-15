@@ -51,6 +51,7 @@ export const BIOLOGIE_DE = [
     { question: "Wer entwickelte die Evolutionstheorie?", topic: "Biologie", answer: "Darwin" },
     { question: "Sind Pinguine Dinosaurier?", topic: "Biologie", answer: "Ja" },
     { question: "Kommen die verschiedenen Pfefferfarben von unterschiedlichen Pflanzen?", topic: "Biologie", answer: "Nein" },
+    { question: "Was sind Seepferdchen - Fische?", topic: "Biologie", answer: "Ja" }
 ];
 
 export default BIOLOGIE_DE;

@@ -35,7 +35,12 @@ export const LITERATURA_ES = [
     { question: "¿Cómo se llama el compañero de Sherlock Holmes?", topic: "Literatura", answer: "Dr. Watson" },
     { question: "¿Quién escribió la trilogía fantástica 'El Señor de los Anillos'?", topic: "Literatura", answer: "Tolkien" },
     { question: "¿Quién es el autor de 'La historia interminable'?", topic: "Literatura", answer: "Michael Ende" },
-    { question: "¿Quién dijo la famosa frase 'Ser o no ser'?", topic: "Literatura", answer: "Shakespeare" }
+    { question: "¿Quién dijo la famosa frase 'Ser o no ser'?", topic: "Literatura", answer: "Shakespeare" },
+    { question: "¿Qué niña de 13 años escribió un diario durante la Segunda Guerra Mundial?", topic: "Literatura", answer: "Ana Frank" },
+{ question: "¿Quién escribió la novela '1984'?", topic: "Literatura", answer: "Orwell" },
+{ question: "¿Quién escribió 'El Capital'?", topic: "Literatura", answer: "Karl Marx" },
+{ question: "¿Quién escribió 'La Divina Comedia'?", topic: "Literatura", answer: "Dante Alighieri" },
+{ question: "¿Quién escribió 'Rebelión en la granja'?", topic: "Literatura", answer: "Orwell" }
 ];
 
 export default LITERATURA_ES;

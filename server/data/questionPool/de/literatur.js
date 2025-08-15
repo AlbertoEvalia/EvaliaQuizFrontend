@@ -32,11 +32,15 @@ export const LITERATUR_DE = [
   { question: "Wie viele Jahre Einsamkeit erlebte die Familie in García Márquez' Roman?", topic: "Literatur", answer: "Hundert" },
   { question: "Wie viele Meilen reiste Kapitän Nemo unter dem Meer?", topic: "Literatur", answer: "Zwanzigtausend" },
   { question: "Welcher Romanheld von Herman Melville ist ein Wal?", topic: "Literatur", answer: "Moby Dick" },
-  { question: "Wie heißt der Gefährte von Sherlock Holmes?", topic: "Literatur", answer: "Dr. Watson" },  
+  { question: "Wie heißt der Gefährte von Sherlock Holmes?", topic: "Literatur", answer: "Dr. Watson" },
   { question: "Wer schrieb die Fantasy-Trilogie 'Der Herr der Ringe'?", topic: "Literatur", answer: "Tolkien" },
   { question: "Wer ist der Autor von 'Die unendliche Geschichte'?", topic: "Literatur", answer: "Michael Ende" },
-  { question: "Wer sagte das berühmte Zitat 'Sein oder Nichtsein'?", topic: "Literatur", answer: "Shakespeare" }
-
+  { question: "Wer sagte das berühmte Zitat 'Sein oder Nichtsein'?", topic: "Literatur", answer: "Shakespeare" },
+  { question: "Welches 13-jährige Mädchen schrieb ein Tagebuch im 2. Weltkrieg?", topic: "Literatur", answer: "Anne Frank" },
+  { question: "Wer schrieb den Roman '1984'?", topic: "Literatur", answer: "Orwell" },
+  { question: "Wer schrieb 'Das Kapital'?", topic: "Literatur", answer: "Karl Marx" },
+  { question: "Wer schrieb 'Die Göttliche Komödie'?", topic: "Literatur", answer: "Dante Alighieri" },
+  { question: "Wer schrieb 'Farm der Tiere'?", topic: "Literatur", answer: "Orwell" }
 ];
 
 export default LITERATUR_DE;

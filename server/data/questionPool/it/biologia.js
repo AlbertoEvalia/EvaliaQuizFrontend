@@ -49,7 +49,8 @@ export const BIOLOGIA_IT = [
     { question: "Quale specie di gatto è la più grande del mondo?", topic: "Biologia", answer: "Tigre" },
     { question: "Chi ha sviluppato la teoria dell'evoluzione?", topic: "Biologia", answer: "Darwin" },
     { question: "I pinguini sono dinosauri?", topic: "Biologia", answer: "Sì" },
-    { question: "I diversi colori del pepe provengono da piante diverse?", topic: "Biologia", answer: "No" }
+    { question: "I diversi colori del pepe provengono da piante diverse?", topic: "Biologia", answer: "No" },
+    { question: "I cavallucci marini sono pesci?", topic: "Biologia", answer: "Si" }
 ];
 
 export default BIOLOGIA_IT;

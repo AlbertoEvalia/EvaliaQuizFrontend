@@ -34,7 +34,12 @@ export const LITTERATURE_FR = [
   { question: "Comment s'appelle le compagnon de Sherlock Holmes ?", topic: "Littérature", answer: "Dr. Watson" },
   { question: "Qui a écrit la trilogie fantastique 'Le Seigneur des Anneaux' ?", topic: "Littérature", answer: "Tolkien" },
   { question: "Qui est l'auteur de 'L'Histoire sans fin' ?", topic: "Littérature", answer: "Michael Ende" },
-  { question: "Qui a prononcé la célèbre citation 'Être ou ne pas être' ?", topic: "Littérature", answer: "Shakespeare" }
+  { question: "Qui a prononcé la célèbre citation 'Être ou ne pas être' ?", topic: "Littérature", answer: "Shakespeare" },
+  { question: "Quelle jeune fille de 13 ans a tenu un journal pendant la Seconde Guerre mondiale ?", topic: "Littérature", answer: "Anne Frank" },
+  { question: "Qui a écrit le roman '1984' ?", topic: "Littérature", answer: "Orwell" },
+  { question: "Qui a écrit 'Le Capital' ?", topic: "Littérature", answer: "Karl Marx" },
+  { question: "Qui a écrit 'La Divine Comédie' ?", topic: "Littérature", answer: "Dante Alighieri" },
+  { question: "Qui a écrit 'La Ferme des animaux' ?", topic: "Littérature", answer: "Orwell" }
 ];
 
 export default LITTERATURE_FR;
